@@ -15,10 +15,11 @@ include_search: true
 copyright: Copyright &copy; 2015, SendCloud
 
 pages:
-- [index.md, Home]
-- [guide/index.md, Guide]
-- [email/index.md, Email]
-- [sms/index.md, SMS]
+- [index.md]
+- [guide.md, '引言']
+- [email.md, '邮件API']
+- [sms.md, '短信API']
 
 theme: readthedocs
+
 
