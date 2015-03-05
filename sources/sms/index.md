@@ -59,11 +59,10 @@ POST
 |参数           |类型           |必选       |说明|
 |:--------------|:--------------|:----------|:---|
 |smsUser        |string         |是         |子账号|
-|smsKey         |string         |是         |密码  | 
 |templateId     |int            |是         |模板ID|
 |phone          |string         |是         |收信人手机号|
 |vars           |string         |否         |替换变量的json串|
-|timestamp      |string         |是         |UNIX时间戳|
+|timestamp      |string         |否         |UNIX时间戳|
 |signature      |string         |是         |签名, 合法性验证|
     
     
@@ -72,34 +71,39 @@ POST
 |参数           |类型           |必选       |说明|
 |:--------------|:--------------|:----------|:---|
 |smsUser        |string         |是         |子账号|
-|smsKey         |string         |是         |密码|
 |templateId     |int            |是         |模板ID|
 |tos            |string         |是         |手机号和替换变量的对应的json串|
-|timestamp      |string         |是         |UNIX时间戳|
+|timestamp      |string         |否         |UNIX时间戳|
 |signature      |string         |是         |签名, 合法性验证|
     
+
+`smsKey不作为显示参数传递, 而是隐藏在signature中`    
     
 *signature的生成方式如下:*
-*将所有参数按字母顺序, 将参数的值拼接起来得到一个字符串,计算该字符串一个的MD5作为此次请求的signature.*
+*将除开smsKey的所有参数按字母顺序排序, 并用&符号拼接, 然后将smsKey用&拼到头和尾得到一个字符串, 计算该字符串的MD5作为此次请求的signature.*
+    
+`过程有点复杂，请大家看如下send中signature生成示例, sendn中同理`    
     
     
-    smsUser = testuser
-    smsKey = testKey
+    smsUser = 'testuser'
+    smsKey = 'A16a9yjNLS4DiasxcfqQRG4WOgdx0r6C'
     templateId = 1
     phone = 13811112222
-    vars = '{}'
+    vars = {}
     timestamp = 1425456433050
-    signature = md5("13811112222testKeytestuser11425456433050'{}'") 
-              = 8ddde117b11fad92412193abc6598415
+    参数按字母排序为 phone smsUser templateId timestamp vars
+    signature_str = 'A16a9yjNLS4DiasxcfqQRG4WOgdx0r6C&phone=13811112222&smsUser=testuser&templateId=1&timestamp=1425456433050&vars={}&A16a9yjNLS4DiasxcfqQRG4WOgdx0r6C'
+    signature = calculate_md5(signature_string) 
+              = ffc3451754fb2bce66ad3c586eb53fb2
 
     
 *vars格式示例:*
     
-    '{"%name%": "lucy"}'
+    {"%name%": "lucy"}
     
 *tos格式示例*
     
-    '[{"phone": "13111111111", "vars": {"%name%": "name1"}}, {"phone": "13122222222", "vars": {"%name%": "name2"}}]'
+    [{"phone": "13111111111", "vars": {"%name%": "name1"}}, {"phone": "13122222222", "vars": {"%name%": "name2"}}]
     
     
     
@@ -130,6 +134,28 @@ POST
 |482|手机号和替换变量格式错误|
 |499|您的额度不够了|
 |501|服务器异常|
+    
+
+    send, 返回一条信息的具体情况:
+    {
+        "message":"请求成功",
+        "info":{},
+        "result":true,
+        "statusCode":200
+    }
+    sendn全部成功或全部失败返回与send相同
+    部分成功则会返回具体失败信息
+    {
+        "message":"部分成功",
+        "info":{
+                "successCount":1,
+                "failedCount":1,
+                "items":[{"phone":"1312222","vars":{},"message":"手机号格式错误"}]
+                },
+        "result":true,
+        "statusCode":311
+    }
+        
 
 
 
