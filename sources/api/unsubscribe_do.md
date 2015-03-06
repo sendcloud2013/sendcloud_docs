@@ -98,7 +98,7 @@ json
     
 **HTTP请求方式** 
 ```
-post
+post    get 
 ```
     
 **参数说明**
