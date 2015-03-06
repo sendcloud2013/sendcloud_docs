@@ -27,22 +27,22 @@ post    get
 |:---|:---|:---|:---|
 |api_user|string|是|子账号|
 |api_key|string|是|密码|
-|days|int|否|过去days天内的统计数据(包含今天),必须大于0| 
-|start_date|date|否|开始日期,格式必须为yyyy-MM-dd，对应时间必须在参数end_date对应时间之前|
-|end_date|date|否|结束日期,格式必须为yyyy-MM-dd，对应时间必须在参数start_date对应时间之后|
-|list|boolean|否|如果为true，获取用户的所有类别, 其它设置或者不设置默认为false|
-|api_user_list|string|否|获取指定api_user下的统计数据,api_user列表，元素用";"分开|
-|aggregate|int|否|如果为1,累加统计数据,其它设置或者不设置默认不需要累加结果|
-|label_id_list|string|否|获取指定标签下的统计数据,标签列表,元素用";"分开|
-|domain_list|string|否|域名列表，元素用";"分开|
+|days|int|否|过去days天内的统计数据(包含今天), 必须大于0| 
+|start_date|date|否|开始日期, 格式必须为yyyy-MM-dd, 对应时间必须在参数end_date对应时间之前|
+|end_date|date|否|结束日期, 格式必须为yyyy-MM-dd, 对应时间必须在参数start_date对应时间之后|
+|list|boolean|否|如果为true, 获取用户的所有类别, 其它设置或者不设置默认为false|
+|api_user_list|string|否|获取指定api_user下的统计数据, 格式为列表, 多个api_user用";"分开|
+|aggregate|int|否|如果为1, 累加统计数据, 其它设置或者不设置默认不需要累加结果|
+|label_id_list|string|否|获取指定标签下的统计数据, 格式为列表, 多个标签用";"分开|
+|domain_list|string|否|获取指定域名下的统计数据, 格式为列表, 多个域名用";"分开|
     
 提示:    
-1.获取一段时间的统计数据时，必须指定时间区间，即start_date与end_date的组合或者days参数必须设置，并且查询的天数不超过100.    
-2.当aggregate为1时，会将时间区间内的数据累加.
+1.获取一段时间的统计数据时, 必须指定时间区间, 即【start_date与end_date的组合】或者【days参数】必须设置, 并且查询的天数不超过100.    
+2.当aggregate为1时, 会将时间区间内的数据累加.
     
 请求示例:    
 ```
-https://sendcloud.sohu.com/webapi/stats.get.xml?api_user=***&api_key=***&days=2
+https://sendcloud.sohu.com/webapi/stats.get.xml?api_user=***&api_key=***&days=2&label_id_list=[***;***]
 ```
     
     

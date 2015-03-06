@@ -28,14 +28,14 @@ post    get
 |api_user|string|是|子账号|
 |api_key|string|是|密码|
 |days|int|否|过去days天内的统计数据(包含今天),必须大于0|
-|start_date|date|否|开始日期,格式必须为yyyy-MM-dd，对应时间必须在参数end_date对应时间之前|
-|end_date|date|否|结束日期,格式必须为yyyy-MM-dd，对应时间必须在参数start_date对应时间之后|
-|api_user_list|string|否|获取指定api_user下的统计数据,api_user列表，多个用";"分开|
-|aggregate|int|否|是否累加统计数据,0或1|
-|label_id_list|string|否|获取指定标签下的统计数据,标签列表,多个用";"分开|
-|domain_list|string|否|获取指定域名下的统计数据,域名列表,多个用";"分开| 
+|start_date|date|否|开始日期, 格式必须为yyyy-MM-dd, 对应时间必须在参数end_date对应时间之前|
+|end_date|date|否|结束日期, 格式必须为yyyy-MM-dd, 对应时间必须在参数start_date对应时间之后|
+|api_user_list|string|否|获取指定api_user下的统计数据, 格式为列表, 多个api_user用";"分开|
+|aggregate|int|否|是否累加统计数据, 0或1|
+|label_id_list|string|否|获取指定标签下的统计数据, 格式为列表, 多个标签用";"分开|
+|domain_list|string|否|获取指定域名下的统计数据, 格式为列表, 多个域名用";"分开| 
     
-提示:参数中必须包含【start_date与end_date的组合】或days    
+提示:参数中必须包含【start_date与end_date的组合】或【days】.    
     
 请求示例:    
 ```
