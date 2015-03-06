@@ -28,8 +28,8 @@ post    get
 |api_user|string|是|子账号|
 |api_key|string|是|密码|
 |invoke_name|string|否|邮件模板调用名称|
-|start|int|否|查询起始位置,大于等于0|
-|limit|int|否|查询个数,0~100|
+|start|int|否|查询起始位置, 大于等于0|
+|limit|int|否|查询个数, 0~100|
     
 **返回值说明**    
     
@@ -72,6 +72,7 @@ post    get
 **返回值说明**
     
 |参数|说明|
+|:---|:---|
 |del_count|成功删除的邮件模板个数|    
     
 - - -
@@ -107,6 +108,7 @@ post    get
 **返回值说明**
     
 |参数|说明|
+|:---|:---|
 |invoke_name|邮件模板调用名称|
 |name|邮件模板名称|
 |html|html格式内容|
@@ -149,6 +151,7 @@ post    get
 **返回值说明**
     
 |参数|说明|
+|:---|:---|
 |invoke_name|邮件模板调用名称|
 |name|邮件模板名称|
 |html|html格式内容|
