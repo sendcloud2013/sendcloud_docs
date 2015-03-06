@@ -36,11 +36,69 @@
 
 - - -
 
+##API 验证机制
+
+短信发送使用**数字签名**的验证模式. 这种模式能够有效避免密码在传输途中的泄露, 是安全级别很高的一种加密验证方式.
+
+**数字签名**的验证模式: 调用 API 时, 用户不需要把密码 ( SMS_KEY ) 作为参数明文传输, 而是将数字签名 ( signature ) 作为参数传输给服务器. 服务器端会验证此 signature 的正确性.
+
+生成**数字签名** ( signature ) 的方法: 
+```
+1. 将实际调用API的参数以字母升序(A-Z)排列, 不包括 signature 字段本身
+2. 按照排列之后的顺序, 以 'key=value' + '&' + 'key=value' 的方式连接所有参数, 
+   得到字符串 param_str
+3. 以 SMS_KEY + '&' + param_str + '&' + SMS_KEY 的方式得到字符串 sign_str
+4. 计算 sign_str 的MD5值, 得到 signature
+
+'&' 是代码中使用的连接符, '+'是文档显示之用
+```
+
+下面提供了一个代码示例 ( Python ):
+
+```python
+import hashlib
+
+SMS_USER = 'testuser'
+SMS_KEY = 'A16a9yjNLS4DiasxcfqQRG4WOgdx0r6C'
+
+param = {
+    'smsUser': SMS_USER,
+    'smsKey' : SMS_KEY,
+    'templateId' : 1,
+    'phone'  : 18888888888,
+    'vars'   : {},
+    'timestamp' : 1425456433050
+}
+
+param_keys = list(param.keys())
+param_keys.sort()
+
+param_str = ''
+
+for key in param_keys:
+    param_str += key + '=' + str(param[key]) + '&'
+
+param_str = param_str[:-1]
+
+sign_str = SMS_KEY + '&' + param_str + '&' + SMS_KEY
+signature = hashlib.md5(sign_str).hexdigest()
+```
+
+**timestamp 时间戳 ( 提升逼格 )**
+
+用户可以在每个 API 请求中加入 timestamp 参数, SendCloud 会检查 timestamp 和 服务器当前时间, 如果两者相差大于6秒, 则请求会被拒绝.
+
+用户需要通过调用 API 来获取 SendCloud 服务器的时间戳, 而不是自己的本地时间.
+
+timestamp 参数需要被包含在 signature 中, 参与生成数字签名.
+
+- - -
+
 ##API
     
 ###send
 
-用于一次发送一个短信模板给一个用户
+发送一个短信模板给一个用户
 
 **URL**
 ```
@@ -59,107 +117,97 @@ POST
     
 **参数说明**
     
-`send`
-    
 |参数           |类型           |必选       |说明|
 |:--------------|:--------------|:----------|:---|
 |smsUser        |string         |是         |子账号|
 |templateId     |int            |是         |模板ID|
 |phone          |string         |是         |收信人手机号|
 |vars           |string         |否         |替换变量的json串|
-|timestamp      |string         |否         |UNIX时间戳|
 |signature      |string         |是         |签名, 合法性验证|
-    
-    
-`sendn`
-    
-|参数           |类型           |必选       |说明|
-|:--------------|:--------------|:----------|:---|
-|smsUser        |string         |是         |子账号|
-|templateId     |int            |是         |模板ID|
-|tos            |string         |是         |手机号和替换变量的对应的json串|
 |timestamp      |string         |否         |UNIX时间戳|
-|signature      |string         |是         |签名, 合法性验证|
     
-**URL**         
+*vars格式示例:*
 
+    {"%name%": "lucy"}
+    
+- - -
+
+###sendn
+
+发送一个短信模板给多个用户, 每个用户对应一个替换变量.
+
+**URL**
 ```
-http://sms-api.apps.sohuno.com/sms/send
-用于一次发送一个短信模板给一个用户
-
-http://sms-api.apps.sohuno.com/sms/sendn 
-用于一次发送一个短信模板给多个用户, 每个用户对应一个替换变量.
+http://sendcloud.sohu.com/sms/sendn
 ```
 
-**支持格式**
+**返回数据格式**
 ```
 json
 ```
-**http 请求方式**    
+
+**HTTP 请求方式**    
 ```
 POST    
 ```
     
 **参数说明**
     
-`send`
-    
-|参数           |类型           |必选       |说明|
-|:--------------|:--------------|:----------|:---|
-|smsUser        |string         |是         |子账号|
-|templateId     |int            |是         |模板ID|
-|phone          |string         |是         |收信人手机号|
-|vars           |string         |否         |替换变量的json串|
-|timestamp      |string         |否         |UNIX时间戳|
-|signature      |string         |是         |签名, 合法性验证|
-    
-    
-`sendn`
-    
 |参数           |类型           |必选       |说明|
 |:--------------|:--------------|:----------|:---|
 |smsUser        |string         |是         |子账号|
 |templateId     |int            |是         |模板ID|
 |tos            |string         |是         |手机号和替换变量的对应的json串|
-|timestamp      |string         |否         |UNIX时间戳|
 |signature      |string         |是         |签名, 合法性验证|
-    
+|timestamp      |string         |否         |UNIX时间戳|
 
-`smsKey不作为显示参数传递, 而是隐藏在signature中`    
-    
-*signature的生成方式如下:*
-*将除开smsKey的所有参数按字母顺序排序, 并用&符号拼接, 然后将smsKey用&拼到头和尾得到一个字符串, 计算该字符串的MD5作为此次请求的signature.*
-    
-`过程有点复杂, 请大家看如下send中signature生成示例, sendn中同理`    
-    
-    
-    smsUser = 'testuser'
-    smsKey = 'A16a9yjNLS4DiasxcfqQRG4WOgdx0r6C'
-    templateId = 1
-    phone = 13811112222
-    vars = {}
-    timestamp = 1425456433050
-    参数按字母排序为 phone smsUser templateId timestamp vars
-    signature_str = 'A16a9yjNLS4DiasxcfqQRG4WOgdx0r6C&phone=13811112222&smsUser=testuser&templateId=1&timestamp=1425456433050&vars={}&A16a9yjNLS4DiasxcfqQRG4WOgdx0r6C'
-    signature = calculate_md5(signature_string) 
-              = ffc3451754fb2bce66ad3c586eb53fb2
-
-    
-*vars格式示例:*
-    
-    {"%name%": "lucy"}
-    
-*tos格式示例*
+*tos格式示例:*
     
     [{"phone": "13111111111", "vars": {"%name%": "name1"}}, {"phone": "13122222222", "vars": {"%name%": "name2"}}]
     
-    
-    
-
 - - - 
+
 ##API返回码
 
-|HTTP状态码|含义|
+短信 API 返回的结果是 JSON 格式, 示例如下: 
+
+```
+# 请求成功
+{
+    "message":"请求成功",
+    "info":{},
+    "result":true,
+    "statusCode":200
+}
+
+# 手机号格式错误
+{
+    "message":"手机号格式错误",
+    "info":{},
+    "result":false,
+    "statusCode":412
+}
+
+# 部分成功
+{
+    "message":"部分成功",
+    "info":{
+            "successCount":1,
+            "failedCount":1,
+            "items":[{"phone":"1312222","vars":{},"message":"手机号格式错误"}]
+            },
+    "result":true,
+    "statusCode":311
+}
+
+```
+
+* result: API 请求是否成功
+* statusCode: API 返回码
+* message: API 返回码的中文解释
+* info: 更多信息, 比如: *部分成功*则返回具体失败信息
+
+|API 返回码|含义|
 |:---------|:---|
 |200|发送成功|
 |311|部分成功|
@@ -183,28 +231,4 @@ POST
 |499|您的额度不够了|
 |501|服务器异常|
     
-
-    send, 返回一条信息的具体情况:
-    {
-        "message":"请求成功",
-        "info":{},
-        "result":true,
-        "statusCode":200
-    }
-    sendn全部成功或全部失败返回与send相同
-    部分成功则会返回具体失败信息
-    {
-        "message":"部分成功",
-        "info":{
-                "successCount":1,
-                "failedCount":1,
-                "items":[{"phone":"1312222","vars":{},"message":"手机号格式错误"}]
-                },
-        "result":true,
-        "statusCode":311
-    }
-        
-
-
-
 
