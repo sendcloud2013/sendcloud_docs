@@ -67,7 +67,6 @@ param = {
     'templateId' : 1,
     'phone'  : 18888888888,
     'vars'   : {},
-    'timestamp' : 1425456433050
 }
 
 param_keys = list(param.keys())
