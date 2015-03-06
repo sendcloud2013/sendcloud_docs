@@ -17,16 +17,16 @@ copyright: Copyright &copy; 2015, SendCloud
 pages:
 - [index.md]
 - [guide.md, '引言']
-- [email.md, '邮件API']
+- [email/index.md, '邮件API']
 - [sms.md, '短信API']
-- [api/normal_send.md, '普通发送API']
-- [api/template_do.md, '邮件模板管理API']
-- [api/queuestatus_do.md, '队列状态管理API']
-- [api/invalidstat_do.md, '无效子类统计API']
-- [api/stathour_do.md, '按小时邮件发送数据统计API']
-- [api/stats_do.md, '邮件发送数据统计API']
-- [api/spamreported_do.md, '垃圾举报查询API']
-- [api/unsubscribe_do.md, '取消订阅管理API']
+- [email/api/normal_send.md, '邮件API', '普通发送API']
+- [email/api/template_do.md, '邮件API', '邮件模板管理API']
+- [email/api/queuestatus_do.md, '队列状态管理API']
+- [email/api/invalidstat_do.md, '无效子类统计API']
+- [email/api/stathour_do.md, '按小时邮件发送数据统计API']
+- [email/api/stats_do.md, '邮件发送数据统计API']
+- [email/api/spamreported_do.md, '垃圾举报查询API']
+- [email/api/unsubscribe_do.md, '取消订阅管理API']
 
 theme: readthedocs
 

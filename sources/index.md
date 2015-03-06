@@ -7,6 +7,6 @@ SendCloud 为客户提供了详尽的配置指引, 丰富的 API 以及及时可
 在使用 SendCloud 之前, 需要对系统做一些必要的了解, 相信我, 这个不会耽误你多少时间.
 
 ## [入门](guide.md)
-## [邮件发送 API](email.md)
+## [邮件发送 API](email/index.md)
 ## [短信发送 API](sms.md)
 
