@@ -1,13 +1,18 @@
-##取消订阅管理
+##发送
+
+邮件发送 API 应该是用户使用最频繁的 API.    
+当用户选择*退订邮件*时, 他的邮件地址就会被添加到此列表中.
+
+在此列表中的邮件地址, 都不会再被发送邮件.
     
-取消订阅列表的查询、删除、添加操作
+你可以对此列表进行查询, 删除, 添加操作
      
 - - -
 ###查询
      
 **URL**
 ```  
-https://sendcloud.sohu.com/webapi/unsubscribes.get
+http://sendcloud.sohu.com/webapi/unsubscribes.get
 ```
    
 **返回数据格式** 
@@ -88,7 +93,7 @@ http://sendcloud.sohu.com/webapi/unsubscribes.get.json?api_user=***&api_key=***&
     
 **URL**
 ```
-https://sendcloud.sohu.com/webapi//unsubscribes.delete
+http://sendcloud.sohu.com/webapi/unsubscribes.delete
 ```
     
 **返回数据格式**
@@ -138,7 +143,7 @@ http://sendcloud.sohu.com/webapi/unsubscribes.delete.json?api_user=***&api_key=*
     
 **URL**
 ```
-https://sendcloud.sohu.com/webapi/unsubscribes.add
+http://sendcloud.sohu.com/webapi/unsubscribes.add
 ```
     
 **HTTP请求方式** 
@@ -185,8 +190,5 @@ http://sendcloud.sohu.com/webapi/unsubscribes.add.json?api_user=***&api_key=***&
     ]
 }
 ```
-
-
-
 
 

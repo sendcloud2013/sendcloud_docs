@@ -14,20 +14,33 @@ include_search: true
 
 copyright: Copyright &copy; 2015, SendCloud
 
-pages:
-- [index.md]
-- [guide.md, '引言']
-- [email/index.md, '邮件API']
-- [sms.md, '短信API']
-- [email/api/normal_send.md, '邮件API', '普通发送API']
-- [email/api/template_do.md, '邮件API', '邮件模板管理API']
-- [email/api/queuestatus_do.md, '队列状态管理API']
-- [email/api/invalidstat_do.md, '无效子类统计API']
-- [email/api/stathour_do.md, '按小时邮件发送数据统计API']
-- [email/api/stats_do.md, '邮件发送数据统计API']
-- [email/api/spamreported_do.md, '垃圾举报查询API']
-- [email/api/unsubscribe_do.md, '取消订阅管理API']
+author: liubida && lianzimi
 
-theme: readthedocs
+pages:
+# Develop Guide
+# - ['guide/index.md', '开发指南', '开发者指南']
+# - ['guide/php_rest_guide.md', '开发指南', 'REST API 简易指南（PHP）']
+#
+- [index.md]
+- [guide/base.md, '开发者指南', '基本概念']
+- [guide/advance.md, '开发者指南', '高级功能']
+
+- [email/index.md, '邮件API', '传送门']
+- [email/normal_send.md, '邮件API', '普通发送API']
+- [email/template_do.md, '邮件API', '邮件模板管理API']
+- [email/queuestatus_do.md, '邮件API', '队列状态管理API']
+- [email/invalidstat_do.md, '邮件API', '无效子类统计API']
+- [email/stathour_do.md, '邮件API', '按小时邮件发送数据统计API']
+- [email/stats_do.md, '邮件API', '邮件发送数据统计API']
+- [email/spamreported_do.md, '邮件API', '垃圾举报查询API']
+- [email/unsubscribe_do.md, '邮件API', '取消订阅管理API']
+
+- [sms/index.md, '短信API', '短信API']
+
+- [downloads/index.md, '资源下载', '资源下载']
+
+- [faq/index.md, 'FAQ', 'FAQ']
+
+#theme: readthedocs
 
 

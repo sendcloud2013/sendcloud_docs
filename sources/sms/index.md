@@ -163,6 +163,32 @@ POST
 *tos格式示例:*
     
     [{"phone": "13111111111", "vars": {"%name%": "name1"}}, {"phone": "13122222222", "vars": {"%name%": "name2"}}]
+
+- - -
+
+###timestamp
+
+获取服务器时间戳
+
+**URL**
+```
+http://sendcloud.sohu.com/timestamp/get
+```
+
+**返回数据格式**
+```
+json
+```
+
+**HTTP 请求方式**    
+```
+GET
+```
+    
+**参数说明**
+
+无
+
     
 - - - 
 
@@ -200,11 +226,10 @@ POST
 }
 
 ```
-
 * result: API 请求是否成功
 * statusCode: API 返回码
 * message: API 返回码的中文解释
-* info: 更多信息, 比如: *部分成功*则返回具体失败信息
+* info: 更多信息, 比如: *部分成功*则返回具体失败信息, *获取时间戳*则返回时间戳的值
 
 |API 返回码|含义|
 |:---------|:---|
