@@ -1,18 +1,14 @@
-##发送
+##邮件发送
 
 邮件发送 API 应该是用户使用最频繁的 API.    
-当用户选择*退订邮件*时, 他的邮件地址就会被添加到此列表中.
 
-在此列表中的邮件地址, 都不会再被发送邮件.
-    
-你可以对此列表进行查询, 删除, 添加操作
-     
 - - -
-###查询
-     
+
+### 普通发送
+
 **URL**
 ```  
-http://sendcloud.sohu.com/webapi/unsubscribes.get
+http://sendcloud.sohu.com/webapi/mail.send.json
 ```
    
 **返回数据格式** 
@@ -20,13 +16,37 @@ http://sendcloud.sohu.com/webapi/unsubscribes.get
 json
 ```
      
-**HTTP请求方式**   
+**HTTP请求方式** 
 ```
-post    get
+post | get
 ```
     
 **参数说明**    
     
+|参数|类型|必须|说明|
+|:---|:---|:---|:---|  
+|api_user|string|是|API_USER|  
+|api_key|string|是|API_KEY|  
+|from|string|是|发件人地址. from 和发信域名, 会影响是否显示'代发', 详见TODO 代发|  
+|fromname|string|否|发件人名称. 显示如: `ifaxin客服支持 <support@ifaxin.com>`|  
+|to|string|是|收件人地址. 多个地址使用';'分隔, 如`123@qq.com;456@qq.com`|  
+|bcc|string|否|密送地址. 多个地址使用';'分隔|  
+|cc|string|否|抄送地址. 多个地址使用';'分隔|  
+|subject|string|是|标题. 不能为空|  
+|||是否||  
+|||是否||  
+|||是否||  
+|||是否||  
+|||是否||  
+|||是否||  
+|||是否||  
+|||是否||  
+|||是否||  
+|||是否||  
+|||是否||  
+
+
+
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|  
 |api_user|string|是|子账号|

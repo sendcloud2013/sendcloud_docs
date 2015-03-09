@@ -26,12 +26,12 @@ pages:
 - [guide/advance.md, '开发者指南', '高级功能']
 
 - [email/index.md, '邮件API', '传送门']
-- [email/normal_send.md, '邮件API', '普通发送API']
-- [email/template_do.md, '邮件API', '邮件模板管理API']
+- [email/send_email.md, '邮件API', '邮件发送API']
+- [email/template_do.md, '邮件API', '模板管理API']
 - [email/queuestatus_do.md, '邮件API', '队列状态管理API']
 - [email/invalidstat_do.md, '邮件API', '无效子类统计API']
 - [email/stathour_do.md, '邮件API', '按小时邮件发送数据统计API']
-- [email/stats_do.md, '邮件API', '邮件发送数据统计API']
+- [email/stats_do.md, '邮件API', '数据统计API']
 - [email/spamreported_do.md, '邮件API', '垃圾举报查询API']
 - [email/unsubscribe_do.md, '邮件API', '取消订阅管理API']
 
