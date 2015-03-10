@@ -35,6 +35,7 @@ pages:
 - [email/stats_do.md, '邮件API', '数据统计API']
 - [email/spamreported_do.md, '邮件API', '垃圾举报查询API']
 - [email/unsubscribe_do.md, '邮件API', '取消订阅管理API']
+- [email/bounce_do.md, '邮件API', '退信列表管理API']
 
 - [sms/index.md, '短信API', '短信API']
 
