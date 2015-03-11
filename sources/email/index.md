@@ -42,6 +42,8 @@ WEBAPI 返回的信息, 示例如下:
 
 `emailId` 是发送一封邮件, 返回的邮件编号, 可以对应到某一封邮件的某一个收件人.
 
+使用 SMTP 发送邮件, SendCloud 返回的是 `messageId`, 使用 WEBAPI 发送邮件, SendCloud 返回的是 `emailId`. 
+
 两者的计算关系如下:
 ```
 to = [A, B, C]
