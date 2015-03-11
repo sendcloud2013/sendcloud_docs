@@ -211,9 +211,9 @@ X-SMTPAPI 是一个 JSON 格式的字符串, 里面包含邮件处理方式的�
 
 ### 信息管理
 
-* 个人信息查询
-* apiUser查询
-* 域名查询
+* [个人信息查询](user_info.md)
+* [apiUser查询](apiuser_info.md)
+* [域名查询](domain_info.md)
 
 ### 数据管理
 

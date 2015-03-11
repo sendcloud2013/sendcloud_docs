@@ -38,10 +38,20 @@ pages:
 - [email/bounce_do.md, '邮件API', '退信列表管理API']
 - [email/label_do.md, '邮件API', '标签管理API']
 - [email/list_do.md, '邮件API', '邮件列表管理API']
+- [email/user_info.md, '邮件API', '个人信息查询API']
+- [email/apiuser_info.md, '邮件API', '邮件列表管理API']
+- [email/domain_info.md, '邮件API', '邮件列表管理API']
 
 - [sms/index.md, '短信API', '短信API']
 
 - [downloads/index.md, '资源下载', '资源下载']
+- [downloads/code/curl.md, '资源下载','curl']
+- [downloads/code/java.md, '资源下载','java']
+- [downloads/code/php.md, '资源下载','php']
+- [downloads/code/python.md, '资源下载','python']
+- [downloads/code/ruby.md, '资源下载','ruby']
+- [downloads/code/csharp.md, '资源下载','c#']
+- [downloads/code/perl.md, '资源下载','perl']
 
 - [faq/index.md, 'FAQ', 'FAQ']
 
