@@ -11,18 +11,13 @@
 http://sendcloud.sohu.com/webapi/mail.send.json
 ```
    
-**返回数据格式** 
-```
-json
-```
-     
 **HTTP请求方式** 
 ```
 post | get
 ```
-    
+
 **参数说明**    
-    
+
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|  
 |api_user|string|是|API_USER|  
@@ -35,177 +30,52 @@ post | get
 |bcc|string|否|密送地址. 多个地址使用';'分隔|  
 |cc|string|否|抄送地址. 多个地址使用';'分隔|  
 |replyto|string|否|默认的回复邮件地址. 如果 replyto 没有或者为空, 则默认的回复邮件地址为 from|  
-|headers|string|否|邮件头部信息. JSON 格式, 比如:{"header1": "value1", "header2": "value2"}|  
+|headers|string|否|邮件头部信息. JSON 格式, 比如:`{"header1": "value1", "header2": "value2"}`|  
 |files|string|否|邮件附件. 发送附件时, 必须使用multipart/form-data进行post提交???|  
-|x_smtpapi|string|否|SMTP 扩展字段. 详见 X-SMTPAPI. TODO|  
-|resp_email_id|boolean (true, false)|否|是否返回 emailId. 多个收件人时, 会返回 emailId 的列表. 详见 emailId |  
-|use_maillist|boolean (true, false)|否|参数 to 中是否含有地址列表| 
+|x_smtpapi|string|否|SMTP 扩展字段. 详见 [X-SMTPAPI](index.md#x-smtpapi). |  
+|resp_email_id|boolean (true, false)|否|是否返回 [emailId](index.md#messageid-emailid). 有多个收件人时, 会返回 emailId 的列表|  
+|use_maillist|boolean (true, false)|否|参数 to 是否支持`含有`地址列表. 比如: `to=ben@ifaxin.com;users@maillist.sendcloud.org`| 
 |gzip_compress|boolean (true, false)|否|邮件内容是否使用gzip压缩. 默认不使用 gzip 压缩正文|  
 
+注意:
 
+1. API 参数 to 的收件人是全部显示在邮件中, X-SMTPAPI 中的 to 是独立显示在邮件中
+2. 如果 X-SMTPAPI 中指定了 to, 那么API 参数中的 to, cc, bcc 会被忽略
+3. X-SMTPAPI 中的字段 to, API中的参数 cc, bcc 都不支持地址列表
 
-|参数|类型|必须|说明|
-|:---|:---|:---|:---|  
-|api_user|string|是|子账号|
-|api_key|string|是|密码|
-|days|int|否|过去days天内的统计数据(包含今天), 必须大于0|
-|start_date|date|否|开始日期,格式必须为yyyy-MM-dd, 对应时间必须在参数end_date对应时间之前|
-|end_date|date|否|结束日期,格式必须为yyyy-MM-dd, 对应时间必须在参数start_date对应时间之后|
-|api_user_list|string|否|获取指定api_user下的统计数据, 格式为列表, 多个api_user用";"分开|
-|label_id_list|string|否|获取指定标签下的统计数据, 格式为列表, 多个标签用";"分开|  
-|start|int|否|返回数据的起始位置, 如果不设置, 默认为0|
-|limit|int|否|限制返回数据的个数. 必须大于0小于100, 如果不设置, 默认为100个| 
-|email|string|否|查询该地址在取消订阅列表中的详情|
-    
-提示：参数中必须包含【email】或【start_date与end_date的组合】或【days】或【start与limit的组合】.
-    
-请求示例:
+** 请求示例**
 ```
-http://sendcloud.sohu.com/webapi/unsubscribes.get.json?api_user=***&api_key=***&api_user_list=[***;***]&days=100&start=0&limit=3 
-```
-    
-**返回值说明**    
-    
-|参数|说明|
-|:---|:---|
-|email|邮件地址|
-|domain|邮件地址对应的域名|
-|labelId|标签ID|
-|apiUser|api_user名称|
-|create_at|取消订阅的发生时间|
-    
-返回值示例:
-```
+# 普通发送 ( 使用to, cc, bcc, 返回emailId )
+curl 'http://sendcloud.sohu.com/webapi/mail.send.json?api_user=***&api_key=***&from=test@test.com&fromname=来自测试发送&subject=测试&html=这是一封测试邮件&to=ben@ifaxin.com;joe@ifaxin.com&cc=bida@ifaxin.com&bcc=lianzimi@ifaxin.com&replyto=reply@test.com&resp_email_id=true'
+
 {
-    "message": "success",
-    "unsubscribes": [
-        {
-            "email": "1071117612@qq.com",
-            "domain": "qq.com",
-            "labelId": 0,
-            "apiUser": "api_user",
-            "create_at": "2014-09-01 11:20:31"
-        },
-        {
-            "email": "112347404@qq.com",
-            "domain": "qq.com",
-            "labelId": 0,
-            "apiUser": "api_user",
-            "create_at": "2014-09-01 18:00:17"
-        },
-        {
-            "email": "1131480723@qq.com",
-            "domain": "qq.com",
-            "labelId": 0,
-            "apiUser": "api_user",
-            "create_at": "2014-10-08 15:22:14"
-        }
+    "message":"success",
+    "email_id_list":[
+        "1426053463570_15_32087_2059.sc-10_10_127_105-inbound0$ben@ifaxin.com",
+        "1426053463570_15_32087_2059.sc-10_10_127_105-inbound1$joe@ifaxin.com",
+        "1426053463570_15_32087_2059.sc-10_10_127_105-inbound2$bida@ifaxin.com",
+        "1426053463570_15_32087_2059.sc-10_10_127_105-inbound3$lianzimi@ifaxin.com"
     ]
 }
-```
-    
-- - - 
-    
-###删除列表成员
-    
-**URL**
-```
-http://sendcloud.sohu.com/webapi/unsubscribes.delete
-```
-    
-**返回数据格式**
-```
-json
-```
-    
-**HTTP请求方式** 
-```
-post    get 
-```
-    
-**参数说明**
 
-|参数|类型|必须|说明|
-|:---|:---|:---|:---|  
-|api_user|string|是|子账号|
-|api_key|string|是|密码|
-|start_date|date|否|开始日期,格式必须为yyyy-MM-dd，对应时间必须在参数end_date对应时间之前|
-|end_date|date|否|结束日期,格式必须为yyyy-MM-dd，对应时间必须在参数start_date对应时间之后|
-|email|string|否|要删除的地址|
-    
-提示:参数中必须包含【email】或【start_date与end_date组合】
-    
-请求示例:
-```
-http://sendcloud.sohu.com/webapi/unsubscribes.delete.json?api_user=***&api_key=*** &email=test@sendcloud.com 
-```
-    
-**返回值说明**    
-    
-|参数|说明|
-|:---|:---|
-|del_count|成功删除的邮件地址个数|
-    
-返回值示例:
-```
+# 普通发送 ( 同时使用to, cc, bcc, x_smtpapi, 返回emailId )
+curl 'http://sendcloud.sohu.com/webapi/mail.send.json?api_user=***&api_key=***&from=test@test.com&fromname=来自测试发送&subject=测试&html=这是一封测试邮件&to=ben@ifaxin.com;joe@ifaxin.com&cc=bida@ifaxin.com&bcc=lianzimi@ifaxin.com&replyto=reply@test.com&resp_email_id=true&x_smtpapi={"to":["mary@ifaxin.com", "karl@ifaxin.com"]}'
+
 {
-    "message": "success",
-    "del_count": 1
-}
+    "message":"success",
+    "email_id_list":["1426053897008_15_28341_795.sc-10_10_127_22-inbound0$mary@ifaxin.com","1426053897008_15_28341_795.sc-10_10_127_22-inbound1$karl@ifaxin.com","1426053897008_15_28341_795.sc-10_10_127_22-inbound2$bida@ifaxin.com","1426053897008_15_28341_795.sc-10_10_127_22-inbound3$lianzimi@ifaxin.com"]}
+
+
+# 普通发送 ( post 方式, 使用地址列表 )
+curl -d 'api_user=***&api_key=***&from=test@test.com&fromname=来自测试发送&subject=测试&html=这是一封测试邮件&to=ben@ifaxin.com;joe@ifaxin.com;users@maillist.sendcloud.org&replyto=reply@test.com&resp_email_id=true' 'http://sendcloud.sohu.com/webapi/mail.send.json'
+
+# 普通发送 ( post方式, 发送附件 )
+curl -d 'api_user=***&api_key=***&from=test@test.com&fromname=来自测试发送&subject=测试&html=这是一封测试邮件&to=ben@ifaxin.com;joe@ifaxin.com;users@maillist.sendcloud.org&replyto=reply@test.com&resp_email_id=true&files=@/path/attach.pdf' 'http://sendcloud.sohu.com/webapi/mail.send.json'
+
 ```
 
-- - -
-   
-###添加列表成员
-    
-**URL**
-```
-http://sendcloud.sohu.com/webapi/unsubscribes.add
-```
-    
-**HTTP请求方式** 
-```
-POST    get 
-```
-      
-**参数说明**    
-    
-|参数|类型|必须|说明|
-|:---|:---|:---|:---| 
-|api_user|string|是|子账号| 
-|api_key|string|是|密码| 
-|email|string|否|要添加的地址|
-    
-请求示例:
-    
-```
-http://sendcloud.sohu.com/webapi/unsubscribes.add.json?api_user=***&api_key=***&email=abc@qq.com  
-```
-    
-**返回值说明**      
-    
-|参数|类型|必须|说明|  
-|:---|:---|:---|:---| 
-|email|邮件地址|
-|domain|邮件地址对应的域名|
-|labelId|标签ID|
-|apiUser|子账号|
-|create_at|取消订阅发送的时间|
-    
-返回值示例:
-```
-{
-    "message": "success",
-    "unsubscribes": [
-        {
-            "email": "abc@qq.com.164.com",
-            "domain": "qq.com.164.com",
-            "labelId": 0,
-            "apiUser": "api_user",
-            "create_at": "2014-11-19 10:57:24"
-        }
-    ]
-}
-```
+** 返回值说明*
+
+** 返回值示例**
 
 

@@ -11,8 +11,8 @@
 
 格式: 返回的数据格式, 可以是 JSON 或者 XML 格式. ( 本文档按照 JSON 格式进行说明, XML 格式可自行脑补 )
 
->     /mail.send.json  # 邮件发送, 返回 JSON
->     /list.create.xml # 地址列表创建, 返回 XML
+     /mail.send.json  # 邮件发送, 返回 JSON
+     /list.create.xml # 地址列表创建, 返回 XML
 
 - - -
 
@@ -33,6 +33,34 @@ WEBAPI 返回的信息, 示例如下:
         "message": "error",
         "errors": {},
     }
+```
+- - -
+
+## messageId 和 emailId
+
+`messageId` 是发送一封邮件, 返回的消息编号, 可以对应到某一封邮件.
+
+`emailId` 是发送一封邮件, 返回的邮件编号, 可以对应到某一封邮件的某一个收件人.
+
+两者的计算关系如下:
+```
+to = [A, B, C]
+position = to.indexOf(A) 
+emailId_A = messageId + to.indexOf(A) + '$' + A
+emailId_B = messageId + to.indexOf(B) + '$' + B
+emailId_C = messageId + to.indexOf(C) + '$' + C
+
+# 注意: position 不会做位数补齐
+```
+举例如下: 
+```
+# to = ["ben@ifaxin.com", "joe@ifaxin.com", "bida@ifaxin.com", ... , "lianzimi@ifaxin.com"]
+1425758592214_4576_32113_9310.sc-10_10_127_105-inbound  # messageId
+1425758592214_4576_32113_9310.sc-10_10_127_105-inbound0$ben@ifaxin.com  # emailId
+1425758592214_4576_32113_9310.sc-10_10_127_105-inbound1$joe@ifaxin.com  # emailId
+1425758592214_4576_32113_9310.sc-10_10_127_105-inbound2$bida@ifaxin.com  # emailId
+...
+1425758592214_4576_32113_9310.sc-10_10_127_105-inbound99$lianzimi@ifaxin.com  # emailId
 ```
 - - -
 
@@ -66,7 +94,7 @@ X-SMTPAPI 是一个 JSON 格式的字符串, 里面包含邮件处理方式的�
 **`to` 含有收件人地址的数组**. X-SMTPAPI 里的 `to` 会覆盖真实收件人参数 `to, cc, bcc` .
 ```    
     {
-        "to": ["ben@sendcloud.com", "joe@sendcloud.com"]
+        "to": ["ben@ifaxin.com", "joe@ifaxin.com"]
     }
 ```    
 **`substitution` 是一个[关联数组](http://baike.baidu.com/view/1654988.htm). **它的 `key` 是「变量」, `value` 是「替换值数组」.
@@ -82,7 +110,7 @@ X-SMTPAPI 是一个 JSON 格式的字符串, 里面包含邮件处理方式的�
 #---------------------------------------------------
 # X-SMTPAPI
 {
-    "to": ["ben@sendcloud.com", "joe@sendcloud.com"],
+    "to": ["ben@ifaxin.com", "joe@ifaxin.com"],
     "sub":
     {
         "%name%": ["Ben", "Joe"],
@@ -90,12 +118,12 @@ X-SMTPAPI 是一个 JSON 格式的字符串, 里面包含邮件处理方式的�
     }
 }
 #---------------------------------------------------
-# ben@sendcloud.com 收到的邮件:
+# ben@ifaxin.com 收到的邮件:
 亲爱的Ben:
     
     您好! 您本月在爱发信的消费金额为: 288 元.
 #---------------------------------------------------
-# joe@sendcloud.com 收到的邮件:
+# joe@ifaxin.com 收到的邮件:
 亲爱的Joe:
     
     您好! 您本月在爱发信的消费金额为: 497 元.
@@ -111,7 +139,7 @@ X-SMTPAPI 是一个 JSON 格式的字符串, 里面包含邮件处理方式的�
 #---------------------------------------------------
 # X-SMTPAPI
 {
-    "to": ["ben@sendcloud.com", "joe@sendcloud.com", "bida@sendcloud.com"],
+    "to": ["ben@ifaxin.com", "joe@ifaxin.com", "bida@ifaxin.com"],
     "sub":
     {
         "%name%": ["Ben", "Joe", "Liubida"],
@@ -126,21 +154,21 @@ X-SMTPAPI 是一个 JSON 格式的字符串, 里面包含邮件处理方式的�
     }
 }
 #---------------------------------------------------
-# ben@sendcloud.com 收到的邮件:
+# ben@ifaxin.com 收到的邮件:
 亲爱的Ben:
     
     您好! 您本月在爱发信的消费金额为: 288 元.
 
     感谢银牌用户: some words written to silver user, maybe it is verrrrrrrrry long.
 #---------------------------------------------------
-# joe@sendcloud.com 收到的邮件:
+# joe@ifaxin.com 收到的邮件:
 亲爱的Joe:
     
     您好! 您本月在爱发信的消费金额为: 497 元.
 
     感谢金牌用户: some words written to golden user, maybe it is verrrrrrrrry long, too.
 #---------------------------------------------------
-# bida@sendcloud.com 收到的邮件:
+# bida@ifaxin.com 收到的邮件:
 亲爱的Liubida:
     
     您好! 您本月在爱发信的消费金额为: 688 元.

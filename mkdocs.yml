@@ -25,7 +25,7 @@ pages:
 - [guide/base.md, '开发者指南', '基本概念']
 - [guide/advance.md, '开发者指南', '高级功能']
 
-- [email/index.md, '邮件API', '传送门']
+- [email/index.md, '邮件API', '规则']
 - [email/send_email.md, '邮件API', '邮件发送WEBAPI']
 - [email/send_email_smtp.md, '邮件API', '邮件发送SMTPAPI']
 - [email/template_do.md, '邮件API', '模板管理API']
