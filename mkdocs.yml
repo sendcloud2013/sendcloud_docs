@@ -38,6 +38,9 @@ pages:
 - [email/bounce_do.md, '邮件API', '退信列表管理API']
 - [email/label_do.md, '邮件API', '标签管理API']
 - [email/list_do.md, '邮件API', '邮件列表管理API']
+- [email/user_info.md, '邮件API', '个人信息查询API']
+- [email/apiuser_info.md, '邮件API', '邮件列表管理API']
+- [email/domain_info.md, '邮件API', '邮件列表管理API']
 
 - [sms/index.md, '短信API', '短信API']
 
