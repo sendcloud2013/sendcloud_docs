@@ -11,14 +11,9 @@
      
 **URL**
 ```  
-http://sendcloud.sohu.com/webapi/unsubscribes.get
+http://sendcloud.sohu.com/webapi/unsubscribes.get.json
 ```
    
-**返回数据格式** 
-```
-json
-```
-     
 **HTTP请求方式**   
 ```
 post    get
@@ -92,12 +87,7 @@ http://sendcloud.sohu.com/webapi/unsubscribes.get.json?api_user=***&api_key=***&
     
 **URL**
 ```
-http://sendcloud.sohu.com/webapi/unsubscribes.delete
-```
-    
-**返回数据格式**
-```
-json
+http://sendcloud.sohu.com/webapi/unsubscribes.delete.json
 ```
     
 **HTTP请求方式** 

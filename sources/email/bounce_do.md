@@ -2,19 +2,14 @@
     
 由特定原因(如地址不存在等)被退信的邮件会进入此列表.    
     
-你可以对此列表进行查询, 删除, 添加操作
+你可以对此列表进行查询, 删除操作
     
 - - -
 ###查询    
     
 **URL**    
 ```
-http://sendcloud.sohu.com/webapi/bounces.get
-```
-    
-**返回数据格式**
-```
-json
+http://sendcloud.sohu.com/webapi/bounces.get.json
 ```
     
 **HTTP请求方式** 
@@ -39,7 +34,7 @@ post    get
     
 请求示例:
 ```
-http://sendcloud.sohu.com/webapi/unsubscribes.get.json?api_user=***&api_key=***&days=100&start=0&limit=3 
+http://sendcloud.sohu.com/webapi/bounces.get.json?api_user=***&api_key=***&days=100&start=0&limit=3 
 ```
     
 **返回值说明**
@@ -47,28 +42,70 @@ http://sendcloud.sohu.com/webapi/unsubscribes.get.json?api_user=***&api_key=***&
 |参数|说明|
 |:---|:---|
 |email|邮件地址|
-|email|退信原因|
+|reason|退信原因|
 |create_at|退信时间|
     
 **返回值示例** 
 ```    
 {
     "message":"success",
-    "bounces":[{"email":"lianzimi123@163.com","reason":"from softbounce","create_at":"2015-02-10 18:30:39"}]
+    "bounces":[{"email":"testaddress@163.com","reason":"from softbounce","create_at":"2015-02-10 18:30:39"}]
 }  
 ```
+    
 - - -
+    
+###计算列表成员数
+
+**URL**
+```
+http://sendcloud.sohu.com/webapi/bounces.count.json
+```
+    
+**HTTP请求方式**
+```
+post    get
+```
+    
+**参数说明**
+    
+|参数|类型|必须|说明|    
+|:---|:---|:---|:---|
+|api_user|string|是|子账号|
+|api_key|string|是|密码|
+|days|int|否|过去days天内的统计数据(包含今天), 必须大于0|
+|start_date|date|否|开始日期,格式必须为yyyy-MM-dd, 对应时间必须在参数end_date对应时间之前|
+|end_date|date|否|结束日期,格式必须为yyyy-MM-dd, 对应时间必须在参数start_date对应时间之后|
+    
+提示: 参数中必须包含days或【start_date与end_date的组合】.
+    
+**请求示例**
+```
+http://sendcloud.sohu.com/webapi/bounces.count.json?api_user=***&api_key=***&days=10
+```
+    
+**返回值说明**
+    
+|参数|说明|
+|:---|:---|
+|count|地址数量|
+    
+**返回值示例**
+```
+{
+    "message":"success",
+    "count":200
+}
+```
+    
+- - -
+    
 ###删除
     
 
 **URL**    
 ```
-http://sendcloud.sohu.com/webapi/bounces.get
-```
-    
-**返回数据格式**
-```
-json
+http://sendcloud.sohu.com/webapi/bounces.delete.json
 ```
     
 **HTTP请求方式** 
@@ -85,3 +122,24 @@ post    get
 |start_date|date|否|开始日期,格式必须为yyyy-MM-dd, 对应时间必须在参数end_date对应时间之前|
 |end_date|date|否|结束日期,格式必须为yyyy-MM-dd, 对应时间必须在参数start_date对应时间之后|
 |email|string|否|要删除的地址|
+    
+提示: 参数中必须包含email或【start_date与end_date的组合】.
+    
+**请求示例**
+```
+http://sendcloud.sohu.com/webapi/bounces.delete.json?api_user=***&api_key=***&email=testaddress@163.com
+```
+    
+**返回值说明**
+    
+|参数|说明|
+|:---|:---|
+|del_count|成功删除的地址个数|
+    
+**返回值示例**
+```
+{
+    "message":"success",
+    "del_count":1
+}
+```    
