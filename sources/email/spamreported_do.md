@@ -7,14 +7,9 @@
      
 **URL**
 ```  
-https://sendcloud.sohu.com/webapi/spamReported.get
+https://sendcloud.sohu.com/webapi/spamReported.get.json
 ```
    
-**返回数据格式** 
-```
-json
-```
-     
 **HTTP请求方式**   
 ```
 post    get

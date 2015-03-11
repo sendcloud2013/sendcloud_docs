@@ -8,12 +8,7 @@
     
 **URL**    
 ```
-https://sendcloud.sohu.com/webapi/template.get
-```
-    
-**返回数据格式**    
-```
-json
+https://sendcloud.sohu.com/webapi/template.get.json
 ```
     
 **HTTP请求方式**
@@ -48,12 +43,7 @@ post    get
     
 **URL**    
 ```
-https://sendcloud.sohu.com/webapi/template.delete
-```
-    
-**返回数据格式**    
-```
-json
+https://sendcloud.sohu.com/webapi/template.delete.json
 ```
     
 **HTTP请求方式**
@@ -81,12 +71,7 @@ post    get
     
 **URL**    
 ```
-https://sendcloud.sohu.com/webapi/template.update
-```
-    
-**返回数据格式**    
-```
-json
+https://sendcloud.sohu.com/webapi/template.update.json
 ```
     
 **HTTP请求方式**
@@ -124,12 +109,7 @@ post    get
     
 **URL**    
 ```
-https://sendcloud.sohu.com/webapi/template.add
-```
-    
-**返回数据格式**    
-```
-json
+https://sendcloud.sohu.com/webapi/template.add.json
 ```
     
 **HTTP请求方式**

@@ -8,12 +8,7 @@
     
 **URL**    
 ```
-https://sendcloud.sohu.com/webapi/stats.get 
-```
-    
-**返回数据格式**    
-```
-json
+https://sendcloud.sohu.com/webapi/stats.get.json
 ```
     
 **HTTP请求方式**   
