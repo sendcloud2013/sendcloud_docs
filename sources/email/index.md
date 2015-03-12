@@ -38,11 +38,9 @@ WEBAPI 返回的信息, 示例如下:
 
 ## messageId 和 emailId
 
-`messageId` 是发送一封邮件, 返回的消息编号, 可以对应到某一封邮件.
+`messageId` 是提交一次请求, 返回的消息编号.
 
-`emailId` 是发送一封邮件, 返回的邮件编号, 可以对应到某一封邮件的某一个收件人.
-
-使用 SMTP 发送邮件, SendCloud 返回的是 `messageId`, 使用 WEBAPI 发送邮件, SendCloud 返回的是 `emailId`. 
+`emailId` 是 SendCloud 投递一封邮件, 返回的邮件编号, 可以对应到某一次请求的某一个收件人.
 
 两者的计算关系如下:
 ```
@@ -211,22 +209,10 @@ X-SMTPAPI 是一个 JSON 格式的字符串, 里面包含邮件处理方式的�
 
 ## 传送门
 
-### 发送相关
-
-* [普通发送 WEBAPI ](send_email.md)
-* [普通发送 SMTPAPI ](send_email_smtp.md)
-* 模板发送
-* 地址列表发送
-* 使用地址列表调用模板发送
-
-### 信息管理
-
+* [邮件发送](send_email.md)
 * [个人信息查询](user_info.md)
-* [apiUser查询](apiuser_info.md)
+* [API_USER查询](apiuser_info.md)
 * [域名查询](domain_info.md)
-
-### 数据管理
-
 * [邮件列表管理](list_do.md)
 * [标签管理](label_do.md)
 * [退信列表管理](bounce_do.md)

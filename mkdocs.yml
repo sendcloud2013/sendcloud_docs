@@ -27,7 +27,7 @@ pages:
 
 - [email/index.md, '邮件API', '规则']
 - [email/send_email.md, '邮件API', '邮件发送WEBAPI']
-- [email/send_email_smtp.md, '邮件API', '邮件发送SMTPAPI']
+#- [email/send_email_smtp.md, '邮件API', '邮件发送SMTPAPI']
 - [email/template_do.md, '邮件API', '模板管理API']
 - [email/queuestatus_do.md, '邮件API', '队列状态管理API']
 - [email/invalidstat_do.md, '邮件API', '无效子类统计API']
@@ -38,7 +38,7 @@ pages:
 - [email/bounce_do.md, '邮件API', '退信列表管理API']
 - [email/label_do.md, '邮件API', '标签管理API']
 - [email/list_do.md, '邮件API', '邮件列表管理API']
-- [email/user_info.md, '邮件API', '个人信息查询API']
+- [email/user_info.md, '邮件API', '个人信息管理API']
 - [email/apiuser_info.md, '邮件API', '邮件列表管理API']
 - [email/domain_info.md, '邮件API', '邮件列表管理API']
 
