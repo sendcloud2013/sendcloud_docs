@@ -131,7 +131,6 @@ post | get
 |template_invoke_name|string|是|邮件模板调用名称| 
 |template_invoke_name|string|是|邮件模板调用名称| 
 
-{"to": ["to1@sendcloud.org", "to2@sendcloud.org"], "sub" : { "%name%" : ["约翰", "林肯"], "%money%" : ["1000", "200"]} }
 
 |to|string|是|收件人地址. 多个地址使用';'分隔, 如`123@qq.com;456@qq.com`|  
 |subject|string|是|标题. 不能为空|  
@@ -155,68 +154,51 @@ post | get
 
 **请求, 返回值示例**
 
-普通发送 ( get 方式, 使用to, cc, bcc, 返回emailId )
+普通发送 ( 调用模板 ifaxin_bill )
 ```
-curl 'http://sendcloud.sohu.com/webapi/mail.send.json?api_user=***&api_key=***&from=test@test.com&fromname=来自测试发送&subject=测试&html=这是一封测试邮件&to=ben@ifaxin.com;joe@ifaxin.com&cc=bida@ifaxin.com&bcc=lianzimi@ifaxin.com&replyto=reply@test.com&resp_email_id=true'
+curl -d 'api_user=postmaster@delongbat.sendcloud.org&api_key=delong&from=test@test.com&fromname=来自测试发送&subject=测试&template_invoke_name=ifaxin_bill&replyto=reply@test.com&resp_email_id=true' --data-urlencode 'substitution_vars={"to": ["ben@ifaxin.com", "joe@ifaxin.com"],"sub":{"%name%": ["Ben", "Joe"],"%money%":[288, 497]}}' http://sendcloud.sohu.com/webapi/mail.send_template.json
+
 # 返回值
 {
     "message":"success",
     "email_id_list":[
-        "1426053463570_15_32087_2059.sc-10_10_127_105-inbound0$ben@ifaxin.com",
-        "1426053463570_15_32087_2059.sc-10_10_127_105-inbound1$joe@ifaxin.com",
-        "1426053463570_15_32087_2059.sc-10_10_127_105-inbound2$bida@ifaxin.com",
-        "1426053463570_15_32087_2059.sc-10_10_127_105-inbound3$lianzimi@ifaxin.com"
+        "1426129060356_15_28341_7776.sc-10_10_127_22-inbound0$ben@ifaxin.com",
+        "1426129060356_15_28341_7776.sc-10_10_127_22-inbound1$joe@ifaxin.com"
     ]
 }
 ```
-
-普通发送 ( post 方式, 同时使用to, cc, bcc 和 x_smtpapi, 返回emailId )
+普通发送 ( 调用模板 ifaxin_bill, 调用地址列表 users@maillist.sendcloud.org, 用户可以根据返回的 `task_id` 在 [WebHook](../guide/advance.md#webhook) 中使用 )
 ```
-curl -d 'api_user=***&api_key=***&from=test@test.com&fromname=来自测试发送&subject=测试&html=这是一封测试邮件&to=ben@ifaxin.com;joe@ifaxin.com&cc=bida@ifaxin.com&bcc=lianzimi@ifaxin.com&replyto=reply@test.com&resp_email_id=true&x_smtpapi={"to":["mary@ifaxin.com", "karl@ifaxin.com"]}' 'http://sendcloud.sohu.com/webapi/mail.send.json'
+curl -d 'api_user=***&api_key=***&from=test@test.com&fromname=来自测试发送&subject=测试&template_invoke_name=ifaxin_bill&replyto=reply@test.com&resp_email_id=true&use_maillist=true&to=users@maillist.sendcloud.org' http://sendcloud.sohu.com/webapi/mail.send_template.json
 # 返回值
 {
     "message":"success",
-    "email_id_list":[
-        "1426053897008_15_28341_795.sc-10_10_127_22-inbound0$mary@ifaxin.com",
-        "1426053897008_15_28341_795.sc-10_10_127_22-inbound1$karl@ifaxin.com",
-        "1426053897008_15_28341_795.sc-10_10_127_22-inbound2$bida@ifaxin.com",
-        "1426053897008_15_28341_795.sc-10_10_127_22-inbound3$lianzimi@ifaxin.com"
-    ]
+    "mail_list_task_id_list":[135677]
 }
 ```
-
-普通发送 ( post 方式, 使用地址列表 users@maillist.sendcloud.org, 用户可以根据返回的 `task_id` 在 [WebHook](../guide/advance.md#webhook) 中使用 )
-```
-curl -d 'api_user=***&api_key=***&from=test@test.com&fromname=来自测试发送&subject=测试&html=这是一封测试邮件&to=ben@ifaxin.com;joe@ifaxin.com;users@maillist.sendcloud.org&replyto=reply@test.com&resp_email_id=true&use_maillist=true' 'http://sendcloud.sohu.com/webapi/mail.send.json'
-# 失败返回值 ( 地址列表不存在 )
-{
-    "message":"error",
-    "errors":[
-        "Can not queue maillist email, use maillist to send mail fail! msg=Mailing List doesnot exsit, please check your param!"
-    ]
-}
-# 成功返回值
-{
-    "message":"success",
-    "mail_list_task_id_list":[135323]
-}
-```
-
-普通发送 ( post方式, 发送附件 )
+普通发送 ( 调用模板 ifaxin_bill, 发送附件 )
 ```
 # 带附件发送需要使用 form 提交
-curl -F api_user='postmaster@delongbat.sendcloud.org' -F api_key='delong' -F from='test@test.com' -F fromname='来自测试发送' -F subject='测试' -F html='这是一封测试邮件' -F to='ben@ifaxin.com' -F replyto='reply@test.com' -F resp_email_id='true' -F files=@/path/attach.pdf 'http://sendcloud.sohu.com/webapi/mail.send.json'
+curl -F api_user='postmaster@delongbat.sendcloud.org' -F api_key='delong' -F from='test@test.com' -F fromname='来自测试发送' -F subject=' 测试' -F template_invoke_name='ifaxin_bill' -F substitution_vars='{"to": ["ben@ifaxin.com", "joe@ifaxin.com"],"sub":{"%name%": ["Ben", "Joe"],"%money%":[288, 497]}}' -F replyto='reply@test.com' -F resp_email_id='true' -F files=@/home/liubida/attach.pdf 'http://sendcloud.sohu.com/webapi/mail.send_template.json'
 # 返回值
 {
     "message":"success",
     "email_id_list":[
-        "1426063441767_15_28341_5332.sc-10_10_127_22-inbound0$ben@ifaxin.com"
+        "1426140696534_15_26257_4999.sc-10_10_127_57-inbound0$ben@ifaxin.com",
+        "1426140696534_15_26257_4999.sc-10_10_127_57-inbound1$joe@ifaxin.com"
     ]
 }
 ```
-
-
-
+普通发送 ( 调用模板 ifaxin_bill, 调用地址列表 users@maillist.sendcloud.org, 发送附件 )
+```
+# 带附件发送需要使用 form 提交
+curl -F api_user='postmaster@delongbat.sendcloud.org' -F api_key='delong' -F from='test@test.com' -F fromname='来自测试发送' -F subject=' 测试' -F template_invoke_name='ifaxin_bill' -F to='users@maillist.sendcloud.org' -F replyto='reply@test.com' -F resp_email_id='true' -F use_maillist=true -F files=@/home/liubida/attach.pdf 'http://sendcloud.sohu.com/webapi/mail.send_template.json'
+# 返回值
+{
+    "message":"success",
+    "mail_list_task_id_list":[135677]
+}
+```
 
 
 
