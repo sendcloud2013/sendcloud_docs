@@ -42,6 +42,8 @@ WEBAPI 返回的信息, 示例如下:
 
 `emailId` 是发送一封邮件, 返回的邮件编号, 可以对应到某一封邮件的某一个收件人.
 
+使用 SMTP 发送邮件, SendCloud 返回的是 `messageId`, 使用 WEBAPI 发送邮件, SendCloud 返回的是 `emailId`. 
+
 两者的计算关系如下:
 ```
 to = [A, B, C]
@@ -85,9 +87,7 @@ SendCloud 支持在邮件中使用「变量」.
 
 ## X-SMTPAPI 扩展字段 
 
-X-SMTPAPI 是 SendCloud 为开发者提供的邮件个性化定制的处理方式, 开发者通过这个特殊的‵信头扩展字段‵, 可以设置邮件处理方式的很多参数.
-
-一般的, 开发者在使用 SMTP 接入时会使用此字段. 不过, WEBAPI 的方式也支持此参数. 
+X-SMTPAPI 是 SendCloud 为开发者提供的邮件个性化定制的处理方式, 开发者通过这个特殊的 **信头扩展字段**, 可以设置邮件处理方式的很多参数.  一般的, 开发者在使用 SMTP 接入时会使用此字段. 不过, WEBAPI 的方式也支持此参数. 
 
 X-SMTPAPI 是一个 JSON 格式的字符串, 里面包含邮件处理方式的参数. 具体用法见下: 
 
@@ -97,17 +97,19 @@ X-SMTPAPI 是一个 JSON 格式的字符串, 里面包含邮件处理方式的�
         "to": ["ben@ifaxin.com", "joe@ifaxin.com"]
     }
 ```    
-**`substitution` 是一个[关联数组](http://baike.baidu.com/view/1654988.htm). **它的 `key` 是「变量」, `value` 是「替换值数组」.
+**`sub` 是一个[关联数组](http://baike.baidu.com/view/1654988.htm). **它的 `key` 是「变量」, `value` 是「替换值数组」.
 
 用法解释: 每一个「变量」对应一个「替换值数组」, 在做邮件内容替换时, 每一个「收件人」按其在「收件人数组」中出现的位置使用「替换值数组」中相应位置的值来替换「变量」的值.
 
 相信你一定没看懂上面的饶口令, 所以, 请参见如下示例: 
-```    
+```
 # 邮件内容
 亲爱的%name%:
   
     您好! 您本月在爱发信的消费金额为: %money% 元.
+
 #---------------------------------------------------
+
 # X-SMTPAPI
 {
     "to": ["ben@ifaxin.com", "joe@ifaxin.com"],
@@ -117,17 +119,21 @@ X-SMTPAPI 是一个 JSON 格式的字符串, 里面包含邮件处理方式的�
         "%money%":[288, 497]
     }
 }
+
 #---------------------------------------------------
+
 # ben@ifaxin.com 收到的邮件:
 亲爱的Ben:
     
     您好! 您本月在爱发信的消费金额为: 288 元.
+    
 #---------------------------------------------------
+
 # joe@ifaxin.com 收到的邮件:
 亲爱的Joe:
     
     您好! 您本月在爱发信的消费金额为: 497 元.
-```    
+```
 **`section` 是变量的变量.** 你可以在变量中使用 `section` 的变量, 用以简化很多收件人共有的替换内容.  
 ```    
 # 邮件内容
@@ -136,8 +142,24 @@ X-SMTPAPI 是一个 JSON 格式的字符串, 里面包含邮件处理方式的�
     您好! 您本月在爱发信的消费金额为: %money% 元.
 
     感谢%role%用户: %role_words%.
+
 #---------------------------------------------------
+<<<<<<< HEAD
     # X-SMTPAPI
+=======
+
+# X-SMTPAPI
+{
+    "to": ["ben@ifaxin.com", "joe@ifaxin.com", "bida@ifaxin.com"],
+    "sub":
+    {
+        "%name%": ["Ben", "Joe", "Liubida"],
+        "%money%":[288, 497, 688], 
+        "%role%":["银牌", "金牌", "金牌"]
+        "%role_words%":["%silver%", "%golden%", "%golden%"]
+    },
+    "section":
+>>>>>>> ac036461c3a5aa39cfeaca016e843f164e865867
     {
         "to": ["ben@ifaxin.com", "joe@ifaxin.com", "bida@ifaxin.com"],
         "sub":
@@ -153,22 +175,32 @@ X-SMTPAPI 是一个 JSON 格式的字符串, 里面包含邮件处理方式的�
             "golden": "some words written to golden user, maybe it is verrrrrrrrry long, too",
         }
     }
+<<<<<<< HEAD
         
+=======
+}
+
+>>>>>>> ac036461c3a5aa39cfeaca016e843f164e865867
 #---------------------------------------------------
+
 # ben@ifaxin.com 收到的邮件:
 亲爱的Ben:
     
     您好! 您本月在爱发信的消费金额为: 288 元.
 
     感谢银牌用户: some words written to silver user, maybe it is verrrrrrrrry long.
+
 #---------------------------------------------------
+
 # joe@ifaxin.com 收到的邮件:
 亲爱的Joe:
     
     您好! 您本月在爱发信的消费金额为: 497 元.
 
     感谢金牌用户: some words written to golden user, maybe it is verrrrrrrrry long, too.
+
 #---------------------------------------------------
+
 # bida@ifaxin.com 收到的邮件:
 亲爱的Liubida:
     
@@ -194,8 +226,6 @@ X-SMTPAPI 是一个 JSON 格式的字符串, 里面包含邮件处理方式的�
     }
 }
 ```
-
-
 
 - - -
 
