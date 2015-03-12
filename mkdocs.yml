@@ -41,6 +41,7 @@ pages:
 - [email/user_info.md, '邮件API', '个人信息管理API']
 - [email/apiuser_info.md, '邮件API', '邮件列表管理API']
 - [email/domain_info.md, '邮件API', '邮件列表管理API']
+- [email/webhook.md, '邮件API', 'webhook参数说明']
 
 - [sms/index.md, '短信API', '短信API']
 
