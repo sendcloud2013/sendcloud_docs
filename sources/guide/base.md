@@ -78,7 +78,7 @@ WEBAPI 是使用 HTTP 接入 SendCloud 服务的一种方式. 用户可以利用
     mail from: test@liubida.cn
     250 sender test@liubida.cn OK
 
-如上所示, *liubida.com* 就是这封邮件的发信域名. 发信域名的概念很重要, 因为很多 ESP ( 邮件服务器 ) 就是根据发信域名来确定*发信的频度*, *每天发信的数量*等重要指标的.
+如上所示, *liubida.cn* 就是这封邮件的发信域名. 发信域名的概念很重要, 因为很多 ESP ( 邮件服务器 ) 就是根据发信域名来确定*发信的频度*, *每天发信的数量*等重要指标的.
 
 >     SendCloud 为新用户生成了「测试域名」, 方便用户测试发送. 测试域名的命名规则: '随机串.sendcloud.org'.
 >     使用测试域名发信, 每天的上限是200封, 即使是收费用户
@@ -107,7 +107,7 @@ WEBAPI 是使用 HTTP 接入 SendCloud 服务的一种方式. 用户可以利用
      * 发信域名: push.liubida.cn
      * mail from的组成: 前缀@发信域名(98a47302-beee-11e4-a3b9-00163e12fa99@push.liubida.cn)
 
-[代发是个啥意思?](#jump_daifa)
+[邮件中为什么会显示代发?](../faq/index.md#2)
 
 ------
 
