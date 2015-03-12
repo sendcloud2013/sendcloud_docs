@@ -137,22 +137,23 @@ X-SMTPAPI 是一个 JSON 格式的字符串, 里面包含邮件处理方式的�
 
     感谢%role%用户: %role_words%.
 #---------------------------------------------------
-# X-SMTPAPI
-{
-    "to": ["ben@ifaxin.com", "joe@ifaxin.com", "bida@ifaxin.com"],
-    "sub":
+    # X-SMTPAPI
     {
-        "%name%": ["Ben", "Joe", "Liubida"],
-        "%money%":[288, 497, 688], 
-        "%role%":["银牌", "金牌", "金牌"]
-        "%role_words%":["%silver%", "%golden%", "%golden%"]
-    },
-    "section":
-    {
-        "silver": "some words written to silver user, maybe it is verrrrrrrrry long",
-        "golden": "some words written to golden user, maybe it is verrrrrrrrry long, too",
+        "to": ["ben@ifaxin.com", "joe@ifaxin.com", "bida@ifaxin.com"],
+        "sub":
+        {
+            "%name%": ["Ben", "Joe", "Liubida"],
+            "%money%":[288, 497, 688], 
+            "%role%":["银牌", "金牌", "金牌"]
+            "%role_words%":["%silver%", "%golden%", "%golden%"]
+        },
+        "section":
+        {
+            "silver": "some words written to silver user, maybe it is verrrrrrrrry long",
+            "golden": "some words written to golden user, maybe it is verrrrrrrrry long, too",
+        }
     }
-}
+        
 #---------------------------------------------------
 # ben@ifaxin.com 收到的邮件:
 亲爱的Ben:
@@ -175,6 +176,7 @@ X-SMTPAPI 是一个 JSON 格式的字符串, 里面包含邮件处理方式的�
 
     感谢金牌用户: some words written to golden user, maybe it is verrrrrrrrry long, too.
 ```    
+    
 **`apps` 是包含了一组应用名和它们设置的关联数组.** 这些设置会覆盖它们在用户账户中的设置. 
 ```
 {
