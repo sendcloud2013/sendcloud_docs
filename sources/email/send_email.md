@@ -22,7 +22,7 @@ post | get
 |:---|:---|:---|:---|  
 |api_user|string|是|API_USER|  
 |api_key|string|是|API_KEY|  
-|from|string|是|发件人地址. from 和发信域名, 会影响是否显示'代发', 详见TODO 代发|  
+|from|string|是|发件人地址. from 和[发信域名](../guide/base.md#_3), 会影响是否[显示代发](../faq/index.md#2)|  
 |to|string|是|收件人地址. 多个地址使用';'分隔, 如`123@qq.com;456@qq.com`|  
 |subject|string|是|标题. 不能为空|  
 |html|string|是|邮件的内容. 不能为空, 可以是文本格式或者 HTML 格式|  
@@ -125,33 +125,25 @@ post | get
 |:---|:---|:---|:---|  
 |api_user|string|是|API_USER|  
 |api_key|string|是|API_KEY|  
-|from|string|是|发件人地址. from 和发信域名, 会影响是否显示'代发', 详见TODO 代发|  
+|from|string|是|发件人地址. from 和[发信域名](../guide/base.md#_3), 会影响是否[显示代发](../faq/index.md#2)|  
 |template_invoke_name|string|是|邮件模板调用名称| 
 |substitution_vars|string|是|模板替换变量.  | 
-|template_invoke_name|string|是|邮件模板调用名称| 
-|template_invoke_name|string|是|邮件模板调用名称| 
-
-{"to": ["to1@sendcloud.org", "to2@sendcloud.org"], "sub" : { "%name%" : ["约翰", "林肯"], "%money%" : ["1000", "200"]} }
-
-|to|string|是|收件人地址. 多个地址使用';'分隔, 如`123@qq.com;456@qq.com`|  
 |subject|string|是|标题. 不能为空|  
-|html|string|是|邮件的内容. 不能为空, 可以是文本格式或者 HTML 格式|  
+|use_maillist|boolean (true, false)|否|参数 to 是否支持`含有`地址列表. 比如: `to=ben@ifaxin.com;users@maillist.sendcloud.org`| 
 |fromname|string|否|发件人名称. 显示如: `ifaxin客服支持 <support@ifaxin.com>`|  
-|bcc|string|否|密送地址. 多个地址使用';'分隔|  
-|cc|string|否|抄送地址. 多个地址使用';'分隔|  
 |replyto|string|否|默认的回复邮件地址. 如果 replyto 没有或者为空, 则默认的回复邮件地址为 from|  
 |headers|string|否|邮件头部信息. JSON 格式, 比如:`{"header1": "value1", "header2": "value2"}`|  
 |files|string|否|邮件附件. 发送附件时, 必须使用multipart/form-data进行post提交???|  
 |x_smtpapi|string|否|SMTP 扩展字段. 详见 [X-SMTPAPI](index.md#x-smtpapi). |  
 |resp_email_id|boolean (true, false)|否|是否返回 [emailId](index.md#messageid-emailid). 有多个收件人时, 会返回 emailId 的列表|  
-|use_maillist|boolean (true, false)|否|参数 to 是否支持`含有`地址列表. 比如: `to=ben@ifaxin.com;users@maillist.sendcloud.org`| 
 |gzip_compress|boolean (true, false)|否|邮件内容是否使用gzip压缩. 默认不使用 gzip 压缩正文|  
+
+        {"to": ["to1@sendcloud.org", "to2@sendcloud.org"], "sub" : { "%name%" : ["约翰", "林肯"], "%money%" : ["1000", "200"]} }
 
 注意:
 
 1. API 参数 to 的收件人是全部显示在邮件中, X-SMTPAPI 中的 to 是独立显示在邮件中
-2. 如果 X-SMTPAPI 中指定了 to, 那么API 参数中的 to 会被忽略, cc 和 bcc 依然有效
-3. X-SMTPAPI 中的字段 to, API中的参数 cc, bcc 都不支持地址列表
+2. 如果 X-SMTPAPI 中指定了 to, 那么API 参数中的 to 会被忽略
 
 **请求, 返回值示例**
 
