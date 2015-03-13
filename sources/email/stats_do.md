@@ -3,7 +3,7 @@
 
 - - -
 
-##发送数据统计 (每天)
+###发送数据统计 (每天)
 
 按天统计的邮件数据
     
@@ -165,7 +165,7 @@ curl http://sendcloud.sohu.com/webapi/stats.get.json?api_user=***&api_key=***&st
 
 - - -
     
-##发送数据统计 (每小时)
+###发送数据统计 (每小时)
     
 按小时统计的邮件数据
     

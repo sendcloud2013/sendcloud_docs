@@ -1,8 +1,8 @@
-##标签管理
+##邮件标签
        
-标签为用户发送邮件提供了另外的分类方式.
+标签为用户发送邮件提供了另一个维度的统计方式.
     
-你可以使用API进行标签的查询, 创建, 更新, 删除操作
+你可以使用 API 进行标签的查询, 添加, 删除, 更新操作
     
 - - -
 ###查询    
@@ -94,6 +94,47 @@ http://sendcloud.sohu.com/webapi/label.create.json?api_user=***&api_key=***&labe
 ```
     
 - - -
+
+###删除
+
+**URL**
+```
+http://sendcloud.sohu.com/webapi/label.delete.json
+```
+    
+**HTTP请求方式**
+```
+post    get
+```
+    
+**参数说明**
+    
+|参数|类型|必须|说明|
+|:---|:---|:---|:---|
+|api_user|string|是|子账号|
+|api_key|string|是|密码|
+|labelId|int|是|需要删除的标签ID|
+    
+**请求示例**    
+```
+http://sendcloud.sohu.com/webapi/label.delete.json?api_user=***&api_key=***&labelId=89
+```
+    
+**返回值说明**
+    
+|参数|说明|
+|:---|:---|
+|deleteCount|成功删除的个数|
+    
+**返回值示例**
+```
+{
+    "message":"success",
+    "deleteCount":1
+}
+```
+    
+- - -
 ###更新
 
 **URL**
@@ -132,47 +173,6 @@ http://sendcloud.sohu.com/webapi/label.update.json?api_user=***&api_key=***&labe
 {
     "message":"success", 
     "updateCount":1
-}
-```
-    
-- - -
-
-###删除
-
-**URL**
-```
-http://sendcloud.sohu.com/webapi/label.delete.json
-```
-    
-**HTTP请求方式**
-```
-post    get
-```
-    
-**参数说明**
-    
-|参数|类型|必须|说明|
-|:---|:---|:---|:---|
-|api_user|string|是|子账号|
-|api_key|string|是|密码|
-|labelId|int|是|需要删除的标签ID|
-    
-**请求示例**    
-```
-http://sendcloud.sohu.com/webapi/label.delete.json?api_user=***&api_key=***&labelId=89
-```
-    
-**返回值说明**
-    
-|参数|说明|
-|:---|:---|
-|deleteCount|成功删除的个数|
-    
-**返回值示例**
-```
-{
-    "message":"success",
-    "deleteCount":1
 }
 ```
 
