@@ -230,15 +230,13 @@ X-SMTPAPI 是一个 JSON 格式的字符串, 里面包含邮件处理方式的�
 ## 传送门
 
 * [邮件发送](send_email.md)
+* [邮件模板](template_do.md)
+* [队列状态](queuestatus_do.md)
+* [数据统计](stats_do.md)
 * [用户信息](user_info.md)
 * [邮件列表管理](list_do.md)
 * [标签管理](label_do.md)
 * [退信列表管理](bounce_do.md)
 * [取消订阅管理](unsubscribe_do.md)
 * [垃圾邮件举报查询](spamreported_do.md)
-* [发送数据统计](stats_do.md)
-* [按小时统计模块](stathour_do.md)
-* [无效子类统计](invalidstat_do.md)
-* [队列状态查询](queuestatus_do.md)
-* [邮件模板管理](template_do.md)
 
