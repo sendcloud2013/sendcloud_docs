@@ -91,7 +91,11 @@ post    get
 |html|string|是|html格式内容|
 |text|string|否|text格式内容|
     
-提示: html 内容必须与[邮件样本](../guide/base.md#sample)相匹配, 内容中可以使用[变量]. html 内容过长或有特殊字符应使用 post 请求.
+提示: 
+
+1. html 内容必须与[邮件样本](../guide/base.md#sample)相匹配
+2. html 内容中可以使用[变量](index.md#_2)
+3. html 内容过长或有特殊字符应使用 post 请求
     
 **请求示例**
 ```
@@ -157,7 +161,8 @@ curl http://sendcloud.sohu.com/webapi/template.delete.json?api_user=***&api_key=
     
 ###更新    
     
-用于更新模板的
+用于更新模板的内容
+
 **URL**    
 ```
 http://sendcloud.sohu.com/webapi/template.update.json
@@ -175,15 +180,18 @@ post    get
 |api_user|string|是|子账号|
 |api_key|string|是|密码|
 |invoke_name|string|是|邮件模板调用名称|
-|name|string|否|邮件模板名称|
-|html|string|否|html格式内容|
+|name|string|否|需要修改的邮件模板名称|
+|html|string|否|需要修改的html格式内容|
 
-提示: html 内容必须与[邮件样本](../guide/base.md#sample)相匹配, 内容中可以使用[变量]. html 内容过长或有特殊字符应使用 post 请求.
+提示: 
+
+1. html 内容必须与[邮件样本](../guide/base.md#sample)相匹配
+2. html 内容中可以使用[变量](index.md#_2)
+3. html 内容过长或有特殊字符应使用 post 请求
     
 **请求示例**
 ```
-curl http://sendcloud.sohu.com/webapi/template.update.json?api_user=***&api_key=***&invoke_name=testtemplate1&html=<p>update</p>
-curl -d 'api_user=***&api_key=***&invoke_name=testtemplate&name=test&html=<p>add new template</p>' http://sendcloud.sohu.com/webapi/template.add.json
+curl -d 'api_user=***&api_key=***&invoke_name=testtemplate&name=test&html=<p>update template</p>' http://sendcloud.sohu.com/webapi/template.update.json
 ```
     
 **返回值说明**
