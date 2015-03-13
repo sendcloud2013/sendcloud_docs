@@ -1,8 +1,8 @@
-##邮件列表管理
+##地址列表
        
 邮件地址列表为用户批量发送时使用.
     
-你可以使用API进行列表的查询, 创建, 修改, 删除操作
+你可以使用 API 进行列表的查询, 创建, 修改, 删除操作
     
 以及每个列表中地址成员的查询, 添加, 修改, 删除操作
     
@@ -37,12 +37,12 @@ http://sendcloud.sohu.com/webapi/list.get.json?api_user=***&api_key=***&limit=2
     
 |参数|说明|
 |:---|:---| 
-|create_at|邮件列表创建时间|
-|modify_at|邮件列表修改时间|
+|create_at|地址列表创建时间|
+|modify_at|地址列表修改时间|
 |address|列表别称地址, 使用该别称地址进行调用, 格式为xxx@maillist.sendcloud.org|
-|members_count|邮件列表包含的地址个数|
-|description|邮件列表的描述信息|
-|name|邮件列表的名称||
+|members_count|地址列表包含的地址个数|
+|description|地址列表的描述信息|
+|name|地址列表的名称||
     
 **返回值示例**    
 ```
@@ -232,12 +232,12 @@ post    get
 |:---|:---|:---|:---|
 |api_user|string|是|子账号|
 |api_key|string|是|密码|
-|mail_list_addr|string|是|邮件列表调用名称|    
+|mail_list_addr|string|是|地址列表调用名称|    
 |member_addr|string|否|需要查询信息的地址|
 |start|int|否|返回数据的起始位置, 如果不设置, 默认为0|
 |limit|int|否|限制返回数据的个数, 如果不设置, 默认为100个|
     
-注意: 如果不包含member_addr参数, 返回查询邮件列表的所有地址信息; 反之
+注意: 如果不包含member_addr参数, 返回查询地址列表的所有地址信息; 反之
 , 只返回该member_addr地址的信息
     
 **请求示例**
@@ -288,7 +288,7 @@ post    get
 |:---|:---|:---|:---|
 |api_user|string|是|子账号|
 |api_key|string|是|密码|
-|mail_list_addr|string|是|邮件列表调用名称|
+|mail_list_addr|string|是|地址列表调用名称|
 |member_addr|string|是|需添加成员的地址, 多个地址使用分号;分开|
 |name|string|否|地址所属人名称, 与member_addr一一对应, 多个名称用;分隔|
 |vars|string|否|模板替换的变量, 与member_addr一一对应, 变量格式为{'%money%':1000}, 多个用;分隔|
@@ -345,7 +345,7 @@ post    get
 |:---|:---|:---|:---|
 |api_user|string|是|子账号|
 |api_key|string|是|密码|
-|mail_list_addr|string|是|邮件列表调用名称|
+|mail_list_addr|string|是|地址列表调用名称|
 |member_addr|string|是|需要更新的地址,多个地址使用分号;分开|
 |name|string|否|需要更新的地址对应的名称,多个名称用;分隔|
 |vars|string|否|需要更新的地址对应的变量,变量格式为{'%money%':1000}, 多个用;分隔|
@@ -369,7 +369,7 @@ requests.post("http://sendcloud.sohu.com/webapi/list_member.update.json",  param
     
 |参数|说明|
 |:---|:---|
-|total_counts|邮件列表中的地址数量|
+|total_counts|地址列表中的地址数量|
     
 **返回值示例**
 ```
@@ -399,7 +399,7 @@ post    get
 |:---|:---|:---|:---|
 |api_user|string|是|子账号|
 |api_key|string|是|密码|
-|mail_list_addr|string|是|邮件列表别称|
+|mail_list_addr|string|是|地址列表别称|
 |member_addr|string|是|需删除的地址, 多个地址使用分号;分开|
     
 **请求示例**
