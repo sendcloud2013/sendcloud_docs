@@ -42,13 +42,13 @@ pages:
 - [sms/index.md, '短信API', '短信API']
 
 - [downloads/index.md, '资源下载', '资源下载']
-- [downloads/code/curl.md, '资源下载','curl']
-- [downloads/code/java.md, '资源下载','java']
-- [downloads/code/php.md, '资源下载','php']
-- [downloads/code/python.md, '资源下载','python']
-- [downloads/code/ruby.md, '资源下载','ruby']
-- [downloads/code/csharp.md, '资源下载','c#']
-- [downloads/code/perl.md, '资源下载','perl']
+- [downloads/code/curl.md, '资源下载','Curl']
+- [downloads/code/python.md, '资源下载','Python']
+- [downloads/code/java.md, '资源下载','Java']
+- [downloads/code/php.md, '资源下载','Php']
+- [downloads/code/ruby.md, '资源下载','Ruby']
+- [downloads/code/perl.md, '资源下载','Perl']
+- [downloads/code/csharp.md, '资源下载','C#']
 
 - [faq/index.md, 'FAQ', 'FAQ']
 

@@ -1,7 +1,7 @@
 
 ## 规则
 
-## WEBAPI 的请求格式
+### WEBAPI 的请求格式
 
 `http://sendcloud.sohu.com/webapi/<模块>.<动作>.<格式>`
 
@@ -16,7 +16,7 @@
 
 - - -
 
-## WEBAPI 的响应格式
+### WEBAPI 的响应格式
 
 服务器根据 WEBAPI 请求时的格式, 来确定响应数据的格式. 如果请求时没有指定返回格式, API 会报错. 
 
@@ -36,7 +36,54 @@ WEBAPI 返回的信息, 示例如下:
 ```
 - - -
 
-## messageId 和 emailId
+### SMTP 请求方式
+
+为开发者提供 SMTP 协议的投递方式, 以下是会话过程. 详细的代码示例, 请移步[这里](../downloads/code/python.md#smtp)
+
+``` 
+S: 220 SendCloud Inbound Server ESMTP Haraka 2.2.4 ready
+
+C: ehlo ifaxin.com
+
+S: 250-SendCloud Inbound Server Hello, Haraka is at your service.
+S: 250-PIPELINING
+S: 250-8BITMIME
+S: 250-SIZE 16000000
+S: 250 AUTH LOGIN
+
+C: AUTH LOGIN cG9zdG1hc3RlckBkZWxvbmdiYXQuc2VuZGNsb3VkLm9yZw==
+
+S: 334 UGFzc3dvcmQ6
+
+C: ZGVsb25n
+
+S: 235 Authentication successful
+
+C: mail FROM:<support@ifaxin.com>
+
+S: 250 sender <support@ifaxin.com> OK
+
+C: rcpt TO:<ben@ifaxin.com>
+
+S: 250 recipient <ben@ifaxin.com> OK
+
+C: data
+
+S: 354 go ahead, make my day
+
+C: ... ...
+C: .
+
+S: 250 #1426390015358_15_6484_8661.sc-10_10_127_51-inbound#Queued
+
+C: quit
+
+S: 221 SendCloud Inbound Server closing connection. Have a jolly good day
+```
+
+- - -
+
+### messageId 和 emailId
 
 `messageId` 是提交一次请求, 返回的消息编号.
 
@@ -45,12 +92,11 @@ WEBAPI 返回的信息, 示例如下:
 两者的计算关系如下:
 ```
 to = [A, B, C]
-position = to.indexOf(A) 
-emailId_A = messageId + to.indexOf(A) + '$' + A
-emailId_B = messageId + to.indexOf(B) + '$' + B
-emailId_C = messageId + to.indexOf(C) + '$' + C
+emailId_A = messageId + to.index(A) + '$' + A
+emailId_B = messageId + to.index(B) + '$' + B
+emailId_C = messageId + to.index(C) + '$' + C
 
-# 注意: position 不会做位数补齐
+# 注意: position 不做位数补齐
 ```
 举例如下: 
 ```
@@ -64,7 +110,7 @@ emailId_C = messageId + to.indexOf(C) + '$' + C
 ```
 - - -
 
-## 变量替换 
+### 变量替换 
 
 SendCloud 支持在邮件中使用「变量」. 
 
@@ -83,7 +129,7 @@ SendCloud 支持在邮件中使用「变量」.
 
 - - -
 
-## X-SMTPAPI 扩展字段 
+### X-SMTPAPI 扩展字段 
 
 X-SMTPAPI 是 SendCloud 为开发者提供的邮件个性化定制的处理方式, 开发者通过这个特殊的 **信头扩展字段**, 可以设置邮件处理方式的很多参数.  一般的, 开发者在使用 SMTP 接入时会使用此字段. 不过, WEBAPI 的方式也支持此参数. 
 
@@ -142,9 +188,6 @@ X-SMTPAPI 是一个 JSON 格式的字符串, 里面包含邮件处理方式的�
     感谢%role%用户: %role_words%.
 
 #---------------------------------------------------
-<<<<<<< HEAD
-    # X-SMTPAPI
-=======
 
 # X-SMTPAPI
 {
@@ -157,7 +200,6 @@ X-SMTPAPI 是一个 JSON 格式的字符串, 里面包含邮件处理方式的�
         "%role_words%":["%silver%", "%golden%", "%golden%"]
     },
     "section":
->>>>>>> ac036461c3a5aa39cfeaca016e843f164e865867
     {
         "to": ["ben@ifaxin.com", "joe@ifaxin.com", "bida@ifaxin.com"],
         "sub":
@@ -173,12 +215,8 @@ X-SMTPAPI 是一个 JSON 格式的字符串, 里面包含邮件处理方式的�
             "golden": "some words written to golden user, maybe it is verrrrrrrrry long, too",
         }
     }
-<<<<<<< HEAD
-        
-=======
 }
 
->>>>>>> ac036461c3a5aa39cfeaca016e843f164e865867
 #---------------------------------------------------
 
 # ben@ifaxin.com 收到的邮件:
@@ -227,7 +265,7 @@ X-SMTPAPI 是一个 JSON 格式的字符串, 里面包含邮件处理方式的�
 
 - - -
 
-## 传送门
+### 传送门
 
 * [邮件发送](send_email.md)
 * [邮件模板](template_do.md)

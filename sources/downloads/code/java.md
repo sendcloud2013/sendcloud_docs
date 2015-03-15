@@ -1,4 +1,5 @@
-###WEBAPI
+### WEBAPI
+
 ```
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,7 +24,7 @@ public class JavaWebapi {
      */
     public static void main(String[] args) throws ClientProtocolException, IOException {
 
-        String url = "https://sendcloud.sohu.com/webapi/mail.send.xml";
+        String url = "http://sendcloud.sohu.com/webapi/mail.send.json";
         HttpClient httpclient = new DefaultHttpClient();
         HttpPost httpost = new HttpPost(url);
 
@@ -48,10 +49,11 @@ public class JavaWebapi {
 
 }
 ```
-    
-    
+
 - - -
-###SMTP
+
+### SMTP
+
 ```
 package com.sohu.sendCloud.examples;
 

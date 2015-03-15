@@ -6,7 +6,7 @@ require 'rubygems'
 require 'rest_client'
 
 def send_mail
-        response = RestClient.post "https://sendcloud.sohu.com/webapi/mail.send.xml",
+        response = RestClient.post "http://sendcloud.sohu.com/webapi/mail.send.json",
         :api_user => "***", # 使用api_user和api_key进行验证
         :api_key => "***",
         :from => "sendcloud@sendcloud.org", # 发信人，用正确邮件地址替代

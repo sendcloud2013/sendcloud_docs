@@ -1,10 +1,10 @@
-###WEBAPI
+### WEBAPI
 ```
 use strict;
 use LWP::UserAgent;
 use HTTP::Request::Common;
 
-my $uri = 'https://sendcloud.sohu.com/webapi/mail.send.xml';
+my $uri = 'http://sendcloud.sohu.com/webapi/mail.send.json';
 
 my $ua = LWP::UserAgent->new;
 # See http://search.cpan.org/~gaas/HTTP-Message-6.06/lib/HTTP/Request.pm
@@ -29,10 +29,9 @@ if ($response->is_success()) {
 exit;
 ```
     
-    
 - - -
    
-###SMTP
+### SMTP
 ```
 #!/usr/bin/perl
                                           

@@ -1,10 +1,11 @@
-###WEBAPI
+### WEBAPI
+
+调用 WEBAPI 
 ```
 <?php
 
 function send_mail() {
-
-        $url = 'https://sendcloud.sohu.com/webapi/mail.send.xml';
+        $url = 'http://sendcloud.sohu.com/webapi/mail.send.json';
 
         $param = array(
                 'api_user' => '***', # 使用api_user和api_key进行验证
@@ -28,9 +29,10 @@ function send_mail() {
 
 echo send_mail();
 ?>
+```
 
-// 2. php curl方式
-
+使用 curl 方式调用 WEBAPI
+```
 <?php
 function send_mail() {
 
@@ -40,7 +42,7 @@ function send_mail() {
         curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
 
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
-        curl_setopt($ch, CURLOPT_URL, 'https://sendcloud.sohu.com/webapi/mail.send.xml');
+        curl_setopt($ch, CURLOPT_URL, 'http://sendcloud.sohu.com/webapi/mail.send.json');
 
         curl_setopt($ch, CURLOPT_POSTFIELDS,
                         array(
@@ -67,7 +69,7 @@ echo send_mail();
     
 - - -
     
-###SMTP
+### SMTP
 ```
 <?php
 set_include_path("/path/to/pear");

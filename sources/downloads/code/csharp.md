@@ -1,4 +1,5 @@
-###WEBAPI
+### WEBAPI
+
 ```
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ namespace SendcloudWebapi
         public static void send()
         {
             HttpClient client = new HttpClient();
-            HttpPost postMethod = new HttpPost(new Uri("http://sendcloud.sohu.com/webapi/mail.send.xml"));
+            HttpPost postMethod = new HttpPost(new Uri("http://sendcloud.sohu.com/webapi/mail.send.json"));
 
             MultipartEntity multipartEntity = new MultipartEntity();
             postMethod.Entity = multipartEntity;
@@ -43,7 +44,8 @@ namespace SendcloudWebapi
     
 - - -
     
-###SMTP
+### SMTP
+
 ```
 using System;
 using System.IO;
@@ -65,14 +67,14 @@ namespace  SendMailTest
                 // 收件人地址，用正确邮件地址替代
                 mailMsg.To.Add(new MailAddress("to@sendcloud.org"));
                 // 发信人，用正确邮件地址替代
-                mailMsg.From = new MailAddress("from@sendcloud.org", "fronname");
+                mailMsg.From = new MailAddress("from@sendcloud.org", "fromname");
 
                 // 邮件主题
                 mailMsg.Subject = "Smtp C# Smtp Example";
 
                 // 邮件正文内容
                 string text = "欢迎使用SendCloud";
-                string html = @"欢迎使用<a href=""https://sendcloud.sohu.com"">SendCloud</a>";
+                string html = @"欢迎使用<a href=""http://sendcloud.sohu.com"">SendCloud</a>";
                 mailMsg.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(text, null, MediaTypeNames.Text.Plain));
                 mailMsg.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(html, null, MediaTypeNames.Text.Html));
 
