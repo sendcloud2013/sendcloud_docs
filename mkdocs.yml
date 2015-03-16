@@ -1,8 +1,8 @@
 site_name: SendCloud 文档中心
 
-site_url: http://docs.upyun.com/
+site_url: http://sendcloud.sohu.com
 
-repo_url: https://github.com/upyun/docs/
+repo_url: https://github.com/liubida/sendcloud_docs.git
 
 docs_dir: sources
 
