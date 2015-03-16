@@ -139,7 +139,6 @@ def test_sendn():
         }
     }
     reply_to = 'service@ifaxin.com'
-    #subject = "%name%, 这是您在爱发信1月份的消费账单"
     subject = "爱发信2015年1月份消费账单"
     content = "亲爱的%name%: <br/> 您好! 您本月在爱发信的消费金额为: %money% 元. <br/> <br/> <a href='http://www.ifaxin.com'>http://www.ifaxin.com</a>"
     files = ['/path/file1', '/path/files2', ]
