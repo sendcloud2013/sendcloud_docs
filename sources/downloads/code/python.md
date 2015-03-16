@@ -46,6 +46,7 @@ API_USER = '...'
 API_KEY = '...'
 
 DEBUG_MODE = False
+USE_SSL = False
 
 def _message_id(reply):
     message_id = None
@@ -60,6 +61,8 @@ def send(mail_from, ffrom, rcpt_tos, reply_to, subject, content, files):
 
     s = SMTP('%s:%d' % (HOST, PORT))
     s.set_debuglevel(DEBUG_MODE)
+    if USE_SSL:
+        s.starttls()
     s.login(API_USER, API_KEY)
 
     for rcpt_to in rcpt_tos:
@@ -104,6 +107,8 @@ def sendn(mail_from, ffrom, x_smtpapi, reply_to, subject, content, files):
 
     s = SMTP('%s:%d' % (HOST, PORT))
     s.set_debuglevel(DEBUG_MODE)
+    if USE_SSL:
+        s.starttls()
     s.login(API_USER, API_KEY)
 
     msg = MIMEMultipart('alternative')
