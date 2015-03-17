@@ -28,7 +28,6 @@ pages:
 
 - [email/index.md, '邮件API', '规则']
 - [email/send_email.md, '邮件API', '邮件发送']
-#- [email/send_email_smtp.md, '邮件API', '邮件发送SMTPAPI']
 - [email/template_do.md, '邮件API', '邮件模板']
 - [email/list_do.md, '邮件API', '地址列表']
 - [email/label_do.md, '邮件API', '邮件标签']
@@ -38,7 +37,7 @@ pages:
 - [email/bounce_do.md, '邮件API', '退信列表管理']
 - [email/unsubscribe_do.md, '邮件API', '取消订阅管理']
 - [email/spamreported_do.md, '邮件API', '垃圾举报管理']
-- [email/webhook.md, '邮件API', 'webhook参数说明']
+- [email/webhook.md, '邮件API', 'WebHook 详细']
 
 - [sms/index.md, '短信API', '短信API']
 

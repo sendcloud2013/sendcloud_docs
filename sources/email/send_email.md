@@ -75,7 +75,7 @@ curl -d 'api_user=***&api_key=***&from=test@test.com&fromname=来自测试发送
 }
 ```
 
-普通发送 ( post 方式, 使用地址列表 users@maillist.sendcloud.org, 用户可以根据返回的 `task_id` 在 [WebHook](../guide/advance.md#webhook) 中使用 )
+普通发送 ( post 方式, 使用地址列表 users@maillist.sendcloud.org, 用户可以根据返回的 `task_id` 在 [WebHook](../email/webhook.md#mail_list_task_id_list) 中使用 )
 ```
 curl -d 'api_user=***&api_key=***&from=test@test.com&fromname=来自测试发送&subject=测试&html=这是一封测试邮件&to=ben@ifaxin.com;joe@ifaxin.com;users@maillist.sendcloud.org&replyto=reply@test.com&resp_email_id=true&use_maillist=true' http://sendcloud.sohu.com/webapi/mail.send.json
 # 失败返回值 ( 地址列表不存在 )
@@ -177,7 +177,7 @@ curl -d 'api_user=***&api_key=***&from=test@test.com&fromname=来自测试发送
     
     您好! 您本月在爱发信的消费金额为: 497 元.
 ```
-普通发送 ( 调用模板 ifaxin_bill, 调用地址列表 users@maillist.sendcloud.org, 用户可以根据返回的 `task_id` 在 [WebHook](../guide/advance.md#webhook) 中使用 )
+普通发送 ( 调用模板 ifaxin_bill, 调用地址列表 users@maillist.sendcloud.org, 用户可以根据返回的 `task_id` 在 [WebHook](../email/webhook.md#mail_list_task_id_list)  中使用 )
 ```
 curl -d 'api_user=***&api_key=***&from=test@test.com&fromname=来自测试发送&subject=测试&template_invoke_name=ifaxin_bill&replyto=reply@test.com&resp_email_id=true&use_maillist=true&to=users@maillist.sendcloud.org' http://sendcloud.sohu.com/webapi/mail.send_template.json
 
