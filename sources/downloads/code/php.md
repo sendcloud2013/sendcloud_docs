@@ -71,8 +71,7 @@ echo send_mail();
 - - -
     
 ### SMTP
-
-```
+    
 此代码依赖邮件发送模块,首先需安装pear.
     
 pear安装步骤：
@@ -87,9 +86,11 @@ pear安装步骤：
 * pear install Net_SMTP
     
 操作完成.    
+     
+
+示例1:快速发送,依赖 Mail.php 模块, 供不需要获取[messageId](../email/index.md/#_7)时使用.
+
 ```
-```
-示例1:快速发送,如果不需要获取messageID,可使用.
 <?php
 set_include_path("/usr/local/lib/php/");
 require_once "Mail.php";
@@ -141,100 +142,48 @@ else {
 
 ```
         
+     
+示例2:
+    
+需要依赖Mail/smtp.php模块,由于模块默认在发送成功时,不返回服务器的信息. 
+因此如果需要获得服务器返回的messageId,需要做如下操作.
+首先在您的php的lib库中, 找到Mail/smtp.php文件,
+将329行send函数的返回值做修改.如下图所示将return true改为return $args.
+      
+![pic](../resources/php.png) 
+    
+接下来您就可以调用以下的代码进行邮件的发送和MessageId的获取了.
+    
 ```
-示例2: 如果需要获得每次请求的唯一标示messageId,建议使用
 <?php
 set_include_path("/usr/local/lib/php/");
 
-include_once "Mail.php";
-include_once 'Net/SMTP.php';
 
-function prepareHeaders($headers)
-{
-    $lines = array();
-    $from = null;
+include_once 'Mail.php';
+include_once 'Mail/smtp.php';
 
-    foreach ($headers as $key => $value) {
-        if (strcasecmp($key, 'From') === 0) {
-            include_once 'Mail/RFC822.php';
-            $parser = new Mail_RFC822();
-            $addresses = $parser->parseAddressList($value, 'localhost', false);
-            if (is_a($addresses, 'PEAR_Error')) {
-                return $addresses;
-            }
-
-            $from = $addresses[0]->mailbox . '@' . $addresses[0]->host;
-
-            if (strstr($from, ' ')) {
-                return false;
-            }
-
-            $lines[] = $key . ': ' . $value;
-        } elseif (strcasecmp($key, 'Received') === 0) {
-            $received = array();
-            if (is_array($value)) {
-                foreach ($value as $line) {
-                    $received[] = $key . ': ' . $line;
-                }
-            }
-            else {
-                $received[] = $key . ': ' . $value;
-            }
-            $lines = array_merge($received, $lines);
-        } else {
-            if (is_array($value)) {
-                $value = implode(', ', $value);
-            }
-            $lines[] = $key . ': ' . $value;
-        }
-    }
-
-    return array($from, join("\r\n", $lines));
-}
-
-function getMessageId($res)
-{
-    $list = explode('#',$res);
-    return $list[1];
-}    
-
-
-function send($recipients, $headers, $body)
-{
-    $smtp = &new Net_SMTP('smtpcloud.sohu.com',25);
-    $smtp->connect();
-    //使用api_user和api_key进行验证
-    $res = $smtp->auth("api_user","api_key");
-
-    $headerElements =  prepareHeaders($headers);
-    list($from, $textHeaders) = $headerElements;
-    if (!empty($headers['Return-Path'])) {
-        $from = $headers['Return-Path'];
-    }
-
-    $smtp->mailFrom($from);
-    
-    foreach ($recipients as $recipient){
-        $res = $smtp->rcptTo($recipient);
-        echo $res;
-    }
-
-    $res = $smtp->data($textHeaders . "\r\n\r\n" . $body);
-    list(,$args) = $smtp->getResponse();
-
-    $messageId = getMessageId($args);
-    echo $messageId;
-
-    $smtp->disconnect();
-    return $messageId;
-}
-
+# 发信人，用正确邮件地址替代
 $from='testaddress@qq.com';
-$to = array('test1@ifaxin.com','test2@ifaxin.com');  
+
+# 收件人地址，用正确邮件地址替代
+$to = array('test1@qq.com','test2@163.com');  
+
+# 邮件标题
 $subject='SendCloud PHP Smtp Example';
+
+# 邮件正文,html格式
 $body = "<html><head></head><body>
         <p>欢迎使用<a href='http://sendcloud.sohu.com'>SendCloud!</a></p>
         </body></html>";
+
+# smtp参数, 用正确api_user和api_key验证
+$param = array (
+   'host'=>'smtpcloud.sohu.com',
+   'ip'=>25,
+   'auth'=>true,
+   'username'=>'api_user',
+   'password'=>'api_key');
+
 
 $headers = array (
     'From' => $from,
@@ -242,7 +191,17 @@ $headers = array (
     'Subject' => $subject,
     'Content-Type' => 'text/html;charset=utf8');
 
-$messageId = send($to, $headers, $body); 
+function getMessageId($res)
+{
+    $list = explode('#',$res);
+    return $list[1];
+} 
+
+$mail = new Mail_smtp($param);
+
+$res = $mail->send($to, $headers, $body);
+$messageId = getMessageId($res);
+echo $messageId;
 
 ```
 
