@@ -11,7 +11,7 @@
 * 使用 `APP KEY`, `token` 和 `timestamp` 生成签名 `signature`, 与 POST 数据中的 `signature` 进行校验 ( 签名算法: [HMAC](http://en.wikipedia.org/wiki/Hash-based_message_authentication_code))
 
 
-**Python 代码示例**
+**python 代码示例**
 ```
 import hashlib, hmac
 def verify(appkey, token, timestamp, signature):
