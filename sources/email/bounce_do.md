@@ -1,6 +1,8 @@
 ##退信列表管理
     
-由特定原因(如地址不存在等)被退信的邮件会进入此列表.    
+由特定原因(如地址不存在等)被退信的邮件会进入此列表.
+
+在此列表中的邮件地址, 都不会再被发送邮件.
     
 你可以对此列表进行查询, 删除操作
     
@@ -23,18 +25,23 @@ post    get
 |:---|:---|:---|:---|
 |api_user|string|是|子账号| 
 |api_key|string|是|密码| 
-|days|int|否|过去days天内的统计数据(包含今天), 必须大于0| 
-|start_date|date|否|开始日期,格式必须为yyyy-MM-dd, 对应时间必须在参数end_date对应时间之前|
-|end_date|date|否|结束日期,格式必须为yyyy-MM-dd, 对应时间必须在参数start_date对应时间之后|
-|start|int|否|返回数据的起始位置, 如果不设置, 默认为0|
-|limit|int|否|限制返回数据的个数. 必须大于0小于100, 如果不设置, 默认为100个|
-|email|string|否|查询该地址在退信列表中的详情|
-    
-提示: 参数中必须包含【email】或【start_date与end_date的组合】或【days】或【start与limit的组合】.
-    
+|days|int|*|过去 days 天内的统计数据 (`days=1`表示今天)| 
+|start_date|string|*|开始日期, 格式为`yyyy-MM-dd`|
+|end_date|string|*|结束日期, 格式为`yyyy-MM-dd`|
+|email|string|*|查询该地址在退信列表中的详情|
+|start|int|否|查询起始位置, 取值区间 [0-], 默认为 0|
+|limit|int|否|查询个数, 取值区间 [0-100], 默认为 100|
+
+提示:
+
+1. 如果指定时间区间, 则是查询此时间区间内的退信列表. 注意: **start_date 与 end_date 的组合** 或者 **days 参数**, 二者取一. 
+2. 如果指定email, 则是查询此地址在退信列表中的详细信息. 注意: 此时, 时间区间参数失效.
+
 请求示例:
 ```
-http://sendcloud.sohu.com/webapi/bounces.get.json?api_user=***&api_key=***&days=100&start=0&limit=3 
+http://sendcloud.sohu.com/webapi/bounces.get.json?api_user=***&api_key=***&days=100&start=0
+
+http://sendcloud.sohu.com/webapi/bounces.get.json?api_user=***&api_key=***&email=***
 ```
     
 **返回值说明**
@@ -49,13 +56,60 @@ http://sendcloud.sohu.com/webapi/bounces.get.json?api_user=***&api_key=***&days=
 ```    
 {
     "message":"success",
-    "bounces":[{"email":"testaddress@163.com","reason":"from softbounce","create_at":"2015-02-10 18:30:39"}]
+    "bounces":[{"email":"109509759@qq.com","reason":"Mailbox not found. http://service.mail.qq.com/cgi-bin/help?subtype=1&&id=20022&&no=1000728","create_at":"2015-03-12 19:07:40"}]
 }  
 ```
     
 - - -
     
-###计算列表成员数
+###删除
+
+**URL**    
+```
+http://sendcloud.sohu.com/webapi/bounces.delete.json
+```
+    
+**HTTP请求方式** 
+```
+post    get
+```
+    
+**参数说明**
+    
+|参数|类型|必须|说明|
+|:---|:---|:---|:---|
+|api_user|string|是|子账号| 
+|api_key|string|是|密码| 
+|start_date|string|*|开始日期, 格式为`yyyy-MM-dd`|
+|end_date|string|*|结束日期, 格式为`yyyy-MM-dd`|
+|email|string|否|要删除的地址|
+    
+提示:
+
+1. 如果指定时间区间, 则是删除此时间区间内的所有退信地址.
+2. 如果指定email, 则是在退信列表中删除此地址. 注意: 此时, 时间区间参数失效.
+    
+**请求示例**
+```
+http://sendcloud.sohu.com/webapi/bounces.delete.json?api_user=***&api_key=***&email=***
+```
+    
+**返回值说明**
+    
+|参数|说明|
+|:---|:---|
+|del_count|成功删除的地址个数|
+    
+**返回值示例**
+```
+{
+    "message":"success",
+    "del_count":1
+}
+```    
+- - -
+    
+###计数
 
 **URL**
 ```
@@ -73,11 +127,13 @@ post    get
 |:---|:---|:---|:---|
 |api_user|string|是|子账号|
 |api_key|string|是|密码|
-|days|int|否|过去days天内的统计数据(包含今天), 必须大于0|
-|start_date|date|否|开始日期,格式必须为yyyy-MM-dd, 对应时间必须在参数end_date对应时间之前|
-|end_date|date|否|结束日期,格式必须为yyyy-MM-dd, 对应时间必须在参数start_date对应时间之后|
+|days|int|*|过去 days 天内的统计数据 (`days=1`表示今天)| 
+|start_date|string|*|开始日期, 格式为`yyyy-MM-dd`|
+|end_date|string|*|结束日期, 格式为`yyyy-MM-dd`|
     
-提示: 参数中必须包含days或【start_date与end_date的组合】.
+提示:
+
+1. 获取数据时, 必须指定时间区间. 即 **start_date 与 end_date 的组合** 或者 **days 参数**, 需二者取一
     
 **请求示例**
 ```
@@ -97,49 +153,4 @@ http://sendcloud.sohu.com/webapi/bounces.count.json?api_user=***&api_key=***&day
     "count":200
 }
 ```
-    
-- - -
-    
-###删除
-    
 
-**URL**    
-```
-http://sendcloud.sohu.com/webapi/bounces.delete.json
-```
-    
-**HTTP请求方式** 
-```
-post    get
-```
-    
-**参数说明**
-    
-|参数|类型|必须|说明|
-|:---|:---|:---|:---|
-|api_user|string|是|子账号| 
-|api_key|string|是|密码| 
-|start_date|date|否|开始日期,格式必须为yyyy-MM-dd, 对应时间必须在参数end_date对应时间之前|
-|end_date|date|否|结束日期,格式必须为yyyy-MM-dd, 对应时间必须在参数start_date对应时间之后|
-|email|string|否|要删除的地址|
-    
-提示: 参数中必须包含email或【start_date与end_date的组合】.
-    
-**请求示例**
-```
-http://sendcloud.sohu.com/webapi/bounces.delete.json?api_user=***&api_key=***&email=testaddress@163.com
-```
-    
-**返回值说明**
-    
-|参数|说明|
-|:---|:---|
-|del_count|成功删除的地址个数|
-    
-**返回值示例**
-```
-{
-    "message":"success",
-    "del_count":1
-}
-```    

@@ -39,11 +39,11 @@ post    get
     
 请求示例:
 ```
-curl http://sendcloud.sohu.com/webapi/stats.get.json?api_user=***&api_key=***&days=2&domain_list=***;***
+http://sendcloud.sohu.com/webapi/stats.get.json?api_user=***&api_key=***&days=2&domain_list=***;***
 
-curl http://sendcloud.sohu.com/webapi/stats.get.json?api_user=***&api_key=***&start_date=2015-02-01&end_date=2015-02-28&api_user_list=***;***
+http://sendcloud.sohu.com/webapi/stats.get.json?api_user=***&api_key=***&start_date=2015-02-01&end_date=2015-02-28&api_user_list=***;***
 
-curl http://sendcloud.sohu.com/webapi/stats.get.json?api_user=***&api_key=***&start_date=2015-02-01&end_date=2015-02-28&api_user_list=***;***&aggregate=1
+http://sendcloud.sohu.com/webapi/stats.get.json?api_user=***&api_key=***&start_date=2015-02-01&end_date=2015-02-28&api_user_list=***;***&aggregate=1
 ```
     
 **返回值说明**
@@ -198,9 +198,9 @@ post    get
     
 请求示例:    
 ```
-curl http://sendcloud.sohu.com/webapi/stats.get.json?api_user=***&api_key=***&days=2
+http://sendcloud.sohu.com/webapi/stats.get.json?api_user=***&api_key=***&days=2
 
-curl http://sendcloud.sohu.com/webapi/stats.get.json?api_user=***&api_key=***&start_date=2015-02-01&end_date=2015-02-28&api_user_list=***;***
+http://sendcloud.sohu.com/webapi/stats.get.json?api_user=***&api_key=***&start_date=2015-02-01&end_date=2015-02-28&api_user_list=***;***
 ```
     
 **返回值说明**
@@ -304,7 +304,7 @@ post    get
     
 请求示例:    
 ```
-curl http://sendcloud.sohu.com/webapi/invalidStat.get.json?api_user=***&api_key=***&start_date=2015-03-12&end_date=2015-03-12
+http://sendcloud.sohu.com/webapi/invalidStat.get.json?api_user=***&api_key=***&start_date=2015-03-12&end_date=2015-03-12
 ```
     
 **返回值说明**    

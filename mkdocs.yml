@@ -35,9 +35,9 @@ pages:
 - [email/queuestatus_do.md, '邮件API', '队列状态']
 - [email/stats_do.md, '邮件API', '数据统计']
 - [email/user_info.md, '邮件API', '用户信息']
-- [email/spamreported_do.md, '邮件API', '垃圾举报查询API']
-- [email/unsubscribe_do.md, '邮件API', '取消订阅管理API']
-- [email/bounce_do.md, '邮件API', '退信列表管理API']
+- [email/bounce_do.md, '邮件API', '退信列表管理']
+- [email/unsubscribe_do.md, '邮件API', '取消订阅管理']
+- [email/spamreported_do.md, '邮件API', '垃圾举报管理']
 - [email/webhook.md, '邮件API', 'webhook参数说明']
 
 - [sms/index.md, '短信API', '短信API']
