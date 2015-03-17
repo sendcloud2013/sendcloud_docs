@@ -1,4 +1,4 @@
-### WEBAPI
+### WEBAPI 方式一
 
 ```
 <?php
@@ -33,7 +33,7 @@ echo send_mail();
     
 - - -
     
-###使用 curl 方式调用 WEBAPI
+### WEBAPI 方式二
 ```
 <?php
 function send_mail() {
@@ -87,7 +87,7 @@ pear安装步骤：
     
 操作完成.    
 
-示例1: 快速发送,依赖 Mail.php 模块, 不需要获取[messageId](../email/index.md/#_7).
+示例1: 快速发送, 依赖 Mail.php 模块, 不需要获取[messageId](../email/index.md/#_7).
 
 ```
 <?php
@@ -142,16 +142,16 @@ else {
 ```
         
      
-示例2:
-    
-需要依赖Mail/smtp.php模块,由于模块默认在发送成功时,不返回服务器的信息. 
-因此如果需要获得服务器返回的messageId,需要做如下操作.
-首先在您的php的lib库中, 找到Mail/smtp.php文件,
-将329行send函数的返回值做修改.如下图所示将return true改为return $args.
+示例2: 快速发送, 依赖 `Mail.php`, `Mail/smtp.php` 模块, 需要获取[messageId](../email/index.md/#_7).
+
+此时, 我们采取的简单方法是修改相关模块的代码. 如下: 
+
+1. php的lib库中, 找到Mail/smtp.php文件
+2. 将 329 行 `send` 函数的返回值做修改. 如下图所示将 `return true` 改为 `return $args`.
       
 ![pic](../resources/php.png) 
     
-接下来您就可以调用以下的代码进行邮件的发送和MessageId的获取了.
+接下来您就可以调用以下的代码进行邮件的发送, 并获取messageId了.
     
 ```
 <?php
