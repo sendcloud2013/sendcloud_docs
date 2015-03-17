@@ -72,9 +72,8 @@
 WebHook 机制:
 
 * SendCloud 为客户提供了一些邮件事件, 客户可以选择关注某些事件
-* 当某事件发生, 就会触发 SendCloud 向客户设置的 URL 发送数据
+* 当某事件发生, 就会触发 SendCloud 向客户设置的 URL 发送数据 ( POST )
 * 客户收到数据, 解析出事件和数据, 做后续的处理
-    
        
 目前 SendCloud 支持的邮件事件如下:
      
@@ -84,38 +83,18 @@ WebHook 机制:
 |发送(deliver)        |邮件发送成功     |
 |打开(open)           |用户打开邮件     |
 |点击(click)          |用户点击链接     |
-|退订(unsubscribe)    |用户退订邮件     |
-|退信(bounce)         |邮件被拒绝       |
-|邮件举报(report_spam)|用户举报邮件     |
-|无效邮件(invalid)    |邮件被判定无效   |
+|取消订阅(unsubscribe)|用户取消订阅邮件 |
+|软退信(bounce)       |邮件被 ESP 接收之后, 又被退回|
+|举报(report_spam)    |用户举报邮件     |
+|无效邮件(invalid)    |邮件未发送成功   |
 
-当然, 在使用之前, 你必须先在 SendCloud 的 `【设置】-【WebHook】` 中选择关注的事件, 配置接收数据的URL.
+在使用之前, 你需要在 SendCloud 的 `【设置】-【WebHook】` 中选择关注的事件, 配置接收数据的URL.
 
-**推送数据示例**
-```
-labelId: 0
-token: xZars0SdwK8T720SFy7ijiSDYo1rRYsP5znyfYYPbOi8apO87L
-emailId: 1426140442451_27372_23704_5375.sc-10_10_127_28-inbound0$123@qq.com
-signature: eccaf5621f9b798fbaec79577d1e7d055224832a6b3e5c93caa0db8cc4485c85
-recipient: 123@qq.com
-timestamp: 1426140444559
-category: test20141102
-mail_list_task_id:
-event: deliver
-message: Successfully delivered
-```
-    
-`提示:`  为了确保消息的来源身份是 SendCloud,  你可以进行签名验证以获得更高的安全认证, 这是一个可选项, 不强制用户进行验证. 安全认证的方法如下:
-    
-* 前台`【设置】-【WebHook】`为每个客户提供了APP KEY
-* SendCloud推送的数据中含有参数 token, timestamp 和 signature
-* 用APP KEY, token 和 timestamp 使用 [HMAC 算法](http://baike.baidu.com/link?url=4eD963Bw1nM61ZiRkXBNXAWTeIMKHwQULuNDQOR8tweyrR6V7Yk7E-f-UowA-21OOSsaaq2zJ8j1Yngeh6c2EK)生成签名, 与 signature 进行比较.
-     
-签名验证代码示例和事件推送参数说明参见[WebHook详细说明](../email/webhook.md)     
+WebHook 详细说明参见[WebHook详细](../email/webhook.md)     
     
 - - - 
    
-###订阅入口
+### 订阅入口
 
 订阅入口的作用是帮助用户创建, 维护和用户的订阅关系.
 SendCloud 和 ESP 都在推进建立用户和用户订阅关系, 也会大力支持这种存在订阅关系的邮件发送 ( 比如 QQ邮件列表 ).
@@ -139,13 +118,31 @@ SendCloud 和 ESP 都在推进建立用户和用户订阅关系, 也会大力支
 
 ###取消订阅样式
     
-在开启订阅追踪后，系统会在邮件中默认自动加上“取消订阅”的退订链接，供邮件接收者在不愿意接受邮件的情况下，退订此类邮件。
-系统默认的取消订阅样式如下:
+在开启「订阅追踪」后, 系统会在邮件中默认自动加上 **取消订阅** 的退订链接, 供收件人退订此类邮件.
+
+下面是系统默认的取消订阅样式:
 ![pic](../resources/default_unsubscribe.png)
 
-如需要自定义退订样式，勾选订阅追踪后，在href中插入我们提供的字符( %%user_defined_unsubscribe_link%%)，我们会自动替换为退订链接，样式可根据需要自行添加。
+你可以自行定义取消订阅的样式, 只要在 href 中插入 SendCloud 内部变量 `%%user_defined_unsubscribe_link%%` 即可.
 
 示例如下：
+
 ```
-<a href="%%user_defined_unsubscribe_link%%">取消订阅</a>
+# 使用默认的取消订阅样式, 邮件内容如下:
+
+<p>亲爱的%name%:</p>
+<p style="margin-bottom: 35px">您好! 您本月在爱发信的消费金额为: %money% 元.</p>
 ```
+![pic](../resources/unsubscribe_1.png)
+
+
+```
+# 使用自定义的取消订阅样式, 邮件内容如下:
+
+<p>亲爱的%name%:</p>
+<p style="margin-bottom: 35px">您好! 您本月在爱发信的消费金额为: %money% 元.</p>
+<p><a style="background: #1ABC9C;border:1px solid #13A386;padding:8px 20px;color: #fff;text-decoration:none;border-radius:4px" href="%%user_defined_unsubscribe_link%%">不想再收到此类邮件</a></p>
+```
+![pic](../resources/unsubscribe_2.png)
+
+
