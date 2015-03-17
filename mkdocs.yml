@@ -2,7 +2,6 @@ site_name: SendCloud 文档中心
 
 site_url: http://sendcloud.sohu.com
 
-#repo_url: https://github.com/liubida/sendcloud_docs.git
 repo_url: https://github.com/sendcloud2013/sendcloud_docs/blob/master/sources/index.md
 
 docs_dir: sources
