@@ -111,7 +111,7 @@ http://sendcloud.sohu.com/webapi/stats.get.json?api_user=***&api_key=***&start_d
             "apiUser": "...",
             "labelId": 0,
             "labelName": null,
-            "domain": "sendcloud.im",
+            "domain": "qq.com",
             "request": 27,
             "deliveredNum": 27,
             "clickNum": 0,

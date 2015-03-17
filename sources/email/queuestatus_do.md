@@ -38,7 +38,7 @@ post    get
     "queueStatus": [
         {
             "apiUser": "api_user",
-            "domain": "sendcloud.im",
+            "domain": "qq.com",
             "isStop": false,
             "reason": "",
             "timeout": null,
