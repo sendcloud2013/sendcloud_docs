@@ -110,6 +110,14 @@ $smtp->cc(@cc);
 $smtp->data($mime->stringify);                                                  
 if (!$smtp->ok) { # send mime data error                                        
     print $smtp->code(), " ", $smtp->message(), "\n";                           
-}                                                                               
+}
+else{
+    # 获取messageId
+    my $res = $smtp->message();
+    my @message_list = split(/#/,$res);
+    my $messageId = @message_list[1];
+    print $messageId;
+}
+
 $smtp->quit(); 
 ```
