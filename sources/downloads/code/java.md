@@ -55,10 +55,9 @@ public class JavaWebapi {
 ### SMTP
 
 ```
-package com.sohu.sendCloud.examples;
-
 import java.io.UnsupportedEncodingException;
 import java.util.Properties;
+
 import javax.mail.Authenticator;
 import javax.mail.BodyPart;
 import javax.mail.Message.RecipientType;
@@ -72,15 +71,29 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
+import com.sun.mail.smtp.SMTPTransport;
+
 public class JavaSmtpExample {
 
-    private static final  String SENDCLOUD_SMTP_HOST = "smtpcloud.sohu.com";
-    private static final  int SENDCLOUD_SMTP_PORT = 25;
+    private static final String SENDCLOUD_SMTP_HOST = "smtpcloud.sohu.com";
+    private static final int SENDCLOUD_SMTP_PORT = 25;
+
+    private static String getMessage(String reply) {
+        String[] arr = reply.split("#");
+
+        String messageId = null;
+
+        if (arr[0].equalsIgnoreCase("250 ")) {
+            messageId = arr[1];
+        }
+
+        return messageId;
+    }
 
     /**
      * @param args
-     * @throws MessagingException 
-     * @throws UnsupportedEncodingException 
+     * @throws MessagingException
+     * @throws UnsupportedEncodingException
      */
     public static void main(String[] args) throws MessagingException, UnsupportedEncodingException {
 
@@ -98,6 +111,8 @@ public class JavaSmtpExample {
         // 使用api_user和api_key进行验证
         final String apiUser = "***";
         final String apiKey = "***";
+        
+        String to = "123@qq.com";
 
         Session mailSession = Session.getInstance(props, new Authenticator() {
             @Override
@@ -106,7 +121,8 @@ public class JavaSmtpExample {
             }
         });
 
-        Transport transport = mailSession.getTransport();
+        // Transport transport = mailSession.getTransport();
+        SMTPTransport transport = (SMTPTransport) mailSession.getTransport("smtp");
         MimeMessage message = new MimeMessage(mailSession);
         Multipart multipart = new MimeMultipart("alternative");
 
@@ -114,25 +130,28 @@ public class JavaSmtpExample {
         BodyPart part1 = new MimeBodyPart();
         part1.setHeader("Content-Type", "text/html;charset=UTF-8");
         part1.setHeader("Content-Transfer-Encoding", "base64");
-        String htmlContent = "<html><head></head><body>" +
-                "<p>欢迎使用<a href='http://sendcloud.sohu.com'>SendCloud!</a></p>" +
-                "</body></html> ";
+        String htmlContent = "<html><head></head><body>" + "<p>欢迎使用<a href='http://sendcloud.sohu.com'>SendCloud!</a></p>" + "</body></html> ";
         part1.setContent(htmlContent, "text/html;charset=UTF-8");
         multipart.addBodyPart(part1);
         message.setContent(multipart);
 
-        // 发信人，用正确邮件地址替代 
+        // 发信人，用正确邮件地址替代
         message.setFrom(new InternetAddress("from@sendcloud.org", "fromname", "UTF-8"));
         // 收件人地址，用正确邮件地址替代
-        message.addRecipient(RecipientType.TO, new InternetAddress("to@sendcloud.org"));
+        message.addRecipient(RecipientType.TO, new InternetAddress(to));
         // 邮件主题
         message.setSubject("SendCloud Java Smtp Example", "UTF-8");
 
         // 连接sendcloud服务器，发送邮件
         transport.connect();
         transport.sendMessage(message, message.getRecipients(RecipientType.TO));
+        
+        String messageId = getMessage(transport.getLastServerResponse());
+        String emailId = messageId + "0$" + to;
+        System.out.println("messageId:" + messageId);
+        System.out.println("emailId:" + emailId);
         transport.close();
-
     }
 }
+
 ```
