@@ -87,7 +87,7 @@ pear安装步骤：
     
 操作完成.    
 
-示例1: 快速发送, 依赖 Mail.php 模块, 不需要获取[messageId](../email/index.md/#_7).
+示例1: 快速发送, 依赖 Mail.php 模块, 不需要获取[messageId](../../email/#messageid-emailid).
 
 ```
 <?php
@@ -142,7 +142,7 @@ else {
 ```
         
      
-示例2: 快速发送, 依赖 `Mail.php`, `Mail/smtp.php` 模块, 需要获取[messageId](../email/index.md/#_7).
+示例2: 快速发送, 依赖 `Mail.php`, `Mail/smtp.php` 模块, 需要获取[messageId](../../email/#messageid-emailid).
 
 此时, 我们采取的简单方法是修改相关模块的代码. 如下: 
 
