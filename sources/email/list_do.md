@@ -1,5 +1,4 @@
-##地址列表
-       
+
 邮件地址列表为用户批量发送时使用.
     
 你可以使用 API 进行列表的查询, 创建, 修改, 删除操作
@@ -7,7 +6,8 @@
 以及每个列表中地址成员的查询, 添加, 修改, 删除操作
     
 - - -
-###列表查询    
+
+##列表查询    
     
 **URL**    
 ```
@@ -15,7 +15,7 @@ http://sendcloud.sohu.com/webapi/list.get.json
 ```
     
 **HTTP请求方式** 
-```
+```bash
 post    get
 ```
     
@@ -70,7 +70,7 @@ http://sendcloud.sohu.com/webapi/list.get.json?api_user=***&api_key=***&limit=2
 ```
     
 - - -
-###列表创建
+##列表创建
     
 **URL**
 ```
@@ -123,7 +123,7 @@ http://sendcloud.sohu.com/webapi/list.create.json?api_user=***&api_key=***&addre
 ```
     
 - - -
-###列表修改
+##列表修改
 
 **URL**
 ```
@@ -173,7 +173,7 @@ http://sendcloud.sohu.com/webapi/list.update.json?api_user=***&api_key=***&addre
     
 - - -
 
-###列表删除
+##列表删除
 
 **URL**
 ```
@@ -214,7 +214,7 @@ http://sendcloud.sohu.com/webapi/list.delete.json?api_user=***&api_key=***&addre
     
 - - -
     
-###列表成员查询
+##列表成员查询
     
 **URL**
 ```
@@ -269,7 +269,7 @@ http://sendcloud.sohu.com/webapi/list_member.get.json?api_user=***&api_key=***&a
 
 - - -
 
-###列表成员添加
+##列表成员添加
     
 **URL**
 ```
@@ -326,7 +326,7 @@ requests.post("http://sendcloud.sohu.com/webapi/list_member.add.json",  param)
     
 - - -
     
-###列表成员更新
+##列表成员更新
     
 **URL**
 ```
@@ -380,7 +380,7 @@ requests.post("http://sendcloud.sohu.com/webapi/list_member.update.json",  param
     
 - - -
     
-###列表成员删除
+##列表成员删除
    
 **URL**
 ```

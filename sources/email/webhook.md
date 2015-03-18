@@ -1,6 +1,6 @@
-## WebHook详细
 
-### 签名验证
+- - -
+## 签名验证
 
 为了确保消息的来源身份是 SendCloud,  你可以选择对 POST 数据的来源进行安全认证. ( 不验证, 直接解析 POST 的数据也可以 ). 
 
@@ -42,11 +42,11 @@ public boolean verify(String appkey, String token, long timestamp,
 ```
     
 - - -
-### 事件说明
+## 事件说明
     
 目前 WebHook 支持的事件类型包括: 请求, 发送, 打开, 点击, 取消订阅, 软退信, 举报, 无效邮件.
 
-#### 请求事件 ( request )
+### 请求事件 ( request )
 
 **参数说明**
      
@@ -82,7 +82,7 @@ messageId: 1426571113174_27372_24044_6376.sc-10_10_127_119-inbound
 token: iSXtPWbCNO5qiBrLhTRX48dbRujd3t0lL8RLg7ocJbhiDh6WxJ
 ```
 - - - 
-#### 发送 ( deliver )
+### 发送 ( deliver )
     
 **参数说明**
     
@@ -114,7 +114,7 @@ signature: ac1ebc61754fde9553196d0a4c8e987e2891e03fccb283fc2c49ff42ad34b21f
 token: M1Q4BUFJRpQpjx9YIQvDz7ZCODPOYMHMKRLmS2Gd9rbxfcfGb8
 ```
 - - -
-#### 打开 ( open )
+### 打开 ( open )
     
 **参数说明**
     
@@ -156,7 +156,7 @@ mail_list_task_id:
 explorerName: Chromium
 ```
 - - -
-#### 点击 ( click )
+### 点击 ( click )
     
 **参数说明**
     
@@ -201,7 +201,7 @@ explorerName: Chromium
 ```
 
 - - -
-#### 取消订阅 ( unsubscribe )
+### 取消订阅 ( unsubscribe )
     
 **参数说明**
     
@@ -245,7 +245,7 @@ explorerName:
 ```
 - - - 
 
-#### 软退信 ( bounce )
+### 软退信 ( bounce )
     
 **参数说明**    
     
@@ -264,7 +264,7 @@ explorerName:
 |signature|string|签名字符串|
     
 - - - 
-#### 垃圾举报 ( report_spam )
+### 垃圾举报 ( report_spam )
     
 **参数说明** 
     
@@ -282,7 +282,7 @@ explorerName:
 |signature|string|签名字符串|
 
 - - - 
-#### 无效邮件 ( invalid )
+### 无效邮件 ( invalid )
     
 **参数说明** 
     
@@ -299,7 +299,7 @@ explorerName:
 |token|string|随机产生的长度为50的字符串|
 |signature|string|签名字符串|
 
-### mail_list_task_id_list
+## mail_list_task_id_list
 
 如果开发者使用地址列表来进行邮件发送, WEBAPI 会返回给用户一个 `mail_list_task_id_list`, 即获取一个 `task_id`.
 

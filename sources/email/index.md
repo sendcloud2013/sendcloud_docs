@@ -1,7 +1,5 @@
 
-## 规则
-
-### WEBAPI 的请求格式
+## WEBAPI 的请求格式
 
 `http://sendcloud.sohu.com/webapi/<模块>.<动作>.<格式>`
 
@@ -17,7 +15,7 @@
 **提示**: 所有的 WEBAPI 都支持 HTTPS. 
 - - -
 
-### WEBAPI 的响应格式
+## WEBAPI 的响应格式
 
 服务器根据 WEBAPI 请求时的格式, 来确定响应数据的格式. 如果请求时没有指定返回格式, API 会报错. 
 
@@ -37,7 +35,7 @@ WEBAPI 返回的信息, 示例如下:
 ```
 - - -
 
-### SMTP 请求方式
+## SMTP 请求方式
 
 为开发者提供 SMTP 协议的投递方式, 以下是会话过程. 详细的代码示例, 请移步[这里](../downloads/code/python.md#smtp)
 
@@ -84,7 +82,7 @@ S: 221 SendCloud Inbound Server closing connection. Have a jolly good day
 
 - - -
 
-### messageId 和 emailId
+## messageId 和 emailId
 
 `messageId` 是提交一次请求, 返回的消息编号.
 
@@ -111,7 +109,7 @@ emailId_C = messageId + to.index(C) + '$' + C
 ```
 - - -
 
-### 变量替换 
+## 变量替换 
 
 SendCloud 支持在邮件中使用「变量」. 
 
@@ -132,7 +130,7 @@ SendCloud 支持在邮件中使用「变量」.
 
 - - -
 
-### X-SMTPAPI 扩展字段 
+## X-SMTPAPI 扩展字段 
 
 X-SMTPAPI 是 SendCloud 为开发者提供的邮件个性化定制的处理方式, 开发者通过这个特殊的 **信头扩展字段**, 可以设置邮件处理方式的很多参数.  一般的, 开发者在使用 SMTP 接入时会使用此字段. 不过, WEBAPI 的方式也支持此参数. 
 
@@ -254,19 +252,4 @@ X-SMTPAPI 是一个 JSON 格式的字符串, 里面包含邮件处理方式的�
     }
 }
 ```
-
-- - -
-
-### 传送门
-
-* [邮件发送](send_email.md)
-* [邮件模板](template_do.md)
-* [地址列表](list_do.md)
-* [邮件标签](label_do.md)
-* [队列状态](queuestatus_do.md)
-* [数据统计](stats_do.md)
-* [用户信息](user_info.md)
-* [退信列表管理](bounce_do.md)
-* [取消订阅管理](unsubscribe_do.md)
-* [垃圾举报管理](spamreported_do.md)
 

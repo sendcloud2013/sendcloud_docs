@@ -1,4 +1,3 @@
-##退信列表管理
     
 由特定原因(如地址不存在等)被退信的邮件会进入此列表.
 
@@ -7,7 +6,7 @@
 你可以对此列表进行查询, 删除操作
     
 - - -
-###查询    
+##查询    
     
 **URL**    
 ```
@@ -62,7 +61,7 @@ http://sendcloud.sohu.com/webapi/bounces.get.json?api_user=***&api_key=***&email
     
 - - -
     
-###删除
+##删除
 
 **URL**    
 ```
@@ -109,7 +108,7 @@ http://sendcloud.sohu.com/webapi/bounces.delete.json?api_user=***&api_key=***&em
 ```    
 - - -
     
-###计数
+##计数
 
 **URL**
 ```

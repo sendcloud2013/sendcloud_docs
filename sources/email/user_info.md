@@ -1,5 +1,5 @@
 
-##用户信息查询
+## 用户信息查询
     
 通过此接口查询用户账户信息
     
@@ -100,7 +100,7 @@ http://sendcloud.sohu.com/webapi/apiUser.list.json?api_user=***&api_key=***
     
 - - -
 
-##域名查询
+## 域名查询
     
 通过此接口查询域名信息
     

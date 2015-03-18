@@ -1,9 +1,5 @@
 
-##数据统计 
-
-- - -
-
-###发送数据统计 (每天)
+##发送数据统计 (每天)
 
 按天统计的邮件数据
     
@@ -165,7 +161,7 @@ http://sendcloud.sohu.com/webapi/stats.get.json?api_user=***&api_key=***&start_d
 
 - - -
     
-###发送数据统计 (每小时)
+##发送数据统计 (每小时)
     
 按小时统计的邮件数据
     
@@ -269,7 +265,7 @@ http://sendcloud.sohu.com/webapi/stats.get.json?api_user=***&api_key=***&start_d
 
 - - -
     
-###无效邮件统计
+##无效邮件统计
 
 查询无效邮件的分类统计信息
     

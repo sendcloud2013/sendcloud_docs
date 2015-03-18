@@ -1,11 +1,10 @@
-##邮件标签
-       
+
 标签为用户发送邮件提供了另一个维度的统计方式.
     
 你可以使用 API 进行标签的查询, 添加, 删除, 更新操作
     
 - - -
-###查询    
+##查询    
     
 **URL**    
 ```
@@ -49,7 +48,7 @@ http://sendcloud.sohu.com/webapi/label.get.json?api_user=***&api_key=***&labelId
 ```
     
 - - -
-###添加
+##添加
     
 **URL**
 ```
@@ -95,7 +94,7 @@ http://sendcloud.sohu.com/webapi/label.create.json?api_user=***&api_key=***&labe
     
 - - -
 
-###删除
+##删除
 
 **URL**
 ```
@@ -135,7 +134,7 @@ http://sendcloud.sohu.com/webapi/label.delete.json?api_user=***&api_key=***&labe
 ```
     
 - - -
-###更新
+##更新
 
 **URL**
 ```

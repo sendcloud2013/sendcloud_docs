@@ -1,4 +1,3 @@
-##邮件模板
 
 开发者利用**模板**, 可以方便的为不同用户批量发送相似内容.
 
@@ -6,7 +5,7 @@
     
 - - -        
 
-###查询    
+##查询    
 
 返回邮件模板的详细信息
     
@@ -33,7 +32,7 @@ post    get
     
 **请求示例**
 ```
-curl http://sendcloud.sohu.com/webapi/template.get.json?api_user=***&api_key=***
+http://sendcloud.sohu.com/webapi/template.get.json?api_user=***&api_key=***
 ```
     
 **返回值说明**    
@@ -68,7 +67,7 @@ curl http://sendcloud.sohu.com/webapi/template.get.json?api_user=***&api_key=***
  
 - - -
     
-###添加    
+##添加    
     
 **URL**    
 ```
@@ -118,7 +117,7 @@ curl -d 'api_user=***&api_key=***&invoke_name=testtemplate&name=test&html=<p>add
 
 - - -
     
-###删除    
+##删除    
     
 **URL**    
 ```
@@ -159,7 +158,7 @@ curl http://sendcloud.sohu.com/webapi/template.delete.json?api_user=***&api_key=
  
 - - -
     
-###更新    
+##更新    
     
 用于更新模板的内容
 

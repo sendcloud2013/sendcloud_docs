@@ -1,6 +1,5 @@
-##取消订阅列表管理
 
-当用户选择*退订邮件*时, 他的邮件地址就会被添加到此列表中.
+当用户选择退订邮件时, 他的邮件地址就会被添加到此列表中.
 
 在此列表中的邮件地址, 都不会再被发送邮件.
     
@@ -8,7 +7,7 @@
      
 - - -
 
-###查询
+##查询
      
 **URL**
 ```  
@@ -87,7 +86,7 @@ http://sendcloud.sohu.com/webapi/unsubscribes.get.json?api_user=***&api_key=***&
 
 - - -
    
-###添加
+##添加
     
 **URL**
 ```
@@ -140,7 +139,7 @@ http://sendcloud.sohu.com/webapi/unsubscribes.add.json?api_user=***&api_key=***&
 ```
 - - - 
     
-###删除
+##删除
     
 **URL**
 ```
