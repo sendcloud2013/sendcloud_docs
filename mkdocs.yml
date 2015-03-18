@@ -51,6 +51,7 @@ pages:
 - [downloads/code/ruby.md, '代码示例','Ruby']
 - [downloads/code/perl.md, '代码示例','Perl']
 - [downloads/code/csharp.md, '代码示例','C#']
+- [downloads/code/golang.md, '代码示例','Golang']
 
 - [faq/index.md, 'FAQ', 'FAQ']
 
