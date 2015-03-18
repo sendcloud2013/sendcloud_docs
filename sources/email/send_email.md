@@ -34,7 +34,7 @@ post | get
 |files|string|否|邮件附件. 发送附件时, 必须使用 multipart/form-data 进行 post 提交 (表单提交)|  
 |x_smtpapi|string|否|SMTP 扩展字段. 详见 [X-SMTPAPI](index.md#x-smtpapi). |  
 |resp_email_id|string (true, false)|否|是否返回 [emailId](index.md#messageid-emailid). 有多个收件人时, 会返回 emailId 的列表|  
-|use_maillist|string (true, false)|否|参数 to 是否支持`含有`地址列表. 比如: `to=ben@ifaxin.com;users@maillist.sendcloud.org`| 
+|use_maillist|string (true, false)|否|参数 to 是否`含有`地址列表. 比如: `to=ben@ifaxin.com;users@maillist.sendcloud.org`| 
 |gzip_compress|string (true, false)|否|邮件内容是否使用gzip压缩. 默认不使用 gzip 压缩正文|  
 
 注意:
