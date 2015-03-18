@@ -1,4 +1,4 @@
-### WEBAPI 方式一
+## WEBAPI 方式一
 
 ```
 <?php
@@ -33,7 +33,7 @@ echo send_mail();
     
 - - -
     
-### WEBAPI 方式二
+## WEBAPI 方式二
 ```
 <?php
 function send_mail() {
@@ -70,7 +70,7 @@ echo send_mail();
     
 - - -
     
-### SMTP
+## SMTP
     
 此代码依赖邮件发送模块,首先需安装pear.
     

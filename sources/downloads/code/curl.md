@@ -1,5 +1,5 @@
 
-### WEBAPI
+## WEBAPI
 ```
 # 普通发送
 curl 'http://sendcloud.sohu.com/webapi/mail.send.json?api_user=***&api_key=***&from=test@test.com&fromname=来自测试发送&subject=测试&html=这是一封测试邮件&to=ben@ifaxin.com;joe@ifaxin.com&cc=bida@ifaxin.com&bcc=lianzimi@ifaxin.com&replyto=reply@test.com&resp_email_id=true'
@@ -18,7 +18,7 @@ curl -F api_user='***' -F api_key='***' -F from='test@test.com' -F fromname='来
 
 - - - 
     
-### SMTP
+## SMTP
 ```
 curl smtp://smtpcloud.sohu.com:25 -v \
 --mail-from "sendcloud@sendcloud.org" \ 
