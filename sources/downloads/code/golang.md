@@ -1,4 +1,6 @@
 ##WEBAPI
+
+感谢 Dannys Han ^_^
    
 - - -
 ```
@@ -16,8 +18,8 @@ func SendMail() {
     RequestURI := "http://sendcloud.sohu.com/webapi/mail.send.json"
     //不同于登录SendCloud站点的帐号，您需要登录后台创建发信子帐号，使用子帐号和密码才可以进行邮件的发送。
     PostParams := url.Values{
-        "api_user": {"handaoliang_test_qeIyOO"},
-        "api_key":  {"WM9B0sUkTAFOYDC0"},
+        "api_user": {"***"},
+        "api_key":  {"***"},
         "from":     {"service@sendcloud.im"},
         "fromname": {"SendCloud测试邮件"},
         "to":       {"handaoliang@gmail.com"},
