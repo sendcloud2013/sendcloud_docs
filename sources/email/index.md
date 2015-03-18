@@ -138,7 +138,7 @@ X-SMTPAPI 是 SendCloud 为开发者提供的邮件个性化定制的处理方�
 
 X-SMTPAPI 是一个 JSON 格式的字符串, 里面包含邮件处理方式的参数. 具体用法见下: 
 
-**`to` 含有收件人地址的数组**. X-SMTPAPI 里的 `to` 会覆盖真实收件人参数 `to, cc, bcc` .
+**`to` 含有收件人地址的数组**. X-SMTPAPI 里的 `to` 会覆盖收件人参数 `to` .
 ```    
     {
         "to": ["ben@ifaxin.com", "joe@ifaxin.com"]
