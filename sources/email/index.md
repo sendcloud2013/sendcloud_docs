@@ -14,6 +14,7 @@
      /mail.send.json  # 邮件发送, 返回 JSON
      /list.create.xml # 地址列表创建, 返回 XML
 
+**提示**: 所有的 WEBAPI 都支持 HTTPS. 
 - - -
 
 ### WEBAPI 的响应格式
