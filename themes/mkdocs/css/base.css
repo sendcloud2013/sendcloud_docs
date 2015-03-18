@@ -103,7 +103,9 @@ footer {
 }
 .content-body h2 {
     font-size: 24px;
-    font-weight: bold;
+    line-height: 1.7;
+    font-weight: 500;
+    color: #3E8CE4;
 }
 .content-body h3 {
     font-size: 20px;
