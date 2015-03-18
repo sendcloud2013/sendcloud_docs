@@ -14,6 +14,7 @@
      /mail.send.json  # 邮件发送, 返回 JSON
      /list.create.xml # 地址列表创建, 返回 XML
 
+**提示**: 所有的 WEBAPI 都支持 HTTPS. 
 - - -
 
 ### WEBAPI 的响应格式
@@ -51,11 +52,11 @@ S: 250-8BITMIME
 S: 250-SIZE 16000000
 S: 250 AUTH LOGIN
 
-C: AUTH LOGIN cG9zdG1hc3RlckBkZWxvbmdiYXQuc2VuZGNsb3VkLm9yZw==
+C: AUTH LOGIN base64(api_user)
 
 S: 334 UGFzc3dvcmQ6
 
-C: ZGVsb25n
+C: base64(api_key)
 
 S: 235 Authentication successful
 
@@ -137,7 +138,7 @@ X-SMTPAPI 是 SendCloud 为开发者提供的邮件个性化定制的处理方�
 
 X-SMTPAPI 是一个 JSON 格式的字符串, 里面包含邮件处理方式的参数. 具体用法见下: 
 
-**`to` 含有收件人地址的数组**. X-SMTPAPI 里的 `to` 会覆盖真实收件人参数 `to, cc, bcc` .
+**`to` 含有收件人地址的数组**. X-SMTPAPI 里的 `to` 会覆盖收件人参数 `to` .
 ```    
     {
         "to": ["ben@ifaxin.com", "joe@ifaxin.com"]
@@ -203,19 +204,8 @@ X-SMTPAPI 是一个 JSON 格式的字符串, 里面包含邮件处理方式的�
     },
     "section":
     {
-        "to": ["ben@ifaxin.com", "joe@ifaxin.com", "bida@ifaxin.com"],
-        "sub":
-        {
-            "%name%": ["Ben", "Joe", "Liubida"],
-            "%money%":[288, 497, 688], 
-            "%role%":["银牌", "金牌", "金牌"]
-            "%role_words%":["%silver%", "%golden%", "%golden%"]
-        },
-        "section":
-        {
-            "silver": "some words written to silver user, maybe it is verrrrrrrrry long",
-            "golden": "some words written to golden user, maybe it is verrrrrrrrry long, too",
-        }
+        "silver": "some words written to silver user, maybe it is verrrrrrrrry long",
+        "golden": "some words written to golden user, maybe it is verrrrrrrrry long, too",
     }
 }
 

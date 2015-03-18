@@ -1,52 +1,56 @@
 ### WEBAPI
 
 ```
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.util.EntityUtils;
-
 public class JavaWebapi {
 
-    /**
-     * @param args
-     * @throws IOException 
-     * @throws ClientProtocolException 
-     */
     public static void main(String[] args) throws ClientProtocolException, IOException {
 
+
         String url = "http://sendcloud.sohu.com/webapi/mail.send.json";
+        
+        final String apiUser = "***";
+        final String apiKey = "***";
+        
+        String rcpt_to = "***";
+        
+        HttpPost httpPost = new HttpPost(url);
         HttpClient httpclient = new DefaultHttpClient();
-        HttpPost httpost = new HttpPost(url);
 
-        List nvps = new ArrayList();
-        nvps.add(new BasicNameValuePair("api_user", "***")); # 使用api_user和api_key进行验证
-        nvps.add(new BasicNameValuePair("api_key", "***"));
-        nvps.add(new BasicNameValuePair("from", "sendcloud@sendcloud.org")); # 发信人，用正确邮件地址替代
-        nvps.add(new BasicNameValuePair("to", "to1@domain.com;to2@domain.com")); # 收件人地址，用正确邮件地址替代，多个地址用';'分隔
-        nvps.add(new BasicNameValuePair("subject", "SendCloud java webapi example"));
-        nvps.add(new BasicNameValuePair("html", "<html><head></head><body><p>欢迎使用<a href='http://sendcloud.sohu.com'>SendCloud</a></p></body></html>"));
-        httpost.setEntity(new UrlEncodedFormEntity(nvps, "UTF-8"));
-
-        HttpResponse response = httpclient.execute(httpost);
-
-        if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) { // 正常返回
+        // 组装基本邮件的参数
+        MultipartEntity entity = new MultipartEntity(HttpMultipartMode.BROWSER_COMPATIBLE, null, Charset.forName("UTF-8"));
+        entity.addPart("api_user", new StringBody(apiUser, Charset.forName("UTF-8")));
+        entity.addPart("api_key", new StringBody(apiKey, Charset.forName("UTF-8")));
+        entity.addPart("to", new StringBody(rcpt_to, Charset.forName("UTF-8")));
+        entity.addPart("from", new StringBody("sendcloud@sendcloud.org", Charset.forName("UTF-8")));
+        entity.addPart("fromname", new StringBody("SendCloud", Charset.forName("UTF-8")));
+        entity.addPart("subject", new StringBody("SendCloud java webapi example", Charset.forName("UTF-8")));
+        entity.addPart("html",
+                new StringBody("<html><head></head><body><p>欢迎使用<a href='http://sendcloud.sohu.com'>SendCloud</a></p></body></html>", Charset.forName("UTF-8")));
+        entity.addPart("resp_email_id", new StringBody("true"));
+        
+        // 添加附件
+        File file = new File("/path/file");
+        FileBody attachment = new FileBody(file, "application/octet-stream", "UTF-8");
+        entity.addPart("files", attachment);
+        
+        // 添加附件, 文件流形式
+        // File file = new File("/path/file");
+        // String attachName = "attach.txt";
+        // InputStreamBody is = new InputStreamBody(new FileInputStream(file), attachName);
+        // entity.addPart("files", is);
+        
+        httpPost.setEntity(entity);
+            
+        HttpResponse response = httpclient.execute(httpPost);
+        // 处理响应
+        if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+            // 正常返回, 解析返回数据
             System.out.println(EntityUtils.toString(response.getEntity()));
         } else {
             System.err.println("error");
         }
-
+        httpPost.releaseConnection();
     }
-
 }
 ```
 
@@ -90,11 +94,6 @@ public class JavaSmtpExample {
         return messageId;
     }
 
-    /**
-     * @param args
-     * @throws MessagingException
-     * @throws UnsupportedEncodingException
-     */
     public static void main(String[] args) throws MessagingException, UnsupportedEncodingException {
 
         // 配置javamail
@@ -105,14 +104,13 @@ public class JavaSmtpExample {
         props.setProperty("mail.smtp.auth", "true");
         props.put("mail.smtp.connectiontimeout", 180);
         props.put("mail.smtp.timeout", 600);
-
         props.setProperty("mail.mime.encodefilename", "true");
 
         // 使用api_user和api_key进行验证
         final String apiUser = "***";
         final String apiKey = "***";
-        
-        String to = "123@qq.com";
+
+        String to = "***";
 
         Session mailSession = Session.getInstance(props, new Authenticator() {
             @Override
@@ -121,31 +119,39 @@ public class JavaSmtpExample {
             }
         });
 
-        // Transport transport = mailSession.getTransport();
         SMTPTransport transport = (SMTPTransport) mailSession.getTransport("smtp");
+
         MimeMessage message = new MimeMessage(mailSession);
+        // 发信人
+        message.setFrom(new InternetAddress("from@sendcloud.org", "fromname", "UTF-8"));
+        // 收件人地址
+        message.addRecipient(RecipientType.TO, new InternetAddress(to));
+        // 邮件主题
+        message.setSubject("SendCloud java smtp example", "UTF-8");
+
         Multipart multipart = new MimeMultipart("alternative");
 
         // 添加html形式的邮件正文
-        BodyPart part1 = new MimeBodyPart();
-        part1.setHeader("Content-Type", "text/html;charset=UTF-8");
-        part1.setHeader("Content-Transfer-Encoding", "base64");
-        String htmlContent = "<html><head></head><body>" + "<p>欢迎使用<a href='http://sendcloud.sohu.com'>SendCloud!</a></p>" + "</body></html> ";
-        part1.setContent(htmlContent, "text/html;charset=UTF-8");
-        multipart.addBodyPart(part1);
-        message.setContent(multipart);
+        String html = "<html><head></head><body>" + "<p>欢迎使用<a href='http://sendcloud.sohu.com'>SendCloud!</a></p>" + "</body></html> ";
+        BodyPart contentPart = new MimeBodyPart();
+        contentPart.setHeader("Content-Type", "text/html;charset=UTF-8");
+        contentPart.setHeader("Content-Transfer-Encoding", "base64");
+        contentPart.setContent(html, "text/html;charset=UTF-8");
+        multipart.addBodyPart(contentPart);
 
-        // 发信人，用正确邮件地址替代
-        message.setFrom(new InternetAddress("from@sendcloud.org", "fromname", "UTF-8"));
-        // 收件人地址，用正确邮件地址替代
-        message.addRecipient(RecipientType.TO, new InternetAddress(to));
-        // 邮件主题
-        message.setSubject("SendCloud Java Smtp Example", "UTF-8");
+        // 添加附件 ( smtp 方式没法使用文件流 )
+        File file = new File("/path/file");
+        BodyPart attachmentBodyPart = new MimeBodyPart();
+        DataSource source = new FileDataSource(file);
+        attachmentBodyPart.setDataHandler(new DataHandler(source));
+        attachmentBodyPart.setFileName(MimeUtility.encodeWord(file.getName()));
+        multipart.addBodyPart(attachmentBodyPart);
+        message.setContent(multipart);
 
         // 连接sendcloud服务器，发送邮件
         transport.connect();
         transport.sendMessage(message, message.getRecipients(RecipientType.TO));
-        
+
         String messageId = getMessage(transport.getLastServerResponse());
         String emailId = messageId + "0$" + to;
         System.out.println("messageId:" + messageId);
