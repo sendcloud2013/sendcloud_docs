@@ -204,19 +204,8 @@ X-SMTPAPI 是一个 JSON 格式的字符串, 里面包含邮件处理方式的�
     },
     "section":
     {
-        "to": ["ben@ifaxin.com", "joe@ifaxin.com", "bida@ifaxin.com"],
-        "sub":
-        {
-            "%name%": ["Ben", "Joe", "Liubida"],
-            "%money%":[288, 497, 688], 
-            "%role%":["银牌", "金牌", "金牌"]
-            "%role_words%":["%silver%", "%golden%", "%golden%"]
-        },
-        "section":
-        {
-            "silver": "some words written to silver user, maybe it is verrrrrrrrry long",
-            "golden": "some words written to golden user, maybe it is verrrrrrrrry long, too",
-        }
+        "silver": "some words written to silver user, maybe it is verrrrrrrrry long",
+        "golden": "some words written to golden user, maybe it is verrrrrrrrry long, too",
     }
 }
 
