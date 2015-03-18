@@ -12,7 +12,7 @@ http://sendcloud.sohu.com/sms/send
 json
 ```
 
-**HTTP 请求方式**    
+**HTTP请求方式**    
 ```
 POST    
 ```
@@ -46,7 +46,7 @@ http://sendcloud.sohu.com/sms/sendn
 json
 ```
 
-**HTTP 请求方式**    
+**HTTP请求方式**    
 ```
 POST    
 ```
@@ -81,7 +81,7 @@ http://sendcloud.sohu.com/timestamp/get
 json
 ```
 
-**HTTP 请求方式**    
+**HTTP请求方式**    
 ```
 GET
 ```
@@ -90,4 +90,53 @@ GET
 
 无
 
-    
+- - - 
+
+## 返回码
+
+短信 API 返回的结果是 JSON 格式, 示例如下: 
+
+```
+# 请求成功
+{
+    "message":"请求成功",
+    "info":{},
+    "result":true,
+    "statusCode":200
+}
+
+# 手机号格式错误
+{
+    "message":"手机号格式错误",
+    "info":{},
+    "result":false,
+    "statusCode":412
+}
+
+# 部分成功
+{
+    "message":"部分成功",
+    "info":{
+            "successCount":1,
+            "failedCount":1,
+            "items":[{"phone":"1312222","vars":{},"message":"手机号格式错误"}]
+            },
+    "result":true,
+    "statusCode":311
+}
+
+```
+* result: API 请求是否成功
+* statusCode: API 返回码
+* message: API 返回码的中文解释
+* info: 更多信息, 比如: *部分成功*则返回具体失败信息, *获取时间戳*则返回时间戳的值
+
+|API 返回码|含义|
+|:---------|:---|
+|200|发送成功|
+|311|部分成功|
+|401|短信内容不能为空|
+|411|手机号不能为空|
+|412|手机号格式错误|
+|413|有重复的手机号|
+|421|签名参数错误|

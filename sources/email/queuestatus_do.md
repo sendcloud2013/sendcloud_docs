@@ -11,7 +11,7 @@ http://sendcloud.sohu.com/webapi/queueStatus.get.json
 ```    
     
 **HTTP请求方式**    
-```
+```bash
 post    get
 ```
     

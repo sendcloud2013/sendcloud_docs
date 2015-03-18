@@ -9,7 +9,7 @@ http://sendcloud.sohu.com/webapi/stats.get.json
 ```
     
 **HTTP请求方式**   
-```
+```bash
 post    get
 ```
     
@@ -171,7 +171,7 @@ http://sendcloud.sohu.com/webapi/statsHour.get.json
 ```
     
 **HTTP请求方式**   
-```
+```bash
 post    get
 ```
     
@@ -275,7 +275,7 @@ http://sendcloud.sohu.com/webapi/invalidStat.get.json
 ```
     
 **HTTP请求方式**   
-```
+```bash
 post    get
 ```
     

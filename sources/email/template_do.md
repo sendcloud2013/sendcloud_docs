@@ -15,7 +15,7 @@ http://sendcloud.sohu.com/webapi/template.get.json
 ```
     
 **HTTP请求方式**
-```
+```bash
 post    get
 ```
     
@@ -75,7 +75,7 @@ http://sendcloud.sohu.com/webapi/template.add.json
 ```
     
 **HTTP请求方式**
-```
+```bash
 post    get
 ```
     
@@ -125,7 +125,7 @@ http://sendcloud.sohu.com/webapi/template.delete.json
 ```
     
 **HTTP请求方式**
-```
+```bash
 post    get
 ```
     
@@ -168,7 +168,7 @@ http://sendcloud.sohu.com/webapi/template.update.json
 ```
     
 **HTTP请求方式**
-```
+```bash
 post    get
 ```
     

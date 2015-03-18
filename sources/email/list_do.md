@@ -78,7 +78,7 @@ http://sendcloud.sohu.com/webapi/list.create.json
 ```
     
 **HTTP请求方式**
-```
+```bash
 post    get
 ```
     
@@ -131,7 +131,7 @@ http://sendcloud.sohu.com/webapi/list.update.json
 ```
     
 **HTTP请求方式**
-```
+```bash
 post    get
 ```
     
@@ -181,7 +181,7 @@ http://sendcloud.sohu.com/webapi/list.delete.json
 ```
     
 **HTTP请求方式**
-```
+```bash
 post    get
 ```
     
@@ -222,7 +222,7 @@ http://sendcloud.sohu.com/webapi/list_member.get.json
 ```
     
 **HTTP请求方式**
-```
+```bash
 post    get
 ```
     
@@ -277,7 +277,7 @@ http://sendcloud.sohu.com/webapi/list_member.get.json?api_user=***&api_key=***&a
 ```
      
 **HTTP请求方式**
-```
+```bash
 post    get
 ```
     
@@ -334,7 +334,7 @@ http://sendcloud.sohu.com/webapi/list_member.update.json
 ```
     
 **HTTP请求方式**
-```
+```bash
 post    get
 ```
     
@@ -388,7 +388,7 @@ http://sendcloud.sohu.com/webapi/list_member.delete.json
 ```
     
 **HTTP请求方式**
-```
+```bash
 post    get
 ```
     
