@@ -52,11 +52,11 @@ S: 250-8BITMIME
 S: 250-SIZE 16000000
 S: 250 AUTH LOGIN
 
-C: AUTH LOGIN cG9zdG1hc3RlckBkZWxvbmdiYXQuc2VuZGNsb3VkLm9yZw==
+C: AUTH LOGIN base64(api_user)
 
 S: 334 UGFzc3dvcmQ6
 
-C: ZGVsb25n
+C: base64(api_key)
 
 S: 235 Authentication successful
 
