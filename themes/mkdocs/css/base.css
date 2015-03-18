@@ -126,14 +126,42 @@ footer {
     line-height: 1.428571429;
     margin: 20px 0;
 }
-.content-body blockquote{
+.content-body blockquote {
     border-left: 2px solid #3E8CE4;
     padding: 4px 10px;
-    background: #f6f6f6; 
+    background: #f6f6f6;
 }
-.content-body blockquote p{
+.content-body blockquote p {
     font-size: 12px;
     line-height: 1.75;
+}
+.content-body .table {
+    border: 1px solid #dddddd;
+    width: 100%;
+    margin-bottom: 18px;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.content-body .table th {
+    background: #eee;
+    padding: 8px;
+    line-height: 1.428571429;
+    vertical-align: top;
+    border: 1px solid #dddddd;
+}
+.content-body .table td {
+    padding: 8px;
+    line-height: 1.428571429;
+    vertical-align: top;
+    border: 1px solid #dddddd;
+}
+.content-body ul {
+    padding: 10px 0px 10px 20px;
+    list-style-position: inherit;
+    list-style: circle;
+}
+.content-body ul li {
+    padding-bottom: 5px;
 }
 /* First level of nav */
 
