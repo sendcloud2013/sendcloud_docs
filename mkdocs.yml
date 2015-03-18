@@ -6,15 +6,17 @@ repo_url: https://github.com/sendcloud2013/sendcloud_docs/blob/master/sources/in
 
 docs_dir: sources
 
-#theme_dir: theme/updocs
+theme_dir: themes/mkdocs
 
 theme_center_lead: false
 
 include_search: true
 
+include_next_prev: false
+
 copyright: Copyright &copy; 2015, SendCloud
 
-author: liubida && lianzimi
+author: liubida && lianzimi && xuhong
 
 pages:
 # Develop Guide
@@ -51,6 +53,5 @@ pages:
 
 - [faq/index.md, 'FAQ', 'FAQ']
 
-#theme: readthedocs
 
-
+# theme: mkdocs
