@@ -298,15 +298,7 @@ post    get
     
 **请求示例(python)**
 ```
-param = {
-         "api_user":"***",
-         "api_key":"***",
-         "mail_list_addr":"newtest@maillist.sendcloud.org",
-         "member_addr":"newaddress1@163.com;newaddress2@qq.com",
-         "name":"new1;new2",
-         "vars":"{'%money%':1000,'age':20};{'%money%':900,'age':21}"
-         }
-requests.post("http://sendcloud.sohu.com/webapi/list_member.add.json",  param)
+curl --data-urlencode "vars={'%money%':99};{'%money%':900}" -d 'api_user=***&api_key=***&mail_list_addr=yourlist@maillist.sendcloud.org&member_addr=test1@163.com;test2@qq.com&name=lucy;lily&upsert=True'  http://sendcloud.sohu.com/webapi/list_member.add.json
 ```
     
 **返回值说明**
@@ -353,15 +345,7 @@ post    get
     
 **请求示例(python)**
 ```
-param = {
-          "api_user":"***",
-          "api_key":"***",
-          "mail_list_addr":"newtest@maillist.sendcloud.org",
-          "member_addr":"newaddress1@163.com;newaddress2@qq.com",
-          "name":"new3;new4",
-          "vars":"{'%money%':10001,'age':22};{'%money%':900,'age':23}"
-          }
-requests.post("http://sendcloud.sohu.com/webapi/list_member.update.json",  param)
+curl --data-urlencode "vars={'%money%':99};{'%money%':900}" -d 'api_user=***&api_key=***&mail_list_addr=yourlist@maillist.sendcloud.org&member_addr=test1@163.com;test2@qq.com&name=lucy;lily'  http://sendcloud.sohu.com/webapi/list_member.update.json
 ```
     
 **返回值说明**
