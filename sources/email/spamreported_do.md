@@ -14,7 +14,7 @@ https://sendcloud.sohu.com/webapi/spamReported.get.json
 ```
    
 **HTTP请求方式**   
-```
+```bash
 post    get
 ```
     

@@ -78,7 +78,7 @@ http://sendcloud.sohu.com/webapi/list.create.json
 ```
     
 **HTTP请求方式**
-```
+```bash
 post    get
 ```
     
@@ -131,7 +131,7 @@ http://sendcloud.sohu.com/webapi/list.update.json
 ```
     
 **HTTP请求方式**
-```
+```bash
 post    get
 ```
     
@@ -181,7 +181,7 @@ http://sendcloud.sohu.com/webapi/list.delete.json
 ```
     
 **HTTP请求方式**
-```
+```bash
 post    get
 ```
     
@@ -222,7 +222,7 @@ http://sendcloud.sohu.com/webapi/list_member.get.json
 ```
     
 **HTTP请求方式**
-```
+```bash
 post    get
 ```
     
@@ -277,7 +277,7 @@ http://sendcloud.sohu.com/webapi/list_member.get.json?api_user=***&api_key=***&a
 ```
      
 **HTTP请求方式**
-```
+```bash
 post    get
 ```
     
@@ -298,7 +298,7 @@ post    get
     
 **请求示例(python)**
 ```
-curl --data-urlencode "vars={'%money%':99};{'%money%':900}" -d 'api_user=***&api_key=***&mail_list_addr=yourlist@maillist.sendcloud.org&member_addr=test1@163.com;test2@qq.com&name=lucy;lily&upsert=True'  http://sendcloud.sohu.com/webapi/list_member.add.json
+curl --data-urlencode "vars={'%money%':99};{'%money%':900}" -d 'api_user=***&api_key=***&mail_list_addr=yourlist@maillist.sendcloud.org&member_addr=test1@163.com;test2@qq.com&name=lucy;lily&upsert=true'  http://sendcloud.sohu.com/webapi/list_member.add.json
 ```
     
 **返回值说明**
@@ -326,7 +326,7 @@ http://sendcloud.sohu.com/webapi/list_member.update.json
 ```
     
 **HTTP请求方式**
-```
+```bash
 post    get
 ```
     
@@ -372,7 +372,7 @@ http://sendcloud.sohu.com/webapi/list_member.delete.json
 ```
     
 **HTTP请求方式**
-```
+```bash
 post    get
 ```
     

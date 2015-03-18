@@ -14,7 +14,7 @@ http://sendcloud.sohu.com/webapi/bounces.get.json
 ```
     
 **HTTP请求方式** 
-```
+```bash
 post    get
 ```
     
@@ -69,7 +69,7 @@ http://sendcloud.sohu.com/webapi/bounces.delete.json
 ```
     
 **HTTP请求方式** 
-```
+```bash
 post    get
 ```
     
@@ -116,7 +116,7 @@ http://sendcloud.sohu.com/webapi/bounces.count.json
 ```
     
 **HTTP请求方式**
-```
+```bash
 post    get
 ```
     

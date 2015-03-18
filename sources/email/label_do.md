@@ -12,7 +12,7 @@ http://sendcloud.sohu.com/webapi/label.get.json
 ```
     
 **HTTP请求方式** 
-```
+```bash
 post    get
 ```
     
@@ -56,7 +56,7 @@ http://sendcloud.sohu.com/webapi/label.create.json
 ```
     
 **HTTP请求方式**
-```
+```bash
 post    get
 ```
     
@@ -102,7 +102,7 @@ http://sendcloud.sohu.com/webapi/label.delete.json
 ```
     
 **HTTP请求方式**
-```
+```bash
 post    get
 ```
     
@@ -142,7 +142,7 @@ http://sendcloud.sohu.com/webapi/label.update.json
 ```
     
 **HTTP请求方式**
-```
+```bash
 post    get
 ```
     

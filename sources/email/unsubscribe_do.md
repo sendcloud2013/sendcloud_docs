@@ -15,7 +15,7 @@ http://sendcloud.sohu.com/webapi/unsubscribes.get.json
 ```
    
 **HTTP请求方式**   
-```
+```bash
 post    get
 ```
     
@@ -94,7 +94,7 @@ http://sendcloud.sohu.com/webapi/unsubscribes.add.json
 ```
     
 **HTTP请求方式** 
-```
+```bash
 POST    get 
 ```
       
@@ -147,7 +147,7 @@ http://sendcloud.sohu.com/webapi/unsubscribes.delete.json
 ```
     
 **HTTP请求方式** 
-```
+```bash
 post    get 
 ```
     

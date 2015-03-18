@@ -9,7 +9,7 @@ http://sendcloud.sohu.com/webapi/userinfo.get.json
 ```
     
 **HTTP请求方式**
-```
+```bash
 post    get
 ```
     
@@ -67,7 +67,7 @@ http://sendcloud.sohu.com/webapi/apiUser.list.json
 ```
     
 **HTTP请求方式**
-```
+```bash
 post    get
 ```
     
@@ -110,7 +110,7 @@ http://sendcloud.sohu.com/webapi/domain.list.json
 ```
     
 **HTTP请求方式**
-```
+```bash
 post    get
 ```
     

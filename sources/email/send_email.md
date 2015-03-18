@@ -7,8 +7,8 @@ http://sendcloud.sohu.com/webapi/mail.send.json
 ```
    
 **HTTP请求方式** 
-```
-post | get
+```bash
+post   get
 ```
 
 **参数说明**    
@@ -25,6 +25,7 @@ post | get
 |bcc|string|否|密送地址. 多个地址使用';'分隔|  
 |cc|string|否|抄送地址. 多个地址使用';'分隔|  
 |replyto|string|否|默认的回复邮件地址. 如果 replyto 没有或者为空, 则默认的回复邮件地址为 from|  
+|label|int|否|本次发送所使用的标签ID. 此标签需要事先创建|  
 |headers|string|否|邮件头部信息. JSON 格式, 比如:`{"header1": "value1", "header2": "value2"}`|  
 |files|string|否|邮件附件. 发送附件时, 必须使用 multipart/form-data 进行 post 提交 (表单提交)|  
 |x_smtpapi|string|否|SMTP 扩展字段. 详见 [X-SMTPAPI](index.md#x-smtpapi). |  
@@ -37,12 +38,15 @@ post | get
 1. API 参数 to 的收件人是全部显示在邮件中, X-SMTPAPI 中的 to 是独立显示在邮件中
 2. 如果 X-SMTPAPI 中指定了 to, 那么API 参数中的 to 会被忽略, cc 和 bcc 依然有效
 3. X-SMTPAPI 中的字段 to, API中的参数 cc, bcc 都不支持地址列表
+4. API 参数 to 的收件人个数不能超过100
+5. X-SMTPAPI 中的 to 的收件人个数不能超过100
+6. 地址列表中的收件人个数不能超过 100000
 
 **请求, 返回值示例**
 
 普通发送 ( get 方式, 使用to, cc, bcc, 返回emailId )
 ```
-curl 'http://sendcloud.sohu.com/webapi/mail.send.json?api_user=***&api_key=***&from=test@test.com&fromname=来自测试发送&subject=测试&html=这是一封测试邮件&to=ben@ifaxin.com;joe@ifaxin.com&cc=bida@ifaxin.com&bcc=lianzimi@ifaxin.com&replyto=reply@test.com&resp_email_id=true'
+curl 'http://sendcloud.sohu.com/webapi/mail.send.json?api_user=***&api_key=***&from=test@test.com&fromname=来自测试发送&subject=测试&html=这是一封测试邮件&to=ben@ifaxin.com;joe@ifaxin.com&cc=bida@ifaxin.com&bcc=lianzimi@ifaxin.com&replyto=reply@test.com&label=16800&resp_email_id=true'
 # 返回值
 {
     "message":"success",
@@ -57,7 +61,7 @@ curl 'http://sendcloud.sohu.com/webapi/mail.send.json?api_user=***&api_key=***&f
 
 普通发送 ( post 方式, 同时使用to, cc, bcc 和 x_smtpapi, 返回emailId )
 ```
-curl -d 'api_user=***&api_key=***&from=test@test.com&fromname=来自测试发送&subject=测试&html=这是一封测试邮件&to=ben@ifaxin.com;joe@ifaxin.com&cc=bida@ifaxin.com&bcc=lianzimi@ifaxin.com&replyto=reply@test.com&resp_email_id=true&x_smtpapi={"to":["mary@ifaxin.com", "karl@ifaxin.com"]}' http://sendcloud.sohu.com/webapi/mail.send.json
+curl -d 'api_user=***&api_key=***&from=test@test.com&fromname=来自测试发送&subject=测试&html=这是一封测试邮件&to=ben@ifaxin.com;joe@ifaxin.com&cc=bida@ifaxin.com&bcc=lianzimi@ifaxin.com&replyto=reply@test.com&label=16800&resp_email_id=true&x_smtpapi={"to":["mary@ifaxin.com", "karl@ifaxin.com"]}' http://sendcloud.sohu.com/webapi/mail.send.json
 # 返回值
 {
     "message":"success",
@@ -110,8 +114,8 @@ http://sendcloud.sohu.com/webapi/mail.send_template.json
 ```
    
 **HTTP请求方式** 
-```
-post | get
+```bash
+post   get
 ```
 
 **参数说明**    
@@ -127,6 +131,7 @@ post | get
 |template_invoke_name|string|是|邮件模板调用名称| 
 |fromname|string|否|发件人名称. 显示如: `ifaxin客服支持 <support@ifaxin.com>`|  
 |replyto|string|否|默认的回复邮件地址. 如果 replyto 没有或者为空, 则默认的回复邮件地址为 from|  
+|label|int|否|本次发送所使用的标签ID. 此标签需要事先创建|  
 |headers|string|否|邮件头部信息. JSON 格式, 比如:`{"header1": "value1", "header2": "value2"}`|  
 |files|string|否|邮件附件. 发送附件时, 必须使用 multipart/form-data 进行 post 提交 (表单提交)|  
 |x_smtpapi|string|否|SMTP 扩展字段. 详见 [X-SMTPAPI](index.md#x-smtpapi). |  
@@ -149,7 +154,7 @@ post | get
     您好! 您本月在爱发信的消费金额为: %money% 元.
 #---------------------------------------------------
 # 调用模板发送, `%`需要 urlencode
-curl -d 'api_user=***&api_key=***&from=test@test.com&fromname=来自测试发送&subject=测试&template_invoke_name=ifaxin_bill&replyto=reply@test.com&resp_email_id=true' --data-urlencode 'substitution_vars={"to": ["ben@ifaxin.com", "joe@ifaxin.com"],"sub":{"%name%": ["Ben", "Joe"],"%money%":[288, 497]}}' http://sendcloud.sohu.com/webapi/mail.send_template.json
+curl -d 'api_user=***&api_key=***&from=test@test.com&fromname=来自测试发送&subject=测试&template_invoke_name=ifaxin_bill&replyto=reply@test.com&label=16800&resp_email_id=true' --data-urlencode 'substitution_vars={"to": ["ben@ifaxin.com", "joe@ifaxin.com"],"sub":{"%name%": ["Ben", "Joe"],"%money%":[288, 497]}}' http://sendcloud.sohu.com/webapi/mail.send_template.json
 
 # 返回值
 {
@@ -174,7 +179,7 @@ curl -d 'api_user=***&api_key=***&from=test@test.com&fromname=来自测试发送
 ```
 普通发送 ( 调用模板 ifaxin_bill, 调用地址列表 users@maillist.sendcloud.org, 用户可以根据返回的 `task_id` 在 [WebHook](../email/webhook.md#mail_list_task_id_list)  中使用 )
 ```
-curl -d 'api_user=***&api_key=***&from=test@test.com&fromname=来自测试发送&subject=测试&template_invoke_name=ifaxin_bill&replyto=reply@test.com&resp_email_id=true&use_maillist=true&to=users@maillist.sendcloud.org' http://sendcloud.sohu.com/webapi/mail.send_template.json
+curl -d 'api_user=***&api_key=***&from=test@test.com&fromname=来自测试发送&subject=测试&template_invoke_name=ifaxin_bill&replyto=reply@test.com&label=16800&resp_email_id=true&use_maillist=true&to=users@maillist.sendcloud.org' http://sendcloud.sohu.com/webapi/mail.send_template.json
 
 # 返回值
 {
