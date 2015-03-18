@@ -1,4 +1,4 @@
-###WEBAPI
+##WEBAPI
 ```
 #!/usr/bin/env ruby
 
@@ -25,7 +25,7 @@ puts response.to_str
     
 - - - 
       
-###SMTP
+##SMTP
        
 示例1:快速发送,供不需要获取messageId时使用.
 ```

@@ -1,8 +1,7 @@
-# 短信发送
-
-- - -
-##短信类型    
+- - - 
     
+## 短信类型
+
 目前 SendCloud 的短信服务只支持触发短信
     
 **触发短信**：由用户行为触发生产, 如:动态密码, 手机验证, 订单通知等.
@@ -36,7 +35,7 @@
 
 - - -
 
-##API 验证机制
+## API 验证机制
 
 短信发送使用**数字签名**的验证模式. 这种模式能够有效避免密码在传输途中的泄露, 是安全级别很高的一种加密验证方式.
 
@@ -93,108 +92,9 @@ signature = hashlib.md5(sign_str).hexdigest()
 
 timestamp 参数需要被包含在 signature 中, 参与生成数字签名.
 
-- - -
-
-##API
-    
-###send
-
-发送一个短信模板给一个用户
-
-**URL**
-```
-http://sendcloud.sohu.com/sms/send
-```
-
-**返回数据格式**
-```
-json
-```
-
-**HTTP 请求方式**    
-```
-POST    
-```
-    
-**参数说明**
-    
-|参数           |类型           |必选       |说明|
-|:--------------|:--------------|:----------|:---|
-|smsUser        |string         |是         |子账号|
-|templateId     |int            |是         |模板ID|
-|phone          |string         |是         |收信人手机号|
-|vars           |string         |否         |替换变量的json串|
-|signature      |string         |是         |签名, 合法性验证|
-|timestamp      |string         |否         |UNIX时间戳|
-    
-*vars格式示例:*
-
-    {"%name%": "lucy"}
-    
-- - -
-
-###sendn
-
-发送一个短信模板给多个用户, 每个用户对应一个替换变量.
-
-**URL**
-```
-http://sendcloud.sohu.com/sms/sendn
-```
-
-**返回数据格式**
-```
-json
-```
-
-**HTTP 请求方式**    
-```
-POST    
-```
-    
-**参数说明**
-    
-|参数           |类型           |必选       |说明|
-|:--------------|:--------------|:----------|:---|
-|smsUser        |string         |是         |子账号|
-|templateId     |int            |是         |模板ID|
-|tos            |string         |是         |手机号和替换变量的对应的json串|
-|signature      |string         |是         |签名, 合法性验证|
-|timestamp      |string         |否         |UNIX时间戳|
-
-*tos格式示例:*
-    
-    [{"phone": "13111111111", "vars": {"%name%": "name1"}}, {"phone": "13122222222", "vars": {"%name%": "name2"}}]
-
-- - -
-
-###timestamp
-
-获取服务器时间戳
-
-**URL**
-```
-http://sendcloud.sohu.com/timestamp/get
-```
-
-**返回数据格式**
-```
-json
-```
-
-**HTTP 请求方式**    
-```
-GET
-```
-    
-**参数说明**
-
-无
-
-    
 - - - 
 
-##API返回码
+## API返回码
 
 短信 API 返回的结果是 JSON 格式, 示例如下: 
 
