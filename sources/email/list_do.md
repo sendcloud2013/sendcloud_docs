@@ -25,8 +25,8 @@ post    get
 |:---|:---|:---|:---|
 |api_user|string|是|子账号|
 |api_key|string|是|密码|
-|start|int|否|返回数据的起始位置, 如果不设置, 默认为0|
-|limit|int|否|限制返回数据的个数, 如果不设置, 默认为100个|
+|start|int|否|查询起始位置, 取值区间 [0-], 默认为 0|
+|limit|int|否|查询个数, 取值区间 [0-100], 默认为 100|
     
 **请求示例**    
 ```
@@ -234,11 +234,10 @@ post    get
 |api_key|string|是|密码|
 |mail_list_addr|string|是|地址列表调用名称|    
 |member_addr|string|否|需要查询信息的地址|
-|start|int|否|返回数据的起始位置, 如果不设置, 默认为0|
-|limit|int|否|限制返回数据的个数, 如果不设置, 默认为100个|
+|start|int|否|查询起始位置, 取值区间 [0-], 默认为 0|
+|limit|int|否|查询个数, 取值区间 [0-100], 默认为 100|
     
-注意: 如果不包含member_addr参数, 返回查询地址列表的所有地址信息; 反之
-, 只返回该member_addr地址的信息
+注意: 如果不包含member_addr参数, 返回查询地址列表的所有地址信息; 反之, 只返回该member_addr地址的信息
     
 **请求示例**
 ```
@@ -253,7 +252,7 @@ http://sendcloud.sohu.com/webapi/list_member.get.json?api_user=***&api_key=***&a
 |modify_at|地址修改时间|
 |address|邮件地址|
 |name|地址所属人名称|
-|subscribed|预留字段, deprecated|
+|subscribed|预留字段, deprecated, 忽略|
 |vars|变量|
     
 **返回值示例**
@@ -292,7 +291,7 @@ post    get
 |member_addr|string|是|需添加成员的地址, 多个地址使用分号;分开|
 |name|string|否|地址所属人名称, 与member_addr一一对应, 多个名称用;分隔|
 |vars|string|否|模板替换的变量, 与member_addr一一对应, 变量格式为{'%money%':1000}, 多个用;分隔|
-|subscribed|bool|否|预留字段, deprecated|
+|subscribed|bool|否|预留字段, deprecated, 忽略|
 |upsert|bool|否|是否更新, 当为true时, 如果该member_addr存在, 则更新; 为false时, 如果成员地址存在, 将报重复地址错误, 默认为false|
 
 提示: 每次最多可以添加100个邮件地址; 如果包含name和vars变量, 则必须与member_add的地址数量一致
