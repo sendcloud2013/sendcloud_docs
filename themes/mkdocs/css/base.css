@@ -17,7 +17,7 @@ body {
     height: 50px;
     line-height: 50px;
     width: 220px;
-    background: url(/img/logo.png) left center no-repeat;
+    background: url(../img/logo.png) left center no-repeat;
     text-indent: -99999em;
 }
 body > div.container {
@@ -137,21 +137,21 @@ footer {
     font-size: 12px;
     line-height: 1.75;
 }
-.content-body .table {
+.content-body table {
     border: 1px solid #dddddd;
     width: 100%;
     margin-bottom: 18px;
     border-collapse: collapse;
     border-spacing: 0;
 }
-.content-body .table th {
+.content-body table th {
     background: #eee;
     padding: 8px;
     line-height: 1.428571429;
     vertical-align: top;
     border: 1px solid #dddddd;
 }
-.content-body .table td {
+.content-body table td {
     padding: 8px;
     line-height: 1.428571429;
     vertical-align: top;
@@ -214,6 +214,12 @@ footer {
     padding-top: 6px;
     padding-bottom: 6px;
     padding-left: 30px;
+    font-size: 100%;
+}
+.bs-sidebar .nav .nav .nav > li > a{
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 50px;
     font-size: 100%;
 }
 /* Show and affix the side nav when space allows it */
