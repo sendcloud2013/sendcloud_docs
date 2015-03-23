@@ -6,29 +6,55 @@
 function send_mail() {
         $url = 'http://sendcloud.sohu.com/webapi/mail.send.json';
 
+        $file = "./test.php"; #你的附件路径
+        $handle = fopen('./test.php','rb');
+        $content = fread($handle,filesize($file));
+         
+        $eol = "\r\n";
+        $data = '';
+         
+        $mime_boundary=md5(time());
+         
         $param = array(
             'api_user' => '***', # 使用api_user和api_key进行验证
             'api_key' => '***',
             'from' => 'sendcloud@sendcloud.org', # 发信人，用正确邮件地址替代
             'fromname' => 'SendCloud',
-            'to' => 'to1@domain.com;to2@domain.com', # 收件人地址，用正确邮件地址替代，多个地址用';'分隔
+            'to' => 'test@ifaxin.com', # 收件人地址，用正确邮件地址替代，多个地址用';'分隔
             'subject' => 'Sendcloud php webapi example',
             'html' => '<html><head></head><body><p>欢迎使用<a href=\'http://sendcloud.sohu.com\'>SendCloud</a></p></body></html>'
         );
+        
+        foreach ( $param as $key => $value ) { 
+            $data .= '--' . $mime_boundary . $eol;  
+            $data .= 'Content-Disposition: form-data; '; 
+            $data .= "name=" . $key . $eol . $eol; 
+            $data .= $value . $eol; 
+        }
+
+        $data .= '--' . $mime_boundary . $eol;
+        $data .= 'Content-Disposition: form-data; name="somefile"; filename="filename.txt"' . $eol;
+        $data .= 'Content-Type: text/plain' . $eol;
+        $data .= 'Content-Transfer-Encoding: binary' . $eol . $eol;
+        $data .= $content . $eol;
+        $data .= "--" . $mime_boundary . "--" . $eol . $eol; 
 
         $options = array(
             'http' => array(
                 'method' => 'POST',
-                'content' => http_build_query($param)
+                'header' => 'Content-Type: multipart/form-data;boundary='.$mime_boundary . $eol,
+                'content' => $data
         ));
         $context  = stream_context_create($options);
-        $result = file_get_contents($url, false, $context);
+        $result = file_get_contents($url, FILE_TEXT, $context);
 
         return $result;
+        fclose($handle);
 }
 
 echo send_mail();
 ?>
+
 ```
     
 - - -
@@ -53,7 +79,8 @@ function send_mail() {
                                 'fromname' => 'SendCloud',
                                 'to' => 'to1@domain.com;to2@domain.com', # 收件人地址，用正确邮件地址替代，多个地址用';'分隔
                                 'subject' => 'Sendcloud php webapi example',
-                                'html' => "<html><head></head><body><p>欢迎使用<a href=\'http://sendcloud.sohu.com\'>SendCloud</a></p></body></html>"));
+                                'html' => "<html><head></head><body><p>欢迎使用<a href=\'http://sendcloud.sohu.com\'>SendCloud</a></p></body></html>",
+                                'files' => '@./test.txt'));
 
         $result = curl_exec($ch);
 
