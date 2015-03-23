@@ -6,6 +6,8 @@ repo_url: https://github.com/sendcloud2013/sendcloud_docs/
 
 docs_dir: sources
 
+site_dir: doc
+
 theme_dir: themes/mkdocs
 
 theme_center_lead: false
