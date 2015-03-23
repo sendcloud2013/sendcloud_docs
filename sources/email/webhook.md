@@ -302,7 +302,7 @@ explorerName:
 - - -
 ## 抢先体验
 
-您可以使用 [requestb.in](http://requestb.in/) 提供的服务来体验下 WebHook.
+如果您目前没有可接收数据的 `url`, 您可以使用 [requestb.in](http://requestb.in/) 提供的服务来体验下 WebHook.
 
 1. 点击 `Create a RequestBin`, 生成一个 `url`
 2. 在 SendCloud 中配置此 `url` 用以接收 `WebHook` 的事件数据
