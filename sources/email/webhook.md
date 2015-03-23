@@ -300,7 +300,7 @@ explorerName:
 |signature|string|签名字符串|
 
 - - -
-## 抢先体验
+## 快速体验
 
 如果您目前没有可接收数据的 `url`, 您可以使用 [requestb.in](http://requestb.in/) 提供的服务来体验下 WebHook.
 
