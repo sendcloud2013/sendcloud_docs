@@ -43,7 +43,7 @@
 
 生成**数字签名** ( signature ) 的方法: 
 ```
-1. 将实际调用API的参数以字母升序(A-Z)排列, 不包括 signature 字段本身
+1. 将实际调用API的参数以字母升序(A-Z)排列, 不包括 smsKey 和 signature 字段本身
 2. 按照排列之后的顺序, 以 'key=value' + '&' + 'key=value' 的方式连接所有参数, 
    得到字符串 param_str
 3. 以 SMS_KEY + '&' + param_str + '&' + SMS_KEY 的方式得到字符串 sign_str
@@ -62,7 +62,6 @@ SMS_KEY = 'A16a9yjNLS4DiasxcfqQRG4WOgdx0r6C'
 
 param = {
     'smsUser': SMS_USER,
-    'smsKey' : SMS_KEY,
     'templateId' : 1,
     'phone'  : 18888888888,
     'vars'   : {},

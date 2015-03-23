@@ -299,6 +299,15 @@ explorerName:
 |token|string|随机产生的长度为50的字符串|
 |signature|string|签名字符串|
 
+- - -
+## 抢先体验
+
+您可以使用 [requestb.in](http://requestb.in/) 提供的服务来体验下 WebHook.
+
+1. 点击 `Create a RequestBin`, 生成一个 `url`
+2. 在 SendCloud 中配置此 `url` 用以接收 `WebHook` 的事件数据
+3. 执行某种操作 (请求, 发送, 打开) 之后, 就可以在 `requestb.in` 的相关页面里看到此事件所 POST 的数据
+
 ## mail_list_task_id_list
 
 如果开发者使用地址列表来进行邮件发送, WEBAPI 会返回给用户一个 `mail_list_task_id_list`, 即获取一个 `task_id`.
