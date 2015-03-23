@@ -93,7 +93,7 @@ post    get
 提示: 
 
 1. html 内容必须与[邮件样本](../guide/base.md#sample)相匹配
-2. html 内容中可以使用[变量](index.md#_2)
+2. html 内容中可以使用[变量](index.md#_1)
 3. html 内容过长或有特殊字符应使用 post 请求
     
 **请求示例**
