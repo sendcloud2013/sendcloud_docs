@@ -43,23 +43,27 @@
 
         {% include "nav.html" %}
 
-        <div class="container">
+        <div class="container main">
             {% block content %}
+                {% include "breadcrumb.html" %}
                 <div class="col-md-3">{% include "toc.html" %}</div>
                 <div class="col-md-9 content-body" role="main">
                     {% include "content.html" %}
-                    
                     <div class="ds-thread" data-thread-key="{{ page_title }}" data-title="{{ page_title }}" data-url="{{ site_url }}"></div>
                 </div>
             {% endblock %}
         </div>
 
-        <footer class="col-md-12">
-            <hr>
-            {% if copyright %}
-            <p>{{ copyright }}</p>
-            {% endif %}
-            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        <footer class="clearfix footer">
+            <div class="container">
+                <ul class="list-unstyled list-inline pull-left">
+                    <li><a href="http://sendcloud.sohu.com/aboutUs.html">关于我们</a> </li>
+                    <li><a href="http://sendcloud.sohu.com/aboutUs.html#agreement">服务协议</a></li>
+                    <li><a href="http://sendcloud.sohu.com/aboutUs.html#partners">合作伙伴</a></li>
+                    <li><a href="https://sendcloud.kf5.com/" target="_blank">帮助中心</a></li>   
+                </ul>
+                <p class="pull-right">copyright 2015 &copy; SendCloud</p>
+            </div>
         </footer>
 
         {% if include_search %}{% include "search.html" %}{% endif %}

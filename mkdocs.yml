@@ -2,7 +2,7 @@ site_name: SendCloud 文档中心
 
 site_url: http://sendcloud.sohu.com
 
-repo_url: https://github.com/sendcloud2013/sendcloud_docs/blob/master/sources/index.md
+repo_url: https://github.com/sendcloud2013/sendcloud_docs/
 
 docs_dir: sources
 
@@ -23,7 +23,7 @@ pages:
 # - ['guide/index.md', '开发指南', '开发者指南']
 # - ['guide/php_rest_guide.md', '开发指南', 'REST API 简易指南（PHP）']
 #
-- [index.md]
+- [index.md, '文档首页', '文档首页']
 - [guide/base.md, '开发者指南', '基本概念']
 - [guide/advance.md, '开发者指南', '高级功能']
 
