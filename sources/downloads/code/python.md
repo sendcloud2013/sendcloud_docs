@@ -18,7 +18,13 @@ params = {
     "resp_email_id": "true",
 }                                                                               
 
-r = requests.post(url, files="", data=params)                                                                                                                                            
+filename = "/path/file.pdf"
+display_filename = "attachment.pdf"
+
+files = { "file1" : (display_filename, open(filename, "rb"))}
+
+r = requests.post(url, files=files, data=params)
+
 print r.text
 ```
 [downloads](../downloads/code/python_webapi.py)
