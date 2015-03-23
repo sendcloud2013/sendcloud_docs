@@ -92,7 +92,7 @@ WEBAPI 是使用 HTTP 接入 SendCloud 服务的一种方式. 用户可以利用
 下面列举了使用不同发信域名的邮件示例: 
 
 **使用测试域名: W0YoeJHepAzA7v1JDuG6e8reehqEuPoP.sendcloud.org 发送的邮件**
-![pic](../resources/domain_test.png)
+![pic](/resources/domain_test.png)
 
      * 前缀: beb31150-bef0-11e4-9dbb-00163e15002f
      * 发信域名: W0YoeJHepAzA7v1JDuG6e8reehqEuPoP.sendcloud.org
@@ -100,7 +100,7 @@ WEBAPI 是使用 HTTP 接入 SendCloud 服务的一种方式. 用户可以利用
 
 
 **使用自有域名 ( 自己创建的域名 ) : push.liubida.cn 发送的邮件**
-![pic](../resources/domain_liubida.cn.png)
+![pic](/resources/domain_liubida.cn.png)
 
      * 前缀: 98a47302-beee-11e4-a3b9-00163e12fa99
      * 发信域名: push.liubida.cn

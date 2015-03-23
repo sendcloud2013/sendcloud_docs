@@ -149,7 +149,7 @@ else {
 1. php的lib库中, 找到Mail/smtp.php文件
 2. 将 329 行 `send` 函数的返回值做修改. 如下图所示将 `return true` 改为 `return $args`.
       
-![pic](../resources/php.png) 
+![pic](/resources/php.png) 
     
 接下来您就可以调用以下的代码进行邮件的发送, 并获取messageId了.
     

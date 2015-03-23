@@ -44,14 +44,14 @@
 
 显示代发如下图: 
 
-![pic](../resources/domain_liubida.cn.png)
+![pic](/resources/domain_liubida.cn.png)
 
     from = 'test@liubida.cn'
     mail_from = '98a47302-beee-11e4-a3b9-00163e12fa99@push.liubida.cn'
 
 如果两者一致, 则不会显示代发, 如下图: 
 
-![pic](../resources/domain_push.liubida.cn.png)
+![pic](/resources/domain_push.liubida.cn.png)
 
 当然, 有些 ESP 并不会要求这两者完全一致, 而是只要求两者的域名相同 ( 比如 QQ 邮箱 ) .
 

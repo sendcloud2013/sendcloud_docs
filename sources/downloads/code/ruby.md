@@ -64,11 +64,11 @@ end
 因此如果需要获得服务器返回的messageId,需要做如下操作. 首先在您的ruby的lib
 库中, 找到net/smtp.rb文件, 在915行data函数中加一个返回值,操作如下
       
-![pic](../resources/ruby2.png)
+![pic](/resources/ruby2.png)
       
 接着在660行send_messages函数中增加一个返回值,修改如下
      
-![pic](../resources/ruby1.png)
+![pic](/resources/ruby1.png)
     
 接下来您就可以调用以下的代码进行邮件的发送和MessageId的获取了.
     

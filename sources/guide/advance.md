@@ -98,7 +98,7 @@ WebHook 详细说明参见[WebHook详细](../email/webhook.md)
 SendCloud 和 ESP 都在推进建立用户和用户订阅关系, 也会大力支持这种存在订阅关系的邮件发送 ( 比如 QQ邮件列表 ).
     
 1. SendCloud 为用户生成一个「订阅入口」:
-![pic](../resources/subscribe_dingyue.png)
+![pic](/resources/subscribe_dingyue.png)
     
 2. 用户将此入口放置在自己的网站中
     
@@ -119,7 +119,7 @@ SendCloud 和 ESP 都在推进建立用户和用户订阅关系, 也会大力支
 在开启「订阅追踪」后, 系统会在邮件中默认自动加上 **取消订阅** 的退订链接, 供收件人退订此类邮件.
 
 下面是系统默认的取消订阅样式:
-![pic](../resources/default_unsubscribe.png)
+![pic](/resources/default_unsubscribe.png)
 
 你可以自行定义取消订阅的样式, 只要在 href 中插入 SendCloud 内部变量 `%%user_defined_unsubscribe_link%%` 即可. 示例如下：
 
@@ -129,7 +129,7 @@ SendCloud 和 ESP 都在推进建立用户和用户订阅关系, 也会大力支
 <p style="margin-bottom: 35px">您好! 您本月在爱发信的消费金额为: %money% 元.</p>
 ```
 邮件内容效果截图如下:
-![pic](../resources/unsubscribe_1.png)
+![pic](/resources/unsubscribe_1.png)
 
 - - -
 
@@ -140,6 +140,6 @@ SendCloud 和 ESP 都在推进建立用户和用户订阅关系, 也会大力支
 <p><a style="background: #1ABC9C;border:1px solid #13A386;padding:8px 20px;color: #fff;text-decoration:none;border-radius:4px" href="%%user_defined_unsubscribe_link%%">不想再收到此类邮件</a></p>
 ```
 邮件内容效果截图如下:
-![pic](../resources/unsubscribe_2.png)
+![pic](/resources/unsubscribe_2.png)
 
 
