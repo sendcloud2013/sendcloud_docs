@@ -6,15 +6,6 @@
 function send_mail() {
         $url = 'http://sendcloud.sohu.com/webapi/mail.send.json';
 
-        $file = "./test.php"; #你的附件路径
-        $handle = fopen('./test.php','rb');
-        $content = fread($handle,filesize($file));
-         
-        $eol = "\r\n";
-        $data = '';
-         
-        $mime_boundary=md5(time());
-         
         $param = array(
             'api_user' => '***', # 使用api_user和api_key进行验证
             'api_key' => '***',
@@ -25,6 +16,16 @@ function send_mail() {
             'html' => '<html><head></head><body><p>欢迎使用<a href=\'http://sendcloud.sohu.com\'>SendCloud</a></p></body></html>'
         );
         
+        $file = "./test.php"; #你的附件路径
+        $handle = fopen('./test.php','rb');
+        $content = fread($handle,filesize($file));
+         
+        $eol = "\r\n";
+        $data = '';
+         
+        $mime_boundary=md5(time());
+         
+        // 配置参数
         foreach ( $param as $key => $value ) { 
             $data .= '--' . $mime_boundary . $eol;  
             $data .= 'Content-Disposition: form-data; '; 
@@ -32,6 +33,7 @@ function send_mail() {
             $data .= $value . $eol; 
         }
 
+        // 配置文件
         $data .= '--' . $mime_boundary . $eol;
         $data .= 'Content-Disposition: form-data; name="somefile"; filename="filename.txt"' . $eol;
         $data .= 'Content-Type: text/plain' . $eol;
