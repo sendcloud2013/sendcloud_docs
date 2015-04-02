@@ -94,7 +94,7 @@ curl -d 'api_user=***&api_key=***&from=test@test.com&fromname=来自测试发送
 普通发送 ( post方式, 发送附件 )
 ```
 # 带附件发送需要使用 form 提交
-curl -F api_user='***' -F api_key='***' -F from='test@test.com' -F fromname='来自测试发送' -F subject='测试' -F html='这是一封测试邮件' -F to='ben@ifaxin.com' -F replyto='reply@test.com' -F resp_email_id='true' -F files=@/path/attach.pdf http://sendcloud.sohu.com/webapi/mail.send.json
+curl -F api_user='***' -F api_key='***' -F from='test@test.com' -F fromname='来自测试发送' -F subject='测试' --form-string html='<p>这是一封测试邮件<p>' -F to='ben@ifaxin.com' -F replyto='reply@test.com' -F resp_email_id='true' -F files=@/path/attach.pdf http://sendcloud.sohu.com/webapi/mail.send.json
 # 返回值
 {
     "message":"success",
@@ -115,7 +115,7 @@ http://sendcloud.sohu.com/webapi/mail.send_template.json
    
 **HTTP请求方式** 
 ```bash
-post   get
+post
 ```
 
 **参数说明**    
