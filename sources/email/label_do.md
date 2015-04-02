@@ -2,6 +2,60 @@
 标签为用户发送邮件提供了另一个维度的统计方式.
     
 你可以使用 API 进行标签的查询, 添加, 删除, 更新操作
+
+- - -
+##批量查询
+    
+**URL**    
+```
+http://sendcloud.sohu.com/webapi/label.list.json
+```
+    
+**HTTP请求方式** 
+```bash
+post    get
+```
+    
+**参数说明**
+    
+|参数|类型|必须|说明|
+|:---|:---|:---|:---|
+|api_user|string|是|子账号|
+|api_key|string|是|密码|
+|start|int|否|查询起始位置, 取值区间 [0-], 默认为 0|
+|limit|int|否|查询个数, 取值区间 [0-100], 默认为 100|
+    
+**请求示例**    
+```
+http://sendcloud.sohu.com/webapi/label.list.json?api_user=***&api_key=***&start=0&limit=2
+```
+    
+**返回值说明**
+    
+|参数|说明|
+|:---|:---| 
+|labelId|标签ID|
+|labelName|标签名称|
+|totalCount|所有标签个数|
+    
+**返回值示例**    
+```
+{
+  "message": "success",
+  "list": [
+    {
+      "labelId": 10,
+      "labelName": "label1"
+    },
+    {
+      "labelId": 20,
+      "labelName": "label2"
+    }
+  ],
+  "totalCount": 101
+}
+```
+    
     
 - - -
 ##查询    

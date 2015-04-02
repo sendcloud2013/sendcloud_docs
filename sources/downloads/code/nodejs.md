@@ -1,29 +1,24 @@
 
-## WEBAPI
+感谢 shanelau ^_^ , 详细的代码, 点击[这里](https://github.com/shanelau/sendcloud)查看
+
+## 安装依赖包
 
 ```
 npm install sendcloud --save
 ```
 
-Then
+## 代码调用
 
 ```
 var sendcloud = require('sendcloud');
 
-// init first
-sendcloud.init('apiUser','[secretKey]','bigertech@qq.com','笔戈科技','bgdev_batch');
+sendcloud.init('apiUser', 'apiKey', 'from@from.com', 'fromname', 'apiUserBatch');
 
 // send email
-sendcloud.sendEmail('liuxing@meizu.com','邮件测试','<h1>Hello world!<h1>').then(function(info){
+sendcloud.sendEmail('ben@ifaxin.com', '邮件测试', '<h1>Hello world!<h1>').then(function(info){
     console.log(info);
 });
 
 
 ```
 
-## SMTP
-调用发送函数 `sendEmail(to,subject,html)`即可,所有的参数和WEBAPI一致
-
-
-## 更多
-详细见，[https://github.com/shanelau/sendcloud](https://github.com/shanelau/sendcloud)
