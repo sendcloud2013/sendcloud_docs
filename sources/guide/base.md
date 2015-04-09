@@ -159,8 +159,6 @@ DKIM 是防止欺诈邮件的一个重要技术手段, 通常发送方会在电�
 
 SendCloud 在接收客户邮件之后, 会对邮件和样本进行匹配. 只要能成功匹配一个样本, 既验证通过.
 
-> 样本匹配失败时, 用户会收到 '553 sample_validate not match' 的错误提示.
-
 邮件和样本匹配的要素有如下几点:
 
 1. 发送邮件时使用的 API_USER 的类型 ( 触发/批量 ) 和样本的类型 ( 触发/批量 )  一致
@@ -168,6 +166,15 @@ SendCloud 在接收客户邮件之后, 会对邮件和样本进行匹配. 只要
 3. 邮件中图片个数和样本中的图片个数 一致
 4. 邮件中每张图片的内容和样本中相应图片的内容 一致 ( 如果修改图片内容, 请重新提交审核 )
 5. 邮件中文本内容和样本文本内容达到一定比例的匹配, 容许两者有差异
+
+样本匹配失败时, 用户会收到 '553 sample_validate not match, ...' 的错误提示, 说明如下:
+
+|错误提示|说明|
+|:-------|:---|  
+|553 sample_validate not match, reason:no corresponding sample found|没有和 API_USER 类型相同的样本存在|
+|553 sample_validate not match, reason:unequal image content: `url` not in sample|邮件图片个数和样本中的图片个数不一致, `url`为差异的图片链接|
+|553 sample_validate not match, reason:unequal image content: `url` md5 not match|邮件的图片内容和样本中不一致, `url`为差异的图片链接|
+|553 sample_validate not match, reason:unequal content|邮件文本内容和样本文本内容差异过大|
 
 > 对于大多数用户来说, 每封邮件的差异性不大, 所以样本审核没有问题. 
 > 但是, 如果你发送的邮件差异性很大, 那样本审核就有可能给你带来困扰. 
