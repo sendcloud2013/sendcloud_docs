@@ -172,8 +172,8 @@ SendCloud 在接收客户邮件之后, 会对邮件和样本进行匹配. 只要
 |错误提示|说明|
 |:-------|:---|  
 |553 sample_validate not match, reason:no corresponding sample found|没有和 API_USER 类型相同的样本存在|
-|553 sample_validate not match, reason:unequal image content: `url` not in sample|邮件图片个数和样本中的图片个数不一致, `url`为差异的图片链接|
-|553 sample_validate not match, reason:unequal image content: `url` md5 not match|邮件的图片内容和样本中不一致, `url`为差异的图片链接|
+|553 sample_validate not match, reason:unequal image content: image link not in sample|邮件中的图片链接和样本中的图片链接不一致|
+|553 sample_validate not match, reason:unequal image content: `url` md5 not match|邮件的图片内容和样本中的图片内容不一致, `url`为差异的图片链接|
 |553 sample_validate not match, reason:unequal content|邮件文本内容和样本文本内容差异过大|
 
 > 对于大多数用户来说, 每封邮件的差异性不大, 所以样本审核没有问题. 
