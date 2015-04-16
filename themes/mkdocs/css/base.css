@@ -16,6 +16,10 @@ body {
     background: #fff;
 }
 
+.navbar-toggle {
+    background: #317bcf;
+}
+
 .navbar-default .navbar-nav>li>a {
     color: #494949;
 }
@@ -140,22 +144,28 @@ footer {
 .font-16 {
     font-size: 16px;
 }
-.mb-100{
+
+.mb-100 {
     margin-bottom: 100px
 }
+
+.one-fifth {
+    width: 20%;
+}
+
 .doc-link,
 .doc-link:hover,
 .doc-link:active,
 .doc-link:focus {
-    color:#666;
+    color: #666;
     text-decoration: none;
 }
 
-.doc-link:hover{
+.doc-link:hover {
     color: #317bcf;
 }
 
-.doc-link:hover .doc-section{
+.doc-link:hover .doc-section {
     box-shadow: 0 0 3px #ddd inset;
 }
 
@@ -171,10 +181,12 @@ footer {
 .doc-section-icon span {
     font-size: 48px;
 }
+
 .doc-section-title {
     font-size: 16px;
-    margin-top:30px;
+    margin-top: 30px;
 }
+
 .content-home .main-title {
     margin: 50px auto;
 }
@@ -380,5 +392,11 @@ footer {
     .bs-sidebar.affix-bottom,
     .bs-sidebar.affix {
         width: 263px;
+    }
+}
+
+@media (max-width: 768px) {
+    .one-fifth {
+        width: 100%;
     }
 }
