@@ -42,8 +42,8 @@ pages:
 - [email/spamreported_do.md, '邮件API', '垃圾举报管理']
 - [email/webhook.md, '邮件API', 'WebHook 详细']
 
-#- [sms/index.md, '短信API', '规则']
-#- [sms/api.md, '短信API', 'API']
+- [sms/index.md, '短信API', '规则']
+- [sms/api.md, '短信API', 'API']
 
 - [downloads/index.md, '代码示例', '代码示例']
 - [downloads/code/curl.md, '代码示例','Curl']
