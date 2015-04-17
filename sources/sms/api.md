@@ -4,7 +4,7 @@
 
 **URL**
 ```
-http://sendcloud.sohu.com/sms/send
+http://sendcloud.sohu.com/smsapi/send
 ```
 
 **返回数据格式**
@@ -39,7 +39,7 @@ POST
     
 **URL**
 ```
-http://sendcloud.sohu.com/sms/sendn
+http://sendcloud.sohu.com/smsapi/sendn
 ```
 
 **返回数据格式**
@@ -74,7 +74,7 @@ POST
 
 **URL**
 ```
-http://sendcloud.sohu.com/timestamp/get
+http://sendcloud.sohu.com/smsapi/timestamp/get
 ```
 
 **返回数据格式**
