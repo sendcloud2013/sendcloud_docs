@@ -152,3 +152,10 @@ s.login(API_USER + '#' + label_id, API_KEY)
 
 - - -
 
+## 8. 如何在客户端上使用 SendCloud 发信?
+
+将发件服务器设置为 `smtpcloud.sohu.com`, 帐号和密码分别对应 SendCloud 的 API_USER 和 API_KEY. 下图以 Foxmail 客户端为例.
+
+![pic](/resources/foxmail.jpg)
+
+
