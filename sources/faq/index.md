@@ -158,4 +158,15 @@ s.login(API_USER + '#' + label_id, API_KEY)
 
 ![pic](/resources/foxmail.jpg)
 
+- - -
+
+## 9. SendCloud 的 SMTP 服务只开放了 25 端口么?
+
+考虑到部分云服务商封禁了其内网对外 25 端口的访问, 所以 SendCloud 在 `220.181.69.174` 上开放了 2525 端口.
+
+连接方法:
+
+* 绑定域名 smtpcloud.sohu.com 到 220.181.69.174 ( 我们只在这个 ip 上开放了 2525 端口 )
+
+* 修改连接为 smtpcloud.sohu.com:2525
 
