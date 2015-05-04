@@ -32,7 +32,11 @@ POST
 
     {"%name%": "lucy"}
 
-`注意`: 参数 vars 可能含有特殊字符, 记得 `urlencode`
+`注意`: 
+
+1. 参数 vars 可能含有特殊字符, 记得 `urlencode`
+
+2. vars 所传递的变量的值, 长度不能超过 16 个字符
 - - -
 ## sendn (暂不开通)
 
@@ -67,7 +71,11 @@ POST
     
     [{"phone": "13111111111", "vars": {"%name%": "name1"}}, {"phone": "13122222222", "vars": {"%name%": "name2"}}]
 
-`注意`: 参数 tos 可能含有特殊字符, 记得 `urlencode`
+`注意`: 
+
+1. 参数 vars 可能含有特殊字符, 记得 `urlencode`
+
+2. vars 所传递的变量的值, 长度不能超过 16 个字符
 - - -
     
 ## timestamp
