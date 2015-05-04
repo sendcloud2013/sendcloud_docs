@@ -36,8 +36,8 @@ post   get
 注意:
 
 1. API 参数 to 的收件人是全部显示在邮件中, X-SMTPAPI 中的 to 是独立显示在邮件中
-2. 如果 X-SMTPAPI 中指定了 to, 那么API 参数中的 to 会被忽略, cc 和 bcc 依然有效
-3. X-SMTPAPI 中的字段 to, API中的参数 cc, bcc 都不支持地址列表
+2. 如果 X-SMTPAPI 中指定了 to, 那么API 参数中的 to, cc 和 bcc 都会被忽略
+3. X-SMTPAPI 中的字段 to, 以及 API 参数中的 cc, bcc 都不支持地址列表
 4. API 参数 to 的收件人个数不能超过100
 5. X-SMTPAPI 中的 to 的收件人个数不能超过100
 6. 地址列表中的收件人个数不能超过 100000
