@@ -13,7 +13,8 @@ function send_mail() {
             'fromname' => 'SendCloud',
             'to' => 'test@ifaxin.com', # 收件人地址，用正确邮件地址替代，多个地址用';'分隔
             'subject' => 'Sendcloud php webapi example',
-            'html' => '<html><head></head><body><p>欢迎使用<a href=\'http://sendcloud.sohu.com\'>SendCloud</a></p></body></html>'
+            'html' => '<html><head></head><body><p>欢迎使用<a href=\'http://sendcloud.sohu.com\'>SendCloud</a></p></body></html>',
+            'resp_email_id' => 'true'
         );
         
         $file = "./test.php"; #你的附件路径
