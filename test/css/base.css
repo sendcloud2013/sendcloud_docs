@@ -411,3 +411,9 @@ footer {
         width: 100%;
     }
 }
+pre{
+    color: #666;
+}
+pre .string, pre .number{
+    color: #e74c3c;
+}

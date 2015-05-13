@@ -5,7 +5,7 @@
         "version": "1.0.0",
         "title": "SendCloud testApi"
     },
-    "host": "http://new-web-test.apps.sohuno.com",
+    "host": "new-web-test.apps.sohuno.com",
     "basePath": "",
     "tags": [{
         "name": "mail",
@@ -24,7 +24,7 @@
                     "mail"
                 ],
                 "summary": "测试普通发送",
-                "description": "测试普通发送",
+                "description": "测试普通发送，返回格式为JSON，to地址为true@xxx.com测试成功，to地址为false@xxx.com时测试失败。",
                 "operationId": "mail",
                 "consumes": [
                     "application/json",
@@ -44,23 +44,26 @@
                     "in": "query",
                     "description": "api_user",
                     "type": "string",
+                    "required": true,
                     "default": "test_sendcloud_api_user"
                 }, {
                     "name": "api_key",
                     "in": "query",
                     "description": "api_key",
                     "type": "string",
-                    "default": "testsendcloudapikey"
+                    "required": true,
+                    "default": "test_sendcloud_api_key"
                 }, {
                     "name": "from",
                     "in": "query",
-                    "description": "from",
+                    "description": "发件人地址. ",
                     "type": "string",
+                    "required": true,
                     "defalut": "service@sendcloud.im"
                 }, {
                     "name": "to",
                     "in": "query",
-                    "description": "to email",
+                    "description": "收件人地址. ",
                     "required": true,
                     "type": "string"
                 }, {
@@ -68,11 +71,12 @@
                     "in": "query",
                     "description": "主题",
                     "type": "string",
+                    "required": true,
                     "defalut": "来自sendcloud的测试邮件"
                 }, {
                     "name": "fromname",
                     "in": "query",
-                    "description": "from name",
+                    "description": "发件人名称",
                     "type": "string",
                     "defalut": "testsendcloud"
                 }, {
@@ -80,31 +84,45 @@
                     "in": "query",
                     "description": "邮件内容",
                     "type": "string",
+                    "required": true,
                     "defalut": "欢迎使用sendcloud"
                 }, {
                     "name": "bcc",
                     "in": "query",
-                    "description": "bcc",
-                    "required": true,
+                    "description": "密送地址. ",
                     "type": "string"
                 }, {
                     "name": "cc",
                     "in": "query",
-                    "description": "cc",
-                    "required": true,
+                    "description": "抄送地址. ",
                     "type": "string"
                 }, {
                     "name": "reply_to",
                     "in": "query",
-                    "description": "reply_to",
+                    "description": "默认的回复邮件地址.",
                     "type": "string"
+                }, {
+                    "name": "headers",
+                    "in": "query",
+                    "description": "本次发送所使用的标签ID.",
+                    "type": "string"
+                }, {
+                    "name": "label",
+                    "in": "query",
+                    "description": "邮件头部信息. JSON 格式.",
+                    "type": "string"
+                }, {
+                    "name": "x_smtpapi",
+                    "in": "query",
+                    "description": "api_user",
+                    "type": "SMTP 扩展字段"
                 }, {
                     "name": "resp_email_id",
                     "in": "query",
-                    "description": "api_user",
+                    "description": "是否返回 emailId.",
                     "required": false,
                     "type": "string",
-                    "default": "true",
+                    "default": "false",
                     "enum": [
                         "true",
                         "false"
@@ -112,20 +130,159 @@
                 }, {
                     "name": "user_maillist",
                     "in": "query",
-                    "description": "api_user",
+                    "description": "参数 to 是否含有地址列表.",
                     "required": false,
                     "type": "string",
-                    "default": "true",
+                    "default": "false",
                     "enum": [
                         "true",
                         "false"
                     ]
                 }, {
+                    "name": "gzip_compress",
+                    "in": "query",
+                    "description": "邮件内容是否使用gzip压缩. 默认不使用 gzip 压缩正文",
+                    "required": false,
+                    "type": "string",
+                    "default": "false",
+                    "enum": [
+                        "true",
+                        "false"
+                    ]
+                }]
+            }
+        },
+        "/testapi/mail.send.xml": {
+            "post": {
+                "tags": [
+                    "mail"
+                ],
+                "summary": "测试普通发送",
+                "description": "测试普通发送，返回格式为XML，to地址为true@xxx.com测试成功，to地址为false@xxx.com时测试失败。",
+                "operationId": "mail",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/xml",
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                },
+                "parameters": [{
+                    "name": "api_user",
+                    "in": "query",
+                    "description": "api_user",
+                    "type": "string",
+                    "required": true,
+                    "default": "test_sendcloud_api_user"
+                }, {
+                    "name": "api_key",
+                    "in": "query",
+                    "description": "api_key",
+                    "type": "string",
+                    "required": true,
+                    "default": "test_sendcloud_api_key"
+                }, {
+                    "name": "from",
+                    "in": "query",
+                    "description": "发件人地址. ",
+                    "type": "string",
+                    "required": true,
+                    "defalut": "service@sendcloud.im"
+                }, {
+                    "name": "to",
+                    "in": "query",
+                    "description": "收件人地址. ",
+                    "required": true,
+                    "type": "string"
+                }, {
+                    "name": "subject",
+                    "in": "query",
+                    "description": "主题",
+                    "type": "string",
+                    "required": true,
+                    "defalut": "来自sendcloud的测试邮件"
+                }, {
+                    "name": "fromname",
+                    "in": "query",
+                    "description": "发件人名称",
+                    "type": "string",
+                    "defalut": "testsendcloud"
+                }, {
+                    "name": "html",
+                    "in": "query",
+                    "description": "邮件内容",
+                    "type": "string",
+                    "required": true,
+                    "defalut": "欢迎使用sendcloud"
+                }, {
+                    "name": "bcc",
+                    "in": "query",
+                    "description": "密送地址. ",
+                    "type": "string"
+                }, {
+                    "name": "cc",
+                    "in": "query",
+                    "description": "抄送地址. ",
+                    "type": "string"
+                }, {
+                    "name": "reply_to",
+                    "in": "query",
+                    "description": "默认的回复邮件地址.",
+                    "type": "string"
+                }, {
+                    "name": "headers",
+                    "in": "query",
+                    "description": "本次发送所使用的标签ID.",
+                    "type": "string"
+                }, {
+                    "name": "label",
+                    "in": "query",
+                    "description": "邮件头部信息. JSON 格式.",
+                    "type": "string"
+                }, {
                     "name": "x_smtpapi",
                     "in": "query",
                     "description": "api_user",
-                    "required": true,
-                    "type": "string"
+                    "type": "SMTP 扩展字段"
+                }, {
+                    "name": "resp_email_id",
+                    "in": "query",
+                    "description": "是否返回 emailId.",
+                    "required": false,
+                    "type": "string",
+                    "default": "false",
+                    "enum": [
+                        "true",
+                        "false"
+                    ]
+                }, {
+                    "name": "user_maillist",
+                    "in": "query",
+                    "description": "参数 to 是否含有地址列表.",
+                    "required": false,
+                    "type": "string",
+                    "default": "false",
+                    "enum": [
+                        "true",
+                        "false"
+                    ]
+                }, {
+                    "name": "gzip_compress",
+                    "in": "query",
+                    "description": "邮件内容是否使用gzip压缩. 默认不使用 gzip 压缩正文",
+                    "required": false,
+                    "type": "string",
+                    "default": "false",
+                    "enum": [
+                        "true",
+                        "false"
+                    ]
                 }]
             }
         },

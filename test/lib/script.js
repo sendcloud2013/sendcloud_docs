@@ -32,7 +32,7 @@ $(function() {
         if (!$('.input-test-url').val()) {
             messageBox('danger', '请填写 post url', 2000)
             return
-        }else if(!validateUrl($('.input-test-url').val())){
+        } else if (!validateUrl($('.input-test-url').val())) {
             messageBox('danger', 'url格式不正确，请以http(s)开头', 2000)
             return
         }
@@ -68,7 +68,7 @@ $(function() {
             if (data === 'test failed') {
                 messageBox('danger', data, 2000)
             } else {
-                var block = $('<div>').addClass('code').html(JSON.stringify(data))
+                var block = $('<pre>').addClass('json').html(syntaxHighlight(JSON.stringify(data, null, 4)))
                 messageBox('success', block, 0)
             }
         })
@@ -87,15 +87,6 @@ $(function() {
         }
     }
 
-    messageModal.on('show.bs.modal', function() {
-        hljs.configure({
-            useBR: true
-        });
-        $('div.code').each(function(i, block) {
-            hljs.highlightBlock(block);
-        });
-    })
-
     function validateUrl(url) {
         var re = /^https?\:\/\//i
         return re.test(url)
@@ -105,4 +96,24 @@ $(function() {
         var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
         return re.test(email);
     }
+
+    function syntaxHighlight(json) {
+        json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function(match) {
+            var cls = 'number';
+            if (/^"/.test(match)) {
+                if (/:$/.test(match)) {
+                    cls = 'key';
+                } else {
+                    cls = 'string';
+                }
+            } else if (/true|false/.test(match)) {
+                cls = 'boolean';
+            } else if (/null/.test(match)) {
+                cls = 'null';
+            }
+            return '<span class="' + cls + '">' + match + '</span>';
+        });
+    }
+
 })
