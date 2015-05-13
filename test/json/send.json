@@ -56,37 +56,38 @@
                 }, {
                     "name": "from",
                     "in": "query",
-                    "description": "发件人地址. ",
+                    "description": "发件人地址",
                     "type": "string",
                     "required": true,
-                    "defalut": "service@sendcloud.im"
+                    "default": "service@sendcloud.im"
                 }, {
                     "name": "to",
                     "in": "query",
-                    "description": "收件人地址. ",
+                    "description": "收件人地址",
+                    "type": "string",
                     "required": true,
-                    "type": "string"
-                }, {
+                    "default":"true@sendcloud.com"
+                },{
                     "name": "subject",
                     "in": "query",
                     "description": "主题",
                     "type": "string",
                     "required": true,
-                    "defalut": "来自sendcloud的测试邮件"
-                }, {
-                    "name": "fromname",
-                    "in": "query",
-                    "description": "发件人名称",
-                    "type": "string",
-                    "defalut": "testsendcloud"
-                }, {
+                    "default":"来自sendcloud的测试邮件"
+                },{
                     "name": "html",
                     "in": "query",
                     "description": "邮件内容",
                     "type": "string",
                     "required": true,
-                    "defalut": "欢迎使用sendcloud"
-                }, {
+                    "default":"欢迎使用sendcloud"
+                },{
+                    "name": "fromname",
+                    "in": "query",
+                    "description": "发件人名称",
+                    "type": "string",
+                    "defalut": "testsendcloud"
+                },{
                     "name": "bcc",
                     "in": "query",
                     "description": "密送地址. ",
@@ -190,37 +191,38 @@
                 }, {
                     "name": "from",
                     "in": "query",
-                    "description": "发件人地址. ",
+                    "description": "发件人地址",
                     "type": "string",
                     "required": true,
-                    "defalut": "service@sendcloud.im"
+                    "default": "service@sendcloud.im"
                 }, {
                     "name": "to",
                     "in": "query",
-                    "description": "收件人地址. ",
+                    "description": "收件人地址",
+                    "type": "string",
                     "required": true,
-                    "type": "string"
-                }, {
+                    "default":"true@sendcloud.com"
+                },{
                     "name": "subject",
                     "in": "query",
                     "description": "主题",
                     "type": "string",
                     "required": true,
-                    "defalut": "来自sendcloud的测试邮件"
-                }, {
-                    "name": "fromname",
-                    "in": "query",
-                    "description": "发件人名称",
-                    "type": "string",
-                    "defalut": "testsendcloud"
-                }, {
+                    "default":"来自sendcloud的测试邮件"
+                },{
                     "name": "html",
                     "in": "query",
                     "description": "邮件内容",
                     "type": "string",
                     "required": true,
-                    "defalut": "欢迎使用sendcloud"
-                }, {
+                    "default":"欢迎使用sendcloud"
+                },{
+                    "name": "fromname",
+                    "in": "query",
+                    "description": "发件人名称",
+                    "type": "string",
+                    "defalut": "testsendcloud"
+                },{
                     "name": "bcc",
                     "in": "query",
                     "description": "密送地址. ",
