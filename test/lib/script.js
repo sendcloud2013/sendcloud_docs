@@ -1,8 +1,15 @@
 $(function() {
     var wh_config = {
-        testUrl: 'http://new-web-test.apps.sohuno.com/testapi/webhook'
+        testUrl: 'http://sendcloud.sohu.com/testapi/webhook'
     }
     $('.btn-test-url').on('click', function(e) {
+        if (!$('.input-test-url').val()) {
+            messageBox('danger', '请填写 post url', 2000)
+            return
+        } else if (!validateUrl($('.input-test-url').val())) {
+            messageBox('danger', 'url格式不正确，请以http(s)://开头', 2000)
+            return
+        }
         $.ajax({
             method: 'POST',
             url: wh_config.testUrl + '/testurl',
@@ -33,7 +40,7 @@ $(function() {
             messageBox('danger', '请填写 post url', 2000)
             return
         } else if (!validateUrl($('.input-test-url').val())) {
-            messageBox('danger', 'url格式不正确，请以http(s)开头', 2000)
+            messageBox('danger', 'url格式不正确，请以http(s)://开头', 2000)
             return
         }
         $.ajax({
@@ -52,8 +59,11 @@ $(function() {
 
     $('.btn-view-data').on('click', function(e) {
         e.preventDefault()
-        if (!$('.receiver').val()) {
+         if (!$('.receiver').val()) {
             messageBox('danger', '请填写收件人邮箱地址', 2000)
+            return
+        } else if (!validateEmail($('.receiver').val())) {
+            messageBox('danger', '邮箱地址格式不正确', 2000)
             return
         }
 

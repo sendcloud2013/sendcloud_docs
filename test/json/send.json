@@ -5,7 +5,7 @@
         "version": "1.0.0",
         "title": "SendCloud testApi"
     },
-    "host": "new-web-test.apps.sohuno.com",
+    "host": "sendcloud.sohu.com",
     "basePath": "",
     "tags": [{
         "name": "mail",
@@ -24,7 +24,7 @@
                     "mail"
                 ],
                 "summary": "测试普通发送",
-                "description": "测试普通发送，返回格式为JSON，to地址为true@xxx.com测试成功，to地址为false@xxx.com时测试失败。",
+                "description": "测试普通发送，返回格式为JSON，to地址为true@xxx.com时发送成功，to地址为false@xxx.com时发送失败。",
                 "operationId": "mail",
                 "consumes": [
                     "application/json",
@@ -159,7 +159,7 @@
                     "mail"
                 ],
                 "summary": "测试普通发送",
-                "description": "测试普通发送，返回格式为XML，to地址为true@xxx.com测试成功，to地址为false@xxx.com时测试失败。",
+                "description": "测试普通发送，返回格式为XML，to地址为true@xxx.com时发送成功，to地址为false@xxx.com时发送失败。",
                 "operationId": "mail",
                 "consumes": [
                     "application/json",
