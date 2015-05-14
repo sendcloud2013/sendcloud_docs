@@ -24,7 +24,7 @@
                     "mail"
                 ],
                 "summary": "测试普通发送",
-                "description": "测试普通发送，返回格式为JSON，to地址为true@xxx.com时发送成功，to地址为false@xxx.com时发送失败。",
+                "description": "测试普通发送，返回格式为JSON，to地址为true@xxx.com时发送成功，to地址为false@xxx.com时发送失败。use_maillist为true时，邮件列表必须为xx@maillist.sendcloud.org。",
                 "operationId": "mail",
                 "consumes": [
                     "application/json",
@@ -66,28 +66,28 @@
                     "description": "收件人地址",
                     "type": "string",
                     "required": true,
-                    "default":"true@sendcloud.com"
-                },{
+                    "default": "true@sendcloud.com"
+                }, {
                     "name": "subject",
                     "in": "query",
                     "description": "主题",
                     "type": "string",
                     "required": true,
-                    "default":"来自sendcloud的测试邮件"
-                },{
+                    "default": "来自sendcloud的测试邮件"
+                }, {
                     "name": "html",
                     "in": "query",
                     "description": "邮件内容",
                     "type": "string",
                     "required": true,
-                    "default":"欢迎使用sendcloud"
-                },{
+                    "default": "欢迎使用sendcloud"
+                }, {
                     "name": "fromname",
                     "in": "query",
                     "description": "发件人名称",
                     "type": "string",
                     "defalut": "testsendcloud"
-                },{
+                }, {
                     "name": "bcc",
                     "in": "query",
                     "description": "密送地址. ",
@@ -105,18 +105,18 @@
                 }, {
                     "name": "headers",
                     "in": "query",
-                    "description": "本次发送所使用的标签ID.",
+                    "description": "邮件头部信息. JSON 格式",
                     "type": "string"
                 }, {
                     "name": "label",
                     "in": "query",
-                    "description": "邮件头部信息. JSON 格式.",
+                    "description": "本次发送所使用的标签ID",
                     "type": "string"
                 }, {
                     "name": "x_smtpapi",
                     "in": "query",
-                    "description": "api_user",
-                    "type": "SMTP 扩展字段"
+                    "description": "SMTP 扩展字段",
+                    "type": "string"
                 }, {
                     "name": "resp_email_id",
                     "in": "query",
@@ -129,7 +129,7 @@
                         "false"
                     ]
                 }, {
-                    "name": "user_maillist",
+                    "name": "use_maillist",
                     "in": "query",
                     "description": "参数 to 是否含有地址列表.",
                     "required": false,
@@ -159,7 +159,7 @@
                     "mail"
                 ],
                 "summary": "测试普通发送",
-                "description": "测试普通发送，返回格式为XML，to地址为true@xxx.com时发送成功，to地址为false@xxx.com时发送失败。",
+                "description": "测试普通发送，返回格式为XML，to地址为true@xxx.com时发送成功，to地址为false@xxx.com时发送失败。use_maillist为true时，邮件列表必须为xx@maillist.sendcloud.org。",
                 "operationId": "mail",
                 "consumes": [
                     "application/json",
@@ -201,28 +201,28 @@
                     "description": "收件人地址",
                     "type": "string",
                     "required": true,
-                    "default":"true@sendcloud.com"
-                },{
+                    "default": "true@sendcloud.com"
+                }, {
                     "name": "subject",
                     "in": "query",
                     "description": "主题",
                     "type": "string",
                     "required": true,
-                    "default":"来自sendcloud的测试邮件"
-                },{
+                    "default": "来自sendcloud的测试邮件"
+                }, {
                     "name": "html",
                     "in": "query",
                     "description": "邮件内容",
                     "type": "string",
                     "required": true,
-                    "default":"欢迎使用sendcloud"
-                },{
+                    "default": "欢迎使用sendcloud"
+                }, {
                     "name": "fromname",
                     "in": "query",
                     "description": "发件人名称",
                     "type": "string",
                     "defalut": "testsendcloud"
-                },{
+                }, {
                     "name": "bcc",
                     "in": "query",
                     "description": "密送地址. ",
@@ -240,18 +240,18 @@
                 }, {
                     "name": "headers",
                     "in": "query",
-                    "description": "本次发送所使用的标签ID.",
+                    "description": "邮件头部信息. JSON 格式",
                     "type": "string"
                 }, {
                     "name": "label",
                     "in": "query",
-                    "description": "邮件头部信息. JSON 格式.",
+                    "description": "本次发送所使用的标签ID",
                     "type": "string"
                 }, {
                     "name": "x_smtpapi",
                     "in": "query",
-                    "description": "api_user",
-                    "type": "SMTP 扩展字段"
+                    "description": "SMTP 扩展字段",
+                    "type": "string"
                 }, {
                     "name": "resp_email_id",
                     "in": "query",
@@ -264,7 +264,7 @@
                         "false"
                     ]
                 }, {
-                    "name": "user_maillist",
+                    "name": "use_maillist",
                     "in": "query",
                     "description": "参数 to 是否含有地址列表.",
                     "required": false,
@@ -309,18 +309,24 @@
                 },
                 "parameters": [{
                     "name": "smsUser",
+                    "in": "query",
                     "required": true,
                     "description": "子账号",
+                    "default": "test_sendcloud_sms_user",
                     "type": "string"
                 }, {
                     "name": "templateId",
+                    "in": "query",
                     "required": true,
                     "description": "模板ID",
+                    "default": "1",
                     "type": "int"
                 }, {
                     "name": "phone",
+                    "in": "query",
                     "required": true,
                     "description": "电话号码",
+                    "default": "18888888888",
                     "type": "string"
                 }, {
                     "name": "vars",
@@ -356,18 +362,24 @@
                 },
                 "parameters": [{
                     "name": "smsUser",
+                    "in": "query",
                     "required": true,
                     "description": "子账号",
+                    "default": "test_sendcloud_sms_user",
                     "type": "string"
                 }, {
                     "name": "templateId",
+                    "in": "query",
                     "required": true,
                     "description": "模板ID",
+                    "default": "1",
                     "type": "int"
                 }, {
                     "name": "tos",
+                    "in": "query",
                     "required": true,
                     "description": "手机号和替换变量对应的json串",
+                    "default": "[{\"phone\": \"13111111111\", \"vars\": {\"%name%\": \"name1\"}}, {\"phone\": \"13122222222\", \"vars\": {\"%name%\": \"name2\"}}]",
                     "type": "string"
                 }, {
                     "name": "timestamp",
