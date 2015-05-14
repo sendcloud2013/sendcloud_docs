@@ -126,6 +126,7 @@
   max-width: 960px;
   margin-left: auto;
   margin-right: auto;
+  border-left: 1px solid rgba(93, 96, 107, 0.15);
 }
 .swagger-ui-wrap b,
 .swagger-ui-wrap strong {
@@ -449,12 +450,15 @@
   border: 1px solid #aaa;
 }
 .swagger-ui-wrap h1 {
-  color: black;
-  font-size: 1.5em;
-  line-height: 1.3em;
-  padding: 10px 0 10px 0;
-  font-family: "Droid Sans", sans-serif;
-  font-weight: bold;
+  display: block !important;
+  font-size: 30px;
+  font-weight: 400;
+  color: #5d606b;
+  line-height: 1.33;
+  margin-bottom: 8px;
+  margin-top: 6px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(93, 96, 107, 0.15);
 }
 .swagger-ui-wrap .heading_with_menu {
   float: none;
