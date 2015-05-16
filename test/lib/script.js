@@ -30,20 +30,20 @@ $(function() {
         target.attr('disabled', true)
         e.preventDefault()
         if (!$('.receiver').val()) {
-            target.attr('disabled', true)
+            target.attr('disabled', false)
             messageBox('danger', '请填写收件人邮箱地址', 2000)
             return
         } else if (!validateEmail($('.receiver').val())) {
-            target.attr('disabled', true)
+            target.attr('disabled', false)
             messageBox('danger', '邮箱地址格式不正确', 2000)
             return
         }
         if (!$('.input-test-url').val()) {
-            target.attr('disabled', true)
+            target.attr('disabled', false)
             messageBox('danger', '请填写 post url', 2000)
             return
         } else if (!validateUrl($('.input-test-url').val())) {
-            target.attr('disabled', true)
+            target.attr('disabled', false)
             messageBox('danger', 'url格式不正确，请以http(s)://开头', 2000)
             return
         }
