@@ -309,32 +309,34 @@
                 },
                 "parameters": [{
                     "name": "smsUser",
-                    "in": "query",
+                    "in": "formData",
                     "required": true,
                     "description": "子账号",
                     "default": "test_sendcloud_sms_user",
                     "type": "string"
                 }, {
                     "name": "templateId",
-                    "in": "query",
+                    "in": "formData",
                     "required": true,
                     "description": "模板ID",
                     "default": "1",
                     "type": "int"
                 }, {
                     "name": "phone",
-                    "in": "query",
+                    "in": "formData",
                     "required": true,
                     "description": "电话号码",
                     "default": "18888888888",
                     "type": "string"
                 }, {
                     "name": "vars",
+                    "in": "formData",
                     "required": false,
                     "description": "替换变量的json串",
                     "type": "string"
                 }, {
                     "name": "timestamp",
+                    "in": "formData",
                     "required": false,
                     "description": "UNIX时间戳",
                     "type": "string"
@@ -362,27 +364,28 @@
                 },
                 "parameters": [{
                     "name": "smsUser",
-                    "in": "query",
+                    "in": "formData",
                     "required": true,
                     "description": "子账号",
                     "default": "test_sendcloud_sms_user",
                     "type": "string"
                 }, {
                     "name": "templateId",
-                    "in": "query",
+                    "in": "formData",
                     "required": true,
                     "description": "模板ID",
                     "default": "1",
                     "type": "int"
                 }, {
                     "name": "tos",
-                    "in": "query",
+                    "in": "formData",
                     "required": true,
                     "description": "手机号和替换变量对应的json串",
                     "default": "[{\"phone\": \"13111111111\", \"vars\": {\"%name%\": \"name1\"}}, {\"phone\": \"13122222222\", \"vars\": {\"%name%\": \"name2\"}}]",
                     "type": "string"
                 }, {
                     "name": "timestamp",
+                    "in": "formData",
                     "required": false,
                     "description": "UNIX时间戳",
                     "type": "string"
