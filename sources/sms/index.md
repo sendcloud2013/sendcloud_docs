@@ -48,7 +48,7 @@
 2. 按照排列之后的顺序, 以 'key=value' + '&' + 'key=value' 的方式连接所有参数, 
    得到字符串 param_str
 3. 以 SMS_KEY + '&' + param_str + '&' + SMS_KEY 的方式得到字符串 sign_str
-4. 计算 sign_str 的MD5值, 得到 signature
+4. 计算 sign_str 的MD5值 (32位, 不区分大小写), 得到 signature
 
 '&' 是代码中使用的连接符, '+'是文档显示之用
 ```
@@ -59,7 +59,7 @@
 import hashlib
 
 SMS_USER = 'testuser'
-SMS_KEY = 'A16a9yjNLS4DiasxcfqQRG4WOgdx0r6C'
+SMS_KEY = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
 param = {
     'smsUser': SMS_USER,
