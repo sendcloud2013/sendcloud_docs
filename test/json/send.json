@@ -31,8 +31,8 @@
                     "application/xml"
                 ],
                 "produces": [
-                    "application/xml",
-                    "application/json"
+                    "application/json",
+                    "application/xml"
                 ],
                 "responses": {
                     "200": {
@@ -161,8 +161,8 @@
                 "operationId": "mail.send.json.post",
                 "consumes": ["application/x-www-form-urlencoded"],
                 "produces": [
-                    "application/xml",
-                    "application/json"
+                    "application/json",
+                    "application/xml"
                 ],
                 "responses": {
                     "200": {
@@ -296,8 +296,8 @@
                     "application/xml"
                 ],
                 "produces": [
-                    "application/xml",
-                    "application/json"
+                    "application/json",
+                    "application/xml"
                 ],
                 "responses": {
                     "200": {
@@ -426,7 +426,8 @@
                 "operationId": "mail.send.xml.post",
                 "consumes": ["application/x-www-form-urlencoded"],
                 "produces": [
-                    "application/json"
+                    "application/json",
+                    "application/xml"
                 ],
                 "responses": {
                     "200": {
@@ -555,8 +556,8 @@
                 "operationId": "sms.send.post",
                 "consumes": ["application/x-www-form-urlencoded"],
                 "produces": [
-                    "application/xml",
-                    "application/json"
+                   "application/json",
+                    "application/xml"
                 ],
                 "responses": {
                     "200": {
@@ -607,8 +608,8 @@
                 "operationId": "sms.sendn.post",
                 "consumes": ["application/x-www-form-urlencoded"],
                 "produces": [
-                    "application/xml",
-                    "application/json"
+                    "application/json",
+                    "application/xml"
                 ],
                 "responses": {
                     "200": {
