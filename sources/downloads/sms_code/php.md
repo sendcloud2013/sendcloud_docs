@@ -1,4 +1,4 @@
-## WEBAPI 方式一
+## WEBAPI
 
 ```
 <?php
