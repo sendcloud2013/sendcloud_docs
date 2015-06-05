@@ -12,14 +12,15 @@ def generate_md5(fp):
     m.update(fp)
     return m.hexdigest()
 
-url = 'http://sendcloud.sohu.com/smsapi/send?'
+url = 'http://sendcloud.sohu.com/smsapi/send'
 SMS_KEY = '***'
+
 param = {
     'smsUser':'***',
     'smsKey' : SMS_KEY,
     'templateId' : 1,
     'phone' : 13412345678,
-    'vars' : '{"%Code%":"123456"}'
+    'vars' : '{"%code%":"123456"}'
 }
 
 param_keys = list(param.keys())

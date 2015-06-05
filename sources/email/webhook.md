@@ -8,7 +8,7 @@
      
 * 通过`【设置】-【WebHook】`获取 `APP KEY`
 * 解析出 POST 数据中的 `token`, `timestamp` 和 `signature`
-* 使用 `APP KEY`, `token` 和 `timestamp` 生成签名 `signature`, 与 POST 数据中的 `signature` 进行校验 ( 签名算法: [HMAC](http://en.wikipedia.org/wiki/Hash-based_message_authentication_code))
+* 使用 `APP KEY`, `token` 和 `timestamp` 生成签名 `signature`, 与 POST 数据中的 `signature` 进行校验 ( 签名算法: [SHA256](http://en.wikipedia.org/wiki/SHA-2))
 
 
 **python 代码示例**

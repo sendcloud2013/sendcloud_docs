@@ -44,17 +44,18 @@ pages:
 
 - [sms/index.md, '短信API', '规则']
 - [sms/api.md, '短信API', 'API']
+- [sms/code.md, '短信API', '短信代码示例']
 
 - [downloads/index.md, '代码示例', '代码示例']
 - [downloads/code/curl.md, '代码示例','Curl']
 - [downloads/code/python.md, '代码示例','Python']
 - [downloads/code/java.md, '代码示例','Java']
-- [downloads/code/php.md, '代码示例','Php']
+- [downloads/code/php.md, '代码示例','PHP']
 - [downloads/code/ruby.md, '代码示例','Ruby']
 - [downloads/code/perl.md, '代码示例','Perl']
 - [downloads/code/csharp.md, '代码示例','C#']
 - [downloads/code/golang.md, '代码示例','Golang']
-- [downloads/code/nodejs.md, '代码示例','Node.js']
+- [downloads/code/nodejs.md, '代码示例','Nodejs']
 
 - [faq/index.md, 'FAQ', 'FAQ']
 - [test/index.md, '测试平台', '测试中心']

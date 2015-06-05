@@ -30,14 +30,20 @@ POST
     
 *vars格式示例:*
 
-    {"%name%": "lucy"}
+    {"name": "lucy"} or {"%name%": "lucy"}
 
 `注意`: 
 
 1. 参数 vars 可能含有特殊字符, 记得 `urlencode`
 
-2. vars 所传递的变量的值, 长度不能超过 16 个字符
+2. vars 所传递的变量的值, 长度不能超过 32 个字符
+
+3. HTTP 设置头域 `Content-Type: application/x-www-form-urlencoded`
+
+4. 生成签名时, 参数不要使用 `urlencode`. 在调用 api 时, 才需要对参数做 `urlencode`
+
 - - -
+
 ## sendn (暂不开通)
 
 发送一个短信模板给多个用户, 每个用户对应一个替换变量.
@@ -67,6 +73,10 @@ POST
 |signature      |string         |是         |签名, 合法性验证|
 |timestamp      |string         |否         |UNIX时间戳|
 
+*vars格式示例:*
+
+    {"name": "lucy"} or {"%name%": "lucy"}
+
 *tos格式示例:*
     
     [{"phone": "13111111111", "vars": {"%name%": "name1"}}, {"phone": "13122222222", "vars": {"%name%": "name2"}}]
@@ -75,7 +85,12 @@ POST
 
 1. 参数 vars 可能含有特殊字符, 记得 `urlencode`
 
-2. vars 所传递的变量的值, 长度不能超过 16 个字符
+2. vars 所传递的变量的值, 长度不能超过 32 个字符
+
+3. HTTP 设置头域 `Content-Type: application/x-www-form-urlencoded`
+
+4. 生成签名时, 参数不要使用 `urlencode`. 在调用 api 时, 才需要对参数做 `urlencode`
+
 - - -
     
 ## timestamp
