@@ -261,8 +261,8 @@ http://sendcloud.sohu.com/webapi/list_member.get.json?api_user=***&api_key=***&a
     "message":"success",
     "total_count":2,    
     "members":[
-        {"create_at":"2015-03-10 18:34:44","modify_at":"","address":"newtest1@163.com","name":"newaddress1","subscribed":"true","vars":{"%money%":1000}},
-        {"create_at":"2015-03-10 18:34:44","modify_at":"","address":"newtest2@qq.com","name":"newaddress2","subscribed":"true","vars":{"%money%":900}}
+        {"create_at":"2015-03-10 18:34:44","modify_at":"","address":"newtest1@163.com","name":"newaddress1","subscribed":"true","vars":{"money":1000}},
+        {"create_at":"2015-03-10 18:34:44","modify_at":"","address":"newtest2@qq.com","name":"newaddress2","subscribed":"true","vars":{"money":900}}
     ]
 }
 ```
@@ -290,7 +290,7 @@ post    get
 |mail_list_addr|string|是|地址列表调用名称|
 |member_addr|string|是|需添加成员的地址, 多个地址使用分号;分开|
 |name|string|否|地址所属人名称, 与member_addr一一对应, 多个名称用;分隔|
-|vars|string|否|模板替换的变量, 与member_addr一一对应, 变量格式为{'%money%':1000}, 多个用;分隔|
+|vars|string|否|模板替换的变量, 与member_addr一一对应, 变量格式为{'money':1000}, 多个用;分隔|
 |subscribed|string (true, false)|否|预留字段, deprecated, 忽略|
 |upsert|string (true, false)|否|是否更新, 当为true时, 如果该member_addr存在, 则更新; 为false时, 如果成员地址存在, 将报重复地址错误, 默认为false|
 
@@ -298,7 +298,7 @@ post    get
     
 **请求示例(python)**
 ```
-curl --data-urlencode "vars={'%money%':99};{'%money%':900}" -d 'api_user=***&api_key=***&mail_list_addr=yourlist@maillist.sendcloud.org&member_addr=test1@163.com;test2@qq.com&name=lucy;lily&upsert=true'  http://sendcloud.sohu.com/webapi/list_member.add.json
+curl --data-urlencode "vars={'money':99};{'money':900}" -d 'api_user=***&api_key=***&mail_list_addr=yourlist@maillist.sendcloud.org&member_addr=test1@163.com;test2@qq.com&name=lucy;lily&upsert=true'  http://sendcloud.sohu.com/webapi/list_member.add.json
 ```
     
 **返回值说明**
@@ -339,13 +339,13 @@ post    get
 |mail_list_addr|string|是|地址列表调用名称|
 |member_addr|string|是|需要更新的地址,多个地址使用分号;分开|
 |name|string|否|需要更新的地址对应的名称,多个名称用;分隔|
-|vars|string|否|需要更新的地址对应的变量,变量格式为{'%money%':1000}, 多个用;分隔|
+|vars|string|否|需要更新的地址对应的变量,变量格式为{'money':1000}, 多个用;分隔|
     
 注意: 如果包含name和vars变量, 则必须与member_add的地址数量一致
     
 **请求示例(python)**
 ```
-curl --data-urlencode "vars={'%money%':99};{'%money%':900}" -d 'api_user=***&api_key=***&mail_list_addr=yourlist@maillist.sendcloud.org&member_addr=test1@163.com;test2@qq.com&name=lucy;lily'  http://sendcloud.sohu.com/webapi/list_member.update.json
+curl --data-urlencode "vars={'money':99};{'money':900}" -d 'api_user=***&api_key=***&mail_list_addr=yourlist@maillist.sendcloud.org&member_addr=test1@163.com;test2@qq.com&name=lucy;lily'  http://sendcloud.sohu.com/webapi/list_member.update.json
 ```
     
 **返回值说明**
