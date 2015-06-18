@@ -1,19 +1,22 @@
 
-## WEBAPI
+## WEBAPI 普通发送
 ```
-# -*- coding:utf-8 -*-                                                          
+#coding:utf-8                                                                   
 
 import requests                                                                 
 
 url = "http://sendcloud.sohu.com/webapi/mail.send.json"                         
 
+API_USER = '...'
+API_KEY = '...'
+
 params = {                                                                      
-    "api_user": "***", # 使用api_user和api_key进行验证                       
-    "api_key" : "***",                                             
-    "to" : "to1@domain.com;to2@domain.com", # 收件人地址, 用正确邮件地址替代, 多个地址用';'分隔
-    "from" : "sendcloud@sendcloud.org", # 发信人, 用正确邮件地址替代                                        
+    "api_user": API_USER, # 使用api_user和api_key进行验证                       
+    "api_key" : API_KEY,                                             
+    "to" : "to1@domain.com;to2@domain.com", # 收件人地址, 用正确邮件地址替代, 多个地址用';'分隔  
+    "from" : "sendcloud@sendcloud.org", # 发信人, 用正确邮件地址替代     
     "fromname" : "SendCloud",                                                    
-    "subject" : "SendCloud python webapi example",                              
+    "subject" : "SendCloud python common",                              
     "html": "欢迎使用SendCloud",
     "resp_email_id": "true",
 }                                                                               
@@ -21,17 +24,88 @@ params = {
 filename = "/path/file.pdf"
 display_filename = "attachment.pdf"
 
-files = { "file1" : (display_filename, open(filename, "rb"))}
+files = { "file1" : (display_filename, open(filename,"rb"))}
+
+r = requests.post(url, files=files, data=params)
+
+print r.text
+
+```
+[downloads](../downloads/code/python/python_common.py)
+
+- - - 
+
+## WEBAPI 模板发送
+```
+#coding:utf-8                                                                   
+
+import requests                                                                 
+
+url = "http://sendcloud.sohu.com/webapi/mail.send_template.json"                         
+
+API_USER = '...'
+API_KEY = '...'
+
+params = {
+    "api_user": API_USER, # 使用api_user和api_key进行验证                       
+    "api_key" : API_KEY,                                             
+    "template_invoke_name" : "test_template",
+    "substitution_vars" : '{"to": ["to1@domain.com", "to2@domain.com"], "sub": {"%name%": ["user1", "user2"], "%money%": ["1000", "2000"]}}',
+    "from" : "sendcloud@sendcloud.org", # 发信人, 用正确邮件地址替代
+    "fromname" : "SendCloud",
+    "subject" : "SendCloud python webapi template",
+    "resp_email_id": "true",
+}
+
+filename = "/path/file.pdf"
+display_filename = "attachment.pdf"
+
+files = { "file1" : (display_filename, open(filename,"rb"))}
 
 r = requests.post(url, files=files, data=params)
 
 print r.text
 ```
-[downloads](../downloads/code/python_webapi.py)
+[downloads](../downloads/code/python/python_template.py)
 
 - - - 
-    
-## SMTP
+
+## WEBAPI 模板 && 地址列表 发送
+```
+#coding:utf-8                                                                   
+
+import requests                                                                 
+
+url = "http://sendcloud.sohu.com/webapi/mail.send_template.json"                         
+
+API_USER = '...'
+API_KEY = '...'
+
+params = {                                                                      
+    "api_user": API_USER, # 使用api_user和api_key进行验证                       
+    "api_key" : API_KEY,                                             
+    "to" : "test@maillist.sendcloud.org", # 使用地址列表的别称地址
+    "from" : "sendcloud@sendcloud.org", # 发信人, 用正确邮件地址替代
+    "fromname" : "SendCloud",                                                    
+    "subject" : "SendCloud python template address_list",                              
+    "template_invoke_name" : "sendcloud_template",
+    "use_maillist" : "true",
+    "resp_email_id": "true",
+}                                                                               
+
+filename = "/path/file.pdf"
+display_filename = "attachment.pdf"
+
+files = { "file1" : (display_filename, open(filename,"rb"))}
+
+r = requests.post(url, files=files, data=params)
+
+print r.text
+```
+[downloads](../downloads/code/python/python_template_maillist.py)
+- - - 
+
+## SMTP 方式发送
 ```
 # -*- coding:utf-8 -*-                                                          
 

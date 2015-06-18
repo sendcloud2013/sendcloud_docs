@@ -4,9 +4,9 @@
 
 * [Curl](code/curl.md)
 
-* [Python](code/python.md)
+* [Python](code/python/python.md)
 
-* [Java](code/java.md)
+* [Java](code/java/java.md)
 
 * [Php](code/php.md)
 

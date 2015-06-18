@@ -37,7 +37,7 @@ WEBAPI 返回的信息, 示例如下:
 
 ## SMTP 请求方式
 
-为开发者提供 SMTP 协议的投递方式, 以下是会话过程. 详细的代码示例, 请移步[这里](../downloads/code/python.md#smtp)
+为开发者提供 SMTP 协议的投递方式, 以下是会话过程. 详细的代码示例, 请移步[这里](../downloads/code/python/python.md#smtp)
 
 ``` 
 S: 220 SendCloud Inbound Server ESMTP Haraka 2.2.4 ready

@@ -48,8 +48,8 @@ pages:
 
 - [downloads/index.md, '代码示例', '代码示例']
 - [downloads/code/curl.md, '代码示例','Curl']
-- [downloads/code/python.md, '代码示例','Python']
-- [downloads/code/java.md, '代码示例','Java']
+- [downloads/code/python/python.md, '代码示例','Python']
+- [downloads/code/java/java.md, '代码示例','Java']
 - [downloads/code/php.md, '代码示例','PHP']
 - [downloads/code/ruby.md, '代码示例','Ruby']
 - [downloads/code/perl.md, '代码示例','Perl']
