@@ -1,4 +1,12 @@
-##WEBAPI
+## 依赖
+代码需要安装rest_client
+```
+gem install rest_client
+```
+    
+- - -    
+
+## WEBAPI 普通发送
 ```
 #!/usr/bin/env ruby
 
@@ -7,13 +15,100 @@ require 'rest_client'
 
 def send_mail
         response = RestClient.post "http://sendcloud.sohu.com/webapi/mail.send.json",
-        :api_user => "***", # 使用api_user和api_key进行验证
-        :api_key => "***",
+        :api_user => '...', # 使用api_user和api_key进行验证
+        :api_key => '...',
         :from => "sendcloud@sendcloud.org", # 发信人，用正确邮件地址替代
         :fromname => "SendCloud",
         :to => "to1@domain.com;to2@domain.com", # 收件人地址，用正确邮件地址替代，多个地址用';'分隔
-        :subject => "SendCloud ruby webapi example",
-        :html => '欢迎使用SendCloud'
+        :subject => "SendCloud ruby webapi common example",
+        :html => '欢迎使用SendCloud',
+
+return response
+end
+
+response = send_mail
+puts response.code
+puts response.to_str
+```
+    
+- - -
+    
+## WEBAPI 普通发送 带附件
+```
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'rest_client'
+
+def send_mail
+        response = RestClient.post "http://sendcloud.sohu.com/webapi/mail.send.json",
+        :myfile => File.new("./test.file",'rb'),
+        :api_user => '...', # 使用api_user和api_key进行验证
+        :api_key => '...',
+        :from => "sendcloud@sendcloud.org", # 发信人，用正确邮件地址替代
+        :fromname => "SendCloud",
+        :to => "to1@domain.com;to2@domain.com", # 收件人地址，用正确邮件地址替代，多个地址用';'分隔
+        :subject => "SendCloud ruby webapi common with attachment example",
+        :html => '欢迎使用SendCloud',
+
+return response
+end
+
+response = send_mail
+puts response.code
+puts response.to_str
+```   
+    
+- - -
+     
+## WEBAPI 模板发送
+```
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'rest_client'
+require 'json'
+
+def send_mail
+        vars = JSON.dump({"to" => ['to1@domain.com'], "sub" => { "%code%" => ['123456']} })
+        response = RestClient.post "http://sendcloud.sohu.com/webapi/mail.send_template.json",
+        :api_user => "...", # 使用api_user和api_key进行验证
+        :api_key => "...",
+        :from => "sendcloud@sendcloud.org", # 发信人，用正确邮件地址替代
+        :fromname => "SendCloud",
+        :substitution_vars => vars,
+        :template_invoke_name => 'sendcloud_template',
+        :subject => "SendCloud ruby webapi template example",
+        :resp_email_id => 'true'
+
+return response
+end
+
+response = send_mail
+puts response.code
+puts response.to_str
+```
+    
+- - -
+    
+## WEBAPI 模板 && 地址列表 发送
+```
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'rest_client'
+
+def send_mail
+        response = RestClient.post "http://sendcloud.sohu.com/webapi/mail.send_template.json",
+        :api_user => "...", # 使用api_user和api_key进行验证
+        :api_key => "...",
+        :from => "sendcloud@sendcloud.org", # 发信人，用正确邮件地址替代
+        :fromname => "SendCloud",
+        :use_maillist => 'true',
+        :to => "test@maillist.sendcloud.org", # 使用地址列表的别称地址
+        :template_invoke_name => 'sendcloud_template',
+        :subject => "SendCloud ruby webapi template maillist example",
+        :resp_email_id => 'true'
 
 return response
 end

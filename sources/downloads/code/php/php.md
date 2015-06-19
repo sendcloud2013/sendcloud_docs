@@ -1,4 +1,46 @@
-## WEBAPI 方式一
+## WEBAPI 普通发送
+    
+```
+<?php
+
+function send_mail() {
+        $url = 'http://sendcloud.sohu.com/webapi/mail.send.json';
+        $API_USER = '...';
+        $API_KEY = '...';
+
+        $param = array(
+            'api_user' => $API_USER, # 使用api_user和api_key进行验证
+            'api_key' => $API_KEY,
+            'from' => 'sendcloud@sendcloud.org', # 发信人，用正确邮件地址替代
+            'fromname' => 'SendCloud',
+            'to' => 'to1@domain.com;to2@domain.com',# 收件人地址, 用正确邮件地址替代, 多个地址用';'分隔  
+            'subject' => 'Sendcloud php webapi common example',
+            'html' => '欢迎使用SendCloud',
+            'resp_email_id' => 'true'
+        );
+        
+
+        $data = http_build_query($param);
+
+        $options = array(
+            'http' => array(
+                'method' => 'POST',
+                'header' => 'Content-Type: application/x-www-form-urlencoded',
+                'content' => $data
+        ));
+        $context  = stream_context_create($options);
+        $result = file_get_contents($url, FILE_TEXT, $context);
+
+        return $result;
+}
+
+echo send_mail();
+?>
+```
+    
+- - - 
+
+## WEBAPI 普通发送带附件
 
 ```
 <?php
@@ -6,26 +48,28 @@
 function send_mail() {
         $url = 'http://sendcloud.sohu.com/webapi/mail.send.json';
 
+        $API_USER = '...';
+        $API_KEY = '...';
         $param = array(
-            'api_user' => '***', # 使用api_user和api_key进行验证
-            'api_key' => '***',
+            'api_user' => $API_USER, # 使用api_user和api_key进行验证
+            'api_key' => $API_KEY,
             'from' => 'sendcloud@sendcloud.org', # 发信人，用正确邮件地址替代
             'fromname' => 'SendCloud',
-            'to' => 'test@ifaxin.com', # 收件人地址，用正确邮件地址替代，多个地址用';'分隔
-            'subject' => 'Sendcloud php webapi example',
-            'html' => '<html><head></head><body><p>欢迎使用<a href=\'http://sendcloud.sohu.com\'>SendCloud</a></p></body></html>',
+            'to' => 'to1@domain.com;to2@domain.com', # 收件人地址，用正确邮件地址替代，多个地址用';'分隔
+            'subject' => 'Sendcloud php webapi with attachment example',
+            'html' => '欢迎使用SendCloud',
             'resp_email_id' => 'true'
         );
-        
+
         $file = "./test.php"; #你的附件路径
         $handle = fopen('./test.php','rb');
         $content = fread($handle,filesize($file));
-         
+
         $eol = "\r\n";
         $data = '';
-         
+
         $mime_boundary=md5(time());
-         
+
         // 配置参数
         foreach ( $param as $key => $value ) { 
             $data .= '--' . $mime_boundary . $eol;  
@@ -57,15 +101,104 @@ function send_mail() {
 
 echo send_mail();
 ?>
-
 ```
+   
+- - 
+    
+## WEBAPI 模板发送
+```
+<?php
+
+function send_mail() {
+        $url = 'http://sendcloud.sohu.com/webapi/mail.send_template.json';
+
+        $vars = json_encode( array("to" => array('to1@domain.com'),
+                                   "sub" => array("code" => Array('123456'))
+                                   )
+                );
+
+        API_USER = '...';
+        API_KEY = '...';
+        $param = array(
+            'api_user' => $API_USER, # 使用api_user和api_key进行验证
+            'api_key' => $API_KEY,
+            'from' => 'sendcloud@sendcloud.org', # 发信人，用正确邮件地址替代
+            'fromname' => 'SendCloud',
+            'substitution_vars' => $vars,
+            'template_invoke_name' => 'sendcloud_template',
+            'subject' => 'Sendcloud php webapi template example',
+            'resp_email_id' => 'true'
+        );
+        
+
+        $data = http_build_query($param);
+
+        $options = array(
+            'http' => array(
+                'method' => 'POST',
+                'header' => 'Content-Type: application/x-www-form-urlencoded',
+                'content' => $data
+        ));
+        $context  = stream_context_create($options);
+        $result = file_get_contents($url, FILE_TEXT, $context);
+
+        return $result;
+}
+
+echo send_mail();
+?>
+``` 
     
 - - -
+## WEBAPI 模板 && 地址列表 发送
+```
+<?php
+
+function send_mail() {
+        $url = 'http://sendcloud.sohu.com/webapi/mail.send_template.json';
+        
+        $API_USER = '...';
+        $API_KEY = '...';
+
+        $param = array(
+            'api_user' => $API_USER, # 使用api_user和api_key进行验证
+            'api_key' => $API_KEY,
+            'from' => 'sendcloud@sendcloud.org', # 发信人，用正确邮件地址替代
+            'fromname' => 'SendCloud',
+            'use_maillist' => 'true',
+            'to' => 'test@maillist.sendcloud.org',# 使用地址列表的别称地址
+            'template_invoke_name' => 'sendcloud_template',
+            'subject' => 'Sendcloud php webapi temaplate maillist example',
+            'resp_email_id' => 'true'
+        );
+        
+
+        $data = http_build_query($param);
+
+        $options = array(
+            'http' => array(
+                'method' => 'POST',
+                'header' => 'Content-Type: application/x-www-form-urlencoded',
+                'content' => $data
+        ));
+        $context  = stream_context_create($options);
+        $result = file_get_contents($url, FILE_TEXT, $context);
+
+        return $result;
+}
+
+echo send_mail();
+?>
+```
+   
+- - -
     
-## WEBAPI 方式二
+## WEBAPI CURL 发送
 ```
 <?php
 function send_mail() {
+        $API_USER = '...';
+        $API_KEY = '...';
 
         $ch = curl_init();
 
@@ -76,13 +209,13 @@ function send_mail() {
         curl_setopt($ch, CURLOPT_URL, 'http://sendcloud.sohu.com/webapi/mail.send.json');
 
         curl_setopt($ch, CURLOPT_POSTFIELDS, array(
-                                'api_user' => '***', # 使用api_user和api_key进行验证
-                                'api_key' => '***',
+                                'api_user' => $API_USER, # 使用api_user和api_key进行验证
+                                'api_key' => $API_KEY,
                                 'from' => 'sendcloud@sendcloud.org', # 发信人，用正确邮件地址替代
                                 'fromname' => 'SendCloud',
                                 'to' => 'to1@domain.com;to2@domain.com', # 收件人地址，用正确邮件地址替代，多个地址用';'分隔
                                 'subject' => 'Sendcloud php webapi example',
-                                'html' => "<html><head></head><body><p>欢迎使用<a href=\'http://sendcloud.sohu.com\'>SendCloud</a></p></body></html>",
+                                'html' => "欢迎使用SendCloud",
                                 'files' => '@./test.txt'));
 
         $result = curl_exec($ch);
