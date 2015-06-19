@@ -1,4 +1,13 @@
-## WEBAPI
+## 依赖
+模板发送需要依赖json包
+```
+从CPAN下载安装
+https://metacpan.org/pod/JSON
+```
+    
+- - -
+    
+## WEBAPI 普通发送
 ```
 use strict;
 use LWP::UserAgent;
@@ -10,13 +19,14 @@ my $ua = LWP::UserAgent->new;
 # See http://search.cpan.org/~gaas/HTTP-Message-6.06/lib/HTTP/Request.pm
 my $request = POST $uri,
     Content => [
-        api_user => '***', # 使用api_user和api_key进行验证
-        api_key => '***',
+        api_user => '...', # 使用api_user和api_key进行验证
+        api_key => '...',
         from => 'sendcloud@sendcloud.org', # 发信人，用正确邮件地址替代
         fromname => 'SendCloud',
         to => 'to1@domain.com;to2@domain.com', # 收件人地址，用正确邮件地址替代，多个地址用';'分隔
-        subject => 'SendCloud perl webapi example',
-        html => '欢迎使用SendCloud'
+        subject => 'SendCloud perl webapi common example',
+        html => '欢迎使用SendCloud',
+        resp_email_id => 'true'
     ];
 
 my $response = $ua->request($request) ;
@@ -29,6 +39,120 @@ if ($response->is_success()) {
 exit;
 ```
     
+- - -
+    
+## WEBAPI 普通发送 带附件
+```
+use strict;
+use LWP::UserAgent;
+use HTTP::Request::Common;
+
+my $uri = 'http://sendcloud.sohu.com/webapi/mail.send.json';
+
+my $ua = LWP::UserAgent->new;
+# See http://search.cpan.org/~gaas/HTTP-Message-6.06/lib/HTTP/Request.pm
+my $request = POST $uri,
+    Content => [
+        api_user => '...', # 使用api_user和api_key进行验证
+        api_key => '...',
+        from => 'sendcloud@sendcloud.org', # 发信人，用正确邮件地址替代
+        fromname => 'SendCloud',
+        to => 'to1@domain.com;to2@domain.com', # 收件人地址，用正确邮件地址替代，多个地址用';'分隔
+        subject => 'SendCloud perl webapi common with attachment example',
+        html => '欢迎使用SendCloud',
+        resp_email_id => 'true',
+        uploadfile => ['./test.file']
+    ],
+    'Content_Type' => 'form-data';
+
+my $response = $ua->request($request) ;
+if ($response->is_success()) {
+    print $response->content, "\n";
+} else {
+    print $response->as_string, "\n";
+}
+
+exit;
+```
+     
+- - -
+    
+## WEBAPI 模板发送
+```
+use strict;
+use LWP::UserAgent;
+use HTTP::Request::Common;
+use JSON;
+
+my $uri = 'http://sendcloud.sohu.com/webapi/mail.send_template.json';
+
+my $ua = LWP::UserAgent->new;
+# See http://search.cpan.org/~gaas/HTTP-Message-6.06/lib/HTTP/Request.pm
+
+my %sub = ("%code%"=>['123456']);
+my %vars = ("to"=>['to1@domain.com'],"sub"=>\%sub);
+my $vars_str = encode_json\%vars;
+print "$vars_str\n";
+
+my $request = POST $uri,
+    Content => [
+        api_user => '...', # 使用api_user和api_key进行验证
+        api_key => '...',
+        from => 'sendcloud@sendcloud.org', # 发信人，用正确邮件地址替代
+        fromname => 'SendCloud',
+        substitution_vars => $vars_str,
+        template_invoke_name => 'sendcloud_template',
+        subject => 'SendCloud perl webapi template example',
+        resp_email_id => 'true'
+    ];
+
+my $response = $ua->request($request) ;
+if ($response->is_success()) {
+    print $response->content, "\n";
+} else {
+    print $response->as_string, "\n";
+}
+
+exit;
+```
+- - -
+    
+## WEBAPI 模板 && 地址列表 发送
+```
+use strict;
+use LWP::UserAgent;
+use HTTP::Request::Common;
+use JSON;
+
+my $uri = 'http://sendcloud.sohu.com/webapi/mail.send_template.json';
+
+my $ua = LWP::UserAgent->new;
+# See http://search.cpan.org/~gaas/HTTP-Message-6.06/lib/HTTP/Request.pm
+
+
+my $request = POST $uri,
+    Content => [
+        api_user => '...', # 使用api_user和api_key进行验证
+        api_key => '...',
+        from => 'sendcloud@sendcloud.org', # 发信人，用正确邮件地址替代
+        fromname => 'SendCloud',
+        use_maillist => 'true',
+        to => 'test@maillist.sendcloud.org',# 使用地址列表的别称地址
+        template_invoke_name => 'sendcloud_template',
+        subject => 'SendCloud perl webapi template maillist example',
+        resp_email_id => 'true'
+    ];
+
+my $response = $ua->request($request) ;
+if ($response->is_success()) {
+    print $response->content, "\n";
+} else {
+    print $response->as_string, "\n";
+}
+
+exit;
+```
+     
 - - -
    
 ## SMTP

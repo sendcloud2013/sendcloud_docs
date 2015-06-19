@@ -8,11 +8,11 @@
 
 * [Java](code/java/java.md)
 
-* [Php](code/php.md)
+* [Php](code/php/php.md)
 
-* [Ruby](code/ruby.md)
+* [Ruby](code/ruby/ruby.md)
 
-* [Perl](code/perl.md)
+* [Perl](code/perl/perl.md)
 
 * [C#](code/csharp.md)
 
