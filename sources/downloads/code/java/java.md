@@ -12,10 +12,17 @@
     <artifactId>httpmime</artifactId>
     <version>4.2</version>
 </dependency>
+<dependency>
+    <groupId>org.json</groupId>
+    <artifactId>json</artifactId>
+    <version>20140107</version>
+</dependency>
 ```
 [httpclient](http://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient/4.2)
 
 [httpmime](http://mvnrepository.com/artifact/org.apache.httpcomponents/httpmime/4.2)
+
+[org.json](http://mvnrepository.com/artifact/org.json/json/20140107)
 
 ## WEBAPI 普通发送 
 
@@ -116,13 +123,56 @@ public static void send_common_with_attachment() throws ClientProtocolException,
 ## WEBAPI 模板发送
 
 ```
+
+class A {
+	String address;
+	String name;
+	String money;
+
+	A(String address, String name, String money) {
+		this.address = address;
+		this.name = name;
+		this.money = money;
+	}
+}
+
+public static String convert(List<A> dataList) {
+
+    JSONObject ret = new JSONObject();
+
+    JSONArray to = new JSONArray();
+
+    JSONArray names = new JSONArray();
+    JSONArray moneys = new JSONArray();
+
+    for (A a : dataList) {
+        to.put(a.address);
+        names.put(a.name);
+        moneys.put(a.money);
+    }
+
+    JSONObject sub = new JSONObject();
+    sub.put("%name%", names);
+    sub.put("%money%", moneys);
+
+    ret.put("to", to);
+    ret.put("sub", sub);
+
+    return ret.toString();
+}
+
 public static void send_template() throws ClientProtocolException, IOException {
 
     final String url = "http://sendcloud.sohu.com/webapi/mail.send_template.json";
 
     final String apiUser = "***";
     final String apiKey = "***";
-    final String vars = "{\"to\": [\"to1@domain.com\", \"to2@domain.com\"], \"sub\" : { \"%name%\" : [\"user1\", \"user2\"], \"%money%\" : [\"1000\", \"2000\"]}}";
+
+    List<A> dataList = new ArrayList<A>();
+    dataList.add(new A("to1@domain.com", "user1", "1000"));
+    dataList.add(new A("to2@domain.com", "user2", "2000"));
+    
+    final String vars = convert(dataList);
 
     HttpClient httpclient = new DefaultHttpClient();
     HttpPost httpost = new HttpPost(url);

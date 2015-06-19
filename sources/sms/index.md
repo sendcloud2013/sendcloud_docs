@@ -35,6 +35,30 @@
 短信模板必须含有「签名」, 否则不能通过审核. 目前用户只能拥有1个签名.
 `
 - - -
+## 拦截列表
+
+为减少用户对空号, 停机等手机号码的无效发送, SendCloud 会根据运营商反馈的发送结果来做相应的拦截处理.
+
+所有```发送失败```的手机号码都会进入拦截列表, 拦截列表记录的字段如下: 
+
+* 手机号码: 拦截的手机号码
+* 拦截时间: 此时间之后的发送会被 SendCloud 拦截
+* 失效时间: 此时间之后的发送恢复正常
+* 原因: 运营商反馈的发送结果明细
+
+不同的失败原因会产生不同的拦截时间, 不同的拦截范围, 详细见下表: 
+
+|返回码|失败描述|拦截时间|全局,局部|用户是否可删除|
+|:-----|:-------|:-------|:--------|:-------------|
+|500|发送失败, 手机空号|30 天|全局拦截|是|
+|510|发送失败, 手机停机|1 小时|全局拦截|是|
+|550|发送失败, 该模板内容被投诉|1 小时|局部拦截|是|
+|580|发送失败, 手机关机|0 秒||是| 
+|590|发送失败, 其他原因|0 秒||是|
+
+全局拦截: 此条拦截记录会对 SendCloud 所有用户生效.
+
+局部拦截: 此条拦截记录只会对来源用户生效.
 
 ## API 验证机制
 
@@ -95,4 +119,225 @@ signature = hashlib.md5(sign_str).hexdigest()
 
 timestamp 参数需要被包含在 signature 中, 参与生成数字签名.
 
+- - -
+
+## SMSHook
+
+#### SMSHook 机制
+
+用户将短信请求发送给 SendCloud 之后, SendCloud 会把「请求结果」同步返回给用户, 而短信的「发送结果」和 「其他事件结果」是通过 SMSHook 异步返回给用户的.
+
+* SendCloud 为客户提供了一些短信事件, 客户可以选择关注某些事件
+* 当某事件发生, 就会触发 SendCloud 向客户设置的 URL 发送数据 ( POST )
+* 客户收到数据, 解析出事件和数据, 做后续的处理
+       
+目前 SendCloud 支持的短信事件如下:
+     
+|事件                   |触发条件         |
+|:----------------------|:--------------- |
+|请求(request)          |短信请求成功     |
+|送达(deliver)          |短信发送成功     |
+|处理失败(workererror)  |短信处理失败     |
+|发送失败(delivererror) |短信发送失败     |
+|回复(reply)            |用户回复 (开发中)|
+
+使用方法:
+
+* 用户自行编写 HTTP 服务, 使之能够处理相应的事件, 解析相关数据, 并开放出相应URL
+* 用户在 SendCloud 的 `【短信】- 【短信设置】-【SMSHook】` 中选择关注的事件, 配置接收数据的 URL
+
+`注意: 我们会对用户提供的 URL 做检测. 需要此 HTTP 服务能够正确响应 get | post 请求, 并且保证返回的 HTTP 状态码 为 200`
+   
+#### 签名验证
+
+为了确保消息的来源身份是 SendCloud,  你可以选择对 POST 数据的来源进行安全认证. ( 不验证, 直接解析 POST 的数据也可以 ). 
+
+安全认证的方法如下:
+     
+* 通过`【短信】- 【短信设置】-【SMSHook】`获取 `APP KEY`
+* 解析出 POST 数据中的 `token`, `timestamp` 和 `signature`
+* 使用 `APP KEY`, `token` 和 `timestamp` 生成签名 `signature`, 与 POST 数据中的 `signature` 进行校验 ( 签名算法: [SHA256](http://en.wikipedia.org/wiki/SHA-2))
+
+**python 代码示例**
+```
+import hashlib, hmac
+def verify(appkey, token, timestamp, signature):
+    return signature == hmac.new(
+        key=appkey,
+        msg='{}{}'.format(timestamp, token),
+        digestmod=hashlib.sha256).hexdigest()
+```  
+    
+**Java 代码示例** (依赖 [apache codec](http://commons.apache.org/proper/commons-codec/download_codec.cgi))
+```
+import javax.crypto.Mac;
+import javax.crypto.spec.SecretKeySpec;
+
+import org.apache.commons.codec.binary.Hex;
+
+public boolean verify(String appkey, String token, long timestamp,
+            String signature) throws NoSuchAlgorithmException, InvalidKeyException {
+    Mac sha256HMAC = Mac.getInstance("HmacSHA256");
+    SecretKeySpec secretKey = new SecretKeySpec(appkey.getBytes(),"HmacSHA256");
+    sha256HMAC.init(secretKey);
+    StringBuffer buf = new StringBuffer();
+    buf.append(timestamp).append(token);
+    String signatureCal = new String(Hex.encodeHex(sha256HMAC.doFinal(buf
+            .toString().getBytes())));
+    return signatureCal.equals(signature);
+}
+```
+
+#### 事件说明
+    
+目前 SMSHook 支持的事件类型包括: 请求, 送达, 处理失败, 发送失败.
+
+** 请求 ( request )**
+
+参数说明
+
+|参数|类型|说明|
+|:---|:---|:---|
+|event|string|事件类型:"request"|
+|eventType|int|事件类型代码:1|
+|message|string|消息内容|
+|smsUser|string|smsUser|
+|smsIds|list|短信ID组成的数组|
+|templateId|int|模板ID|
+|phones|list|手机号组成的数组|
+|timestamp|long|时间戳|
+|token|string|随机产生的长度为50的字符串|
+|signature|string|签名字符串|
+|userId|int|用户ID|
+|labelId|int|预留, 暂不用|
+    
+POST 数据示例
+
+```
+signature: 9eb24a034b655257a63c209b35b64b2a4ec5e894ed513c0410a3a6dc570aaaaa
+event: request
+userId: 19999
+timestamp: 1434684323193
+eventType: 1
+templateId: 29999
+message: request
+smsUser: smsuser
+phones: ["13888888888"]
+token: nyFltYEluRVvYezFHJW1st2ewb71RVcVDiNN6GqvRnWtgDDDDD
+smsIds: ["1434684322919_95_1_1_9m9684$13888888888"]
+labelId: 0
+```
+
+** 送达 ( deliver )**
+
+参数说明
+
+|参数|类型|说明|
+|:---|:---|:---|
+|event|string|事件类型:"deliver"|
+|eventType|int|事件类型代码:2|
+|message|string|消息内容|
+|smsUser|string|smsUser|
+|smsId|int|短信ID|
+|templateId|int|模板ID|
+|phone|string|手机号|
+|timestamp|long|时间戳|
+|token|string|随机产生的长度为50的字符串|
+|signature|string|签名字符串|
+|userId|int|用户ID|
+|labelId|int|预留, 暂不用|
+    
+POST 数据示例
+
+```
+signature: e784e44949a403e952813bb7bb97d3fce422bbc2a2e2d90be7bba7b1689aaaaa
+phone: 13888888888
+event: deliver
+userId: 19999
+timestamp: 1434684324073
+smsUser: smsuser 
+templateId: 29999
+message: Successfully delivered
+eventType: 2
+token: uBHSaB9Jj7jN7VN05u11jXuDZT4KIvfMnfrHlIxOOekwUaaaaa
+smsId: 1434684322919_95_1_1_9m9684$13888888888
+labelId: 0
+```
+
+** 处理失败 ( workererror)**
+
+参数说明
+
+|参数|类型|说明|
+|:---|:---|:---|
+|event|string|事件类型:"workererror"|
+|eventType|int|事件类型代码:4|
+|message|string|消息内容|
+|statusCode|int|错误码|
+|smsUser|string|smsUser|
+|smsId|int|短信ID|
+|templateId|int|模板ID|
+|phone|string|手机号|
+|timestamp|long|时间戳|
+|token|string|随机产生的长度为50的字符串|
+|signature|string|签名字符串|
+|userId|int|用户ID|
+|labelId|int|预留, 暂不用|
+    
+POST 数据示例
+
+```
+event: workererror
+eventType: 4
+token: O9CDUhNXxw7y23hMCLSpveIS6VTDF7McFr0EMF0XuJleTAAAAA
+signature: cddc66d39d357feae4993ea224eda165e13190640af1a004d2fb67be5a1aaaaa
+message: smsworker:address in unsubscribe list
+userId: 19999
+smsUser: smsuser
+templateId: 29999
+statusCode: 430
+smsId: 1434684949823_95_1_1_x3rfya$13888888888
+phone: 13888888888
+timestamp: 1434684950692
+labelId: 0
+```
+
+** 发送失败 ( delivererror)**
+
+参数说明
+
+|参数|类型|说明|
+|:---|:---|:---|
+|event|string|事件类型:"delivererror"|
+|eventType|int|事件类型代码:5|
+|message|string|消息内容|
+|statusCode|int|错误码|
+|smsUser|string|smsUser|
+|smsId|int|短信ID|
+|templateId|int|模板ID|
+|phone|string|手机号|
+|timestamp|long|时间戳|
+|token|string|随机产生的长度为50的字符串|
+|signature|string|签名字符串|
+|userId|int|用户ID|
+|labelId|int|预留, 暂不用|
+    
+POST 数据示例
+
+```
+event: delivererror
+eventType: 5
+token: ZqozWAlTLjosjb3yrCDxBttAQyfAdBFo5PxrhF5iGkqbCAAAAA
+signature: 16699442298213ccf099b2b80a938e3cb7ec0e3c153b2fc185017c9958eaaaaa
+message: 12
+userId: 19999
+smsUser: smsuser
+statusCode: 500
+smsId: 1434685825229_95_1_1_o9amg7$13888888888
+phone: 13888888888
+timestamp: 1434685829536
+labelId: 0
+templateId: 29999
+```
+- - - 
 

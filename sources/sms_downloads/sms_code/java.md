@@ -1,8 +1,6 @@
 ## WEBAPI
     
 ```
-package com.sohu.sc.tools;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -10,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -19,8 +18,6 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.params.CoreConnectionPNames;
 import org.apache.http.util.EntityUtils;
-
-import com.sohu.sc.common.util.Md5Util;
 
 public class SmsApi {
 
@@ -53,7 +50,7 @@ public class SmsApi {
             sb.append(String.format("%s=%s&", s, sortedMap.get(s)));
         }
         sb.append(smsKey);
-        String sig = Md5Util.makeMd5Sum(sb.toString().getBytes());
+        String sig = DigestUtils.md5Hex(sb.toString());
         
         // 将所有参数和签名添加到post请求参数数组里
         List<NameValuePair> postparams = new ArrayList<NameValuePair>();
@@ -79,9 +76,7 @@ public class SmsApi {
         } finally {
             httpPost.releaseConnection();
         }
-        
     }
-
 }
 
 ```

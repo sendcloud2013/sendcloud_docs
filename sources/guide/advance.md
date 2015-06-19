@@ -65,7 +65,7 @@
     
 ## WebHook
 
-请求发送给 SendCloud 之后, SendCloud 会把「请求结果」同步返回给用户, 而邮件的「发送结果」是通过 WebHook 异步返回给用户的.
+用户将邮件请求发送给 SendCloud 之后, SendCloud 会把「请求结果」同步返回给用户, 而邮件的「发送结果」和「其他事件结果」是通过 WebHook 异步返回给用户的.
 
 WebHook 机制:
 
@@ -86,7 +86,12 @@ WebHook 机制:
 |举报(report_spam)    |用户举报邮件     |
 |无效邮件(invalid)    |邮件未发送成功   |
 
-在使用之前, 你需要在 SendCloud 的 `【设置】-【WebHook】` 中选择关注的事件, 配置接收数据的URL.
+使用方法:
+
+* 用户自行编写 HTTP 服务, 使之能够处理相应的事件, 解析相关数据, 并开放出相应 URL
+* 用户在 SendCloud 的 `【邮件】- 【邮件设置】-【WebHook】` 中选择关注的事件, 配置接收数据的 URL
+
+`注意: 我们会对用户提供的 URL 做检测. 需要此 HTTP 服务能够正确响应 get | post 请求, 并且保证返回的 HTTP 状态码 为 200`
 
 WebHook 详细说明参见[WebHook详细](../email/webhook.md)     
     

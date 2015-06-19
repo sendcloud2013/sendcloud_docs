@@ -291,7 +291,6 @@ post    get
 |member_addr|string|是|需添加成员的地址, 多个地址使用分号;分开|
 |name|string|否|地址所属人名称, 与member_addr一一对应, 多个名称用;分隔|
 |vars|string|否|模板替换的变量, 与member_addr一一对应, 变量格式为{"money":"1000"}, 多个用;分隔|
-|subscribed|string (true, false)|否|预留字段, deprecated, 忽略|
 |upsert|string (true, false)|否|是否更新, 当为true时, 如果该member_addr存在, 则更新; 为false时, 如果成员地址存在, 将报重复地址错误, 默认为false|
 
 提示: 每次最多可以添加100个邮件地址; 如果包含name和vars变量, 则必须与member_add的地址数量一致

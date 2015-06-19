@@ -20,6 +20,20 @@ import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+class A {
+	String address;
+	String name;
+	String money;
+
+	A(String address, String name, String money) {
+		this.address = address;
+		this.name = name;
+		this.money = money;
+	}
+}
 
 public class SendCloud {
 
@@ -48,8 +62,9 @@ public class SendCloud {
 
 		HttpResponse response = httpclient.execute(httpost);
 
-		// response
+		// 处理响应
 		if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+			// 正常返回, 解析返回数据
 			System.out.println(EntityUtils.toString(response.getEntity()));
 		} else {
 			System.err.println("error");
@@ -104,13 +119,43 @@ public class SendCloud {
 		httpPost.releaseConnection();
 	}
 
+	public static String convert(List<A> dataList) {
+
+		JSONObject ret = new JSONObject();
+
+		JSONArray to = new JSONArray();
+
+		JSONArray names = new JSONArray();
+		JSONArray moneys = new JSONArray();
+
+		for (A a : dataList) {
+			to.put(a.address);
+			names.put(a.name);
+			moneys.put(a.money);
+		}
+
+		JSONObject sub = new JSONObject();
+		sub.put("%name%", names);
+		sub.put("%money%", moneys);
+
+		ret.put("to", to);
+		ret.put("sub", sub);
+
+		return ret.toString();
+	}
+
 	public static void send_template() throws ClientProtocolException, IOException {
 
 		final String url = "http://sendcloud.sohu.com/webapi/mail.send_template.json";
 
 		final String apiUser = "***";
 		final String apiKey = "***";
-		final String vars = "{\"to\": [\"to1@domain.com\", \"to2@domain.com\"], \"sub\" : { \"%name%\" : [\"user1\", \"user2\"], \"%money%\" : [\"1000\", \"2000\"]}}";
+
+		List<A> dataList = new ArrayList<A>();
+		dataList.add(new A("to1@domain.com", "user1", "1000"));
+		dataList.add(new A("to2@domain.com", "user2", "2000"));
+		
+		final String vars = convert(dataList);
 
 		HttpClient httpclient = new DefaultHttpClient();
 		HttpPost httpost = new HttpPost(url);
@@ -143,7 +188,7 @@ public class SendCloud {
 
 		final String apiUser = "***";
 		final String apiKey = "***";
-		final String to = "test@maillist.sendcloud.org";
+		final String to = "***";
 
 		HttpClient httpclient = new DefaultHttpClient();
 		HttpPost httpost = new HttpPost(url);
@@ -170,10 +215,19 @@ public class SendCloud {
 		}
 	}
 
+	
 	public static void main(String[] args) throws ClientProtocolException, IOException {
 		// send_common();
 		// send_common_with_attachment();
 		// send_template();
 		// send_template_maillist();
+
+		List<A> dataList = new ArrayList<A>();
+		dataList.add(new A("dada.chao.liu@qq.com", "user1", "1000"));
+		dataList.add(new A("d@sendcloud.im", "user2", "2000"));
+
+		String s = convert(dataList);
+
+		System.out.print(s);
 	}
 }
