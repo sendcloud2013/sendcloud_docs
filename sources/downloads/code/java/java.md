@@ -1,3 +1,22 @@
+
+## 依赖
+代码示例需要依赖如下jar包
+```
+<dependency>
+    <groupId>org.apache.httpcomponents</groupId>
+    <artifactId>httpclient</artifactId>
+    <version>4.2</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.httpcomponents</groupId>
+    <artifactId>httpmime</artifactId>
+    <version>4.2</version>
+</dependency>
+```
+[httpclient](http://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient/4.2)
+
+[httpmime](http://mvnrepository.com/artifact/org.apache.httpcomponents/httpmime/4.2)
+
 ## WEBAPI 普通发送 
 
 ```
