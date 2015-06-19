@@ -42,29 +42,24 @@ print res.text
 ```
 
 ### Java
-    
+
+代码示例需要依赖如下jar包
 ```
-package com.sohu.sc.tools;
+<dependency>
+    <groupId>org.apache.httpcomponents</groupId>
+    <artifactId>httpclient</artifactId>
+    <version>4.2</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.httpcomponents</groupId>
+    <artifactId>httpmime</artifactId>
+    <version>4.2</version>
+</dependency>
+```
+[httpclient](http://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient/4.2)
+[httpmime](http://mvnrepository.com/artifact/org.apache.httpcomponents/httpmime/4.2)
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
-
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.params.CoreConnectionPNames;
-import org.apache.http.util.EntityUtils;
-
-import com.sohu.sc.common.util.Md5Util;
-
+```
 public class SmsApi {
 
     public static void main(String[] args) {
@@ -96,7 +91,7 @@ public class SmsApi {
             sb.append(String.format("%s=%s&", s, sortedMap.get(s)));
         }
         sb.append(smsKey);
-        String sig = Md5Util.makeMd5Sum(sb.toString().getBytes());
+        String sig = DigestUtils.md5Hex(sb.toString());
         
         // 将所有参数和签名添加到post请求参数数组里
         List<NameValuePair> postparams = new ArrayList<NameValuePair>();
@@ -116,15 +111,12 @@ public class SmsApi {
             HttpEntity entity = response.getEntity();
             EntityUtils.consume(entity);
             System.out.println(EntityUtils.toString(response.getEntity()));
-            
         } catch (Exception e) {
             System.out.println(e.toString());
         } finally {
             httpPost.releaseConnection();
         }
-        
     }
-
 }
 
 ```
