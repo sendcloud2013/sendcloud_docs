@@ -102,8 +102,8 @@ function send_mail() {
 echo send_mail();
 ?>
 ```
-   
-- - 
+
+- - -
     
 ## WEBAPI 模板发送
 ```
