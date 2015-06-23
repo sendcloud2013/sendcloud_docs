@@ -13,7 +13,7 @@ json
 ```
 
 **HTTP请求方式**    
-```
+```bash
 GET POST    
 ```
     
@@ -57,7 +57,7 @@ json
 ```
 
 **HTTP请求方式**    
-```
+```bash
 GET POST    
 ```
     
@@ -104,7 +104,7 @@ json
 ```
 
 **HTTP请求方式**    
-```
+```bash
 GET
 ```
     
