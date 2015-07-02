@@ -80,6 +80,9 @@
             <p>本测试为用户提供WebHook的<a href="http://baike.baidu.com/view/2445748.htm" target="_blank">mock数据</a>, 会向用户的url发送模拟的WebHook数据，推荐使用 <a href="/doc/email/webhook/#_3" target="_blank">requestbin</a>.</p>
             <p>WebHook 详情参考【邮件API】- <a target="_blank" href="http://sendcloud.sohu.com/doc/email/webhook/">WebHook详情</a></p>
             <p>WebHook中用于验证signature的appkey统一为"test_appkey"。</p>
+            <p class="alert-warning well well-sm">
+                我们会对用户提供的 URL 做检测. 需要此 HTTP 服务能够正确响应 get | post 请求, 并且保证返回的 HTTP 状态码 为 200
+            </p>
             <form class="form-horizontal col-md-12 webhook-form">
                 <div class="form-group has-feedback">
                     <label class="control-label">
@@ -87,7 +90,8 @@
                     </label>
                     <div class="input-group">
                         <input type="text" name="post_url" class="form-control input-test-url">
-                        <div class="input-group-addon btn-test-url pointer">测试 URL</div>
+                        <div class="input-group-btn">
+                            <button class="btn btn-primary btn-test-url">测试 URL</button></div>
                     </div>
                 </div>
                 <div class="form-group has-feedback">

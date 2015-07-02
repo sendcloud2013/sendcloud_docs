@@ -3,6 +3,7 @@ $(function() {
         testUrl: 'http://sendcloud.sohu.com/testapi/webhook'
     }
     $('.btn-test-url').on('click', function(e) {
+        e.preventDefault()
         if (!$('.input-test-url').val()) {
             messageBox('danger', '请填写 post url', 2000)
             return
