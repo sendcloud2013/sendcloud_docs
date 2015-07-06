@@ -39,7 +39,7 @@ post    get
 http://sendcloud.sohu.com/webapi/template.get.json?api_user=***&api_key=***
 ```
     
-**返回值说明(('''New!'''))**    
+**返回值说明('''New!''')**    
 |参数|说明|
 |:---|:---|
 |invoke_name|邮件模板调用名称|
@@ -52,7 +52,7 @@ http://sendcloud.sohu.com/webapi/template.get.json?api_user=***&api_key=***
 |gmt_modified|邮件模板更新时间|
 
 
-**返回值示例(('''New!'''))**
+**返回值示例('''New!''')**
 ```
 {
     "message":"success",
@@ -92,7 +92,7 @@ http://sendcloud.sohu.com/webapi/template.add.json
 post    get
 ```
 
-**参数说明(('''New!'''))**    
+**参数说明('''New!''')**    
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
@@ -113,7 +113,7 @@ post    get
 3. 新API限制模板个数最多为50个
     
      
-**请求示例(('''New!'''))**
+**请求示例('''New!''')**
 ```
 curl -d 'api_user=***&api_key=***&invoke_name=testtemplate&name=test&html=<p>add new template</p>&subject=test_subject&email_type=1' http://sendcloud.sohu.com/webapi/template.add.json
 ```
@@ -189,7 +189,7 @@ http://sendcloud.sohu.com/webapi/template.update.json
 post    get
 ```
 
-**参数说明(('''New!'''))**    
+**参数说明('''New!''')**    
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|

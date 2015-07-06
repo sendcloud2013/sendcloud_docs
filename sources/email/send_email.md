@@ -128,7 +128,7 @@ post
 |from|string|是|发件人地址. from 和[发信域名](../guide/base.md#_3), 会影响是否[显示代发](../faq/index.md#2)|  
 |substitution_vars|string|*|模板替换变量. 在 `use_maillist=false` 时使用, 如: `{"to": ["ben@ifaxin.com", "joe@ifaxin.com"],"sub":{"%name%": ["Ben", "Joe"],"%money%":[288, 497]}}` | 
 |to|string|*|收件人的地址列表. 在 `use_maillist=true` 时使用|
-|subject|string|否|邮件标题|  
+|subject|string|'''否'''|邮件标题|  
 |template_invoke_name|string|是|邮件模板调用名称| 
 |fromname|string|否|发件人名称. 显示如: `ifaxin客服支持 <support@ifaxin.com>`|  
 |replyto|string|否|默认的回复邮件地址. 如果 replyto 没有或者为空, 则默认的回复邮件地址为 from|  
