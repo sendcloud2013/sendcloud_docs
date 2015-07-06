@@ -3,10 +3,8 @@
 
 通过 API 可以对邮件模板进行查询, 添加, 删除, 修改操作.
     
-**Sendcloud平台模板和样本功能合二为一(2016.07.07日上线),新的模板具有了邮件标题,邮件类型,和审核状态.
-用户创建模板后，需等待平台审核通过，即可调用发送(无需再与样本匹配).邮件模板API也相应的做了更新**
-    
-    
+`20150707 SendCloud 平台更新: 模板和样本功能合二为一.  新建模板时增加字段: 邮件标题, 模板类型.`
+
 - - -        
 
 ##查询    
@@ -39,7 +37,8 @@ post    get
 http://sendcloud.sohu.com/webapi/template.get.json?api_user=***&api_key=***
 ```
     
-**返回值说明('''New!''')**    
+**返回值说明 `20150707 更新`**    
+
 |参数|说明|
 |:---|:---|
 |invoke_name|邮件模板调用名称|
@@ -52,7 +51,7 @@ http://sendcloud.sohu.com/webapi/template.get.json?api_user=***&api_key=***
 |gmt_modified|邮件模板更新时间|
 
 
-**返回值示例('''New!''')**
+**返回值示例**
 ```
 {
     "message":"success",
@@ -92,7 +91,7 @@ http://sendcloud.sohu.com/webapi/template.add.json
 post    get
 ```
 
-**参数说明('''New!''')**    
+**参数说明 `20150707 更新`**    
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
@@ -102,7 +101,7 @@ post    get
 |name|string|是|邮件模板名称|
 |html|string|是|html格式内容|
 |text|string|否|text格式内容|
-|subject|string|是|模板标题|
+|subject|string|`是`|模板标题|
 |email_type|int|是|模板类型|
 
     
@@ -110,10 +109,10 @@ post    get
 
 1. html 内容中可以使用[变量](index.md#_1)
 2. html 内容过长或有特殊字符应使用 post 请求
-3. 新API限制模板个数最多为50个
+3. 模板个数最多为50个
     
      
-**请求示例('''New!''')**
+**请求示例**
 ```
 curl -d 'api_user=***&api_key=***&invoke_name=testtemplate&name=test&html=<p>add new template</p>&subject=test_subject&email_type=1' http://sendcloud.sohu.com/webapi/template.add.json
 ```
@@ -189,7 +188,7 @@ http://sendcloud.sohu.com/webapi/template.update.json
 post    get
 ```
 
-**参数说明('''New!''')**    
+**参数说明 `20150707 更新`**    
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
@@ -208,7 +207,7 @@ post    get
 3. 模板更新成功后,状态会变成未审核即is_verify=0
     
     
-**请求示例(('''New!'''))**
+**请求示例**
 ```
 curl -d 'api_user=***&api_key=***&invoke_name=testtemplate&name=test&html=<p>update template</p>&subject=test&email_type=1' http://sendcloud.sohu.com/webapi/template.update.json
 ```
