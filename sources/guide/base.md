@@ -150,34 +150,36 @@ DKIM 是防止欺诈邮件的一个重要技术手段, 通常发送方会在电�
 
 ------
 
-## 样本审核 (sample)
+## 模板审核与内容匹配 (template) ('''New！''')
 
-为了防止用户利用 SendCloud 平台发送色情, 欺诈等非法邮件, SendCloud 要求用户将每次发送的邮件内容提交审核. 流程如下:
+为了防止用户利用 SendCloud 平台发送色情, 欺诈等非法邮件, SendCloud 要求用户将每次发送的邮件内容提交审核. 
+流程如下:
 
-1. 用户将邮件内容复制, 创建样本, 并提交审核
-2. 样本审核通过之后, 用户就可以发送此类邮件
+1. 用户根据邮件标题、邮件内容、和邮件类型, 创建模板, 并提交审核
+2. 模板审核通过之后, 用户就可以发送此类邮件
 
-SendCloud 在接收客户邮件之后, 会对邮件和样本进行匹配. 只要能成功匹配一个样本, 既验证通过.
+如果用户使用模板发送, 使用与模板类型对应的API_USER调用审核通过的模板, 则无需进行内容匹配, 直接发送
+如果用户使用普通发送, 则传递的邮件内容会与审核通过的模板进行内容匹配, 相似度达到一定阈值才能发送
 
-邮件和样本匹配的要素有如下几点:
 
-1. 发送邮件时使用的 API_USER 的类型 ( 触发/批量 ) 和样本的类型 ( 触发/批量 )  一致
-2. 邮件的附件个数和样本中声明的附件个数 一致
-3. 邮件中图片个数和样本中的图片个数 一致
-4. 邮件中每张图片的内容和样本中相应图片的内容 一致 ( 如果修改图片内容, 请重新提交审核 )
-5. 邮件中文本内容和样本文本内容达到一定比例的匹配, 容许两者有差异
+邮件和模板匹配的要素有如下几点:
 
-样本匹配失败时, 用户会收到 '553 sample_validate not match, ...' 的错误提示, 说明如下:
+1. 发送邮件时使用的 API_USER 的类型 ( 触发/批量 ) 和模板的类型 ( 触发/批量 )  一致
+2. 邮件中图片个数和模板中的图片个数 一致
+4. 邮件中每张图片的内容和模板中相应图片的内容 一致 ( 如果修改图片内容, 请重新提交审核 )
+5. 邮件中文本内容和模板文本内容达到一定比例的匹配, 容许两者有差异
+
+内容匹配失败时, 用户会收到 '553 template_validate not match, ...' 的错误提示, 说明如下:
 
 |错误提示|说明|
 |:-------|:---|  
-|553 sample_validate not match, reason:no corresponding sample found|没有和 API_USER 类型相同的样本存在|
-|553 sample_validate not match, reason:unequal image content: image link not in sample|邮件中的图片链接和样本中的图片链接不一致|
-|553 sample_validate not match, reason:unequal image content: `url` md5 not match|邮件的图片内容和样本中的图片内容不一致, `url`为差异的图片链接|
-|553 sample_validate not match, reason:unequal content|邮件文本内容和样本文本内容差异过大|
+|553 template_validate not match, reason:no corresponding template found|没有和 API_USER 类型相同的模板存在|
+|553 template_validate not match, reason:unequal image content: image link not in template|邮件中的图片链接和模板中的图片链接不一致|
+|553 template_validate not match, reason:unequal image content: md5 not match|邮件的图片内容和模板中的图片内容不一致|
+|553 template_validate not match, reason:unequal content|邮件文本内容和模板文本内容差异过大|
 
-> 对于大多数用户来说, 每封邮件的差异性不大, 所以样本审核没有问题. 
-> 但是, 如果你发送的邮件差异性很大, 那样本审核就有可能给你带来困扰. 
+> 对于大多数用户来说, 每封邮件的差异性不大, 所以审核没有问题. 
+> 但是, 如果你发送的每封邮件差异性很大, 那审核就有可能给你带来困扰. 
 > 如果你遇到此问题, 请在系统中提交工单, 会有同学为你解决此问题.
 
 ------

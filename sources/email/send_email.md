@@ -108,6 +108,7 @@ curl -F api_user='***' -F api_key='***' -F from='test@test.com' -F fromname='来
 
 ## 模板发送
 
+
 **URL**
 ```  
 http://sendcloud.sohu.com/webapi/mail.send_template.json
@@ -118,7 +119,7 @@ http://sendcloud.sohu.com/webapi/mail.send_template.json
 post
 ```
 
-**参数说明**    
+**参数说明('''New!''')**    
 
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|  
@@ -127,7 +128,7 @@ post
 |from|string|是|发件人地址. from 和[发信域名](../guide/base.md#_3), 会影响是否[显示代发](../faq/index.md#2)|  
 |substitution_vars|string|*|模板替换变量. 在 `use_maillist=false` 时使用, 如: `{"to": ["ben@ifaxin.com", "joe@ifaxin.com"],"sub":{"%name%": ["Ben", "Joe"],"%money%":[288, 497]}}` | 
 |to|string|*|收件人的地址列表. 在 `use_maillist=true` 时使用|
-|subject|string|是|标题. 不能为空|  
+|subject|string|否|邮件标题|  
 |template_invoke_name|string|是|邮件模板调用名称| 
 |fromname|string|否|发件人名称. 显示如: `ifaxin客服支持 <support@ifaxin.com>`|  
 |replyto|string|否|默认的回复邮件地址. 如果 replyto 没有或者为空, 则默认的回复邮件地址为 from|  
@@ -141,6 +142,8 @@ post
 注意:
 
 1. `to` 和 `substitution_vars` 分别对应地址列表使用与否的情况, 两者不能同时使用
+2. 只能调用审核通过的模板
+3. api_user类型和模板类型必须匹配
 
 **请求, 返回值示例**
 

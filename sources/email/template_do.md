@@ -3,6 +3,10 @@
 
 通过 API 可以对邮件模板进行查询, 添加, 删除, 修改操作.
     
+**Sendcloud平台模板和样本功能合二为一(2016.07.07日上线),新的模板具有了邮件标题,邮件类型,和审核状态.
+用户创建模板后，需等待平台审核通过，即可调用发送(无需再与样本匹配).邮件模板API也相应的做了更新**
+    
+    
 - - -        
 
 ##查询    
@@ -35,17 +39,20 @@ post    get
 http://sendcloud.sohu.com/webapi/template.get.json?api_user=***&api_key=***
 ```
     
-**返回值说明**    
-    
+**返回值说明(('''New!'''))**    
 |参数|说明|
 |:---|:---|
 |invoke_name|邮件模板调用名称|
 |name|邮件模板名称|
 |html|模板内容|
+|subject|模板标题|
+|email_type|模板类型|
+|is_verify|审核状态|
 |gmt_created|邮件模板创建时间|
 |gmt_modified|邮件模板更新时间|
-    
-**返回值示例**
+
+
+**返回值示例(('''New!'''))**
 ```
 {
     "message":"success",
@@ -53,12 +60,18 @@ http://sendcloud.sohu.com/webapi/template.get.json?api_user=***&api_key=***
             "invoke_name":"ifaxin_bill",
             "name":"爱发信每月账单",
             "html":"...",
+            "subject":"爱发信201506账单",
+            "email_type":1,
+            "is_verify":0,
             "gmt_created":"2014-10-31 16:00:20",
             "gmt_modified":"2015-03-11 14:45:31"
         }, {
             "invoke_name":"ifaxin_reg",
             "name":"爱发信用户注册",
             "html":"...",
+            "subject":"欢迎注册使用爱发信",
+            "email_type":1,
+            "is_verify":1,
             "gmt_created":"2014-10-31 16:12:20",
             "gmt_modified":"2015-03-11 14:45:50"}
     ]
@@ -78,8 +91,8 @@ http://sendcloud.sohu.com/webapi/template.add.json
 ```bash
 post    get
 ```
-    
-**参数说明**    
+
+**参数说明(('''New!'''))**    
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
@@ -89,16 +102,20 @@ post    get
 |name|string|是|邮件模板名称|
 |html|string|是|html格式内容|
 |text|string|否|text格式内容|
+|subject|string|是|模板标题|
+|email_type|int|是|模板类型|
+
     
 提示: 
 
-1. html 内容必须与[邮件样本](../guide/base.md#sample)相匹配
-2. html 内容中可以使用[变量](index.md#_1)
-3. html 内容过长或有特殊字符应使用 post 请求
+1. html 内容中可以使用[变量](index.md#_1)
+2. html 内容过长或有特殊字符应使用 post 请求
+3. 新API限制模板个数最多为50个
     
-**请求示例**
+     
+**请求示例(('''New!'''))**
 ```
-curl -d 'api_user=***&api_key=***&invoke_name=testtemplate&name=test&html=<p>add new template</p>' http://sendcloud.sohu.com/webapi/template.add.json
+curl -d 'api_user=***&api_key=***&invoke_name=testtemplate&name=test&html=<p>add new template</p>&subject=test_subject&email_type=1' http://sendcloud.sohu.com/webapi/template.add.json
 ```
  
 **返回值说明**
@@ -114,7 +131,7 @@ curl -d 'api_user=***&api_key=***&invoke_name=testtemplate&name=test&html=<p>add
     "addCount":1
 }
 ```
-
+ 
 - - -
     
 ##删除    
@@ -171,8 +188,8 @@ http://sendcloud.sohu.com/webapi/template.update.json
 ```bash
 post    get
 ```
-    
-**参数说明**    
+
+**参数说明(('''New!'''))**    
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
@@ -181,16 +198,19 @@ post    get
 |invoke_name|string|是|邮件模板调用名称|
 |name|string|否|需要修改的邮件模板名称|
 |html|string|否|需要修改的html格式内容|
+|subject|string|否|需要修改的邮件标题|
+|email_type|string|否|需要修改的邮件类型|
 
 提示: 
 
-1. html 内容必须与[邮件样本](../guide/base.md#sample)相匹配
-2. html 内容中可以使用[变量](index.md#_2)
-3. html 内容过长或有特殊字符应使用 post 请求
+1. html 内容中可以使用[变量](index.md#_2)
+2. html 内容过长或有特殊字符应使用 post 请求
+3. 模板更新成功后,状态会变成未审核即is_verify=0
     
-**请求示例**
+    
+**请求示例(('''New!'''))**
 ```
-curl -d 'api_user=***&api_key=***&invoke_name=testtemplate&name=test&html=<p>update template</p>' http://sendcloud.sohu.com/webapi/template.update.json
+curl -d 'api_user=***&api_key=***&invoke_name=testtemplate&name=test&html=<p>update template</p>&subject=test&email_type=1' http://sendcloud.sohu.com/webapi/template.update.json
 ```
     
 **返回值说明**
@@ -206,5 +226,3 @@ curl -d 'api_user=***&api_key=***&invoke_name=testtemplate&name=test&html=<p>upd
     "updateCount":1
 }
 ```
-    
-    
