@@ -8,8 +8,8 @@ function send_mail() {
                                    )
                 );
 
-        API_USER = '...';
-        API_KEY = '...';
+        $API_USER = '...';
+        $API_KEY = '...';
         $param = array(
             'api_user' => $API_USER, # 使用api_user和api_key进行验证
             'api_key' => $API_KEY,
