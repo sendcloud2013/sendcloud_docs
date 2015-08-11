@@ -8,21 +8,20 @@ npm install sendcloud --save
 Then
 
 ```
-var sendcloud = require('sendcloud');
+var Sendcloud = require('sendcloud');
 
 // init first
-sendcloud.init('apiUser','[secretKey]','bigertech@qq.com','笔戈科技','bgdev_batch');
+var sc = new Sendcloud('apiUser','[secretKey]','bigertech@qq.com','笔戈科技','bgdev_batch');
 
 // send email
-sendcloud.sendEmail('liuxing@meizu.com','邮件测试','<h1>Hello world!<h1>').then(function(info){
+sc.send('liuxing@meizu.com','邮件测试','<h1>Hello world!<h1>').then(function(info){
     console.log(info);
 });
-
 
 ```
 
 ## SMTP
-调用发送函数 `sendEmail(to,subject,html)`即可,所有的参数和WEBAPI一致
+调用发送函数 `sendEmailSmtp(to,subject,html)`即可,所有的参数和WEBAPI一致
 
 
 ## 更多
