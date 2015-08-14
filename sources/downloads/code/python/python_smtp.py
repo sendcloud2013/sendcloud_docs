@@ -12,9 +12,11 @@ import base64, time, simplejson, os, json
 from datetime import datetime, date
 
 HOST = 'smtpcloud.sohu.com'
+HOST = '220.181.69.174'
+HOST = '220.181.11.80'
 PORT = 25
-API_USER = '...'
-API_KEY = '...'
+API_USER = 'lamonli_test_Zzr7PS'
+API_KEY = 'aIrnyvvOjX3hgtud'
 
 DEBUG_MODE = False
 USE_SSL = False
@@ -121,10 +123,12 @@ def test_send():
     mail_from = 'anything@ifaxin.com' # useless
     ffrom = formataddr((str(Header(u'爱发信客服支持', 'utf-8')), "support@ifaxin.com"))
     rcpt_tos = ["ben@ifaxin.com", "joe@ifaxin.com"]
+    rcpt_tos = ["d@sendcloud.im"]
     reply_to = 'service@ifaxin.com'
     subject = '关于问题1901的回复'
     content = "请登录爱发信, 查看此问题的回复.  <br/> <a href='http://www.ifaxin.com'>http://www.ifaxin.com</a>"
     files = ['/path/file1', '/path/files2', ]
+    files = []
 
     send(mail_from, ffrom, rcpt_tos, reply_to, subject, content, files)
 
@@ -155,7 +159,7 @@ def main():
     test_send()
 
     # send email with x_smtpapi
-    test_sendn()
+    #test_sendn()
 
 if __name__ == '__main__':                                                      
     main()
