@@ -197,13 +197,110 @@ public static void send_template() throws ClientProtocolException, IOException {
     } else {
         System.err.println("error");
     }
+
+    httpost.releaseConnection();
 }
 
+```
+- - -
+
+## WEBAPI 模板发送, 带附件
+
+```
+class A {
+    String address;
+    String name;
+    String money;
+
+    A(String address, String name, String money) {
+        this.address = address;
+        this.name = name;
+        this.money = money;
+    }
+}
+
+public static String convert(List<A> dataList) {
+
+    JSONObject ret = new JSONObject();
+
+    JSONArray to = new JSONArray();
+
+    JSONArray names = new JSONArray();
+    JSONArray moneys = new JSONArray();
+
+    for (A a : dataList) {
+        to.put(a.address);
+        names.put(a.name);
+        moneys.put(a.money);
+    }
+
+    JSONObject sub = new JSONObject();
+    sub.put("%name%", names);
+    sub.put("%money%", moneys);
+
+    ret.put("to", to);
+    ret.put("sub", sub);
+
+    return ret.toString();
+}
+
+public static void send_template_with_attachment() throws ClientProtocolException, IOException {
+
+    final String url = "http://sendcloud.sohu.com/webapi/mail.send_template.json";
+
+    final String apiUser = "***;
+    final String apiKey = "***";
+
+    List<A> dataList = new ArrayList<A>();
+    dataList.add(new A("to1@domain.com", "user1", "1000"));
+    dataList.add(new A("to2@domain.com", "user2", "2000"));
+
+    final String vars = convert(dataList);
+
+    HttpClient httpclient = new DefaultHttpClient();
+    HttpPost httpost = new HttpPost(url);
+
+    // 涉及到附件上传, 需要使用 MultipartEntity
+    MultipartEntity entity = new MultipartEntity(HttpMultipartMode.BROWSER_COMPATIBLE, null, Charset.forName("UTF-8"));
+    entity.addPart("api_user", new StringBody(apiUser, Charset.forName("UTF-8")));
+    entity.addPart("api_key", new StringBody(apiKey, Charset.forName("UTF-8")));
+    entity.addPart("substitution_vars", new StringBody(vars, Charset.forName("UTF-8")));
+    entity.addPart("template_invoke_name", new StringBody("test_template", Charset.forName("UTF-8")));
+    entity.addPart("from", new StringBody("sendcloud@sendcloud.org", Charset.forName("UTF-8")));
+    entity.addPart("fromname", new StringBody("SendCloud", Charset.forName("UTF-8")));
+    entity.addPart("subject", new StringBody("SendCloud java common attachment", Charset.forName("UTF-8")));
+    entity.addPart("resp_email_id", new StringBody("true"));
+
+    // 添加附件
+    File file = new File("/home/liubida/Desktop/1");
+    FileBody attachment = new FileBody(file, "application/octet-stream", "UTF-8");
+    entity.addPart("files", attachment);
+
+    // 添加附件, 文件流形式
+    // File file = new File("/path/file");
+    // String attachName = "attach.txt";
+    // InputStreamBody is = new InputStreamBody(new FileInputStream(file),
+    // attachName);
+    // entity.addPart("files", is);
+
+    httpost.setEntity(entity);
+
+    HttpResponse response = httpclient.execute(httpost);
+    // 处理响应
+    if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+        // 正常返回, 解析返回数据
+        System.out.println(EntityUtils.toString(response.getEntity()));
+    } else {
+        System.err.println("error");
+    }
+    httpost.releaseConnection();
 ```
 
 - - -
 
 ## WEBAPI 模板 && 地址列表发送
+
+- - -
 
 ```
 public static void send_template_maillist() throws ClientProtocolException, IOException {
@@ -237,6 +334,7 @@ public static void send_template_maillist() throws ClientProtocolException, IOEx
     } else {
         System.err.println("error");
     }
+    httpost.releaseConnection();
 }
 ```
 - - - 
