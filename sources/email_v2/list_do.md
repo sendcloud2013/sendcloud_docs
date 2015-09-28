@@ -23,8 +23,8 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|api_user|string|是|子账号|
-|api_key|string|是|密码|
+|apiUser|string|是|API_USER|
+|apiKey|string|是|密码|
 |address|list|否|别名地址的列表, 多个用 `;` 分隔|
 |start|int|否|查询起始位置, 取值区间 [0-], 默认为 0|
 |limit|int|否|查询个数, 取值区间 [0-100], 默认为 100|
@@ -38,15 +38,31 @@ http://sendcloud.sohu.com/addresslist/get?api_user=***&api_key=***&address=a@mai
     
 |参数|说明|
 |:---|:---| 
-|create_at|地址列表创建时间|
-|modify_at|地址列表修改时间|
+|name|地址列表的名称|
 |address|列表别称地址, 使用该别称地址进行调用, 格式为xxx@maillist.sendcloud.org|
-|members_count|地址列表包含的地址个数|
-|description|地址列表的描述信息|
-|name|地址列表的名称||
+|membersCount|地址列表包含的地址个数|
+|gmtCreated|地址列表创建时间|
+|gmtUpdated|地址列表修改时间|
     
 **返回值示例**    
 ```
+{
+    statusCode: 200,
+    info: {
+        total: 1,
+        count: 1,
+        data: [{
+            gmtCreated: "2015-09-15 20:29:01",
+            gmtUpdated: "2015-09-15 20:29:01",
+            address: "developers4@sendcloud.com",
+            memberCount: 0,
+            name: "211"
+        }]
+    },
+    message: "请求成功",
+    result: true
+}
+
 ```
     
 - - -
@@ -66,8 +82,8 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|api_user|string|是|子账号|
-|api_key|string|是|密码|
+|apiUser|string|是|API_USER|
+|apiKey|string|是|密码|
 |address|string|是|列表别称地址, 使用该别称地址进行调用, 格式为xxx@maillist.sendcloud.org|
 |name|string|是|列表名称|
 |desc|string|否|对列表的描述信息|
@@ -81,14 +97,30 @@ http://sendcloud.sohu.com/addresslist/add?api_user=***&api_key=***&address=justf
     
 |参数|说明|
 |:---|:---| 
-|create_at|创建时间|
 |address|列表别称地址, 使用该别称地址进行调用|
-|members_count|列表中地址数|
+|membersCount|列表中地址数|
 |name|列表名称|
 |description|列表描述信息|
+|gmtCreated|地址列表创建时间|
+|gmtUpdated|地址列表修改时间|
 
 **返回值示例**    
 ```
+{
+    statusCode: 200,
+    info: {
+        data: {
+            gmtCreated: "2015-09-28 17:59:15",
+            gmtUpdated: "2015-09-28 17:59:15",
+            address: "developers41@sendcloud.com",
+            memberCount: 0,
+            description: "41",
+            name: "developer41"
+        }
+    },
+    message: "请求成功",
+    result: true
+}
 ```
 - - -
 
@@ -108,8 +140,8 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|api_user|string|是|子账号|
-|api_key|string|是|密码|
+|apiUser|string|是|API_USER|
+|apiKey|string|是|密码|
 |address|string|是|列表别称地址, 使用该别称地址进行调用, 格式为xxx@maillist.sendcloud.org|
     
 **请求示例**    
@@ -118,7 +150,6 @@ http://sendcloud.sohu.com/addresslist/delete?api_user=***&api_key=***&address=ne
 ```
     
 **返回值说明**
-    
 |参数|说明|
 |:---|:---|
 |count|成功删除的个数|
@@ -126,8 +157,12 @@ http://sendcloud.sohu.com/addresslist/delete?api_user=***&api_key=***&address=ne
 **返回值示例**
 ```
 {
-    "message":"success",
-    "count":1
+    statusCode: 200,
+    info: {
+        count: 1
+    },
+    message: "请求成功",
+    result: true
 }
 ```
     
@@ -148,14 +183,17 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|api_user|string|是|子账号|
-|api_key|string|是|密码|
+|apiUser|string|是|API_USER|
+|apiKey|string|是|密码|
 |address|string|是|列表别称地址, 使用该别称地址进行调用, 格式为xxx@maillist.sendcloud.org|
-|toAddress|string|否|修改后的别称地址|
+|newAddress|string|否|修改后的别称地址|
 |name|string|否|修改后的列表名称|
-|description|string|否|修改后的标签名称|
+|desc|string|否|修改后的列表描述信息|
     
-注意: 参数必须包含【toAddress】或者【name】或者【description】的组合    
+**说明**
+```
+参数须包含【newAddress】或者【name】或者【description】的组合    
+```
     
 **请求示例**    
 ```
@@ -163,30 +201,31 @@ http://sendcloud.sohu.com/addresslist/update?api_user=***&api_key=***&address=ju
 ```
     
 **返回值说明**
+|参数|说明|
+|:---|:---|
+|count|成功修改的个数|
     
-无
-    
-
-**返回值示例**    
+**返回值示例**
 ```
 {
-    "message":"success",
-    "list":{
-            "modify_at":"2015-03-10 16:11:12",
-            "address":"justfortest@maillist.sendcloud.org",
-            "name":"newtest",
-            "members_count":4
-        }
+    statusCode: 200,
+    info: {
+        count: 1
+    },
+    message: "请求成功",
+    result: true
 }
+    
 ```
     
 - - -
+TODO
     
 ##列表成员查询
     
 **URL**
 ```
-http://sendcloud.sohu.com/webapi/list_member.get.json
+http://sendcloud.sohu.com/addressmember/get
 ```
     
 **HTTP请求方式**
