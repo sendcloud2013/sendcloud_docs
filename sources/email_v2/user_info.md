@@ -17,12 +17,12 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|api_user|string|是|子账号|
-|api_key|string|是|密码|
+|apiUser|string|是|子账号|
+|apiKey|string|是|密码|
     
 **请求示例**
 ```
-http://sendcloud.sohu.com/webapi/userinfo.get.json?api_user=***&api_key=*** 
+http://sendcloud.sohu.com/webapi/userinfo.get.json?apiUser=***&apiKey=*** 
 ```
     
 **返回值说明**
@@ -75,13 +75,13 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|api_user|string|是|子账号|
-|api_key|string|是|密码|
-|api_user_type|int|否|API_USER的类型: 0(触发), 1(批量)|
+|apiUser|string|是|子账号|
+|apiKey|string|是|密码|
+|apiUser_type|int|否|API_USER的类型: 0(触发), 1(批量)|
     
 **请求示例**
 ```
-http://sendcloud.sohu.com/webapi/apiUser.list.json?api_user=***&api_key=*** 
+http://sendcloud.sohu.com/webapi/apiUser.list.json?apiUser=***&apiKey=*** 
 ```
     
 **返回值说明**
@@ -100,13 +100,13 @@ http://sendcloud.sohu.com/webapi/apiUser.list.json?api_user=***&api_key=***
     
 - - -
 
-## 域名查询
+## 域名相关
     
-通过此接口查询域名信息
+通过此接口查询域名, 增加域名, 修改域名
     
 **URL**
 ```
-http://sendcloud.sohu.com/webapi/domain.list.json
+http://sendcloud.sohu.com/domain/get
 ```
     
 **HTTP请求方式**
@@ -118,13 +118,39 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|api_user|string|是|子账号|
-|api_key|string|是|密码|
-|domain_type|int|否|域名类型: 0(测试域名), 1(正常域名)|
-    
+|apiUser|string|是|子账号|
+|apiKey|string|是|密码|
+|name|string|否|域名名称. 多个 name 用 `;` 分隔|
+|type|int|否|域名类型: 0 (测试域名), 1(普通域名)|
+|verify|string|否|域名验证值. 举例: `verify=1`, 查询验证值为 1 的域名; `verify=>22`, 查询验证值大于等于 22 的域名; `verify=<12`, 查询验证值小于等于 12 的域名|
+
+**说明**
+
+*域名的验证值* 代表 SendCloud 检查用户域名配置是否通过的返回值. SendCloud 会要求用户按照 `邮件设置` -> `域名` 的指引来配置域名记录. 下表是由返回值计算配置项是否通过的方法: 
+
+|类型|计算|说明|
+|:---|:---|:---|
+|dkim|ret & 1 == 1|dkim 配置通过|
+|spf|ret & 2 == 2|spf 配置通过|
+|mx|ret & 4 == 4|mx 配置通过|
+|cname|ret & 8 ==8|cname 配置通过|
+|verifyKey|ret & 16 == 16|verifyKey 配置通过|
+
+举例: 
+```
+ret = 0  | 没有配置项通过
+ret = 3  | dkim, spf 配置通过
+ret = 15 | dkim, spf, mx, cname 配置通过
+ret = 31 | dkim, spf, mx, cname, verifyKey 配置通过
+```
+
 **请求示例**
 ```
-http://sendcloud.sohu.com/webapi/domain.list.json?api_user=***&api_key=*** 
+http://sendcloud.sohu.com/domain/get?apiUser=***&apiKey=***&name=ifaxin.com
+```
+
+```
+http://sendcloud.sohu.com/domain/get?apiUser=***&apiKey=***&type=0&verify=>3
 ```
     
 **返回值说明**
@@ -134,30 +160,48 @@ http://sendcloud.sohu.com/webapi/domain.list.json?api_user=***&api_key=***
 |参数|说明|
 |:---|:---|
 |name|域名名称|
-|id|域名ID|
+|type|域名类型|
+|verify|域名验证值|
+|verifyKey|此域名 VERIFY_KEY 的配置值|
+|prefix|此域名 CNAME 配置的前缀|
+|dkim.selector|此域名 DKIM 的 selector|
+|dkim.pubkey|此域名 DKIM 的 公钥|
+|gmtCreated|域名创建时间|
+|gmtUpdated|域名修改时间|
 
 **返回值示例**
 ```
 {
-    "message": "success",
-    "domainList": [
-        {
-            "name": "test1.sendcloud.io",
-            "id": 20542
-        },
-        {
-            "name": "test2.sendcloud.me",
-            "id": 20545
-        },
-        {
-            "name": "test3.sendcloud.io",
-            "id": 20546
-        },
-        {
-            "name": "test3.sendcloud.me",
-            "id": 20547
-        }
-    ]
+    statusCode: 200,
+    info: {
+        total: 2,
+        data: [
+            {
+                name: "xxx",
+                type: "测试",
+                verify: 23,
+                verifyKey: "d816618d-eb95-46f1-8aa2-652c340c0777-1410433325388",
+                prefix: "sctrack",
+                dkim.selector: "mail",
+                dkim.pubkey: "k=rsa;p=...",
+                gmtCreated: "2015-05-21 16:30:52",
+                gmtUpdated: "2015-09-02 10:46:54"
+            },
+            {
+                name: "xxx",
+                type: "普通",
+                verify: 31,
+                verifyKey: "9f14aaaa-a634-48b3-ae29-add1aea8e817-1366970248014",
+                prefix: "sctrack",
+                dkim.selector: "mail",
+                dkim.pubkey: "k=rsa;p=...",
+                gmtCreated: "2014-10-28 20:44:44",
+                gmtUpdated: "2015-09-25 13:49:26"
+            }
+        ]
+    },
+    message: "请求成功",
+    result: true
 }
 ```
     

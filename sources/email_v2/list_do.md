@@ -11,7 +11,7 @@
     
 **URL**    
 ```
-http://sendcloud.sohu.com/webapi/list.get.json
+http://sendcloud.sohu.com/addresslist/get
 ```
     
 **HTTP请求方式** 
@@ -25,13 +25,13 @@ post    get
 |:---|:---|:---|:---|
 |api_user|string|是|子账号|
 |api_key|string|是|密码|
-|address|string|否|列表别称地址|
+|address|list|否|别名地址的列表, 多个用 `;` 分隔|
 |start|int|否|查询起始位置, 取值区间 [0-], 默认为 0|
 |limit|int|否|查询个数, 取值区间 [0-100], 默认为 100|
     
 **请求示例**    
 ```
-http://sendcloud.sohu.com/webapi/list.get.json?api_user=***&api_key=***&limit=2
+http://sendcloud.sohu.com/addresslist/get?api_user=***&api_key=***&address=a@maillist.sendcloud.org&limit=2
 ```
     
 **返回值说明**
@@ -47,27 +47,6 @@ http://sendcloud.sohu.com/webapi/list.get.json?api_user=***&api_key=***&limit=2
     
 **返回值示例**    
 ```
-{
-    "message":"success",
-    "count":2,
-    "lists":[
-        {
-            "create_at":"2014-11-27 11:18:13",
-            "modify_at":"2014-11-28 15:07:33",
-            "address":"1121121121@maillist.sendcloud.org",
-            "members_count":"92",
-            "description":"s",
-            "name":"s"
-        },
-        {
-            "create_at":"2014-11-26 21:11:29",
-            "modify_at":"2014-11-27 10:03:49",
-            "address":"250879858@maillist.sendcloud.org",
-            "members_count":"3","description":"250879858",
-            "name":"250879858"
-        }
-    ]
-}
 ```
     
 - - -
@@ -75,7 +54,7 @@ http://sendcloud.sohu.com/webapi/list.get.json?api_user=***&api_key=***&limit=2
     
 **URL**
 ```
-http://sendcloud.sohu.com/webapi/list.create.json
+http://sendcloud.sohu.com/addresslist/add
 ```
     
 **HTTP请求方式**
@@ -91,11 +70,11 @@ post    get
 |api_key|string|是|密码|
 |address|string|是|列表别称地址, 使用该别称地址进行调用, 格式为xxx@maillist.sendcloud.org|
 |name|string|是|列表名称|
-|description|string|否|对列表的描述信息|
+|desc|string|否|对列表的描述信息|
     
 **请求示例**    
 ```
-http://sendcloud.sohu.com/webapi/list.create.json?api_user=***&api_key=***&address=justfortest@maillist.sendcloud.org&name=testlist&description=test
+http://sendcloud.sohu.com/addresslist/add?api_user=***&api_key=***&address=justfortest@maillist.sendcloud.org&name=testlist&desc=test
 ```
     
 **返回值说明**
@@ -107,19 +86,48 @@ http://sendcloud.sohu.com/webapi/list.create.json?api_user=***&api_key=***&addre
 |members_count|列表中地址数|
 |name|列表名称|
 |description|列表描述信息|
-    
 
 **返回值示例**    
 ```
+```
+- - -
+
+##列表删除
+
+**URL**
+```
+http://sendcloud.sohu.com/addresslist/delete
+```
+    
+**HTTP请求方式**
+```bash
+post    get
+```
+    
+**参数说明**
+    
+|参数|类型|必须|说明|
+|:---|:---|:---|:---|
+|api_user|string|是|子账号|
+|api_key|string|是|密码|
+|address|string|是|列表别称地址, 使用该别称地址进行调用, 格式为xxx@maillist.sendcloud.org|
+    
+**请求示例**    
+```
+http://sendcloud.sohu.com/addresslist/delete?api_user=***&api_key=***&address=newtest@maillist.sendcloud.org
+```
+    
+**返回值说明**
+    
+|参数|说明|
+|:---|:---|
+|count|成功删除的个数|
+    
+**返回值示例**
+```
 {
     "message":"success",
-    "list":{
-            "create_at":"2012-11-02 11:25:12",
-            "address":"justfortest@maillist.sendcloud.org",
-            "members_count":0,
-            "name":"testlist",
-            "description":"test"
-    }
+    "count":1
 }
 ```
     
@@ -128,7 +136,7 @@ http://sendcloud.sohu.com/webapi/list.create.json?api_user=***&api_key=***&addre
 
 **URL**
 ```
-http://sendcloud.sohu.com/webapi/list.update.json
+http://sendcloud.sohu.com/addresslist/update
 ```
     
 **HTTP请求方式**
@@ -151,7 +159,7 @@ post    get
     
 **请求示例**    
 ```
-http://sendcloud.sohu.com/webapi/list.update.json?api_user=***&api_key=***&address=justfortest@maillist.sendcloud.org&name=newtest
+http://sendcloud.sohu.com/addresslist/update?api_user=***&api_key=***&address=justfortest@maillist.sendcloud.org&name=newtest
 ```
     
 **返回值说明**
@@ -169,47 +177,6 @@ http://sendcloud.sohu.com/webapi/list.update.json?api_user=***&api_key=***&addre
             "name":"newtest",
             "members_count":4
         }
-}
-```
-    
-- - -
-
-##列表删除
-
-**URL**
-```
-http://sendcloud.sohu.com/webapi/list.delete.json
-```
-    
-**HTTP请求方式**
-```bash
-post    get
-```
-    
-**参数说明**
-    
-|参数|类型|必须|说明|
-|:---|:---|:---|:---|
-|api_user|string|是|子账号|
-|api_key|string|是|密码|
-|address|string|是|列表别称地址, 使用该别称地址进行调用, 格式为xxx@maillist.sendcloud.org|
-    
-**请求示例**    
-```
-http://sendcloud.sohu.com/webapi/list.delete.json?api_user=***&api_key=***&address=newtest@maillist.sendcloud.org
-```
-    
-**返回值说明**
-    
-|参数|说明|
-|:---|:---|
-|del_count|成功删除的个数|
-    
-**返回值示例**
-```
-{
-    "message":"success",
-    "del_count":1
 }
 ```
     
