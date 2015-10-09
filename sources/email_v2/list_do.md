@@ -150,6 +150,7 @@ http://sendcloud.sohu.com/addresslist/delete?api_user=***&api_key=***&address=ne
 ```
     
 **返回值说明**
+
 |参数|说明|
 |:---|:---|
 |count|成功删除的个数|
@@ -201,6 +202,7 @@ http://sendcloud.sohu.com/addresslist/update?api_user=***&api_key=***&address=ju
 ```
     
 **返回值说明**
+
 |参数|说明|
 |:---|:---|
 |count|成功修改的个数|
@@ -239,7 +241,7 @@ post    get
 |apiUser|string|是|子账号|
 |apiKey|string|是|密码|
 |address|string|是|地址列表调用名称|    
-|members|string|否|需要查询信息的地址, 多个地址用 `;` 分隔|
+|members|list|否|需要查询信息的地址, 多个地址用 `;` 分隔|
 |start|int|否|查询起始位置, 取值区间 [0-], 默认为 0|
 |limit|int|否|查询个数, 取值区间 [0-100], 默认为 100|
     
@@ -288,8 +290,6 @@ http://sendcloud.sohu.com/addressmember/get?api_user=***&api_key=***&address=new
     result: true
 }
 
-
-
 ```
 
 - - -
@@ -298,7 +298,7 @@ http://sendcloud.sohu.com/addressmember/get?api_user=***&api_key=***&address=new
     
 **URL**
 ```
- http://sendcloud.sohu.com/webapi/list_member.add.json
+http://sendcloud.sohu.com/addressmember/add
 ```
      
 **HTTP请求方式**
@@ -310,33 +310,39 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|api_user|string|是|子账号|
-|api_key|string|是|密码|
-|mail_list_addr|string|是|地址列表调用名称|
-|member_addr|string|是|需添加成员的地址, 多个地址使用分号;分开|
-|name|string|否|地址所属人名称, 与member_addr一一对应, 多个名称用;分隔|
-|vars|string|否|模板替换的变量, 与member_addr一一对应, 变量格式为{"money":"1000"}, 多个用;分隔|
-|upsert|string (true, false)|否|是否更新, 当为true时, 如果该member_addr存在, 则更新; 为false时, 如果成员地址存在, 将报重复地址错误, 默认为false|
+|apiUser|string|是|子账号|
+|apiKey|string|是|密码|
+|address|string|是|地址列表调用名称|    
+|members|list|是|需要添加成员的地址, 多个地址用 `;` 分隔|
+|vars|list|否|替换变量, 与 members 一一对应, 变量格式为 {"money":"1000"} , 多个用 `;` 分隔|
 
-提示: 每次最多可以添加100个邮件地址; 如果包含name和vars变量, 则必须与member_add的地址数量一致
-    
-**请求示例(python)**
+**说明**
 ```
-curl --data-urlencode 'vars={"money":"99"};{"money":"900"}' -d 'api_user=***&api_key=***&mail_list_addr=yourlist@maillist.sendcloud.org&member_addr=test1@163.com;test2@qq.com&name=lucy;lily&upsert=true'  http://sendcloud.sohu.com/webapi/list_member.add.json
+1. 每次请求最多可以添加1000个成员
+2. 如果包含 vars 变量, 则必须与 members 的成员数量一致
+```
+    
+**请求示例**
+```
+http://sendcloud.sohu.com/addressmember/add?apiUser=***&apiKey=***&address=yourlist@maillist.sendcloud.org&members=1@1.com;2@2.com&vars={"money":"99"};{"money":"900"}
 ```
     
 **返回值说明**
     
 |参数|说明|
 |:---|:---|
-|total_counts|创建成功的地址数|
+|count|创建成功的地址数|
     
 **返回值示例**
     
 ```
 {
-    "message":"success",
-    "total_counts":2
+    statusCode: 200,
+    info: {
+        count: 2
+    },
+    message: "请求成功",
+    result: true
 }
 ```
     
@@ -346,7 +352,7 @@ curl --data-urlencode 'vars={"money":"99"};{"money":"900"}' -d 'api_user=***&api
     
 **URL**
 ```
-http://sendcloud.sohu.com/webapi/list_member.update.json
+http://sendcloud.sohu.com/addressmember/update
 ```
     
 **HTTP请求方式**
@@ -358,31 +364,38 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|api_user|string|是|子账号|
-|api_key|string|是|密码|
-|mail_list_addr|string|是|地址列表调用名称|
-|member_addr|string|是|需要更新的地址,多个地址使用分号;分开|
-|name|string|否|需要更新的地址对应的名称,多个名称用;分隔|
-|vars|string|否|需要更新的地址对应的变量,变量格式为{"money":"1000"}, 多个用;分隔|
-    
-注意: 如果包含name和vars变量, 则必须与member_add的地址数量一致
-    
-**请求示例(python)**
+|apiUser|string|是|子账号|
+|apiKey|string|是|密码|
+|address|string|是|地址列表调用名称|    
+|members|list|是|需要添加成员的地址, 多个地址用 `;` 分隔|
+|vars|list|否|替换变量, 与 members 一一对应, 变量格式为 {"money":"1000"} , 多个用 `;` 分隔|
+
+**说明**
 ```
-curl --data-urlencode 'vars={"money":"99"};{"money":"900"}' -d 'api_user=***&api_key=***&mail_list_addr=yourlist@maillist.sendcloud.org&member_addr=test1@163.com;test2@qq.com&name=lucy;lily'  http://sendcloud.sohu.com/webapi/list_member.update.json
+1. 每次请求最多可以修改1000个成员
+2. 如果包含 vars 变量, 则必须与 members 的成员数量一致
+```
+    
+**请求示例**
+```
+http://sendcloud.sohu.com/addressmember/update?apiUser=***&apiKey=***&address=yourlist@maillist.sendcloud.org&members=1@1.com;2@2.com&vars={"money":"199"};{"money":"1900"}
 ```
     
 **返回值说明**
     
 |参数|说明|
 |:---|:---|
-|total_counts|地址列表中的地址数量|
+|count|成功修改地址数|
     
 **返回值示例**
 ```
 {
-    "message":"success",
-    "total_counts":4
+    statusCode: 200,
+    info: {
+        count: 2
+    },
+    message: "请求成功",
+    result: true
 }
 ```
     
@@ -392,7 +405,7 @@ curl --data-urlencode 'vars={"money":"99"};{"money":"900"}' -d 'api_user=***&api
    
 **URL**
 ```
-http://sendcloud.sohu.com/webapi/list_member.delete.json
+http://sendcloud.sohu.com/addressmember/delete
 ```
     
 **HTTP请求方式**
@@ -404,26 +417,31 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|api_user|string|是|子账号|
-|api_key|string|是|密码|
-|mail_list_addr|string|是|地址列表别称|
-|member_addr|string|是|需删除的地址, 多个地址使用分号;分开|
+|apiUser|string|是|子账号|
+|apiKey|string|是|密码|
+|address|string|是|地址列表调用名称|    
+|members|list|是|需要删除成员的地址, 多个地址用 `;` 分隔|
     
 **请求示例**
 ```
-http://sendcloud.sohu.com/webapi/list_member.delete.json?api_user=***&api_key=***&address=newtest@maillist.sendcloud.org&member_addr=newtest1@163.com
+http://sendcloud.sohu.com/addressmember/delete?api_user=***&api_key=***&address=newtest@maillist.sendcloud.org&members=3@3.com;4@4.com
 ```
    
 **返回值说明**
     
 |参数|说明|
 |:---|:---|
-|del_count|成功删除地址数|
+|count|成功删除地址数|
     
 **返回值示例**
 ```
 {
-    "message":"success",
-    "del_count":1
+    statusCode: 200,
+    info: {
+        count: 2
+    },
+    message: "请求成功",
+    result: true
 }
 ```
+
