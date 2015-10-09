@@ -219,7 +219,6 @@ http://sendcloud.sohu.com/addresslist/update?api_user=***&api_key=***&address=ju
 ```
     
 - - -
-TODO
     
 ##列表成员查询
     
@@ -237,18 +236,16 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|api_user|string|是|子账号|
-|api_key|string|是|密码|
-|mail_list_addr|string|是|地址列表调用名称|    
-|member_addr|string|否|需要查询信息的地址|
+|apiUser|string|是|子账号|
+|apiKey|string|是|密码|
+|address|string|是|地址列表调用名称|    
+|members|string|否|需要查询信息的地址, 多个地址用 `;` 分隔|
 |start|int|否|查询起始位置, 取值区间 [0-], 默认为 0|
 |limit|int|否|查询个数, 取值区间 [0-100], 默认为 100|
     
-注意: 如果不包含member_addr参数, 返回查询地址列表的所有地址信息; 反之, 只返回该member_addr地址的信息
-    
 **请求示例**
 ```
-http://sendcloud.sohu.com/webapi/list_member.get.json?api_user=***&api_key=***&address=newtest@maillist.sendcloud.org
+http://sendcloud.sohu.com/addressmember/get?api_user=***&api_key=***&address=newtest@maillist.sendcloud.org
 ```        
     
 **返回值说明**
@@ -264,14 +261,35 @@ http://sendcloud.sohu.com/webapi/list_member.get.json?api_user=***&api_key=***&a
     
 **返回值示例**
 ```
+
 {
-    "message":"success",
-    "total_count":2,    
-    "members":[
-        {"create_at":"2015-03-10 18:34:44","modify_at":"","address":"newtest1@163.com","name":"newaddress1","subscribed":"true","vars":{"money":"1000"}},
-        {"create_at":"2015-03-10 18:34:44","modify_at":"","address":"newtest2@qq.com","name":"newaddress2","subscribed":"true","vars":{"money":"900"}}
-    ]
+    statusCode: 200,
+    info: {
+        count: 2,
+        data: [
+        {
+            gmtCreated: "2015-09-08 15:30:16",
+            gmtUpdated: "2015-09-08 15:30:16",
+            address: "developers3@sendcloud.com",
+            member: "1"
+        },
+        {
+            gmtCreated: "2015-09-15 20:42:22",
+            gmtUpdated: "2015-09-15 20:56:21",
+            address: "developers3@sendcloud.com",
+            member: "1@1.com",
+            vars: {
+                1: 1
+            }
+        }
+        ]
+    },
+    message: "请求成功",
+    result: true
 }
+
+
+
 ```
 
 - - -
