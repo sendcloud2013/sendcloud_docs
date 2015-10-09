@@ -143,7 +143,7 @@ function send_sms() {
         }
         
         $sParamStr = trim($sParamStr, '&');
-        $smskey = '***'
+        $smskey = '***';
         $sSignature = md5($smskey."&".$sParamStr."&".$smskey);
 
 

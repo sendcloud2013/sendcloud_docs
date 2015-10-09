@@ -1,4 +1,4 @@
-## WEBAPI
+## WEBAPI 普通发送
 
 ```
 using System;
@@ -38,7 +38,25 @@ namespace SendcloudWebapi
         }
     }
 
+}
+```
+     
 
+- - -     
+## WEBAPI 模板发送带附件
+
+```
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using CodeScales.Http;
+using CodeScales.Http.Entity;
+using CodeScales.Http.Entity.Mime;
+using CodeScales.Http.Methods;
+
+namespace SendcloudWebapi
+{
     // 模板发送
     class Template
     {
@@ -71,8 +89,6 @@ namespace SendcloudWebapi
             Console.ReadLine();
         }
     }
-
-
 }
 ```
     
