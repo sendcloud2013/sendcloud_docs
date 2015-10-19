@@ -3,7 +3,93 @@
 
 通过 API 可以对邮件模板进行查询, 添加, 删除, 修改操作.
     
-`20150707 SendCloud 平台更新: 模板和样本功能合二为一.  新建模板时增加字段: 邮件标题, 模板类型.`
+- - -        
+
+##批量查询
+
+返回邮件模板的列表信息
+    
+**URL**    
+```
+http://sendcloud.sohu.com/template/list
+```
+    
+**HTTP请求方式**
+```bash
+post    get
+```
+    
+**参数说明**    
+    
+|参数|类型|必须|说明|
+|:---|:---|:---|:---|
+|apiUser|string|是|API_USER|
+|apiKey|string|是|密码|
+|invokeName|string|否|邮件模板调用名称|
+|templateType|int|否|邮件模板类型: 0(触发), 1(批量)|
+|isVerify|int|否|邮件模板状态: -2(未提交审核), -1(审核不通过), 0(待审核), 1(审核通过)|
+|start|int|否|查询起始位置, 取值区间 [0-], 默认为 0|
+|limit|int|否|查询个数, 取值区间 [0-100], 默认为 100|
+    
+    
+**请求示例**
+```
+http://sendcloud.sohu.com/template/list?apiUser=***&apiKey=***&start=0&limit=3&isVerify=1
+```
+    
+**返回值说明**
+    
+|参数|说明|
+|:---|:---|
+|name|邮件模板名称|
+|invokeName|邮件模板调用名称|
+|templateType|模板类型|
+|isVerify|审核状态|
+|html|模板内容|
+|subject|模板标题|
+|gmtCreated|邮件模板创建时间|
+|gmtModified|邮件模板更新时间|
+
+**返回值示例**
+```
+{
+  "statusCode": 200,
+  "info": {
+    "total": 25,
+    "templateList": [
+      {
+        "name": "SendCloud测试样本",
+        "invokeName": "***",
+        "templateType": 0,
+        "isVerify": 1,
+        "gmtCreated": "2015-02-02 17:01:43",
+        "gmtUpdated": "2015-04-16 15:04:12",
+        "subject": "来自SendCloud的第一封邮件！"
+      },
+      {
+        "name": "20150519",
+        "invokeName": "***",
+        "templateType": 1,
+        "isVerify": 1,
+        "gmtCreated": "2015-05-19 18:46:41",
+        "gmtUpdated": "2015-05-19 18:46:41",
+        "subject": "test20150519"
+      },
+      {
+        "name": "测试邮件发送",
+        "invokeName": "***",
+        "templateType": 1,
+        "isVerify": 1,
+        "gmtCreated": "2014-08-12 15:22:20",
+        "gmtUpdated": "2015-02-03 16:11:56",
+        "subject": "测试邮件发送"
+      }
+    ]
+  },
+  "message": "请求成功",
+  "result": true
+}
+```
 
 - - -        
 
@@ -13,7 +99,7 @@
     
 **URL**    
 ```
-http://sendcloud.sohu.com/webapi/template.get.json
+http://sendcloud.sohu.com/template/get
 ```
     
 **HTTP请求方式**
@@ -25,109 +111,117 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|api_user|string|是|子账号|
-|api_key|string|是|密码|
-|invoke_name|string|否|邮件模板调用名称|
-|start|int|否|查询起始位置, 取值区间 [0-], 默认为 0|
-|limit|int|否|查询个数, 取值区间 [0-100], 默认为 100|
-    
+|apiUser|string|是|API_USER|
+|apiKey|string|是|密码|
+|invokeName|string|是|邮件模板调用名称|
     
 **请求示例**
 ```
-http://sendcloud.sohu.com/webapi/template.get.json?api_user=***&api_key=***
+http://sendcloud.sohu.com/template/get?apiUser=***&apiKey=***&invokeName=test
 ```
     
-**返回值说明 `20150707 更新`**    
-
+**返回值说明**
+    
 |参数|说明|
 |:---|:---|
-|invoke_name|邮件模板调用名称|
 |name|邮件模板名称|
+|invokeName|邮件模板调用名称|
+|templateType|模板类型|
+|isVerify|审核状态|
+|gmtCreated|邮件模板创建时间|
+|gmtModified|邮件模板更新时间|
 |html|模板内容|
 |subject|模板标题|
-|email_type|模板类型|
-|is_verify|审核状态|
-|gmt_created|邮件模板创建时间|
-|gmt_modified|邮件模板更新时间|
-
 
 **返回值示例**
 ```
 {
-    "message":"success",
-    "templateList":[{
-            "invoke_name":"ifaxin_bill",
-            "name":"爱发信每月账单",
-            "html":"...",
-            "subject":"爱发信201506账单",
-            "email_type":1,
-            "is_verify":0,
-            "gmt_created":"2014-10-31 16:00:20",
-            "gmt_modified":"2015-03-11 14:45:31"
-        }, {
-            "invoke_name":"ifaxin_reg",
-            "name":"爱发信用户注册",
-            "html":"...",
-            "subject":"欢迎注册使用爱发信",
-            "email_type":1,
-            "is_verify":1,
-            "gmt_created":"2014-10-31 16:12:20",
-            "gmt_modified":"2015-03-11 14:45:50"}
-    ]
+  "statusCode": 200,
+  "info": {
+    "template": {
+      "name": "SendCloud测试样本",
+      "invokeName": "15_invoke_2",
+      "templateType": 0,
+      "isVerify": 1,
+      "gmtCreated": "2015-02-02 17:01:43",
+      "gmtUpdated": "2015-04-16 15:04:12",
+      "html": "<p>你太棒了！你已成功的从SendCloud发送了一封测试邮件，接下来快登录前台去完善账户信息吧！12</p>\n",
+      "subject": "来自SendCloud的第一封邮件！"
+    }
+  },
+  "message": "请求成功",
+  "result": true
 }
 ```
- 
+
 - - -
     
 ##添加    
     
 **URL**    
 ```
-http://sendcloud.sohu.com/webapi/template.add.json
+http://sendcloud.sohu.com/template/add
 ```
     
 **HTTP请求方式**
 ```bash
 post    get
 ```
-
-**参数说明 `20150707 更新`**    
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|api_user|string|是|子账号|
-|api_key|string|是|密码|
-|invoke_name|string|是|邮件模板调用名称|
+|apiUser|string|是|API_USER|
+|apiKey|string|是|密码|
+|invokeName|string|是|邮件模板调用名称|
 |name|string|是|邮件模板名称|
 |html|string|是|html格式内容|
 |text|string|否|text格式内容|
-|subject|string|`是`|模板标题|
-|email_type|int|是|模板类型|
+|subject|string|是|模板标题|
+|templateType|int|是|模板类型|
+|isSubmitAudit|int|否|是否提交审核: 0(不提交审核), 1(提交审核). 默认为 1|
 
-    
 提示: 
 
 1. html 内容中可以使用[变量](index.md#_1)
 2. html 内容过长或有特殊字符应使用 post 请求
-3. 模板个数最多为50个
-    
+3. 模板个数最多为 50 个
      
 **请求示例**
 ```
-curl -d 'api_user=***&api_key=***&invoke_name=testtemplate&name=test&html=<p>add new template</p>&subject=test_subject&email_type=1' http://sendcloud.sohu.com/webapi/template.add.json
+curl -d 'apiUser=***&apiKey=***&invokeName=testtemplate&name=test&html=<p>add new template</p>&subject=test_subject&templateType=1' http://sendcloud.sohu.com/template/add
 ```
  
 **返回值说明**
     
 |参数|说明|
 |:---|:---|
-|addCount|成功添加的模板数量|
+|name|邮件模板名称|
+|invokeName|邮件模板调用名称|
+|templateType|模板类型|
+|isVerify|审核状态|
+|gmtCreated|邮件模板创建时间|
+|gmtModified|邮件模板更新时间|
+|html|模板内容|
+|subject|模板标题|
     
 **返回值示例**
 ```
 {
-    "message":"success",
-    "addCount":1
+  "statusCode": 200,
+  "info": {
+    "template": {
+      "name": "test",
+      "invokeName": "testtemplate",
+      "templateType": 0,
+      "isVerify": 0,
+      "gmtCreated": "2015-10-16 10:42:01",
+      "gmtUpdated": "",
+      "html": "<p>add new template</p>",
+      "subject": "test_subject"
+    }
+  },
+  "message": "请求成功",
+  "result": true
 }
 ```
  
@@ -137,7 +231,7 @@ curl -d 'api_user=***&api_key=***&invoke_name=testtemplate&name=test&html=<p>add
     
 **URL**    
 ```
-http://sendcloud.sohu.com/webapi/template.delete.json
+http://sendcloud.sohu.com/template/delete
 ```
     
 **HTTP请求方式**
@@ -149,38 +243,43 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|api_user|string|是|子账号|
-|api_key|string|是|密码|
-|invoke_name|string|是|邮件模板调用名称|
+|apiUser|string|是|API_USER|
+|apiKey|string|是|密码|
+|invokeName|string|是|邮件模板调用名称|
     
 **请求示例**
 ```
-curl http://sendcloud.sohu.com/webapi/template.delete.json?api_user=***&api_key=***&invoke_name=testtemplate
+curl http://sendcloud.sohu.com/template/delete?apiUser=***&apiKey=***&invokeName=test
 ```
     
 **返回值说明**
     
 |参数|说明|
 |:---|:---|
-|delCount|成功删除的邮件模板个数|    
+|count|成功删除的邮件模板个数|    
     
 **返回值示例**
 ```
 {
-    "message":"success",
-    "delCount":1
+  "statusCode": 200,
+  "message": "请求成功",
+  "result": true,
+  "info": {
+    "count": 1
+  }
 }
+
 ```
  
 - - -
     
 ##更新    
     
-用于更新模板的内容
+用于更新模板的名称, 内容, 主题, 模板类型
 
 **URL**    
 ```
-http://sendcloud.sohu.com/webapi/template.update.json
+http://sendcloud.sohu.com/template/update
 ```
     
 **HTTP请求方式**
@@ -188,40 +287,89 @@ http://sendcloud.sohu.com/webapi/template.update.json
 post    get
 ```
 
-**参数说明 `20150707 更新`**    
-    
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|api_user|string|是|子账号|
-|api_key|string|是|密码|
-|invoke_name|string|是|邮件模板调用名称|
-|name|string|否|需要修改的邮件模板名称|
-|html|string|否|需要修改的html格式内容|
-|subject|string|否|需要修改的邮件标题|
-|email_type|string|否|需要修改的邮件类型|
+|apiUser|string|是|API_USER|
+|apiKey|string|是|密码|
+|invokeName|string|是|邮件模板调用名称|
+|name|string|否|邮件模板名称|
+|html|string|否|html格式内容|
+|subject|string|否|模板标题|
+|templateType|int|否|模板类型|
+|isSubmitAudit|int|否|是否提交审核: 0(不提交审核), 1(提交审核). 默认为 1|
 
 提示: 
 
 1. html 内容中可以使用[变量](index.md#_2)
 2. html 内容过长或有特殊字符应使用 post 请求
-3. 模板更新成功后,状态会变成未审核即is_verify=0
-    
     
 **请求示例**
 ```
-curl -d 'api_user=***&api_key=***&invoke_name=testtemplate&name=test&html=<p>update template</p>&subject=test&email_type=1' http://sendcloud.sohu.com/webapi/template.update.json
+curl -d 'apiUser=***&apiKey=***&invokeName=testtemplate&name=test&html=<p>update template</p>&subject=test&templateType=1' http://sendcloud.sohu.com/template/update
 ```
     
 **返回值说明**
     
 |参数|说明|
 |:---|:---|
-|updateCount|成功更新的模板个数|
+|count|成功更新的模板个数|
     
 **返回值示例**
 ```
 {
-    "message":"success",
-    "updateCount":1
+  "statusCode": 200,
+  "message": "请求成功",
+  "result": true,
+  "info": {
+    "count": 1
+  }
 }
 ```
+
+    
+## 提交
+    
+用于对模板提交审核, 或是撤销审核
+
+**URL**    
+```
+http://sendcloud.sohu.com/template/submit
+```
+    
+**HTTP请求方式**
+```bash
+post    get
+```
+
+|参数|类型|必须|说明|
+|:---|:---|:---|:---|
+|apiUser|string|是|API_USER|
+|apiKey|string|是|密码|
+|invokeName|string|是|邮件模板调用名称|
+|cancel|string|否|是否撤销审核: 1(撤销审核), 0(提交审核). 默认为 0|
+
+**请求示例**
+```
+http://sendcloud.sohu.com/template/submit?apiUser=***&apiKey=***&invokeName=testtemplate
+
+http://sendcloud.sohu.com/template/submit?apiUser=***&apiKey=***&invokeName=testtemplate&cancel=1
+```
+    
+**返回值说明**
+    
+|参数|说明|
+|:---|:---|
+|count|成功更新的模板数|
+    
+**返回值示例**
+```
+{
+  "statusCode": 200,
+  "info": {
+    "count": 1
+  },
+  "message": "请求成功",
+  "result": true
+}
+```
+
