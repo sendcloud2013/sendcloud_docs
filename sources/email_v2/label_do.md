@@ -5,10 +5,12 @@
 
 - - -
 ##批量查询
+
+返回标签的列表信息
     
 **URL**    
 ```
-http://sendcloud.sohu.com/webapi/label.list.json
+http://sendcloud.sohu.com/label/list
 ```
     
 **HTTP请求方式** 
@@ -20,14 +22,14 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|api_user|string|是|子账号|
-|api_key|string|是|密码|
+|apiUser|string|是|API_USER|
+|apiKey|string|是|密码|
 |start|int|否|查询起始位置, 取值区间 [0-], 默认为 0|
 |limit|int|否|查询个数, 取值区间 [0-100], 默认为 100|
     
 **请求示例**    
 ```
-http://sendcloud.sohu.com/webapi/label.list.json?api_user=***&api_key=***&start=0&limit=2
+http://sendcloud.sohu.com/label/list?api_user=***&api_key=***&start=0&limit=2
 ```
     
 **返回值说明**
@@ -36,33 +38,42 @@ http://sendcloud.sohu.com/webapi/label.list.json?api_user=***&api_key=***&start=
 |:---|:---| 
 |labelId|标签ID|
 |labelName|标签名称|
-|totalCount|所有标签个数|
+|gmtCreated|邮件模板创建时间|
+|gmtModified|邮件模板更新时间|
     
 **返回值示例**    
 ```
 {
-  "message": "success",
-  "list": [
-    {
-      "labelId": 10,
-      "labelName": "label1"
-    },
-    {
-      "labelId": 20,
-      "labelName": "label2"
-    }
-  ],
-  "totalCount": 101
+  "statusCode": 200,
+  "info": {
+    "total": 23,
+    "labelList": [
+      {
+        "gmtCreated": "2014-08-06 16:18:22",
+        "gmtUpdated": "2014-08-06 16:18:22",
+        "labelId": ***,
+        "labelName": "111"
+      },
+      {
+        "gmtCreated": "2013-12-27 10:03:55",
+        "gmtUpdated": "2013-12-27 10:03:55",
+        "labelId": ***,
+        "labelName": "222"
+      }
+    ]
+  },
+  "message": "请求成功",
+  "result": true
 }
 ```
     
-    
 - - -
+
 ##查询    
     
 **URL**    
 ```
-http://sendcloud.sohu.com/webapi/label.get.json
+http://sendcloud.sohu.com/label/get
 ```
     
 **HTTP请求方式** 
@@ -74,13 +85,13 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|api_user|string|是|子账号|
-|api_key|string|是|密码|
-|labelId|string|是|标签ID|
+|apiUser|string|是|API_USER|
+|apiKey|string|是|密码|
+|labelId|int|是|标签ID|
     
 **请求示例**    
 ```
-http://sendcloud.sohu.com/webapi/label.get.json?api_user=***&api_key=***&labelId=89
+http://sendcloud.sohu.com/label/get?api_user=***&api_key=***&labelId=89
 ```
     
 **返回值说明**
@@ -89,15 +100,23 @@ http://sendcloud.sohu.com/webapi/label.get.json?api_user=***&api_key=***&labelId
 |:---|:---| 
 |labelId|标签ID|
 |labelName|标签名称|
+|gmtCreated|邮件模板创建时间|
+|gmtModified|邮件模板更新时间|
     
 **返回值示例**    
 ```
 {
-    "message":"success", 
-    "label":{
-            "labelId":89,
-            "labelName":test
+  "statusCode": 200,
+  "info": {
+    "label": {
+      "gmtCreated": "2015-10-13 16:27:10",
+      "gmtUpdated": "2015-10-13 16:27:10",
+      "labelId": 111,
+      "labelName": "验证码"
     }
+  },
+  "message": "请求成功",
+  "result": true
 }
 ```
     
@@ -106,7 +125,7 @@ http://sendcloud.sohu.com/webapi/label.get.json?api_user=***&api_key=***&labelId
     
 **URL**
 ```
-http://sendcloud.sohu.com/webapi/label.create.json
+http://sendcloud.sohu.com/label/add
 ```
     
 **HTTP请求方式**
@@ -118,13 +137,13 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|api_user|string|是|子账号|
-|api_key|string|是|密码|
+|apiUser|string|是|API_USER|
+|apiKey|string|是|密码|
 |labelName|string|是|需要添加的标签名称|
     
 **请求示例**    
 ```
-http://sendcloud.sohu.com/webapi/label.create.json?api_user=***&api_key=***&labelName=test
+http://sendcloud.sohu.com/label/add?api_user=***&api_key=***&labelName=test
 ```
     
 **返回值说明**
@@ -138,11 +157,17 @@ http://sendcloud.sohu.com/webapi/label.create.json?api_user=***&api_key=***&labe
 **返回值示例**    
 ```
 {
-    "message":"success", 
-    "label":{
-            "labelId":89,
-            "labelName":test
+  "statusCode": 200,
+  "info": {
+    "label": {
+      "gmtCreated": "2015-10-19 15:39:27",
+      "gmtUpdated": "2015-10-19 15:39:27",
+      "labelId": ***,
+      "labelName": "test"
     }
+  },
+  "message": "请求成功",
+  "result": true
 }
 ```
     
@@ -152,7 +177,7 @@ http://sendcloud.sohu.com/webapi/label.create.json?api_user=***&api_key=***&labe
 
 **URL**
 ```
-http://sendcloud.sohu.com/webapi/label.delete.json
+http://sendcloud.sohu.com/label/delete
 ```
     
 **HTTP请求方式**
@@ -164,35 +189,40 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|api_user|string|是|子账号|
-|api_key|string|是|密码|
+|apiUser|string|是|API_USER|
+|apiKey|string|是|密码|
 |labelId|int|是|需要删除的标签ID|
     
 **请求示例**    
 ```
-http://sendcloud.sohu.com/webapi/label.delete.json?api_user=***&api_key=***&labelId=89
+http://sendcloud.sohu.com/label/delete?api_user=***&api_key=***&labelId=89
 ```
     
 **返回值说明**
     
 |参数|说明|
 |:---|:---|
-|deleteCount|成功删除的个数|
+|count|成功删除的个数|
     
 **返回值示例**
 ```
 {
-    "message":"success",
-    "deleteCount":1
+  "statusCode": 200,
+  "info": {
+    "count": 1
+  },
+  "message": "请求成功",
+  "result": true
 }
 ```
     
 - - -
+
 ##更新
 
 **URL**
 ```
-http://sendcloud.sohu.com/webapi/label.update.json
+http://sendcloud.sohu.com/label/update
 ```
     
 **HTTP请求方式**
@@ -204,28 +234,39 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|api_user|string|是|子账号|
-|api_key|string|是|密码|
+|apiUser|string|是|API_USER|
+|apiKey|string|是|密码|
 |labelId|int|是|需要更新的标签ID|
-|labelName|string|是|需要更新的标签名称|
+|labelName|string|是|新的标签名称|
     
 **请求示例**    
 ```
-http://sendcloud.sohu.com/webapi/label.update.json?api_user=***&api_key=***&labelId=89&labelName=test
+http://sendcloud.sohu.com/label/update?api_user=***&api_key=***&labelId=89&labelName=testnew
 ```
     
 **返回值说明**
     
 |参数|说明|
 |:---|:---| 
-|updateCount|更新成功的个数|
+|count|更新成功的个数|
     
 
 **返回值示例**    
 ```
 {
-    "message":"success", 
-    "updateCount":1
+  "statusCode": 200,
+  "info": {
+    "count": 1
+  },
+  "message": "请求成功",
+  "result": true
+}
+----
+{
+  "statusCode": 40111,
+  "info": {},
+  "message": "标签名称已经存在",
+  "result": false
 }
 ```
 

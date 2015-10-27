@@ -7,6 +7,66 @@
     
 - - -
 
+##列表批量查询    
+    
+**URL**    
+```
+http://sendcloud.sohu.com/addresslist/list
+```
+    
+**HTTP请求方式** 
+```bash
+post    get
+```
+    
+**参数说明**
+    
+|参数|类型|必须|说明|
+|:---|:---|:---|:---|
+|apiUser|string|是|API_USER|
+|apiKey|string|是|密码|
+|address|list|否|别名地址的列表, 多个用 `;` 分隔|
+|start|int|否|查询起始位置, 取值区间 [0-], 默认为 0|
+|limit|int|否|查询个数, 取值区间 [0-100], 默认为 100|
+    
+**请求示例**    
+```
+http://sendcloud.sohu.com/addresslist/list?api_user=***&api_key=***&address=a@maillist.sendcloud.org&limit=2
+```
+    
+**返回值说明**
+    
+|参数|说明|
+|:---|:---| 
+|name|地址列表的名称|
+|address|列表别称地址, 使用该别称地址进行调用, 格式为xxx@maillist.sendcloud.org|
+|membersCount|地址列表包含的地址个数|
+|gmtCreated|地址列表创建时间|
+|gmtUpdated|地址列表修改时间|
+    
+**返回值示例**    
+```
+{
+    statusCode: 200,
+    info: {
+        total: 1,
+        count: 1,
+        data: [{
+            gmtCreated: "2015-09-15 20:29:01",
+            gmtUpdated: "2015-09-15 20:29:01",
+            address: "developers4@sendcloud.com",
+            memberCount: 0,
+            name: "211"
+        }]
+    },
+    message: "请求成功",
+    result: true
+}
+
+```
+    
+- - -
+
 ##列表查询    
     
 **URL**    
@@ -25,9 +85,7 @@ post    get
 |:---|:---|:---|:---|
 |apiUser|string|是|API_USER|
 |apiKey|string|是|密码|
-|address|list|否|别名地址的列表, 多个用 `;` 分隔|
-|start|int|否|查询起始位置, 取值区间 [0-], 默认为 0|
-|limit|int|否|查询个数, 取值区间 [0-100], 默认为 100|
+|address|list|是|别名地址的列表|
     
 **请求示例**    
 ```
@@ -66,6 +124,7 @@ http://sendcloud.sohu.com/addresslist/get?api_user=***&api_key=***&address=a@mai
 ```
     
 - - -
+
 ##列表创建
     
 **URL**
@@ -226,7 +285,7 @@ http://sendcloud.sohu.com/addresslist/update?api_user=***&api_key=***&address=ju
     
 **URL**
 ```
-http://sendcloud.sohu.com/addressmember/get
+http://sendcloud.sohu.com/addressmember/list
 ```
     
 **HTTP请求方式**
@@ -247,7 +306,7 @@ post    get
     
 **请求示例**
 ```
-http://sendcloud.sohu.com/addressmember/get?api_user=***&api_key=***&address=newtest@maillist.sendcloud.org
+http://sendcloud.sohu.com/addressmember/list?api_user=***&api_key=***&address=newtest@maillist.sendcloud.org
 ```        
     
 **返回值说明**

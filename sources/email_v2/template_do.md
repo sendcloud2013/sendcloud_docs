@@ -371,5 +371,15 @@ http://sendcloud.sohu.com/template/submit?apiUser=***&apiKey=***&invokeName=test
   "message": "请求成功",
   "result": true
 }
+
+--------
+
+{
+  "statusCode": 40229,
+  "info": {},
+  "message": "模板还未提交审核, 无法撤销审核",
+  "result": false
+}
+
 ```
 
