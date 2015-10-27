@@ -3,44 +3,48 @@
 
 **URL**
 ```  
-http://sendcloud.sohu.com/webapi/mail.send.json
+http://api.sendcloud.sohu.com/apiv2/sendhtml
 ```
    
 **HTTP请求方式** 
 ```bash
-post   get
+post
 ```
 
 **参数说明**    
 
 |参数|类型|必须|说明|
-|:---|:---|:---|:---|  
-|api_user|string|是|API_USER|  
-|api_key|string|是|API_KEY|  
-|from|string|是|发件人地址. from 和[发信域名](../guide/base.md#_3), 会影响是否[显示代发](../faq/index.md#2)|  
+|:---|:---|:---|:---|
+|apiUser|string|是|API_USER|
+|apiKey|string|是|密码|
+|from|string|是|发件人地址. 举例: `support@ifaxin.com`, `爱发信支持<support@ifaxin.com>`|  
 |to|string|是|收件人地址. 多个地址使用';'分隔, 如 `ben@ifaxin.com;joe@ifaxin.com`|  
 |subject|string|是|标题. 不能为空|  
-|html|string|是|邮件的内容. 不能为空, 可以是文本格式或者 HTML 格式|  
-|fromname|string|否|发件人名称. 显示如: `ifaxin客服支持 <support@ifaxin.com>`|  
-|bcc|string|否|密送地址. 多个地址使用';'分隔|  
+|html|string|是|邮件的内容. 邮件格式为 `text/html`|  
+|fromname|string|否|发件人名称. 显示如: `ifaxin客服支持<support@ifaxin.com>`|  
 |cc|string|否|抄送地址. 多个地址使用';'分隔|  
-|replyto|string|否|默认的回复邮件地址. 如果 replyto 没有或者为空, 则默认的回复邮件地址为 from|  
-|label|int|否|本次发送所使用的标签ID. 此标签需要事先创建|  
+|bcc|string|否|密送地址. 多个地址使用';'分隔|  
+|replyTo|string|否|设置用户默认的回复邮件地址.  如果 replyTo 没有或者为空, 则默认的回复邮件地址为 from|  
+|dispositionNotificationTo|string|否|设置用户发送回执的邮件地址. 如果没有或者为空, 则不发送回执|  
+|labelId|int|否|本次发送所使用的标签ID. 此标签需要事先创建|  
 |headers|string|否|邮件头部信息. JSON 格式, 比如:`{"header1": "value1", "header2": "value2"}`|  
-|files|string|否|邮件附件. 发送附件时, 必须使用 multipart/form-data 进行 post 提交 (表单提交)|  
-|x_smtpapi|string|否|SMTP 扩展字段. 详见 [X-SMTPAPI](index.md#x-smtpapi). |  
-|resp_email_id|string (true, false)|否|是否返回 [emailId](index.md#messageid-emailid). 有多个收件人时, 会返回 emailId 的列表|  
-|use_maillist|string (true, false)|否|参数 to 是否`含有`地址列表. 比如: `to=ben@ifaxin.com;users@maillist.sendcloud.org`| 
-|gzip_compress|string (true, false)|否|邮件内容是否使用gzip压缩. 默认不使用 gzip 压缩正文|  
+|files|file|否|邮件附件. 发送附件时, 必须使用 multipart/form-data 进行 post 提交 (表单提交)|  
+|xsmtpapi|string|否|SMTP 扩展字段. 详见 [X-SMTPAPI](index.md#x-smtpapi). |  
+|plain|string|否|邮件的内容. 邮件格式为 `text/plain`|  
+|respEmailId|string (true, false)|否|默认值: `true`. 是否返回 [emailId](index.md#messageid-emailid). 有多个收件人时, 会返回 emailId 的列表|  
+|useAddressList|string (true, false)|否|默认值: `false`. 参数 to 是否表示地址列表. 比如: `to=group1@maillist.sendcloud.org;group2@maillist.sendcloud.org`| 
+|gzipCompress|string (true, false)|否|默认值: `false`. 邮件内容是否使用gzip压缩|  
 
 注意:
 
-1. API 参数 to 的收件人是全部显示在邮件中, X-SMTPAPI 中的 to 是独立显示在邮件中
-2. 如果 X-SMTPAPI 中指定了 to, 那么API 参数中的 to, cc 和 bcc 都会被忽略
-3. X-SMTPAPI 中的字段 to, 以及 API 参数中的 cc, bcc 都不支持地址列表
-4. API 参数 to 的收件人个数不能超过100
-5. X-SMTPAPI 中的 to 的收件人个数不能超过100
-6. 地址列表中的收件人个数不能超过 100000
+1. 假设 from == `爱发信支持<support@ifaxin.com>`. 如果 fromName 为空, 则系统会将 fromName 设置为`爱发信支持`; 如果 fromName 为非空, 则不作处理.
+2. from 和[发信域名](../guide/base.md#_3), 会影响是否[显示代发](../faq/index.md#2)
+3. API 参数中的 to 的收件人是广播发送 (收件人会全部显示), xsmtpapi 中的 to 是单独发送 (收件人独立显示)
+4. API 参数中的 cc, bcc, 以及 xsmtpapi 中的字段 to 都不支持地址列表
+5. API 参数中的 to, cc, bcc 的收件人个数不能超过 100, xsmtpapi 中的 to 的收件人个数不能超过 100
+6. 如果 xsmtpapi 中指定了 to, 那么API 参数中的 to, cc 和 bcc 都会被忽略
+7. 当 useAddressList == "true" 时, to 表示的是地址列表, 此时地址列表的个数不能超过 5
+8. html 和 plain 不能同时为空. 以 html 的参数值为优先.
 
 **请求, 返回值示例**
 
