@@ -45,57 +45,6 @@ post
 6. html 和 plain 不能同时为空. 如果都不为空, 以 html 的值为优先.
 7. subject, html, plain 中都可以使用[变量](../guide/base#_4). 由于变量的 '%' 为特殊字符, 做 HTTP 请求时请注意处理.
 
-**请求, 返回值示例**
-
-普通发送 ( get 方式, 使用to, cc, bcc, 返回emailId )
-```
-curl 'http://sendcloud.sohu.com/webapi/mail.send.json?api_user=***&api_key=***&from=test@test.com&fromname=来自测试发送&subject=测试&html=这是一封测试邮件&to=ben@ifaxin.com;joe@ifaxin.com&cc=bida@ifaxin.com&bcc=lianzimi@ifaxin.com&replyto=reply@test.com&label=16800&resp_email_id=true'
-
-curl 'http://api.sendcloud.sohu.com/webapi/mail.send.json?api_user=***&api_key=***&from=test@test.com&fromname=来自测试发送&subject=测试&html=这是一封测试邮件&to=ben@ifaxin.com;joe@ifaxin.com&cc=bida@ifaxin.com&bcc=lianzimi@ifaxin.com&replyto=reply@test.com&label=16800&resp_email_id=true'
-# 返回值
-{
-    "message":"success",
-    "email_id_list":[
-        "1426053463570_15_32087_2059.sc-10_10_127_105-inbound0$ben@ifaxin.com",
-        "1426053463570_15_32087_2059.sc-10_10_127_105-inbound1$joe@ifaxin.com",
-        "1426053463570_15_32087_2059.sc-10_10_127_105-inbound2$bida@ifaxin.com",
-        "1426053463570_15_32087_2059.sc-10_10_127_105-inbound3$lianzimi@ifaxin.com"
-    ]
-}
-```
-
-普通发送 ( post 方式, 同时使用to, cc, bcc 和 x_smtpapi, 返回emailId )
-```
-curl -d 'api_user=***&api_key=***&from=test@test.com&fromname=来自测试发送&subject=测试&html=这是一封测试邮件&to=ben@ifaxin.com;joe@ifaxin.com&cc=bida@ifaxin.com&bcc=lianzimi@ifaxin.com&replyto=reply@test.com&label=16800&resp_email_id=true&x_smtpapi={"to":["mary@ifaxin.com", "karl@ifaxin.com"]}' http://sendcloud.sohu.com/webapi/mail.send.json
-# 返回值
-{
-    "message":"success",
-    "email_id_list":[
-        "1426053897008_15_28341_795.sc-10_10_127_22-inbound0$mary@ifaxin.com",
-        "1426053897008_15_28341_795.sc-10_10_127_22-inbound1$karl@ifaxin.com",
-        "1426053897008_15_28341_795.sc-10_10_127_22-inbound2$bida@ifaxin.com",
-        "1426053897008_15_28341_795.sc-10_10_127_22-inbound3$lianzimi@ifaxin.com"
-    ]
-}
-```
-
-普通发送 ( post 方式, 使用地址列表 users@maillist.sendcloud.org, 用户可以根据返回的 `task_id` 在 [WebHook](../email/webhook.md#mail_list_task_id_list) 中使用 )
-```
-curl -d 'api_user=***&api_key=***&from=test@test.com&fromname=来自测试发送&subject=测试&html=这是一封测试邮件&to=ben@ifaxin.com;joe@ifaxin.com;users@maillist.sendcloud.org&replyto=reply@test.com&resp_email_id=true&use_maillist=true' http://sendcloud.sohu.com/webapi/mail.send.json
-# 失败返回值 ( 地址列表不存在 )
-{
-    "message":"error",
-    "errors":[
-        "Can not queue maillist email, use maillist to send mail fail! msg=Mailing List doesnot exsit, please check your param!"
-    ]
-}
-# 成功返回值
-{
-    "message":"success",
-    "mail_list_task_id_list":[135323]
-}
-```
-
 - - - 
 
 ## 模板发送

@@ -11,7 +11,7 @@ API_USER 是用户在 SendCloud 中发信的验证帐号.
     
 **URL**
 ```
-http://sendcloud.sohu.com/apiuser/get
+http://api.sendcloud.sohu.com/apiv2/apiuser/list
 ```
     
 **HTTP请求方式**
@@ -31,7 +31,7 @@ post    get
     
 **请求示例**
 ```
-http://sendcloud.sohu.com/apiUser/get?apiUser=***&apiKey=***&emailType=1&domainName=mail.liubida.cn 
+http://api.sendcloud.sohu.com/apiv2/apiUser/list?apiUser=***&apiKey=***&emailType=1&domainName=mail.liubida.cn 
 ```
     
 **返回值说明**
@@ -41,7 +41,7 @@ http://sendcloud.sohu.com/apiUser/get?apiUser=***&apiKey=***&emailType=1&domainN
 |name|API_USER 名称|
 |cType|API_USER 类型|
 |emailType|API_USER 的邮件类型|
-|domain|API_USER 绑定的域名|
+|domainName|API_USER 绑定的域名|
 |neteaseSender|API_USER 绑定的网易诚信 Sender |
 |click|是否开启点击追踪: 0(关闭), 1(开启)|
 |open|是否开启阅读追踪: 0(关闭), 1(开启)|
@@ -52,12 +52,12 @@ http://sendcloud.sohu.com/apiUser/get?apiUser=***&apiKey=***&emailType=1&domainN
 {
     statusCode: 200,
     info: {
-        total: 1,
-        data: [{
+        count: 1,
+        dataList: [{
             name: "***",
             cType: "非测试",
             emailType: "触发",
-            domain: "delong.com",
+            domainName: "delong.com",
             neteaseSender: "",
             click: 1,
             open: 1,
@@ -77,7 +77,7 @@ http://sendcloud.sohu.com/apiUser/get?apiUser=***&apiKey=***&emailType=1&domainN
     
 **URL**
 ```
-http://sendcloud.sohu.com/apiuser/add
+http://api.sendcloud.sohu.com/apiv2/apiuser/add
 ```
     
 **HTTP请求方式**
@@ -92,7 +92,7 @@ post    get
 |apiUser|string|是|API_USER|
 |apiKey|string|是|密码|
 |name|string|是|API_USER 的名称|
-|emailType|int|否|API_USER 的邮件类型: 0(触发), 1(批量)|
+|emailType|int|是|API_USER 的邮件类型: 0(触发), 1(批量)|
 |domainName|string|是|API_USER 绑定的域名名称|
 |open|int|否|是否开启阅读追踪: 0(关闭), 1(开启). 默认: 开启|
 |click|int|否|是否开启点击追踪: 0(关闭), 1(开启).|
@@ -106,7 +106,7 @@ post    get
     
 **请求示例**
 ```
-http://sendcloud.sohu.com/apiUser/add?apiUser=***&apiKey=***&name=liubida&emailType=1&domainName=mail.liubida.cn 
+http://api.sendcloud.sohu.com/apiv2/apiUser/add?apiUser=***&apiKey=***&name=liubida&emailType=1&domainName=mail.liubida.cn 
 ```
     
 **返回值说明**
@@ -128,7 +128,7 @@ http://sendcloud.sohu.com/apiUser/add?apiUser=***&apiKey=***&name=liubida&emailT
     statusCode: 200,
     info: {
         total: 1,
-        data: [{
+        data: {
             name: "***",
             cType: "非测试",
             emailType: "触发",
@@ -137,7 +137,7 @@ http://sendcloud.sohu.com/apiUser/add?apiUser=***&apiKey=***&name=liubida&emailT
             click: 1,
             open: 1,
             unsubscribe: 1
-        }]
+        }
     },
     message: "请求成功",
     result: true

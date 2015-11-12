@@ -5,13 +5,13 @@
     
 - - -        
 
-##批量查询
+##列表查询
 
 返回邮件模板的列表信息
     
 **URL**    
 ```
-http://sendcloud.sohu.com/template/list
+http://api.sendcloud.sohu.com/apiv2/template/list
 ```
     
 **HTTP请求方式**
@@ -34,7 +34,7 @@ post    get
     
 **请求示例**
 ```
-http://sendcloud.sohu.com/template/list?apiUser=***&apiKey=***&start=0&limit=3&isVerify=1
+http://api.sendcloud.sohu.com/apiv2/template/list?apiUser=***&apiKey=***&start=0&limit=3&isVerify=1
 ```
     
 **返回值说明**
@@ -87,7 +87,7 @@ http://sendcloud.sohu.com/template/list?apiUser=***&apiKey=***&start=0&limit=3&i
     
 **URL**    
 ```
-http://sendcloud.sohu.com/template/get
+http://api.sendcloud.sohu.com/apiv2/template/get
 ```
     
 **HTTP请求方式**
@@ -105,7 +105,7 @@ post    get
     
 **请求示例**
 ```
-http://sendcloud.sohu.com/template/get?apiUser=***&apiKey=***&invokeName=test
+http://api.sendcloud.sohu.com/apiv2/template/get?apiUser=***&apiKey=***&invokeName=test
 ```
     
 **返回值说明**
@@ -148,7 +148,7 @@ http://sendcloud.sohu.com/template/get?apiUser=***&apiKey=***&invokeName=test
     
 **URL**    
 ```
-http://sendcloud.sohu.com/template/add
+http://api.sendcloud.sohu.com/apiv2/template/add
 ```
     
 **HTTP请求方式**
@@ -165,7 +165,7 @@ post    get
 |html|string|是|html格式内容|
 |text|string|否|text格式内容|
 |subject|string|是|模板标题|
-|templateType|int|是|模板类型|
+|templateType|int|是|邮件模板类型: 0(触发), 1(批量)|
 |isSubmitAudit|int|否|是否提交审核: 0(不提交审核), 1(提交审核). 默认为 1|
 
 提示: 
@@ -176,7 +176,7 @@ post    get
      
 **请求示例**
 ```
-curl -d 'apiUser=***&apiKey=***&invokeName=testtemplate&name=test&html=<p>add new template</p>&subject=test_subject&templateType=1' http://sendcloud.sohu.com/template/add
+curl -d 'apiUser=***&apiKey=***&invokeName=testtemplate&name=test&html=<p>add new template</p>&subject=test_subject&templateType=1' http://api.sendcloud.sohu.com/apiv2/template/add
 ```
  
 **返回值说明**
@@ -219,7 +219,7 @@ curl -d 'apiUser=***&apiKey=***&invokeName=testtemplate&name=test&html=<p>add ne
     
 **URL**    
 ```
-http://sendcloud.sohu.com/template/delete
+http://api.sendcloud.sohu.com/apiv2/template/delete
 ```
     
 **HTTP请求方式**
@@ -237,7 +237,7 @@ post    get
     
 **请求示例**
 ```
-curl http://sendcloud.sohu.com/template/delete?apiUser=***&apiKey=***&invokeName=test
+curl http://api.sendcloud.sohu.com/apiv2/template/delete?apiUser=***&apiKey=***&invokeName=test
 ```
     
 **返回值说明**
@@ -267,7 +267,7 @@ curl http://sendcloud.sohu.com/template/delete?apiUser=***&apiKey=***&invokeName
 
 **URL**    
 ```
-http://sendcloud.sohu.com/template/update
+http://api.sendcloud.sohu.com/apiv2/template/update
 ```
     
 **HTTP请求方式**
@@ -283,7 +283,7 @@ post    get
 |name|string|否|邮件模板名称|
 |html|string|否|html格式内容|
 |subject|string|否|模板标题|
-|templateType|int|否|模板类型|
+|templateType|int|否|邮件模板类型: 0(触发), 1(批量)|
 |isSubmitAudit|int|否|是否提交审核: 0(不提交审核), 1(提交审核). 默认为 1|
 
 提示: 
@@ -293,7 +293,7 @@ post    get
     
 **请求示例**
 ```
-curl -d 'apiUser=***&apiKey=***&invokeName=testtemplate&name=test&html=<p>update template</p>&subject=test&templateType=1' http://sendcloud.sohu.com/template/update
+curl -d 'apiUser=***&apiKey=***&invokeName=testtemplate&name=test&html=<p>update template</p>&subject=test&templateType=1' http://api.sendcloud.sohu.com/apiv2/template/update
 ```
     
 **返回值说明**
@@ -321,7 +321,7 @@ curl -d 'apiUser=***&apiKey=***&invokeName=testtemplate&name=test&html=<p>update
 
 **URL**    
 ```
-http://sendcloud.sohu.com/template/submit
+http://api.sendcloud.sohu.com/apiv2/template/submit
 ```
     
 **HTTP请求方式**
@@ -338,9 +338,9 @@ post    get
 
 **请求示例**
 ```
-http://sendcloud.sohu.com/template/submit?apiUser=***&apiKey=***&invokeName=testtemplate
+http://api.sendcloud.sohu.com/apiv2/template/submit?apiUser=***&apiKey=***&invokeName=testtemplate
 
-http://sendcloud.sohu.com/template/submit?apiUser=***&apiKey=***&invokeName=testtemplate&cancel=1
+http://api.sendcloud.sohu.com/apiv2/template/submit?apiUser=***&apiKey=***&invokeName=testtemplate&cancel=1
 ```
     
 **返回值说明**

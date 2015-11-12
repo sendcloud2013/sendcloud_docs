@@ -7,11 +7,11 @@
     
 - - -
 
-##列表批量查询    
+##列表查询    
     
 **URL**    
 ```
-http://sendcloud.sohu.com/addresslist/list
+http://api.sendcloud.sohu.com/apiv2/addresslist/list
 ```
     
 **HTTP请求方式** 
@@ -31,7 +31,7 @@ post    get
     
 **请求示例**    
 ```
-http://sendcloud.sohu.com/addresslist/list?api_user=***&api_key=***&address=a@maillist.sendcloud.org&limit=2
+http://api.sendcloud.sohu.com/apiv2/addresslist/list?api_user=***&api_key=***&limit=2
 ```
     
 **返回值说明**
@@ -51,7 +51,7 @@ http://sendcloud.sohu.com/addresslist/list?api_user=***&api_key=***&address=a@ma
     info: {
         total: 1,
         count: 1,
-        data: [{
+        dataList: [{
             gmtCreated: "2015-09-15 20:29:01",
             gmtUpdated: "2015-09-15 20:29:01",
             address: "developers4@sendcloud.com",
@@ -64,72 +64,14 @@ http://sendcloud.sohu.com/addresslist/list?api_user=***&api_key=***&address=a@ma
 }
 
 ```
-    
-- - -
 
-##列表查询    
-    
-**URL**    
-```
-http://sendcloud.sohu.com/addresslist/get
-```
-    
-**HTTP请求方式** 
-```bash
-post    get
-```
-    
-**参数说明**
-    
-|参数|类型|必须|说明|
-|:---|:---|:---|:---|
-|apiUser|string|是|API_USER|
-|apiKey|string|是|密码|
-|address|list|是|别名地址的列表|
-    
-**请求示例**    
-```
-http://sendcloud.sohu.com/addresslist/get?api_user=***&api_key=***&address=a@maillist.sendcloud.org&limit=2
-```
-    
-**返回值说明**
-    
-|参数|说明|
-|:---|:---| 
-|name|地址列表的名称|
-|address|列表别称地址, 使用该别称地址进行调用, 格式为xxx@maillist.sendcloud.org|
-|membersCount|地址列表包含的地址个数|
-|gmtCreated|地址列表创建时间|
-|gmtUpdated|地址列表修改时间|
-    
-**返回值示例**    
-```
-{
-    statusCode: 200,
-    info: {
-        total: 1,
-        count: 1,
-        data: [{
-            gmtCreated: "2015-09-15 20:29:01",
-            gmtUpdated: "2015-09-15 20:29:01",
-            address: "developers4@sendcloud.com",
-            memberCount: 0,
-            name: "211"
-        }]
-    },
-    message: "请求成功",
-    result: true
-}
-
-```
-    
 - - -
 
 ##列表创建
     
 **URL**
 ```
-http://sendcloud.sohu.com/addresslist/add
+http://api.sendcloud.sohu.com/apiv2/addresslist/add
 ```
     
 **HTTP请求方式**
@@ -149,7 +91,7 @@ post    get
     
 **请求示例**    
 ```
-http://sendcloud.sohu.com/addresslist/add?api_user=***&api_key=***&address=justfortest@maillist.sendcloud.org&name=testlist&desc=test
+http://api.sendcloud.sohu.com/apiv2/addresslist/add?api_user=***&api_key=***&address=justfortest@maillist.sendcloud.org&name=testlist&desc=test
 ```
     
 **返回值说明**
@@ -187,7 +129,7 @@ http://sendcloud.sohu.com/addresslist/add?api_user=***&api_key=***&address=justf
 
 **URL**
 ```
-http://sendcloud.sohu.com/addresslist/delete
+http://api.sendcloud.sohu.com/apiv2/addresslist/delete
 ```
     
 **HTTP请求方式**
@@ -205,7 +147,7 @@ post    get
     
 **请求示例**    
 ```
-http://sendcloud.sohu.com/addresslist/delete?api_user=***&api_key=***&address=newtest@maillist.sendcloud.org
+http://api.sendcloud.sohu.com/apiv2/addresslist/delete?api_user=***&api_key=***&address=newtest@maillist.sendcloud.org
 ```
     
 **返回值说明**
@@ -231,7 +173,7 @@ http://sendcloud.sohu.com/addresslist/delete?api_user=***&api_key=***&address=ne
 
 **URL**
 ```
-http://sendcloud.sohu.com/addresslist/update
+http://api.sendcloud.sohu.com/apiv2/addresslist/update
 ```
     
 **HTTP请求方式**
@@ -257,7 +199,7 @@ post    get
     
 **请求示例**    
 ```
-http://sendcloud.sohu.com/addresslist/update?api_user=***&api_key=***&address=justfortest@maillist.sendcloud.org&name=newtest
+http://api.sendcloud.sohu.com/apiv2/addresslist/update?api_user=***&api_key=***&address=justfortest@maillist.sendcloud.org&name=newtest
 ```
     
 **返回值说明**
@@ -285,7 +227,7 @@ http://sendcloud.sohu.com/addresslist/update?api_user=***&api_key=***&address=ju
     
 **URL**
 ```
-http://sendcloud.sohu.com/addressmember/list
+http://api.sendcloud.sohu.com/apiv2/addressmember/list
 ```
     
 **HTTP请求方式**
@@ -300,55 +242,117 @@ post    get
 |apiUser|string|是|子账号|
 |apiKey|string|是|密码|
 |address|string|是|地址列表调用名称|    
-|members|list|否|需要查询信息的地址, 多个地址用 `;` 分隔|
 |start|int|否|查询起始位置, 取值区间 [0-], 默认为 0|
 |limit|int|否|查询个数, 取值区间 [0-100], 默认为 100|
     
 **请求示例**
 ```
-http://sendcloud.sohu.com/addressmember/list?api_user=***&api_key=***&address=newtest@maillist.sendcloud.org
+http://api.sendcloud.sohu.com/apiv2/addressmember/list?api_user=***&api_key=***&address=newtest@maillist.sendcloud.org
 ```        
     
 **返回值说明**
     
 |参数|说明|
 |:---|:---|
-|create_at|地址创建时间|
-|modify_at|地址修改时间|
-|address|邮件地址|
-|name|地址所属人名称|
-|subscribed|预留字段, deprecated, 忽略|
+|gmtCreated|成员创建时间|
+|gmtUpdated|成员修改时间|
+|address|所属地址列表|
+|member|成员邮件地址|
 |vars|变量|
     
 **返回值示例**
 ```
-
 {
-    statusCode: 200,
-    info: {
-        count: 2,
-        data: [
-        {
-            gmtCreated: "2015-09-08 15:30:16",
-            gmtUpdated: "2015-09-08 15:30:16",
-            address: "developers3@sendcloud.com",
-            member: "1"
-        },
-        {
-            gmtCreated: "2015-09-15 20:42:22",
-            gmtUpdated: "2015-09-15 20:56:21",
-            address: "developers3@sendcloud.com",
-            member: "1@1.com",
-            vars: {
-                1: 1
-            }
-        }
-        ]
-    },
-    message: "请求成功",
-    result: true
+  "statusCode": 200,
+  "info": {
+    "dataList": [
+      {
+        "gmtCreated": "2015-04-30 11:15:43",
+        "gmtUpdated": "2015-04-30 11:15:43",
+        "address": "test@maillist.sendcloud.org",
+        "member": "001@160it.com",
+        "vars": ""
+      },
+      {
+        "gmtCreated": "2015-04-30 11:17:01",
+        "gmtUpdated": "2015-04-30 11:17:01",
+        "address": "test@maillist.sendcloud.org",
+        "member": "01@mail.yedao.cc",
+        "vars": ""
+      },
+      {
+        "gmtCreated": "2015-04-30 11:16:41",
+        "gmtUpdated": "2015-04-30 11:16:41",
+        "address": "test@maillist.sendcloud.org",
+        "member": "057966@gmail.com",
+        "vars": ""
+      }
+    ],
+    "total": 11378,
+    "count": 3
+  },
+  "message": "请求成功",
+  "result": true
 }
+```
 
+- - -
+    
+##列表成员查询2
+    
+**URL**
+```
+http://api.sendcloud.sohu.com/apiv2/addressmember/get
+```
+    
+**HTTP请求方式**
+```bash
+post    get
+```
+    
+**参数说明**
+    
+|参数|类型|必须|说明|
+|:---|:---|:---|:---|
+|apiUser|string|是|子账号|
+|apiKey|string|是|密码|
+|address|string|是|地址列表调用名称|    
+|members|list|是|列表成员地址|    
+    
+**请求示例**
+```
+http://api.sendcloud.sohu.com/apiv2/addressmember/get?api_user=***&api_key=***&address=newtest@maillist.sendcloud.org&members=ben@ifaxin.com
+```        
+    
+**返回值说明**
+    
+|参数|说明|
+|:---|:---|
+|gmtCreated|成员创建时间|
+|gmtUpdated|成员修改时间|
+|address|所属地址列表|
+|member|成员邮件地址|
+|vars|变量|
+    
+**返回值示例**
+```
+{
+  "statusCode": 200,
+  "message": "请求成功",
+  "result": true,
+  "info": {
+    "dataList": [
+      {
+        "gmtCreated": "2015-04-30 11:15:43",
+        "gmtUpdated": "2015-04-30 11:15:43",
+        "address": "***",
+        "member": "001@160it.com",
+        "vars": ""
+      }
+    ],
+    "count": 1
+  }
+}
 ```
 
 - - -
@@ -357,7 +361,7 @@ http://sendcloud.sohu.com/addressmember/list?api_user=***&api_key=***&address=ne
     
 **URL**
 ```
-http://sendcloud.sohu.com/addressmember/add
+http://api.sendcloud.sohu.com/apiv2/addressmember/add
 ```
      
 **HTTP请求方式**
@@ -379,11 +383,12 @@ post    get
 ```
 1. 每次请求最多可以添加1000个成员
 2. 如果包含 vars 变量, 则必须与 members 的成员数量一致
+3. 此时添加 vars 变量, 注意 key 不需要被 带上 '%'
 ```
     
 **请求示例**
 ```
-http://sendcloud.sohu.com/addressmember/add?apiUser=***&apiKey=***&address=yourlist@maillist.sendcloud.org&members=1@1.com;2@2.com&vars={"money":"99"};{"money":"900"}
+http://api.sendcloud.sohu.com/apiv2/addressmember/add?apiUser=***&apiKey=***&address=yourlist@maillist.sendcloud.org&members=1@1.com;2@2.com&vars={"money":"99"};{"money":"900"}
 ```
     
 **返回值说明**
@@ -411,7 +416,7 @@ http://sendcloud.sohu.com/addressmember/add?apiUser=***&apiKey=***&address=yourl
     
 **URL**
 ```
-http://sendcloud.sohu.com/addressmember/update
+http://api.sendcloud.sohu.com/apiv2/addressmember/update
 ```
     
 **HTTP请求方式**
@@ -437,7 +442,7 @@ post    get
     
 **请求示例**
 ```
-http://sendcloud.sohu.com/addressmember/update?apiUser=***&apiKey=***&address=yourlist@maillist.sendcloud.org&members=1@1.com;2@2.com&vars={"money":"199"};{"money":"1900"}
+http://api.sendcloud.sohu.com/apiv2/addressmember/update?apiUser=***&apiKey=***&address=yourlist@maillist.sendcloud.org&members=1@1.com;2@2.com&vars={"money":"199"};{"money":"1900"}
 ```
     
 **返回值说明**
@@ -464,7 +469,7 @@ http://sendcloud.sohu.com/addressmember/update?apiUser=***&apiKey=***&address=yo
    
 **URL**
 ```
-http://sendcloud.sohu.com/addressmember/delete
+http://api.sendcloud.sohu.com/apiv2/addressmember/delete
 ```
     
 **HTTP请求方式**
@@ -483,7 +488,7 @@ post    get
     
 **请求示例**
 ```
-http://sendcloud.sohu.com/addressmember/delete?api_user=***&api_key=***&address=newtest@maillist.sendcloud.org&members=3@3.com;4@4.com
+http://api.sendcloud.sohu.com/apiv2/addressmember/delete?api_user=***&api_key=***&address=newtest@maillist.sendcloud.org&members=3@3.com;4@4.com
 ```
    
 **返回值说明**

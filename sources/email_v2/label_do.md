@@ -4,13 +4,13 @@
 你可以使用 API 进行标签的查询, 添加, 删除, 更新操作
 
 - - -
-##批量查询
+##列表查询
 
 返回标签的列表信息
     
 **URL**    
 ```
-http://sendcloud.sohu.com/label/list
+http://api.sendcloud.sohu.com/apiv2/label/list
 ```
     
 **HTTP请求方式** 
@@ -30,7 +30,7 @@ post    get
     
 **请求示例**    
 ```
-http://sendcloud.sohu.com/label/list?api_user=***&api_key=***&query=edm&start=0&limit=200
+http://api.sendcloud.sohu.com/apiv2/label/list?api_user=***&api_key=***&query=edm&start=0&limit=200
 ```
     
 **返回值说明**
@@ -75,7 +75,7 @@ http://sendcloud.sohu.com/label/list?api_user=***&api_key=***&query=edm&start=0&
     
 **URL**    
 ```
-http://sendcloud.sohu.com/label/get
+http://api.sendcloud.sohu.com/apiv2/label/get
 ```
     
 **HTTP请求方式** 
@@ -93,7 +93,7 @@ post    get
     
 **请求示例**    
 ```
-http://sendcloud.sohu.com/label/get?api_user=***&api_key=***&labelId=89
+http://api.sendcloud.sohu.com/apiv2/label/get?api_user=***&api_key=***&labelId=89
 ```
     
 **返回值说明**
@@ -127,7 +127,7 @@ http://sendcloud.sohu.com/label/get?api_user=***&api_key=***&labelId=89
     
 **URL**
 ```
-http://sendcloud.sohu.com/label/add
+http://api.sendcloud.sohu.com/apiv2/label/add
 ```
     
 **HTTP请求方式**
@@ -145,7 +145,7 @@ post    get
     
 **请求示例**    
 ```
-http://sendcloud.sohu.com/label/add?api_user=***&api_key=***&labelName=test
+http://api.sendcloud.sohu.com/apiv2/label/add?api_user=***&api_key=***&labelName=test
 ```
     
 **返回值说明**
@@ -179,7 +179,7 @@ http://sendcloud.sohu.com/label/add?api_user=***&api_key=***&labelName=test
 
 **URL**
 ```
-http://sendcloud.sohu.com/label/delete
+http://api.sendcloud.sohu.com/apiv2/label/delete
 ```
     
 **HTTP请求方式**
@@ -197,7 +197,7 @@ post    get
     
 **请求示例**    
 ```
-http://sendcloud.sohu.com/label/delete?api_user=***&api_key=***&labelId=89
+http://api.sendcloud.sohu.com/apiv2/label/delete?api_user=***&api_key=***&labelId=89
 ```
     
 **返回值说明**
@@ -224,7 +224,7 @@ http://sendcloud.sohu.com/label/delete?api_user=***&api_key=***&labelId=89
 
 **URL**
 ```
-http://sendcloud.sohu.com/label/update
+http://api.sendcloud.sohu.com/apiv2/label/update
 ```
     
 **HTTP请求方式**
@@ -243,7 +243,7 @@ post    get
     
 **请求示例**    
 ```
-http://sendcloud.sohu.com/label/update?api_user=***&api_key=***&labelId=89&labelName=testnew
+http://api.sendcloud.sohu.com/apiv2/label/update?api_user=***&api_key=***&labelId=89&labelName=testnew
 ```
     
 **返回值说明**

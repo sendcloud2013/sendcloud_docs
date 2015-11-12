@@ -11,7 +11,7 @@
     
 **URL**
 ```
-http://sendcloud.sohu.com/domain/get
+http://api.sendcloud.sohu.com/apiv2/domain/list
 ```
     
 **HTTP请求方式**
@@ -51,11 +51,11 @@ ret = 31 | dkim, spf, mx, cname, verifyKey 配置通过
 
 **请求示例**
 ```
-http://sendcloud.sohu.com/domain/get?apiUser=***&apiKey=***&name=ifaxin.com
+http://api.sendcloud.sohu.com/apiv2/domain/get?apiUser=***&apiKey=***&name=ifaxin.com
 ```
 
 ```
-http://sendcloud.sohu.com/domain/get?apiUser=***&apiKey=***&type=0&verify=>3
+http://api.sendcloud.sohu.com/apiv2/domain/get?apiUser=***&apiKey=***&type=0&verify=>3
 ```
     
 **返回值说明**
@@ -78,7 +78,7 @@ http://sendcloud.sohu.com/domain/get?apiUser=***&apiKey=***&type=0&verify=>3
     statusCode: 200,
     info: {
         total: 2,
-        data: [
+        dataList: [
             {
                 name: "xxx",
                 type: "测试",
@@ -116,7 +116,7 @@ http://sendcloud.sohu.com/domain/get?apiUser=***&apiKey=***&type=0&verify=>3
     
 **URL**
 ```
-http://sendcloud.sohu.com/domain/add
+http://api.sendcloud.sohu.com/apiv2/domain/add
 ```
     
 **HTTP请求方式**
@@ -141,7 +141,7 @@ post    get
 
 **请求示例**
 ```
-http://sendcloud.sohu.com/domain/add?apiUser=***&apiKey=***&name=mail.liubida.cn
+http://api.sendcloud.sohu.com/apiv2/domain/add?apiUser=***&apiKey=***&name=mail.liubida.cn
 ```
     
 **返回值说明**
@@ -190,7 +190,7 @@ http://sendcloud.sohu.com/domain/add?apiUser=***&apiKey=***&name=mail.liubida.cn
     
 **URL**
 ```
-http://sendcloud.sohu.com/domain/update
+http://api.sendcloud.sohu.com/apiv2/domain/update
 ```
     
 **HTTP请求方式**
@@ -214,7 +214,7 @@ post    get
 
 **请求示例**
 ```
-http://sendcloud.sohu.com/domain/update?apiUser=***&apiKey=***&name=mail.liubida.cn&name=email.liubida.cn
+http://api.sendcloud.sohu.com/apiv2/domain/update?apiUser=***&apiKey=***&name=mail.liubida.cn&name=email.liubida.cn
 ```
     
 **返回值说明**
