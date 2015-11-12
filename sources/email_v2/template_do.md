@@ -45,47 +45,35 @@ http://sendcloud.sohu.com/template/list?apiUser=***&apiKey=***&start=0&limit=3&i
 |invokeName|邮件模板调用名称|
 |templateType|模板类型|
 |isVerify|审核状态|
-|html|模板内容|
-|subject|模板标题|
 |gmtCreated|邮件模板创建时间|
 |gmtModified|邮件模板更新时间|
 
 **返回值示例**
 ```
 {
-  "statusCode": 200,
   "info": {
-    "total": 25,
-    "templateList": [
+    "dataList": [
       {
-        "name": "SendCloud测试样本",
+        "name": "ifaxin账单",
+        "invokeName": "***",
+        "templateType": 1,
+        "isVerify": 1,
+        "gmtCreated": "2013-11-21 16:37:41",
+        "gmtUpdated": "2015-06-12 19:44:07"
+      },
+      {
+        "name": "ifaxin密码找回",
         "invokeName": "***",
         "templateType": 0,
         "isVerify": 1,
-        "gmtCreated": "2015-02-02 17:01:43",
-        "gmtUpdated": "2015-04-16 15:04:12",
-        "subject": "来自SendCloud的第一封邮件！"
-      },
-      {
-        "name": "20150519",
-        "invokeName": "***",
-        "templateType": 1,
-        "isVerify": 1,
-        "gmtCreated": "2015-05-19 18:46:41",
-        "gmtUpdated": "2015-05-19 18:46:41",
-        "subject": "test20150519"
-      },
-      {
-        "name": "测试邮件发送",
-        "invokeName": "***",
-        "templateType": 1,
-        "isVerify": 1,
-        "gmtCreated": "2014-08-12 15:22:20",
-        "gmtUpdated": "2015-02-03 16:11:56",
-        "subject": "测试邮件发送"
+        "gmtCreated": "2013-11-21 16:39:53",
+        "gmtUpdated": "2013-11-21 16:39:53"
       }
-    ]
+    ],
+    "total": 42,
+    "count": 2
   },
+  "statusCode": 200,
   "message": "请求成功",
   "result": true
 }
@@ -138,7 +126,7 @@ http://sendcloud.sohu.com/template/get?apiUser=***&apiKey=***&invokeName=test
 {
   "statusCode": 200,
   "info": {
-    "template": {
+    "data": {
       "name": "SendCloud测试样本",
       "invokeName": "15_invoke_2",
       "templateType": 0,
@@ -209,7 +197,7 @@ curl -d 'apiUser=***&apiKey=***&invokeName=testtemplate&name=test&html=<p>add ne
 {
   "statusCode": 200,
   "info": {
-    "template": {
+    "data": {
       "name": "test",
       "invokeName": "testtemplate",
       "templateType": 0,
