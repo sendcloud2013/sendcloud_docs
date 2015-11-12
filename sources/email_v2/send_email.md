@@ -3,7 +3,7 @@
 
 **URL**
 ```  
-http://api.sendcloud.sohu.com/apiv2/sendhtml
+http://api.sendcloud.sohu.com/apiv2/send
 ```
    
 **HTTP请求方式** 
@@ -16,41 +16,42 @@ post
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
 |apiUser|string|是|API_USER|
-|apiKey|string|是|密码|
+|apiKey|string|是|API_KEY|
 |from|string|是|发件人地址. 举例: `support@ifaxin.com`, `爱发信支持<support@ifaxin.com>`|  
 |to|string|是|收件人地址. 多个地址使用';'分隔, 如 `ben@ifaxin.com;joe@ifaxin.com`|  
 |subject|string|是|标题. 不能为空|  
 |html|string|是|邮件的内容. 邮件格式为 `text/html`|  
-|fromname|string|否|发件人名称. 显示如: `ifaxin客服支持<support@ifaxin.com>`|  
+|fromName|string|否|发件人名称. 显示如: `ifaxin客服支持<support@ifaxin.com>`|  
 |cc|string|否|抄送地址. 多个地址使用';'分隔|  
 |bcc|string|否|密送地址. 多个地址使用';'分隔|  
 |replyTo|string|否|设置用户默认的回复邮件地址.  如果 replyTo 没有或者为空, 则默认的回复邮件地址为 from|  
 |dispositionNotificationTo|string|否|设置用户发送回执的邮件地址. 如果没有或者为空, 则不发送回执|  
 |labelId|int|否|本次发送所使用的标签ID. 此标签需要事先创建|  
 |headers|string|否|邮件头部信息. JSON 格式, 比如:`{"header1": "value1", "header2": "value2"}`|  
-|files|file|否|邮件附件. 发送附件时, 必须使用 multipart/form-data 进行 post 提交 (表单提交)|  
+|attachments|file|否|邮件附件. 发送附件时, 必须使用 multipart/form-data 进行 post 提交 (表单提交)|  
 |xsmtpapi|string|否|SMTP 扩展字段. 详见 [X-SMTPAPI](index.md#x-smtpapi). |  
 |plain|string|否|邮件的内容. 邮件格式为 `text/plain`|  
 |respEmailId|string (true, false)|否|默认值: `true`. 是否返回 [emailId](index.md#messageid-emailid). 有多个收件人时, 会返回 emailId 的列表|  
-|useAddressList|string (true, false)|否|默认值: `false`. 参数 to 是否表示地址列表. 比如: `to=group1@maillist.sendcloud.org;group2@maillist.sendcloud.org`| 
-|gzipCompress|string (true, false)|否|默认值: `false`. 邮件内容是否使用gzip压缩|  
+|useAddressList|string (true, false)|否|默认值: `false`. 是否使用地址列表发送. 比如: `to=group1@maillist.sendcloud.org;group2@maillist.sendcloud.org`| 
+|gzipCompress|string (true, false)|否|默认值: `false`. 邮件内容是否使用 gzip 压缩|  
 
 注意:
 
-1. 假设 from == `爱发信支持<support@ifaxin.com>`. 如果 fromName 为空, 则系统会将 fromName 设置为`爱发信支持`; 如果 fromName 为非空, 则不作处理.
-2. from 和[发信域名](../guide/base.md#_3), 会影响是否[显示代发](../faq/index.md#2)
-3. API 参数中的 to 的收件人是广播发送 (收件人会全部显示), xsmtpapi 中的 to 是单独发送 (收件人独立显示)
-4. API 参数中的 cc, bcc, 以及 xsmtpapi 中的字段 to 都不支持地址列表
-5. API 参数中的 to, cc, bcc 的收件人个数不能超过 100, xsmtpapi 中的 to 的收件人个数不能超过 100
-6. 如果 xsmtpapi 中指定了 to, 那么API 参数中的 to, cc 和 bcc 都会被忽略
-7. 当 useAddressList == "true" 时, to 表示的是地址列表, 此时地址列表的个数不能超过 5
-8. html 和 plain 不能同时为空. 以 html 的参数值为优先.
+1. 假设 from 为 `爱发信支持<support@ifaxin.com>`. 如果 fromName 为空, 则系统会将 fromName 设置为"爱发信支持"; 如果 fromName 为非空, 则不作处理.
+2. 地址列表发送时, 使用参数 to 指定地址列表, 地址列表中的每个地址是单独发送, 地址列表的个数不能超过 5. 此时参数 cc, bcc, xsmtpapi 失效.
+3. 非地址列表发送时, 使用参数 to 指定收件人, 多个收件人是广播发送 (收件人会全部显示). 使用参数 cc 指定抄送人, 参数 bcc 指定密送人.
+4. 非地址列表发送时, 使用 xsmtpapi 指定收件人, 多个收件人是单独发送. 此时参数 to, cc, bcc 失效.
+5. 参数 to, cc, bcc 的收件人个数不能超过 100, xsmtpapi 中的 to 的收件人个数不能超过 100.
+6. html 和 plain 不能同时为空. 如果都不为空, 以 html 的值为优先.
+7. subject, html, plain 中都可以使用[变量](../guide/base#_4). 由于变量的 '%' 为特殊字符, 做 HTTP 请求时请注意处理.
 
 **请求, 返回值示例**
 
 普通发送 ( get 方式, 使用to, cc, bcc, 返回emailId )
 ```
 curl 'http://sendcloud.sohu.com/webapi/mail.send.json?api_user=***&api_key=***&from=test@test.com&fromname=来自测试发送&subject=测试&html=这是一封测试邮件&to=ben@ifaxin.com;joe@ifaxin.com&cc=bida@ifaxin.com&bcc=lianzimi@ifaxin.com&replyto=reply@test.com&label=16800&resp_email_id=true'
+
+curl 'http://api.sendcloud.sohu.com/webapi/mail.send.json?api_user=***&api_key=***&from=test@test.com&fromname=来自测试发送&subject=测试&html=这是一封测试邮件&to=ben@ifaxin.com;joe@ifaxin.com&cc=bida@ifaxin.com&bcc=lianzimi@ifaxin.com&replyto=reply@test.com&label=16800&resp_email_id=true'
 # 返回值
 {
     "message":"success",
@@ -95,27 +96,13 @@ curl -d 'api_user=***&api_key=***&from=test@test.com&fromname=来自测试发送
 }
 ```
 
-普通发送 ( post方式, 发送附件 )
-```
-# 带附件发送需要使用 form 提交
-curl -F api_user='***' -F api_key='***' -F from='test@test.com' -F fromname='来自测试发送' -F subject='测试' --form-string html='<p>这是一封测试邮件<p>' -F to='ben@ifaxin.com' -F replyto='reply@test.com' -F resp_email_id='true' -F files=@/path/attach.pdf http://sendcloud.sohu.com/webapi/mail.send.json
-# 返回值
-{
-    "message":"success",
-    "email_id_list":[
-        "1426063441767_15_28341_5332.sc-10_10_127_22-inbound0$ben@ifaxin.com"
-    ]
-}
-```
-
-- - -
+- - - 
 
 ## 模板发送
 
-
 **URL**
 ```  
-http://sendcloud.sohu.com/webapi/mail.send_template.json
+http://api.sendcloud.sohu.com/apiv2/sendtemplate
 ```
    
 **HTTP请求方式** 
@@ -123,31 +110,39 @@ http://sendcloud.sohu.com/webapi/mail.send_template.json
 post
 ```
 
-**参数说明 `20150707 更新`**    
+**参数说明**    
 
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|  
-|api_user|string|是|API_USER|  
-|api_key|string|是|API_KEY|  
-|from|string|是|发件人地址. from 和[发信域名](../guide/base.md#_3), 会影响是否[显示代发](../faq/index.md#2)|  
-|substitution_vars|string|*|模板替换变量. 在 `use_maillist=false` 时使用, 如: `{"to": ["ben@ifaxin.com", "joe@ifaxin.com"],"sub":{"%name%": ["Ben", "Joe"],"%money%":[288, 497]}}` | 
-|to|string|*|收件人的地址列表. 在 `use_maillist=true` 时使用|
-|subject|string|`否`|邮件标题|  
-|template_invoke_name|string|是|邮件模板调用名称| 
-|fromname|string|否|发件人名称. 显示如: `ifaxin客服支持 <support@ifaxin.com>`|  
-|replyto|string|否|默认的回复邮件地址. 如果 replyto 没有或者为空, 则默认的回复邮件地址为 from|  
-|label|int|否|本次发送所使用的标签ID. 此标签需要事先创建|  
+|apiUser|string|是|API_USER|
+|apiKey|string|是|API_KEY|
+|from|string|是|发件人地址. 举例: `support@ifaxin.com`, `爱发信支持<support@ifaxin.com>`|  
+|to|string|*|地址列表. 在 `useAddressList=true` 时使用|
+|xsmtpapi|string|*|SMTP 扩展字段. 详见 [X-SMTPAPI](index.md#x-smtpapi). |  
+|subject|string|*|邮件标题|  
+|templateInvokeName|string|是|邮件模板调用名称| 
+|fromName|string|否|发件人名称. 显示如: `ifaxin客服支持<support@ifaxin.com>`|  
+|cc|||不支持|  
+|bcc|||不支持|  
+|replyTo|string|否|设置用户默认的回复邮件地址.  如果 replyTo 没有或者为空, 则默认的回复邮件地址为 from|  
+|dispositionNotificationTo|string|否|设置用户发送回执的邮件地址. 如果没有或者为空, 则不发送回执|  
+|labelId|int|否|本次发送所使用的标签ID. 此标签需要事先创建|  
 |headers|string|否|邮件头部信息. JSON 格式, 比如:`{"header1": "value1", "header2": "value2"}`|  
-|files|string|否|邮件附件. 发送附件时, 必须使用 multipart/form-data 进行 post 提交 (表单提交)|  
-|resp_email_id|string (true, false)|否|是否返回 [emailId](index.md#messageid-emailid). 有多个收件人时, 会返回 emailId 的列表|  
-|use_maillist|string (true, false)|否|参数 to 是否支持地址列表, 默认为 false. 比如: `to=users@maillist.sendcloud.org`| 
-|gzip_compress|string (true, false)|否|邮件内容是否使用gzip压缩. 默认不使用 gzip 压缩正文|  
+|attachments|file|否|邮件附件. 发送附件时, 必须使用 multipart/form-data 进行 post 提交 (表单提交)|  
+|respEmailId|string (true, false)|否|默认值: `true`. 是否返回 emailId. 有多个收件人时, 会返回 emailId 的列表|  
+|useAddressList|string (true, false)|否|默认值: `false`. 是否使用地址列表发送. 比如: `to=group1@maillist.sendcloud.org;group2@maillist.sendcloud.org`| 
+|gzipCompress|||不支持| 
 
 注意:
 
-1. `to` 和 `substitution_vars` 分别对应地址列表使用与否的情况, 两者不能同时使用
-2. 只能调用审核通过的模板
-3. API_USER 类型和模板类型必须一致
+1. 假设 from 为 `爱发信支持<support@ifaxin.com>`. 如果 fromName 为空, 则系统会将 fromName 设置为"爱发信支持"; 如果 fromName 不为空, 则不作处理.
+2. 地址列表发送时, 使用参数 to 指定地址列表, 地址列表中的每个地址是单独发送, 地址列表的个数不能超过 5. 此时参数 xsmtpapi 失效.
+3. **非地址列表发送时, 必须使用 xsmtpapi 指定收件人, 多个收件人是单独发送. 此时参数 to 失效.**
+4. xsmtpapi 中的 to 的收件人个数不能超过 100.
+5. API_USER 类型和模板类型必须一致. 触发或者批量.
+6. 只能调用审核通过的模板.
+7. 默认取邮件模板的标题作为邮件主题, 除非参数 subject 为非空. 如果两者都为空, 则返回错误.
+8. subject, 模板中都可以使用[变量](../guide/base#_4). 由于变量的 '%' 为特殊字符, 做 HTTP 请求时请注意处理.
 
 **请求, 返回值示例**
 
@@ -159,16 +154,21 @@ post
     您好! 您本月在爱发信的消费金额为: %money% 元.
 #---------------------------------------------------
 # 调用模板发送, `%`需要 urlencode
-curl -d 'api_user=***&api_key=***&from=test@test.com&fromname=来自测试发送&subject=测试&template_invoke_name=ifaxin_bill&replyto=reply@test.com&label=16800&resp_email_id=true' --data-urlencode 'substitution_vars={"to": ["ben@ifaxin.com", "joe@ifaxin.com"],"sub":{"%name%": ["Ben", "Joe"],"%money%":[288, 497]}}' http://sendcloud.sohu.com/webapi/mail.send_template.json
+curl -d 'apiUser=***&apiKey=***&from=test@test.com&fromName=liubida&subject=测试&replyTo=reply@test.com&templateInvokeName=ifaxin_bill' --data-urlencode 'xsmtpapi={"to": ["ben@ifaxin.com", "joe@ifaxin.com"],"sub":{"%name%": ["Ben", "Joe"],"%money%":[288, 497]}}&headers={"header1": "value1", "header2": "value2"}' http://api.sendcloud.sohu.com/apiv2/sendtemplate
 
 # 返回值
 {
-    "message":"success",
-    "email_id_list":[
-        "1426129060356_15_28341_7776.sc-10_10_127_22-inbound0$ben@ifaxin.com",
-        "1426129060356_15_28341_7776.sc-10_10_127_22-inbound1$joe@ifaxin.com"
+  "statusCode": 200,
+  "info": {
+    "emailIdList": [
+      "1447054895514_15555555_32350_1350.sc-10_10_126_221-inbound0$ben@ifaxin.com",
+      "1447054895514_15555555_32350_1350.sc-10_10_126_221-inbound1$joe@ifaxin.com"
     ]
+  },
+  "message": "请求成功",
+  "result": true
 }
+
 
 # ben@ifaxin.com 收到的邮件:
 亲爱的Ben:
@@ -184,39 +184,84 @@ curl -d 'api_user=***&api_key=***&from=test@test.com&fromname=来自测试发送
 ```
 普通发送 ( 调用模板 ifaxin_bill, 调用地址列表 users@maillist.sendcloud.org, 用户可以根据返回的 `task_id` 在 [WebHook](../email/webhook.md#mail_list_task_id_list)  中使用 )
 ```
-curl -d 'api_user=***&api_key=***&from=test@test.com&fromname=来自测试发送&subject=测试&template_invoke_name=ifaxin_bill&replyto=reply@test.com&label=16800&resp_email_id=true&use_maillist=true&to=users@maillist.sendcloud.org' http://sendcloud.sohu.com/webapi/mail.send_template.json
+curl -d 'apiUser=***&apiKey=***&from=test@test.com&fromName=liubida&to=noexist@maillist.sendcloud.org&subject=测试&replyTo=reply@test.com&templateInvokeName=ifaxin_bill' --data-urlencode 'headers={"header1": "value1", "header2": "value2"}' http://api.sendcloud.sohu.com/apiv2/sendtemplate
 
 # 返回值
 {
-    "message":"success",
-    "mail_list_task_id_list":[135677]
+  "statusCode": 40863,
+  "info": {},
+  "message": "to中有不存在的地址列表. 参数to: noexist@maillist.sendcloud.org",
+  "result": false
 }
-```
-普通发送 ( 调用模板 ifaxin_bill, 发送附件 )
-```
-# 带附件发送需要使用 form 提交
-curl -F api_user='***' -F api_key='***' -F from='test@test.com' -F fromname='来自测试发送' -F subject=' 测试' -F template_invoke_name='ifaxin_bill' -F substitution_vars='{"to": ["ben@ifaxin.com", "joe@ifaxin.com"],"sub":{"%name%": ["Ben", "Joe"],"%money%":[288, 497]}}' -F replyto='reply@test.com' -F resp_email_id='true' -F files=@/path/attach.pdf http://sendcloud.sohu.com/webapi/mail.send_template.json
+
+curl -d 'apiUser=***&apiKey=***&from=test@test.com&fromName=liubida&to=users@maillist.sendcloud.org&subject=测试&replyTo=reply@test.com&templateInvokeName=ifaxin_bill' --data-urlencode 'headers={"header1": "value1", "header2": "value2"}' http://api.sendcloud.sohu.com/apiv2/sendtemplate
 
 # 返回值
 {
-    "message":"success",
-    "email_id_list":[
-        "1426140696534_15_26257_4999.sc-10_10_127_57-inbound0$ben@ifaxin.com",
-        "1426140696534_15_26257_4999.sc-10_10_127_57-inbound1$joe@ifaxin.com"
+  "statusCode": 40821,
+  "info": {
+    "addressListTaskId": [
+      267131
     ]
-}
-```
-普通发送 ( 调用模板 ifaxin_bill, 调用地址列表 users@maillist.sendcloud.org, 发送附件 )
-```
-# 带附件发送需要使用 form 提交
-curl -F api_user='***' -F api_key='***' -F from='test@test.com' -F fromname='来自测试发送' -F subject=' 测试' -F template_invoke_name='ifaxin_bill' -F to='users@maillist.sendcloud.org' -F replyto='reply@test.com' -F resp_email_id='true' -F use_maillist=true -F files=@/path/attach.pdf http://sendcloud.sohu.com/webapi/mail.send_template.json
-
-# 返回值
-{
-    "message":"success",
-    "mail_list_task_id_list":[135677]
+  },
+  "message": "地址列表任务创建成功",
+  "result": true
 }
 ```
 
+- - -
 
+## 日程发送
+
+**URL**
+```  
+http://api.sendcloud.sohu.com/apiv2/sendcalendar
+```
+   
+**HTTP请求方式** 
+```bash
+post
+```
+
+**参数说明**    
+
+|参数|类型|必须|说明|
+|:---|:---|:---|:---|
+|apiUser|string|是|API_USER|
+|apiKey|string|是|API_KEY|
+|from|string|是|发件人地址. 举例: `support@ifaxin.com`, `爱发信支持<support@ifaxin.com>`|  
+|to|string|是|收件人地址. 多个地址使用';'分隔, 如 `ben@ifaxin.com;joe@ifaxin.com`|  
+|subject|string|是|标题. 不能为空|  
+|html|string|是|邮件的内容. 邮件格式为 `text/html`|  
+|fromName|string|否|发件人名称. 显示如: `ifaxin客服支持<support@ifaxin.com>`|  
+|cc|string|否|抄送地址. 多个地址使用';'分隔|  
+|bcc|string|否|密送地址. 多个地址使用';'分隔|  
+|replyTo|string|否|设置用户默认的回复邮件地址.  如果 replyTo 没有或者为空, 则默认的回复邮件地址为 from|  
+|dispositionNotificationTo|||不支持|  
+|labelId|int|否|本次发送所使用的标签ID. 此标签需要事先创建|  
+|headers|string|否|邮件头部信息. JSON 格式, 比如:`{"header1": "value1", "header2": "value2"}`|  
+|attachments|file|否|邮件附件. 发送附件时, 必须使用 multipart/form-data 进行 post 提交 (表单提交)|  
+|xsmtpapi|string|否|SMTP 扩展字段. 详见 [X-SMTPAPI](index.md#x-smtpapi). |  
+|plain|string|否|邮件的内容. 邮件格式为 `text/plain`|  
+|respEmailId|string (true, false)|否|默认值: `true`. 是否返回 [emailId](index.md#messageid-emailid). 有多个收件人时, 会返回 emailId 的列表|  
+|useAddressList|||不支持|  
+|gzipCompress|string (true, false)|否|默认值: `false`. 邮件内容是否使用 gzip 压缩, 只针对 html, plain 的内容|  
+|startTime|string|是|日程开始时间. 形如: yyyy-MM-dd HH:mm:ss|
+|endTime|string|是|日程结束时间. 形如: yyyy-MM-dd HH:mm:ss|
+|title|string|是|会议标题|
+|organizerName|string|是|组织者名称|
+|organizerEmail|string|是|组织者邮箱地址|
+|location|string|是|会议地点|
+|description|string|否|会议描述|
+|participatorNames|string|否|参会者姓名. 多个使用';'分隔|
+|participatorEmails|string|否|参会者邮箱地址. 多个使用';'分隔|
+
+注意:
+
+1. 假设 from 为 `爱发信支持<support@ifaxin.com>`. 如果 fromName 为空, 则系统会将 fromName 设置为"爱发信支持"; 如果 fromName 为非空, 则不作处理.
+2. 非地址列表发送时, 使用参数 to 指定收件人, 多个收件人是广播发送 (收件人会全部显示). 使用参数 cc 指定抄送人, 参数 bcc 指定 密送人.
+3. 非地址列表发送时, 使用 xsmtpapi 指定收件人, 多个收件人是单独发送. 此时参数 to, cc, bcc 失效.
+4. 参数 to, cc, bcc 的收件人个数不能超过 100, xsmtpapi 中的 to 的收件人个数不能超过 100.
+5. html 和 plain 不能同时为空. 如果都不为空, 以 html 的值为优先.
+6. subject, html, plain 中都可以使用[变量](../guide/base#_4). 由于变量的 '%' 为特殊字符, 做 HTTP 请求时请注意处理.
 

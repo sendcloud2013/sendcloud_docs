@@ -24,12 +24,13 @@ post    get
 |:---|:---|:---|:---|
 |apiUser|string|是|API_USER|
 |apiKey|string|是|密码|
+|query|string|否|模糊查询的关键词|
 |start|int|否|查询起始位置, 取值区间 [0-], 默认为 0|
 |limit|int|否|查询个数, 取值区间 [0-100], 默认为 100|
     
 **请求示例**    
 ```
-http://sendcloud.sohu.com/label/list?api_user=***&api_key=***&start=0&limit=2
+http://sendcloud.sohu.com/label/list?api_user=***&api_key=***&query=edm&start=0&limit=200
 ```
     
 **返回值说明**
@@ -38,30 +39,31 @@ http://sendcloud.sohu.com/label/list?api_user=***&api_key=***&start=0&limit=2
 |:---|:---| 
 |labelId|标签ID|
 |labelName|标签名称|
-|gmtCreated|邮件模板创建时间|
-|gmtModified|邮件模板更新时间|
+|gmtCreated|标签创建时间|
+|gmtModified|标签更新时间|
     
 **返回值示例**    
 ```
 {
-  "statusCode": 200,
   "info": {
-    "total": 23,
-    "labelList": [
+    "dataList": [
       {
         "gmtCreated": "2014-08-06 16:18:22",
         "gmtUpdated": "2014-08-06 16:18:22",
         "labelId": ***,
-        "labelName": "111"
+        "labelName": "***"
       },
       {
-        "gmtCreated": "2013-12-27 10:03:55",
-        "gmtUpdated": "2013-12-27 10:03:55",
+        "gmtCreated": "2014-08-06 15:13:28",
+        "gmtUpdated": "2014-08-06 15:13:28",
         "labelId": ***,
-        "labelName": "222"
+        "labelName": "***"
       }
-    ]
+    ],
+    "total": 21,
+    "count": 2
   },
+  "statusCode": 200,
   "message": "请求成功",
   "result": true
 }
@@ -100,21 +102,21 @@ http://sendcloud.sohu.com/label/get?api_user=***&api_key=***&labelId=89
 |:---|:---| 
 |labelId|标签ID|
 |labelName|标签名称|
-|gmtCreated|邮件模板创建时间|
-|gmtModified|邮件模板更新时间|
+|gmtCreated|标签创建时间|
+|gmtModified|标签更新时间|
     
 **返回值示例**    
 ```
 {
-  "statusCode": 200,
   "info": {
-    "label": {
-      "gmtCreated": "2015-10-13 16:27:10",
-      "gmtUpdated": "2015-10-13 16:27:10",
-      "labelId": 111,
-      "labelName": "验证码"
+    "data": {
+      "gmtCreated": "2014-08-06 16:18:22",
+      "gmtUpdated": "2014-08-06 16:18:22",
+      "labelId": ***,
+      "labelName": "***"
     }
   },
+  "statusCode": 200,
   "message": "请求成功",
   "result": true
 }
@@ -159,7 +161,7 @@ http://sendcloud.sohu.com/label/add?api_user=***&api_key=***&labelName=test
 {
   "statusCode": 200,
   "info": {
-    "label": {
+    "data": {
       "gmtCreated": "2015-10-19 15:39:27",
       "gmtUpdated": "2015-10-19 15:39:27",
       "labelId": ***,
