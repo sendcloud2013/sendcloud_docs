@@ -27,14 +27,14 @@ post    get
 |apiKey|string|是|密码|
 |invokeName|string|否|邮件模板调用名称|
 |templateType|int|否|邮件模板类型: 0(触发), 1(批量)|
-|isVerify|int|否|邮件模板状态: -2(未提交审核), -1(审核不通过), 0(待审核), 1(审核通过)|
+|templateStat|int|否|邮件模板状态: -2(未提交审核), -1(审核不通过), 0(待审核), 1(审核通过)|
 |start|int|否|查询起始位置, 取值区间 [0-], 默认为 0|
 |limit|int|否|查询个数, 取值区间 [0-100], 默认为 100|
     
     
 **请求示例**
 ```
-http://api.sendcloud.sohu.com/apiv2/template/list?apiUser=***&apiKey=***&start=0&limit=3&isVerify=1
+http://api.sendcloud.sohu.com/apiv2/template/list?apiUser=***&apiKey=***&start=0&limit=3&templateStat=1
 ```
     
 **返回值说明**
@@ -44,7 +44,7 @@ http://api.sendcloud.sohu.com/apiv2/template/list?apiUser=***&apiKey=***&start=0
 |name|邮件模板名称|
 |invokeName|邮件模板调用名称|
 |templateType|模板类型|
-|isVerify|审核状态|
+|templateStat|审核状态|
 |gmtCreated|邮件模板创建时间|
 |gmtModified|邮件模板更新时间|
 
@@ -57,7 +57,7 @@ http://api.sendcloud.sohu.com/apiv2/template/list?apiUser=***&apiKey=***&start=0
         "name": "ifaxin账单",
         "invokeName": "***",
         "templateType": 1,
-        "isVerify": 1,
+        "templateStat": 1,
         "gmtCreated": "2013-11-21 16:37:41",
         "gmtUpdated": "2015-06-12 19:44:07"
       },
@@ -65,7 +65,7 @@ http://api.sendcloud.sohu.com/apiv2/template/list?apiUser=***&apiKey=***&start=0
         "name": "ifaxin密码找回",
         "invokeName": "***",
         "templateType": 0,
-        "isVerify": 1,
+        "templateStat": 1,
         "gmtCreated": "2013-11-21 16:39:53",
         "gmtUpdated": "2013-11-21 16:39:53"
       }
@@ -115,7 +115,7 @@ http://api.sendcloud.sohu.com/apiv2/template/get?apiUser=***&apiKey=***&invokeNa
 |name|邮件模板名称|
 |invokeName|邮件模板调用名称|
 |templateType|模板类型|
-|isVerify|审核状态|
+|templateStat|审核状态|
 |gmtCreated|邮件模板创建时间|
 |gmtModified|邮件模板更新时间|
 |html|模板内容|
@@ -130,7 +130,7 @@ http://api.sendcloud.sohu.com/apiv2/template/get?apiUser=***&apiKey=***&invokeNa
       "name": "SendCloud测试样本",
       "invokeName": "15_invoke_2",
       "templateType": 0,
-      "isVerify": 1,
+      "templateStat": 1,
       "gmtCreated": "2015-02-02 17:01:43",
       "gmtUpdated": "2015-04-16 15:04:12",
       "html": "<p>你太棒了！你已成功的从SendCloud发送了一封测试邮件，接下来快登录前台去完善账户信息吧！12</p>\n",
@@ -186,7 +186,7 @@ curl -d 'apiUser=***&apiKey=***&invokeName=testtemplate&name=test&html=<p>add ne
 |name|邮件模板名称|
 |invokeName|邮件模板调用名称|
 |templateType|模板类型|
-|isVerify|审核状态|
+|templateStat|审核状态|
 |gmtCreated|邮件模板创建时间|
 |gmtModified|邮件模板更新时间|
 |html|模板内容|
@@ -201,7 +201,7 @@ curl -d 'apiUser=***&apiKey=***&invokeName=testtemplate&name=test&html=<p>add ne
       "name": "test",
       "invokeName": "testtemplate",
       "templateType": 0,
-      "isVerify": 0,
+      "templateStat": 0,
       "gmtCreated": "2015-10-16 10:42:01",
       "gmtUpdated": "",
       "html": "<p>add new template</p>",
