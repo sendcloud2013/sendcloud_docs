@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+    <link rel="canonical" href="http://sendcloud.sohu.com/downloads/code/ruby/"> 
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <title>Ruby - SendCloud 文档中心</title>
+    <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.0.3.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+    
+</head>
+<body>
+    <div class="navbar navbar-default" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="http://sendcloud.sohu.com">SendCloud 文档中心</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav navbar-right">
+                
+                  <li class="pull-left">
+                    
+                    <a href="../../..">文档首页</a>
+                    
+                  </li>
+                
+                  <li class="pull-left">
+                    
+                    <a href="../../../guide/base/">开发者指南</a>
+                    
+                  </li>
+                
+                  <li class="pull-left">
+                    
+                    <a href="../../../email/">邮件API</a>
+                    
+                  </li>
+                
+                  <li class="pull-left">
+                    
+                    <a href="../../../sms/">短信API</a>
+                    
+                  </li>
+                
+                  <li class="pull-left active">
+                    
+                    <a href="../../">代码示例</a>
+                    
+                  </li>
+                
+                  <li class="pull-left">
+                    
+                    <a href="../../../faq/">FAQ</a>
+                    
+                  </li>
+                
+                  <li class="pull-left">
+                    
+                    <a href="../../../test/">测试平台</a>
+                    
+                  </li>
+                
+                </ul>
+            
+
+            
+            <!-- Search, Navigation and Repo links -->
+            <!-- <ul class="nav navbar-nav navbar-right">
+                
+                
+                
+                <li>
+                    <a href="https://github.com/sendcloud2013/sendcloud_docs/">
+                        
+                            <i class="fa fa-github"></i>
+                        
+                        GitHub
+                    </a>
+                </li>
+                
+            </ul> -->
+            
+        </div>
+    </div>
+</div>
+    <div class="container main">
+         <div class="toolbar clearfix">
+  <ol class="breadcrumb pull-left">
+    <li><a href="../../..">文档</a></li>
+    <li>Ruby</li>
+  </ol>
+
+  
+    
+      <a href="https://github.com/sendcloud2013/sendcloud_docs/" class="github-edit pull-right"><i class="fa fa-github"></i> Edit on GitHub</a>
+    
+  
+
+</div>
+        <div class="col-md-3"><div class="bs-sidebar hidden-print" data-spy="affix" data-offset-top="80" role="complementary">
+    <ul class="nav bs-sidenav">
+     
+      
+        
+      
+
+    
+      
+        
+      
+
+    
+      
+        
+      
+
+    
+      
+        
+      
+
+    
+      
+        
+          
+
+              <li class="">
+                <a class="itm-l1" href="../../">代码示例</a>
+                
+              </li>
+
+          
+
+              <li class="">
+                <a class="itm-l1" href="../curl/">Curl</a>
+                
+              </li>
+
+          
+
+              <li class="">
+                <a class="itm-l1" href="../python/">Python</a>
+                
+              </li>
+
+          
+
+              <li class="">
+                <a class="itm-l1" href="../java/">Java</a>
+                
+              </li>
+
+          
+
+              <li class="">
+                <a class="itm-l1" href="../php/">Php</a>
+                
+              </li>
+
+          
+
+              <li class="active">
+                <a class="itm-l1" href="./">Ruby</a>
+                
+                  <ul class="nav">
+                  
+                    <li class="active "><a href="#webapi">WEBAPI</a></li>
+                    
+                  
+                    <li class=""><a href="#smtp">SMTP</a></li>
+                    
+                  
+                  </ul>
+                
+              </li>
+
+          
+
+              <li class="">
+                <a class="itm-l1" href="../perl/">Perl</a>
+                
+              </li>
+
+          
+
+              <li class="">
+                <a class="itm-l1" href="../csharp/">C#</a>
+                
+              </li>
+
+          
+
+              <li class="">
+                <a class="itm-l1" href="../golang/">Golang</a>
+                
+              </li>
+
+          
+
+              <li class="">
+                <a class="itm-l1" href="../nodejs/">Node.js</a>
+                
+              </li>
+
+          
+        
+      
+
+    
+      
+        
+      
+
+    
+      
+        
+      
+
+    
+    </ul>
+</div></div>
+        <div class="col-md-9 content-body" role="main">
+             
+
+<h1>Ruby</h1>
+
+<h2 id="webapi">WEBAPI</h2>
+<pre><code>#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'rest_client'
+
+def send_mail
+        response = RestClient.post &quot;http://sendcloud.sohu.com/webapi/mail.send.json&quot;,
+        :api_user =&gt; &quot;***&quot;, # 使用api_user和api_key进行验证
+        :api_key =&gt; &quot;***&quot;,
+        :from =&gt; &quot;sendcloud@sendcloud.org&quot;, # 发信人，用正确邮件地址替代
+        :fromname =&gt; &quot;SendCloud&quot;,
+        :to =&gt; &quot;to1@domain.com;to2@domain.com&quot;, # 收件人地址，用正确邮件地址替代，多个地址用';'分隔
+        :subject =&gt; &quot;SendCloud ruby webapi example&quot;,
+        :html =&gt; '欢迎使用SendCloud'
+
+return response
+end
+
+response = send_mail
+puts response.code
+puts response.to_str
+</code></pre>
+
+<hr />
+<h2 id="smtp">SMTP</h2>
+<p>示例1:快速发送,供不需要获取messageId时使用.</p>
+<pre><code>require 'rubygems'                                                                                                                                                                       
+require 'mail'                                                                  
+
+$KCODE = 'U' #utf8                                                              
+
+Mail.defaults do                                                                
+    delivery_method :smtp, {                                                       
+        :address   =&gt; &quot;smtpcloud.sohu.com&quot;,                                     
+        :port      =&gt; 25,                                                       
+        :user_name =&gt; &quot;api_user&quot;,                     
+        :password  =&gt; &quot;api_key&quot;,                                          
+        :authentication =&gt; 'login'                                                 
+    }                                                                              
+end                                                                                
+
+mail = Mail.deliver do                                                          
+    to   ['to1@sendcloud.com', 'to2@sendcloud.com']         
+    from (Mail::Encodings.b_value_encode 'fromname', 'UTF-8').to_s  + '&lt;sendcloud@sendcloud.com&gt;'
+    subject 'SendCloud Ruby Smtp Example'                                          
+    html_part do                                                                   
+        content_type 'text/html; charset=UTF-8'                                    
+        body '&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;'                                           
+            + '&lt;p&gt;&lt;a href=http://sendcloud.sohu.com&gt;SendCloud!&lt;/a&gt;&lt;/p&gt;'            
+            + '&lt;/body&gt;&lt;/html&gt;'                                                     
+
+    end                                                                            
+    add_file(&quot;/path/to/file&quot;)                                              
+end
+</code></pre>
+
+<p>示例2:
+需要依赖net/smtp.rb模块, 由于模块默认在发送成功时,不返回服务器的信息. 
+因此如果需要获得服务器返回的messageId,需要做如下操作. 首先在您的ruby的lib
+库中, 找到net/smtp.rb文件, 在915行data函数中加一个返回值,操作如下</p>
+<p><img alt="pic" src="../../../resources/ruby2.png" /></p>
+<p>接着在660行send_messages函数中增加一个返回值,修改如下</p>
+<p><img alt="pic" src="../../../resources/ruby1.png" /></p>
+<p>接下来您就可以调用以下的代码进行邮件的发送和MessageId的获取了.</p>
+<pre><code>require 'net/smtp'
+
+#编辑自己的邮件
+message = &lt;&lt;END_OF_MESSAGE
+From: yourname&lt;me@fromdomain.com&gt;
+To: receiver&lt;you@destdomain.com&gt;
+Content-type: text/html
+Subject: just for test
+
+&lt;p&gt;add your html here&lt;/p&gt;
+END_OF_MESSAGE
+
+from = 'me@fromdomain.com'
+receiver = 'you@destdomain.com'
+
+def getMessageId(res)
+    return res.split('#')[1]
+end
+
+#调用api_user和api_key发送邮件
+Net::SMTP.start('smtpcloud.sohu.com', 25,'localhost', 'api_user', 'api_key',:login) do |smtp|
+    res = smtp.send_message message, from, receiver
+    messageId = getMessageId(res)
+    puts messageId
+end
+
+</code></pre>
+            <div class="ds-thread" data-thread-key="Ruby" data-title="Ruby" data-url=""></div>
+        </div>
+        
+    </div>
+    <footer class="clearfix footer">
+        <div class="container">
+            <ul class="list-unstyled list-inline pull-left">
+                <li><a href="http://sendcloud.sohu.com/aboutUs.html">关于我们</a> </li>
+                <li><a href="http://sendcloud.sohu.com/aboutUs.html#agreement">服务协议</a></li>
+                <li><a href="http://sendcloud.sohu.com/aboutUs.html#partners">合作伙伴</a></li>
+                <li><a href="https://sendcloud.kf5.com/" target="_blank">帮助中心</a></li>
+            </ul>
+            <p class="pull-right">copyright 2015 &copy; SendCloud</p>
+        </div>
+    </footer>
+    
+    <script src="../../../js/jquery-1.11.2.min.js"></script>
+    <script src="../../../js/bootstrap-3.0.3.min.js"></script>
+    <script src="../../../js/prettify-1.0.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    <script src="../../../js/base.js"></script>
+    <script type="text/javascript">
+    $('.ds-thread').attr('data-url', location.href).attr('data-thread-key', location.href)
+
+    var duoshuoQuery = {
+        short_name: "sendcloud"
+    };
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';
+        ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    </body>
+
+</html>

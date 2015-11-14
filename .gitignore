@@ -1,4 +1,4 @@
 site/*
-doc/*
+#doc/*
 mkdocs.exe
 mkdocs-script.py

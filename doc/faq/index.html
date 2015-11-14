@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+    <link rel="canonical" href="http://sendcloud.sohu.com/faq/"> 
+    <link rel="shortcut icon" href="../favicon.ico">
+    <title>FAQ - SendCloud 文档中心</title>
+    <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../css/font-awesome-4.0.3.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+    
+</head>
+<body>
+    <div class="navbar navbar-default" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="http://sendcloud.sohu.com">SendCloud 文档中心</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav navbar-right">
+                
+                  <li class="pull-left">
+                    
+                    <a href="..">文档首页</a>
+                    
+                  </li>
+                
+                  <li class="pull-left">
+                    
+                    <a href="../guide/base/">开发者指南</a>
+                    
+                  </li>
+                
+                  <li class="pull-left">
+                    
+                    <a href="../email/">邮件API</a>
+                    
+                  </li>
+                
+                  <li class="pull-left">
+                    
+                    <a href="../sms/">短信API</a>
+                    
+                  </li>
+                
+                  <li class="pull-left">
+                    
+                    <a href="../downloads/">代码示例</a>
+                    
+                  </li>
+                
+                  <li class="pull-left active">
+                    
+                    <a href="./">FAQ</a>
+                    
+                  </li>
+                
+                  <li class="pull-left">
+                    
+                    <a href="../test/">测试平台</a>
+                    
+                  </li>
+                
+                </ul>
+            
+
+            
+            <!-- Search, Navigation and Repo links -->
+            <!-- <ul class="nav navbar-nav navbar-right">
+                
+                
+                
+                <li>
+                    <a href="https://github.com/sendcloud2013/sendcloud_docs/">
+                        
+                            <i class="fa fa-github"></i>
+                        
+                        GitHub
+                    </a>
+                </li>
+                
+            </ul> -->
+            
+        </div>
+    </div>
+</div>
+    <div class="container main">
+         <div class="toolbar clearfix">
+  <ol class="breadcrumb pull-left">
+    <li><a href="..">文档</a></li>
+    <li>FAQ</li>
+  </ol>
+
+  
+    
+      <a href="https://github.com/sendcloud2013/sendcloud_docs/" class="github-edit pull-right"><i class="fa fa-github"></i> Edit on GitHub</a>
+    
+  
+
+</div>
+        <div class="col-md-3"><div class="bs-sidebar hidden-print" data-spy="affix" data-offset-top="80" role="complementary">
+    <ul class="nav bs-sidenav">
+     
+      
+        
+      
+
+    
+      
+        
+      
+
+    
+      
+        
+      
+
+    
+      
+        
+      
+
+    
+      
+        
+      
+
+    
+      
+        
+          
+
+              <li class="active">
+                <a class="itm-l1" href="./">FAQ</a>
+                
+                  <ul class="nav">
+                  
+                    <li class="active "><a href="#1-sendcloud">1. 用户接入 SendCloud 的大致流程是怎样的?</a></li>
+                    
+                  
+                    <li class=""><a href="#2-mail-from-from-reply-to">2. 如何理解 mail from, from, reply-to?</a></li>
+                    
+                  
+                    <li class=""><a href="#3">3. 邮件中为什么会显示代发?</a></li>
+                    
+                  
+                    <li class=""><a href="#4-">4. 【发送相关-队列状态】中, 有些域的发送被暂停, 显示"域名发信超出额度限制". 是什么原因?</a></li>
+                    
+                  
+                    <li class=""><a href="#5-webhook">5. WebHook 到底有什么作用?</a></li>
+                    
+                  
+                    <li class=""><a href="#6-webhook-post">6. WebHook POST 的消息会丢失吗?</a></li>
+                    
+                  
+                    <li class=""><a href="#7-smtp">7. SMTP 方式接入, 如何使用标签功能?</a></li>
+                    
+                  
+                    <li class=""><a href="#8-sendcloud">8. 如何在客户端上使用 SendCloud 发信?</a></li>
+                    
+                  
+                    <li class=""><a href="#9-sendcloud-smtp-25">9. SendCloud 的 SMTP 服务只开放了 25 端口么?</a></li>
+                    
+                  
+                  </ul>
+                
+              </li>
+
+          
+        
+      
+
+    
+      
+        
+      
+
+    
+    </ul>
+</div></div>
+        <div class="col-md-9 content-body" role="main">
+             
+
+<h1>FAQ</h1>
+
+<h2 id="1-sendcloud">1. 用户接入 SendCloud 的大致流程是怎样的?</h2>
+<p><strong> 免费用户 ( 每日额度: 200 )</strong></p>
+<ul>
+<li>注册帐号, 激活邮件 ( 每日额度: +30 )</li>
+<li>完善信息 ( 每日额度: +30 )</li>
+<li>创建<a href="../guide/base/#_3">发信域名</a> ( 每日额度: +60 )</li>
+<li>创建<a href="../guide/base/#api_user">API_USER</a> ( 每日额度: +40 ) </li>
+<li>创建<a href="../guide/base/#sample">样本</a>, 通过审核 ( 每日额度: +40 ) </li>
+</ul>
+<p><strong> 付费用户 ( 个人用户, 每日额度: 1000 )</strong></p>
+<ul>
+<li><a href="../guide/base/#_6">网站认证</a></li>
+<li><a href="../guide/base/#_6">商业认证</a></li>
+<li>充值 ( 需先完成前两项 )</li>
+</ul>
+<p><strong> 付费用户 ( 企业用户, 每日额度: 3000 )</strong></p>
+<ul>
+<li><a href="../guide/base/#_6">网站认证</a></li>
+<li><a href="../guide/base/#_6">商业认证</a></li>
+<li>充值 ( 需先完成前两项 )</li>
+</ul>
+<p><strong> 付费用户 ( 每日额度: &gt; 6000 )</strong></p>
+<ul>
+<li>信誉度在 90 分以上</li>
+<li>联系客服</li>
+</ul>
+<blockquote>
+<p>SendCloud 为用户准备了测试的域名, API_USER, 样本, 你可以直接测试使用.</p>
+</blockquote>
+<hr />
+<h2 id="2-mail-from-from-reply-to">2. 如何理解 mail from, from, reply-to?</h2>
+<p><strong>mail_from:</strong> 信封上的发件人, 由「前缀@域名」组成. 此域名就是所谓的<a href="../guide/base/#_3">发信域名</a></p>
+<p><strong>from:</strong> 信件内容里的发件人. 用户可以任意填写, 支持别名显示.</p>
+<p>「代发」是否出现, 就是看 <em>mail_from</em> 和 <em>from</em> 是否相同.</p>
+<p><strong>reply-to:</strong> 信件回复的收件人. 用户直接回复邮件时, <em>reply-to</em> 就是默认的收件人. 如果用户不指定它, <em>from</em> 就是默认的收件人.</p>
+<pre><code># 如何写别名
+String from = MimeUtility.encodeText("爱发信客服", "UTF-8", "B") + "&lt;support@ifaxin.com&gt;";
+</code></pre>
+<hr />
+<h2 id="3">3. 邮件中为什么会显示代发?</h2>
+<p>邮件中存在 <em>mail_from</em> 和 <em>from</em> 两个概念, 如果这两者不一致, 则 ESP 会在客户端上显示代发, 用以提醒收件人两者的不同.</p>
+<p>显示代发如下图: </p>
+<p><img alt="pic" src="../resources/domain_liubida.cn.png" /></p>
+<pre><code>from = 'test@liubida.cn'
+mail_from = '98a47302-beee-11e4-a3b9-00163e12fa99@push.liubida.cn'
+</code></pre>
+<p>如果两者一致, 则不会显示代发, 如下图: </p>
+<p><img alt="pic" src="../resources/domain_push.liubida.cn.png" /></p>
+<p>当然, 有些 ESP 并不会要求这两者完全一致, 而是只要求两者的域名相同 ( 比如 QQ 邮箱 ) .</p>
+<p>由于 SendCloud 对 <em>mail_from</em> 的前缀使用的是随机串, 所以, 如果碰到严苛的 ESP ( <em>mail_from</em> 和 <em>from</em> 必须完全一致才不显示代发, 比如网易邮箱 ), 那也只能爱莫能助了.</p>
+<p>如果你对不显示代发有非常强烈的需求, 可以联系SendCloud客服, 帮你再想想办法.</p>
+<hr />
+<h2 id="4-">4. 【发送相关-队列状态】中, 有些域的发送被暂停, 显示"域名发信超出额度限制". 是什么原因?</h2>
+<p>ESP 对于单个域名每天的发信量是有限制的, 这个限制的量我们称之为发信阈值. 当某个域名发信的量到达阈值之后, ESP 就会直接拒信.</p>
+<p>这个阈值到底是多少? 我们无从得知, 只知道它是由 ESP 根据此域名的历史发信数据, 用户投诉情况来动态调节的黑盒数据.</p>
+<p>基于此种情况, SendCloud 实现了自适应发送策略 (预热发送): </p>
+<pre><code>* SendCloud 能够根据 ESP 反馈的信息来判断出当前的发信量是否已经到达了阈值.
+* 如果到达阈值, 则此域名下发往此 ESP 的邮件会被暂停, 每隔一段时间重试, 直至邮件发送成功.
+* 根据经验, ESP 的阈值在凌晨会被清零. 清零之后, 暂停的邮件队列会自动启动, 继续发送.
+* 通过一段时间的预热发送, 此域名的阈值会快速增长, 直至满足用户的日发送需求.
+* 您可以一次性投递大量的邮件进入 SendCloud, 然后我们会根据 ESP 反馈信息, 动态实行发送启停, 直至发送完毕.
+</code></pre>
+
+<p>关于阈值, 再多说两句.</p>
+<p>ESP 对于域名的阈值是会动态调节的, 如果邮件质量不错, 用户投诉低, 阈值是会快速提升的.</p>
+<p>同时, 通过 SendCloud 发出的邮件, 在国内各大 ESP 的阈值的起始值是很高的, 远大于其他产品.</p>
+<p><a href="http://zhuanlan.zhihu.com/email/19802487">知乎关于预热的描述</a></p>
+<hr />
+<h2 id="5-webhook">5. WebHook 到底有什么作用?</h2>
+<p>一封邮件发送之后, 会产生各种各样的事件和状态.</p>
+<p>例如: 请求成功, 发送成功, 被 ESP 弹回, 用户打开邮件, 点击链接, 或者退订了你的邮件, 甚至举报了您的邮件.</p>
+<p>WebHook 都可以将这些事件以及相关数据 POST 给客户设置的 URL. 客户可以在收到数据后, 解析出事件和数据, 做相应的处理.</p>
+<h2 id="6-webhook-post">6. WebHook POST 的消息会丢失吗?</h2>
+<p>如果遇到 URL 访问错误或超时, SendCloud 最多会重试 5 次. 每次重试的时间间隔最快为1, 2, 4, 8, 16分钟. 即在消息丢失前, 你至少有半小时的时间来修复 URL.</p>
+<p>如果超过重试次数，SendCloud 将会把消息丢弃. </p>
+<p>每次事件处理, 数据解析, 你需要在 3s 内返回状态码 200, 否则, SendCloud 将会重发该条消息。    </p>
+<hr />
+<h2 id="7-smtp">7. SMTP 方式接入, 如何使用标签功能?</h2>
+<p>验证 API_USER 时将标签ID ( label_id ) 拼接在后面即可, 拼接规则:</p>
+<blockquote>
+<p>api_user + '#' + label_id</p>
+</blockquote>
+<p>不使用标签接入:</p>
+<pre><code>S: 250-SendCloud Inbound Server Hello, Haraka is at your service.
+S: 250-PIPELINING
+S: 250-8BITMIME
+S: 250-SIZE 16000000
+S: 250-STARTTLS
+S: 250 AUTH LOGIN
+
+C: AUTH LOGIN base64(api_user)
+</code></pre>
+
+<p>使用标签接入:</p>
+<pre><code>S: 250-SendCloud Inbound Server Hello, Haraka is at your service.
+S: 250-PIPELINING
+S: 250-8BITMIME
+S: 250-SIZE 16000000
+S: 250-STARTTLS
+S: 250 AUTH LOGIN
+
+C: AUTH LOGIN base64(api_user + '#' + label_id)
+</code></pre>
+
+<p>python 代码片段:</p>
+<pre><code># 不使用标签接入:
+s = SMTP('%s:%d' % (HOST, PORT))
+s.set_debuglevel(DEBUG_MODE)
+if USE_SSL:
+    s.starttls()
+s.login(API_USER, API_KEY)
+
+# 使用标签接入:
+s = SMTP('%s:%d' % (HOST, PORT))
+s.set_debuglevel(DEBUG_MODE)
+if USE_SSL:
+    s.starttls()
+s.login(API_USER + '#' + label_id, API_KEY)
+</code></pre>
+
+<hr />
+<h2 id="8-sendcloud">8. 如何在客户端上使用 SendCloud 发信?</h2>
+<p>将发件服务器设置为 <code>smtpcloud.sohu.com</code>, 帐号和密码分别对应 SendCloud 的 API_USER 和 API_KEY. 下图以 Foxmail 客户端为例.</p>
+<p><img alt="pic" src="../resources/foxmail.jpg" /></p>
+<hr />
+<h2 id="9-sendcloud-smtp-25">9. SendCloud 的 SMTP 服务只开放了 25 端口么?</h2>
+<p>考虑到部分云服务商封禁了其内网对外 25 端口的访问, 所以 SendCloud 在 <code>220.181.69.174</code> 上开放了 2525 端口.</p>
+<p>连接方法:</p>
+<ul>
+<li>
+<p>绑定域名 smtpcloud.sohu.com 到 220.181.69.174 ( 我们只在这个 ip 上开放了 2525 端口 )</p>
+</li>
+<li>
+<p>修改连接为 smtpcloud.sohu.com:2525</p>
+</li>
+</ul>
+            <div class="ds-thread" data-thread-key="FAQ" data-title="FAQ" data-url=""></div>
+        </div>
+        
+    </div>
+    <footer class="clearfix footer">
+        <div class="container">
+            <ul class="list-unstyled list-inline pull-left">
+                <li><a href="http://sendcloud.sohu.com/aboutUs.html">关于我们</a> </li>
+                <li><a href="http://sendcloud.sohu.com/aboutUs.html#agreement">服务协议</a></li>
+                <li><a href="http://sendcloud.sohu.com/aboutUs.html#partners">合作伙伴</a></li>
+                <li><a href="https://sendcloud.kf5.com/" target="_blank">帮助中心</a></li>
+            </ul>
+            <p class="pull-right">copyright 2015 &copy; SendCloud</p>
+        </div>
+    </footer>
+    
+    <script src="../js/jquery-1.11.2.min.js"></script>
+    <script src="../js/bootstrap-3.0.3.min.js"></script>
+    <script src="../js/prettify-1.0.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    <script src="../js/base.js"></script>
+    <script type="text/javascript">
+    $('.ds-thread').attr('data-url', location.href).attr('data-thread-key', location.href)
+
+    var duoshuoQuery = {
+        short_name: "sendcloud"
+    };
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';
+        ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    </body>
+
+</html>

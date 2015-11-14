@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+    <link rel="canonical" href="http://sendcloud.sohu.com/guide/advance/"> 
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <title>高级功能 - SendCloud 文档中心</title>
+    <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
+    <link href="../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+    
+</head>
+<body>
+    <div class="navbar navbar-default" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="http://sendcloud.sohu.com">SendCloud 文档中心</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav navbar-right">
+                
+                  <li class="pull-left">
+                    
+                    <a href="../..">文档首页</a>
+                    
+                  </li>
+                
+                  <li class="pull-left active">
+                    
+                    <a href="../base/">开发者指南</a>
+                    
+                  </li>
+                
+                  <li class="pull-left">
+                    
+                    <a href="../../email/">邮件API</a>
+                    
+                  </li>
+                
+                  <li class="pull-left">
+                    
+                    <a href="../../sms/">短信API</a>
+                    
+                  </li>
+                
+                  <li class="pull-left">
+                    
+                    <a href="../../downloads/">代码示例</a>
+                    
+                  </li>
+                
+                  <li class="pull-left">
+                    
+                    <a href="../../faq/">FAQ</a>
+                    
+                  </li>
+                
+                  <li class="pull-left">
+                    
+                    <a href="../../test/">测试平台</a>
+                    
+                  </li>
+                
+                </ul>
+            
+
+            
+            <!-- Search, Navigation and Repo links -->
+            <!-- <ul class="nav navbar-nav navbar-right">
+                
+                
+                
+                <li>
+                    <a href="https://github.com/sendcloud2013/sendcloud_docs/">
+                        
+                            <i class="fa fa-github"></i>
+                        
+                        GitHub
+                    </a>
+                </li>
+                
+            </ul> -->
+            
+        </div>
+    </div>
+</div>
+    <div class="container main">
+         <div class="toolbar clearfix">
+  <ol class="breadcrumb pull-left">
+    <li><a href="../..">文档</a></li>
+    <li>高级功能</li>
+  </ol>
+
+  
+    
+      <a href="https://github.com/sendcloud2013/sendcloud_docs/" class="github-edit pull-right"><i class="fa fa-github"></i> Edit on GitHub</a>
+    
+  
+
+</div>
+        <div class="col-md-3"><div class="bs-sidebar hidden-print" data-spy="affix" data-offset-top="80" role="complementary">
+    <ul class="nav bs-sidenav">
+     
+      
+        
+      
+
+    
+      
+        
+          
+
+              <li class="">
+                <a class="itm-l1" href="../base/">基本概念</a>
+                
+              </li>
+
+          
+
+              <li class="active">
+                <a class="itm-l1" href="./">高级功能</a>
+                
+                  <ul class="nav">
+                  
+                    <li class="active "><a href="#track">邮件追踪 (track)</a></li>
+                    
+                  
+                    <li class=""><a href="#template">邮件模板 (template)</a></li>
+                    
+                  
+                    <li class=""><a href="#_1">地址列表</a></li>
+                    
+                  
+                    <li class=""><a href="#label">标签 (label)</a></li>
+                    
+                  
+                    <li class=""><a href="#_2">收信路由</a></li>
+                    
+                  
+                    <li class=""><a href="#webhook">WebHook</a></li>
+                    
+                  
+                    <li class=""><a href="#_3">订阅入口</a></li>
+                    
+                  
+                    <li class=""><a href="#_4">取消订阅样式</a></li>
+                    
+                  
+                  </ul>
+                
+              </li>
+
+          
+        
+      
+
+    
+      
+        
+      
+
+    
+      
+        
+      
+
+    
+      
+        
+      
+
+    
+      
+        
+      
+
+    
+      
+        
+      
+
+    
+    </ul>
+</div></div>
+        <div class="col-md-9 content-body" role="main">
+             
+
+<h1>高级功能</h1>
+
+<h2 id="track">邮件追踪 (track)</h2>
+<p>邮件追踪能够帮助用户收集已发出邮件的「打开数据」,「点击数据」,「退订数据」, 以此来评估邮件发送的效果.</p>
+<p>你可以通过<code>【设置】-【追踪选项】</code>来配置某个「API_USER」的「打开追踪」,「点击追踪」,「订阅追踪」.</p>
+<p>注意: 「点击追踪」依赖于用户发信域名的<a href="../base/#_3">CNAME 配置</a></p>
+<hr />
+<h2 id="template">邮件模板 (template)</h2>
+<p>邮件模板是一个方便用户发送邮件的功能. 用户编辑/上传邮件模板后, 在请求接口时, 不需要再传输邮件内容, 只需在参数中指定模板的「调用名称」即可.</p>
+<p>模板中可以定义「变量」, 变量的使用方法:</p>
+<ul>
+<li>编辑模板时, 使用「变量」来占位邮件的部分内容</li>
+<li>请求接口时, 在参数中指定「变量的值」. SendCloud 会用「变量的值」替换「变量」.</li>
+</ul>
+<p>用户可以通过<code>【发送相关】-【邮件模板】</code>来创建【邮件模板】</p>
+<hr />
+<h2 id="_1">地址列表</h2>
+<p>地址列表是一个方便用户发送邮件的功能. 用户编辑/导入地址列表后, 在请求接口时, 不需要再传输邮件地址, 只需在参数中指定地址列表的「别称地址」即可.</p>
+<p>地址列表中可以设置「变量的值」, 用于替换「邮件内容」中的「变量」.</p>
+<p>用户可以通过<code>【发送相关】-【地址列表】</code>来创建【地址列表】.</p>
+<p>注意: </p>
+<ol>
+<li>只有通过 WEBAPI 的方式发送邮件, 才支持使用地址列表. SMTP 接入方式暂不支持.</li>
+<li>只有使用 「批量类型」的 API_USER 调用接口, 才支持使用地址列表</li>
+<li>只有付费用户才支持使用地址列表</li>
+</ol>
+<hr />
+<h2 id="label">标签 (label)</h2>
+<p>标签能够帮助用户对邮件进行分类, 适用于 A/B 测试等场景.</p>
+<blockquote>
+<p>给2种风格的邮件赋予不同的标签进行测试发送, 通过标签分别查看2种风格邮件的打开/点击数据
+就能知道接收者最喜欢哪种邮件了~</p>
+</blockquote>
+<p>注意: 每封邮件只能使用一个标签</p>
+<hr />
+<h2 id="_2">收信路由</h2>
+<p>如果你能收到你的用户的回信, 那真是一件让人激动的事情, 所以, SendCloud 为你准备了这个贴心的功能.</p>
+<p>此功能就是把用户回复到某地址的邮件转发给你设置的邮箱, 或是你设置的某个URL. 你可以接收邮件数据, 再做后续处理.</p>
+<p>当然, 直接发给这个地址的邮件也会被转发.</p>
+<p><img alt="pic" src="../../resources/mx.jpg" /></p>
+<p>用户可以通过某个域名配置里面的<code>【收信配置】-【收信路由】</code>来创建收信路由.</p>
+<hr />
+<h2 id="webhook">WebHook</h2>
+<p>请求发送给 SendCloud 之后, SendCloud 会把「请求结果」同步返回给用户, 而邮件的「发送结果」是通过 WebHook 异步返回给用户的.</p>
+<p>WebHook 机制:</p>
+<ul>
+<li>SendCloud 为客户提供了一些邮件事件, 客户可以选择关注某些事件</li>
+<li>当某事件发生, 就会触发 SendCloud 向客户设置的 URL 发送数据 ( POST )</li>
+<li>客户收到数据, 解析出事件和数据, 做后续的处理</li>
+</ul>
+<p>目前 SendCloud 支持的邮件事件如下:</p>
+<table>
+<thead>
+<tr>
+<th align="left">事件</th>
+<th align="left">触发条件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">请求(request)</td>
+<td align="left">邮件请求成功</td>
+</tr>
+<tr>
+<td align="left">发送(deliver)</td>
+<td align="left">邮件发送成功</td>
+</tr>
+<tr>
+<td align="left">打开(open)</td>
+<td align="left">用户打开邮件</td>
+</tr>
+<tr>
+<td align="left">点击(click)</td>
+<td align="left">用户点击链接</td>
+</tr>
+<tr>
+<td align="left">取消订阅(unsubscribe)</td>
+<td align="left">用户取消订阅邮件</td>
+</tr>
+<tr>
+<td align="left">软退信(bounce)</td>
+<td align="left">邮件被 ESP 接收之后, 又被退回</td>
+</tr>
+<tr>
+<td align="left">举报(report_spam)</td>
+<td align="left">用户举报邮件</td>
+</tr>
+<tr>
+<td align="left">无效邮件(invalid)</td>
+<td align="left">邮件未发送成功</td>
+</tr>
+</tbody>
+</table>
+<p>在使用之前, 你需要在 SendCloud 的 <code>【设置】-【WebHook】</code> 中选择关注的事件, 配置接收数据的URL.</p>
+<p>WebHook 详细说明参见<a href="../../email/webhook/">WebHook详细</a>     </p>
+<hr />
+<h2 id="_3">订阅入口</h2>
+<p>订阅入口的作用是帮助用户创建, 维护和用户的订阅关系.
+SendCloud 和 ESP 都在推进建立用户和用户订阅关系, 也会大力支持这种存在订阅关系的邮件发送 ( 比如 QQ邮件列表 ).</p>
+<ol>
+<li>
+<p>SendCloud 为用户生成一个「订阅入口」:
+<img alt="pic" src="../../resources/subscribe_dingyue.png" /></p>
+</li>
+<li>
+<p>用户将此入口放置在自己的网站中</p>
+</li>
+<li>
+<p>用户在「订阅入口」输入邮箱地址, 点击申请订阅此网站的文章.</p>
+</li>
+<li>
+<p>用户的邮箱地址自动加入用户的某个「地址列表」.</p>
+</li>
+<li>
+<p>用户收到确认邮件, 确认订阅操作.</p>
+</li>
+<li>
+<p>这样, 用户就完成了和用户的订阅关系.    </p>
+</li>
+</ol>
+<p>此功能依赖于「地址列表」, 用户点击某个「地址列表」的「订阅样式」, 就可以进入配置页面.</p>
+<hr />
+<h2 id="_4">取消订阅样式</h2>
+<p>在开启「订阅追踪」后, 系统会在邮件中默认自动加上 <strong>取消订阅</strong> 的退订链接, 供收件人退订此类邮件.</p>
+<p>下面是系统默认的取消订阅样式:
+<img alt="pic" src="../../resources/default_unsubscribe.png" /></p>
+<p>你可以自行定义取消订阅的样式, 只要在 href 中插入 SendCloud 内部变量 <code>%%user_defined_unsubscribe_link%%</code> 即可. 示例如下：</p>
+<p><strong>使用默认的取消订阅样式, 邮件无需特别处理, 内容如下:</strong></p>
+<pre><code>&lt;p&gt;亲爱的%name%:&lt;/p&gt;
+&lt;p style=&quot;margin-bottom: 35px&quot;&gt;您好! 您本月在爱发信的消费金额为: %money% 元.&lt;/p&gt;
+</code></pre>
+
+<p>邮件内容效果截图如下:
+<img alt="pic" src="../../resources/unsubscribe_1.png" /></p>
+<hr />
+<p><strong>使用自定义的取消订阅样式, 邮件内容如下:</strong></p>
+<pre><code>&lt;p&gt;亲爱的%name%:&lt;/p&gt;
+&lt;p style=&quot;margin-bottom: 35px&quot;&gt;您好! 您本月在爱发信的消费金额为: %money% 元.&lt;/p&gt;
+&lt;p&gt;&lt;a style=&quot;background: #1ABC9C;border:1px solid #13A386;padding:8px 20px;color: #fff;text-decoration:none;border-radius:4px&quot; href=&quot;%%user_defined_unsubscribe_link%%&quot;&gt;不想再收到此类邮件&lt;/a&gt;&lt;/p&gt;
+</code></pre>
+
+<p>邮件内容效果截图如下:
+<img alt="pic" src="../../resources/unsubscribe_2.png" /></p>
+            <div class="ds-thread" data-thread-key="高级功能" data-title="高级功能" data-url=""></div>
+        </div>
+        
+    </div>
+    <footer class="clearfix footer">
+        <div class="container">
+            <ul class="list-unstyled list-inline pull-left">
+                <li><a href="http://sendcloud.sohu.com/aboutUs.html">关于我们</a> </li>
+                <li><a href="http://sendcloud.sohu.com/aboutUs.html#agreement">服务协议</a></li>
+                <li><a href="http://sendcloud.sohu.com/aboutUs.html#partners">合作伙伴</a></li>
+                <li><a href="https://sendcloud.kf5.com/" target="_blank">帮助中心</a></li>
+            </ul>
+            <p class="pull-right">copyright 2015 &copy; SendCloud</p>
+        </div>
+    </footer>
+    
+    <script src="../../js/jquery-1.11.2.min.js"></script>
+    <script src="../../js/bootstrap-3.0.3.min.js"></script>
+    <script src="../../js/prettify-1.0.min.js"></script>
+    <script src="../../js/highlight.pack.js"></script>
+    <script src="../../js/base.js"></script>
+    <script type="text/javascript">
+    $('.ds-thread').attr('data-url', location.href).attr('data-thread-key', location.href)
+
+    var duoshuoQuery = {
+        short_name: "sendcloud"
+    };
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';
+        ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    </body>
+
+</html>

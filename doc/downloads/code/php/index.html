@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+    <link rel="canonical" href="http://sendcloud.sohu.com/downloads/code/php/"> 
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <title>Php - SendCloud 文档中心</title>
+    <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.0.3.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+    
+</head>
+<body>
+    <div class="navbar navbar-default" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="http://sendcloud.sohu.com">SendCloud 文档中心</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav navbar-right">
+                
+                  <li class="pull-left">
+                    
+                    <a href="../../..">文档首页</a>
+                    
+                  </li>
+                
+                  <li class="pull-left">
+                    
+                    <a href="../../../guide/base/">开发者指南</a>
+                    
+                  </li>
+                
+                  <li class="pull-left">
+                    
+                    <a href="../../../email/">邮件API</a>
+                    
+                  </li>
+                
+                  <li class="pull-left">
+                    
+                    <a href="../../../sms/">短信API</a>
+                    
+                  </li>
+                
+                  <li class="pull-left active">
+                    
+                    <a href="../../">代码示例</a>
+                    
+                  </li>
+                
+                  <li class="pull-left">
+                    
+                    <a href="../../../faq/">FAQ</a>
+                    
+                  </li>
+                
+                  <li class="pull-left">
+                    
+                    <a href="../../../test/">测试平台</a>
+                    
+                  </li>
+                
+                </ul>
+            
+
+            
+            <!-- Search, Navigation and Repo links -->
+            <!-- <ul class="nav navbar-nav navbar-right">
+                
+                
+                
+                <li>
+                    <a href="https://github.com/sendcloud2013/sendcloud_docs/">
+                        
+                            <i class="fa fa-github"></i>
+                        
+                        GitHub
+                    </a>
+                </li>
+                
+            </ul> -->
+            
+        </div>
+    </div>
+</div>
+    <div class="container main">
+         <div class="toolbar clearfix">
+  <ol class="breadcrumb pull-left">
+    <li><a href="../../..">文档</a></li>
+    <li>Php</li>
+  </ol>
+
+  
+    
+      <a href="https://github.com/sendcloud2013/sendcloud_docs/" class="github-edit pull-right"><i class="fa fa-github"></i> Edit on GitHub</a>
+    
+  
+
+</div>
+        <div class="col-md-3"><div class="bs-sidebar hidden-print" data-spy="affix" data-offset-top="80" role="complementary">
+    <ul class="nav bs-sidenav">
+     
+      
+        
+      
+
+    
+      
+        
+      
+
+    
+      
+        
+      
+
+    
+      
+        
+      
+
+    
+      
+        
+          
+
+              <li class="">
+                <a class="itm-l1" href="../../">代码示例</a>
+                
+              </li>
+
+          
+
+              <li class="">
+                <a class="itm-l1" href="../curl/">Curl</a>
+                
+              </li>
+
+          
+
+              <li class="">
+                <a class="itm-l1" href="../python/">Python</a>
+                
+              </li>
+
+          
+
+              <li class="">
+                <a class="itm-l1" href="../java/">Java</a>
+                
+              </li>
+
+          
+
+              <li class="active">
+                <a class="itm-l1" href="./">Php</a>
+                
+                  <ul class="nav">
+                  
+                    <li class="active "><a href="#webapi">WEBAPI 方式一</a></li>
+                    
+                  
+                    <li class=""><a href="#webapi_1">WEBAPI 方式二</a></li>
+                    
+                  
+                    <li class=""><a href="#smtp">SMTP</a></li>
+                    
+                  
+                  </ul>
+                
+              </li>
+
+          
+
+              <li class="">
+                <a class="itm-l1" href="../ruby/">Ruby</a>
+                
+              </li>
+
+          
+
+              <li class="">
+                <a class="itm-l1" href="../perl/">Perl</a>
+                
+              </li>
+
+          
+
+              <li class="">
+                <a class="itm-l1" href="../csharp/">C#</a>
+                
+              </li>
+
+          
+
+              <li class="">
+                <a class="itm-l1" href="../golang/">Golang</a>
+                
+              </li>
+
+          
+
+              <li class="">
+                <a class="itm-l1" href="../nodejs/">Node.js</a>
+                
+              </li>
+
+          
+        
+      
+
+    
+      
+        
+      
+
+    
+      
+        
+      
+
+    
+    </ul>
+</div></div>
+        <div class="col-md-9 content-body" role="main">
+             
+
+<h1>Php</h1>
+
+<h2 id="webapi">WEBAPI 方式一</h2>
+<pre><code>&lt;?php
+
+function send_mail() {
+        $url = 'http://sendcloud.sohu.com/webapi/mail.send.json';
+
+        $param = array(
+            'api_user' =&gt; '***', # 使用api_user和api_key进行验证
+            'api_key' =&gt; '***',
+            'from' =&gt; 'sendcloud@sendcloud.org', # 发信人，用正确邮件地址替代
+            'fromname' =&gt; 'SendCloud',
+            'to' =&gt; 'test@ifaxin.com', # 收件人地址，用正确邮件地址替代，多个地址用';'分隔
+            'subject' =&gt; 'Sendcloud php webapi example',
+            'html' =&gt; '&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;p&gt;欢迎使用&lt;a href=\'http://sendcloud.sohu.com\'&gt;SendCloud&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;',
+            'resp_email_id' =&gt; 'true'
+        );
+
+        $file = &quot;./test.php&quot;; #你的附件路径
+        $handle = fopen('./test.php','rb');
+        $content = fread($handle,filesize($file));
+
+        $eol = &quot;\r\n&quot;;
+        $data = '';
+
+        $mime_boundary=md5(time());
+
+        // 配置参数
+        foreach ( $param as $key =&gt; $value ) { 
+            $data .= '--' . $mime_boundary . $eol;  
+            $data .= 'Content-Disposition: form-data; '; 
+            $data .= &quot;name=&quot; . $key . $eol . $eol; 
+            $data .= $value . $eol; 
+        }
+
+        // 配置文件
+        $data .= '--' . $mime_boundary . $eol;
+        $data .= 'Content-Disposition: form-data; name=&quot;somefile&quot;; filename=&quot;filename.txt&quot;' . $eol;
+        $data .= 'Content-Type: text/plain' . $eol;
+        $data .= 'Content-Transfer-Encoding: binary' . $eol . $eol;
+        $data .= $content . $eol;
+        $data .= &quot;--&quot; . $mime_boundary . &quot;--&quot; . $eol . $eol; 
+
+        $options = array(
+            'http' =&gt; array(
+                'method' =&gt; 'POST',
+                'header' =&gt; 'Content-Type: multipart/form-data;boundary='.$mime_boundary . $eol,
+                'content' =&gt; $data
+        ));
+        $context  = stream_context_create($options);
+        $result = file_get_contents($url, FILE_TEXT, $context);
+
+        return $result;
+        fclose($handle);
+}
+
+echo send_mail();
+?&gt;
+
+</code></pre>
+
+<hr />
+<h2 id="webapi_1">WEBAPI 方式二</h2>
+<pre><code>&lt;?php
+function send_mail() {
+
+        $ch = curl_init();
+
+        curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
+
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+        curl_setopt($ch, CURLOPT_URL, 'http://sendcloud.sohu.com/webapi/mail.send.json');
+
+        curl_setopt($ch, CURLOPT_POSTFIELDS, array(
+                                'api_user' =&gt; '***', # 使用api_user和api_key进行验证
+                                'api_key' =&gt; '***',
+                                'from' =&gt; 'sendcloud@sendcloud.org', # 发信人，用正确邮件地址替代
+                                'fromname' =&gt; 'SendCloud',
+                                'to' =&gt; 'to1@domain.com;to2@domain.com', # 收件人地址，用正确邮件地址替代，多个地址用';'分隔
+                                'subject' =&gt; 'Sendcloud php webapi example',
+                                'html' =&gt; &quot;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;p&gt;欢迎使用&lt;a href=\'http://sendcloud.sohu.com\'&gt;SendCloud&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;&quot;,
+                                'files' =&gt; '@./test.txt'));
+
+        $result = curl_exec($ch);
+
+        if($result === false) {
+                echo curl_error($ch);
+        }
+        curl_close($ch);
+        return $result;
+}
+
+echo send_mail();
+?&gt;
+</code></pre>
+
+<hr />
+<h2 id="smtp">SMTP</h2>
+<p>此代码依赖邮件发送模块,首先需安装pear.</p>
+<p>pear安装步骤：</p>
+<ul>
+<li>下载安装包: curl -o go-pear.php  http://pear.php.net/go-pear.phar</li>
+<li>安装: php go-pear.php</li>
+</ul>
+<p>然后,通过pear来安装依赖库:</p>
+<ul>
+<li>pear install Mail    </li>
+<li>pear install Mail_Mime</li>
+<li>pear install Net_SMTP</li>
+</ul>
+<p>操作完成.    </p>
+<p>示例1: 快速发送, 依赖 Mail.php 模块, 不需要获取<a href="../../../email/#messageid-emailid">messageId</a>.</p>
+<pre><code>&lt;?php
+set_include_path(&quot;/usr/local/lib/php/&quot;);
+require_once &quot;Mail.php&quot;;
+
+# 发信人，用正确邮件地址替代
+$from = &quot;sendcloud@sendcloud.org&quot;;           
+
+# 收件人地址，用正确邮件地址替代
+$to = &quot;to@sendcloud.org&quot;;                   
+
+$subject = &quot;SendCloud PHP Smtp Example&quot;;
+
+# 邮件正文，html格式
+$body = &quot;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;
+        &lt;p&gt;欢迎使用&lt;a href='http://sendcloud.sohu.com'&gt;SendCloud!&lt;/a&gt;&lt;/p&gt;
+        &lt;/body&gt;&lt;/html&gt;&quot;;
+
+# 使用api_user和api_key进行验证  
+$username = &quot;api_user&quot;; 
+$password = &quot;api_key&quot;;  
+
+$host = &quot;smtpcloud.sohu.com&quot;;
+$port = 25;
+
+$headers = array (
+    'From' =&gt; $from,
+    'To' =&gt; $to,
+    'Subject' =&gt; $subject,
+    'Content-Type' =&gt; 'text/html;charset=utf8');
+
+$smtp = Mail::factory(
+    'smtp',   
+    array (
+        'host' =&gt; $host,
+        'port' =&gt; $port,
+        'auth' =&gt; true,
+        'debug' =&gt; true,
+        'username' =&gt; $username,
+        'password' =&gt; $password));
+
+$mail = $smtp-&gt;send($to, $headers, $body);  
+if (PEAR::isError($mail)) {   
+    echo(&quot;&lt;p&gt;&quot; . $mail-&gt;getMessage() . &quot;&lt;/p&gt;&quot;);  
+} 
+else {   
+    echo(&quot;&lt;p&gt;Successfully!&lt;/p&gt;&quot;);  
+} 
+?&gt;
+
+</code></pre>
+
+<p>示例2: 快速发送, 依赖 <code>Mail.php</code>, <code>Mail/smtp.php</code> 模块, 需要获取<a href="../../../email/#messageid-emailid">messageId</a>.</p>
+<p>此时, 我们采取的简单方法是修改相关模块的代码. 如下: </p>
+<ol>
+<li>php的lib库中, 找到Mail/smtp.php文件</li>
+<li>将 329 行 <code>send</code> 函数的返回值做修改. 如下图所示将 <code>return true</code> 改为 <code>return $args</code>.</li>
+</ol>
+<p><img alt="pic" src="../../../resources/php.png" /> </p>
+<p>接下来您就可以调用以下的代码进行邮件的发送, 并获取messageId了.</p>
+<pre><code>&lt;?php
+set_include_path(&quot;/usr/local/lib/php/&quot;);
+
+
+include_once 'Mail.php';
+include_once 'Mail/smtp.php';
+
+# 发信人，用正确邮件地址替代
+$from='testaddress@qq.com';
+
+# 收件人地址，用正确邮件地址替代
+$to = array('test1@qq.com','test2@163.com');  
+
+# 邮件标题
+$subject='SendCloud PHP Smtp Example';
+
+# 邮件正文,html格式
+$body = &quot;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;
+        &lt;p&gt;欢迎使用&lt;a href='http://sendcloud.sohu.com'&gt;SendCloud!&lt;/a&gt;&lt;/p&gt;
+        &lt;/body&gt;&lt;/html&gt;&quot;;
+
+# smtp参数, 用正确api_user和api_key验证
+$param = array (
+   'host'=&gt;'smtpcloud.sohu.com',
+   'ip'=&gt;25,
+   'auth'=&gt;true,
+   'username'=&gt;'api_user',
+   'password'=&gt;'api_key');
+
+
+$headers = array (
+    'From' =&gt; $from,
+    'To' =&gt; $to,
+    'Subject' =&gt; $subject,
+    'Content-Type' =&gt; 'text/html;charset=utf8');
+
+function getMessageId($res)
+{
+    $list = explode('#',$res);
+    return $list[1];
+} 
+
+$mail = new Mail_smtp($param);
+
+$res = $mail-&gt;send($to, $headers, $body);
+$messageId = getMessageId($res);
+echo $messageId;
+
+</code></pre>
+            <div class="ds-thread" data-thread-key="Php" data-title="Php" data-url=""></div>
+        </div>
+        
+    </div>
+    <footer class="clearfix footer">
+        <div class="container">
+            <ul class="list-unstyled list-inline pull-left">
+                <li><a href="http://sendcloud.sohu.com/aboutUs.html">关于我们</a> </li>
+                <li><a href="http://sendcloud.sohu.com/aboutUs.html#agreement">服务协议</a></li>
+                <li><a href="http://sendcloud.sohu.com/aboutUs.html#partners">合作伙伴</a></li>
+                <li><a href="https://sendcloud.kf5.com/" target="_blank">帮助中心</a></li>
+            </ul>
+            <p class="pull-right">copyright 2015 &copy; SendCloud</p>
+        </div>
+    </footer>
+    
+    <script src="../../../js/jquery-1.11.2.min.js"></script>
+    <script src="../../../js/bootstrap-3.0.3.min.js"></script>
+    <script src="../../../js/prettify-1.0.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    <script src="../../../js/base.js"></script>
+    <script type="text/javascript">
+    $('.ds-thread').attr('data-url', location.href).attr('data-thread-key', location.href)
+
+    var duoshuoQuery = {
+        short_name: "sendcloud"
+    };
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';
+        ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    </body>
+
+</html>

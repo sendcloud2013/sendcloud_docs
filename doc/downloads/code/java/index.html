@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+    <link rel="canonical" href="http://sendcloud.sohu.com/downloads/code/java/"> 
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <title>Java - SendCloud 文档中心</title>
+    <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.0.3.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+    
+</head>
+<body>
+    <div class="navbar navbar-default" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="http://sendcloud.sohu.com">SendCloud 文档中心</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav navbar-right">
+                
+                  <li class="pull-left">
+                    
+                    <a href="../../..">文档首页</a>
+                    
+                  </li>
+                
+                  <li class="pull-left">
+                    
+                    <a href="../../../guide/base/">开发者指南</a>
+                    
+                  </li>
+                
+                  <li class="pull-left">
+                    
+                    <a href="../../../email/">邮件API</a>
+                    
+                  </li>
+                
+                  <li class="pull-left">
+                    
+                    <a href="../../../sms/">短信API</a>
+                    
+                  </li>
+                
+                  <li class="pull-left active">
+                    
+                    <a href="../../">代码示例</a>
+                    
+                  </li>
+                
+                  <li class="pull-left">
+                    
+                    <a href="../../../faq/">FAQ</a>
+                    
+                  </li>
+                
+                  <li class="pull-left">
+                    
+                    <a href="../../../test/">测试平台</a>
+                    
+                  </li>
+                
+                </ul>
+            
+
+            
+            <!-- Search, Navigation and Repo links -->
+            <!-- <ul class="nav navbar-nav navbar-right">
+                
+                
+                
+                <li>
+                    <a href="https://github.com/sendcloud2013/sendcloud_docs/">
+                        
+                            <i class="fa fa-github"></i>
+                        
+                        GitHub
+                    </a>
+                </li>
+                
+            </ul> -->
+            
+        </div>
+    </div>
+</div>
+    <div class="container main">
+         <div class="toolbar clearfix">
+  <ol class="breadcrumb pull-left">
+    <li><a href="../../..">文档</a></li>
+    <li>Java</li>
+  </ol>
+
+  
+    
+      <a href="https://github.com/sendcloud2013/sendcloud_docs/" class="github-edit pull-right"><i class="fa fa-github"></i> Edit on GitHub</a>
+    
+  
+
+</div>
+        <div class="col-md-3"><div class="bs-sidebar hidden-print" data-spy="affix" data-offset-top="80" role="complementary">
+    <ul class="nav bs-sidenav">
+     
+      
+        
+      
+
+    
+      
+        
+      
+
+    
+      
+        
+      
+
+    
+      
+        
+      
+
+    
+      
+        
+          
+
+              <li class="">
+                <a class="itm-l1" href="../../">代码示例</a>
+                
+              </li>
+
+          
+
+              <li class="">
+                <a class="itm-l1" href="../curl/">Curl</a>
+                
+              </li>
+
+          
+
+              <li class="">
+                <a class="itm-l1" href="../python/">Python</a>
+                
+              </li>
+
+          
+
+              <li class="active">
+                <a class="itm-l1" href="./">Java</a>
+                
+                  <ul class="nav">
+                  
+                    <li class="active "><a href="#webapi">WEBAPI</a></li>
+                    
+                  
+                    <li class=""><a href="#smtp">SMTP</a></li>
+                    
+                  
+                  </ul>
+                
+              </li>
+
+          
+
+              <li class="">
+                <a class="itm-l1" href="../php/">Php</a>
+                
+              </li>
+
+          
+
+              <li class="">
+                <a class="itm-l1" href="../ruby/">Ruby</a>
+                
+              </li>
+
+          
+
+              <li class="">
+                <a class="itm-l1" href="../perl/">Perl</a>
+                
+              </li>
+
+          
+
+              <li class="">
+                <a class="itm-l1" href="../csharp/">C#</a>
+                
+              </li>
+
+          
+
+              <li class="">
+                <a class="itm-l1" href="../golang/">Golang</a>
+                
+              </li>
+
+          
+
+              <li class="">
+                <a class="itm-l1" href="../nodejs/">Node.js</a>
+                
+              </li>
+
+          
+        
+      
+
+    
+      
+        
+      
+
+    
+      
+        
+      
+
+    
+    </ul>
+</div></div>
+        <div class="col-md-9 content-body" role="main">
+             
+
+<h1>Java</h1>
+
+<h2 id="webapi">WEBAPI</h2>
+<pre><code>public class JavaWebapi {
+
+    public static void main(String[] args) throws ClientProtocolException, IOException {
+
+
+        String url = &quot;http://sendcloud.sohu.com/webapi/mail.send.json&quot;;
+
+        final String apiUser = &quot;***&quot;;
+        final String apiKey = &quot;***&quot;;
+
+        String rcpt_to = &quot;***&quot;;
+
+        HttpPost httpPost = new HttpPost(url);
+        HttpClient httpclient = new DefaultHttpClient();
+
+        // 组装基本邮件的参数
+        MultipartEntity entity = new MultipartEntity(HttpMultipartMode.BROWSER_COMPATIBLE, null, Charset.forName(&quot;UTF-8&quot;));
+        entity.addPart(&quot;api_user&quot;, new StringBody(apiUser, Charset.forName(&quot;UTF-8&quot;)));
+        entity.addPart(&quot;api_key&quot;, new StringBody(apiKey, Charset.forName(&quot;UTF-8&quot;)));
+        entity.addPart(&quot;to&quot;, new StringBody(rcpt_to, Charset.forName(&quot;UTF-8&quot;)));
+        entity.addPart(&quot;from&quot;, new StringBody(&quot;sendcloud@sendcloud.org&quot;, Charset.forName(&quot;UTF-8&quot;)));
+        entity.addPart(&quot;fromname&quot;, new StringBody(&quot;SendCloud&quot;, Charset.forName(&quot;UTF-8&quot;)));
+        entity.addPart(&quot;subject&quot;, new StringBody(&quot;SendCloud java webapi example&quot;, Charset.forName(&quot;UTF-8&quot;)));
+        entity.addPart(&quot;html&quot;,
+                new StringBody(&quot;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;p&gt;欢迎使用&lt;a href='http://sendcloud.sohu.com'&gt;SendCloud&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;&quot;, Charset.forName(&quot;UTF-8&quot;)));
+        entity.addPart(&quot;resp_email_id&quot;, new StringBody(&quot;true&quot;));
+
+        // 添加附件
+        File file = new File(&quot;/path/file&quot;);
+        FileBody attachment = new FileBody(file, &quot;application/octet-stream&quot;, &quot;UTF-8&quot;);
+        entity.addPart(&quot;files&quot;, attachment);
+
+        // 添加附件, 文件流形式
+        // File file = new File(&quot;/path/file&quot;);
+        // String attachName = &quot;attach.txt&quot;;
+        // InputStreamBody is = new InputStreamBody(new FileInputStream(file), attachName);
+        // entity.addPart(&quot;files&quot;, is);
+
+        httpPost.setEntity(entity);
+
+        HttpResponse response = httpclient.execute(httpPost);
+        // 处理响应
+        if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+            // 正常返回, 解析返回数据
+            System.out.println(EntityUtils.toString(response.getEntity()));
+        } else {
+            System.err.println(&quot;error&quot;);
+        }
+        httpPost.releaseConnection();
+    }
+}
+</code></pre>
+
+<hr />
+<h2 id="smtp">SMTP</h2>
+<pre><code>import java.io.UnsupportedEncodingException;
+import java.util.Properties;
+
+import javax.mail.Authenticator;
+import javax.mail.BodyPart;
+import javax.mail.Message.RecipientType;
+import javax.mail.MessagingException;
+import javax.mail.Multipart;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
+
+import com.sun.mail.smtp.SMTPTransport;
+
+public class JavaSmtpExample {
+
+    private static final String SENDCLOUD_SMTP_HOST = &quot;smtpcloud.sohu.com&quot;;
+    private static final int SENDCLOUD_SMTP_PORT = 25;
+
+    private static String getMessage(String reply) {
+        String[] arr = reply.split(&quot;#&quot;);
+
+        String messageId = null;
+
+        if (arr[0].equalsIgnoreCase(&quot;250 &quot;)) {
+            messageId = arr[1];
+        }
+
+        return messageId;
+    }
+
+    public static void main(String[] args) throws MessagingException, UnsupportedEncodingException {
+
+        // 配置javamail
+        Properties props = System.getProperties();
+        props.setProperty(&quot;mail.transport.protocol&quot;, &quot;smtp&quot;);
+        props.put(&quot;mail.smtp.host&quot;, SENDCLOUD_SMTP_HOST);
+        props.put(&quot;mail.smtp.port&quot;, SENDCLOUD_SMTP_PORT);
+        props.setProperty(&quot;mail.smtp.auth&quot;, &quot;true&quot;);
+        props.put(&quot;mail.smtp.connectiontimeout&quot;, 180);
+        props.put(&quot;mail.smtp.timeout&quot;, 600);
+        props.setProperty(&quot;mail.mime.encodefilename&quot;, &quot;true&quot;);
+
+        // 使用api_user和api_key进行验证
+        final String apiUser = &quot;***&quot;;
+        final String apiKey = &quot;***&quot;;
+
+        String to = &quot;***&quot;;
+
+        Session mailSession = Session.getInstance(props, new Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(apiUser, apiKey);
+            }
+        });
+
+        SMTPTransport transport = (SMTPTransport) mailSession.getTransport(&quot;smtp&quot;);
+
+        MimeMessage message = new MimeMessage(mailSession);
+        // 发信人
+        message.setFrom(new InternetAddress(&quot;from@sendcloud.org&quot;, &quot;fromname&quot;, &quot;UTF-8&quot;));
+        // 收件人地址
+        message.addRecipient(RecipientType.TO, new InternetAddress(to));
+        // 邮件主题
+        message.setSubject(&quot;SendCloud java smtp example&quot;, &quot;UTF-8&quot;);
+
+        Multipart multipart = new MimeMultipart(&quot;alternative&quot;);
+
+        // 添加html形式的邮件正文
+        String html = &quot;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&quot; + &quot;&lt;p&gt;欢迎使用&lt;a href='http://sendcloud.sohu.com'&gt;SendCloud!&lt;/a&gt;&lt;/p&gt;&quot; + &quot;&lt;/body&gt;&lt;/html&gt; &quot;;
+        BodyPart contentPart = new MimeBodyPart();
+        contentPart.setHeader(&quot;Content-Type&quot;, &quot;text/html;charset=UTF-8&quot;);
+        contentPart.setHeader(&quot;Content-Transfer-Encoding&quot;, &quot;base64&quot;);
+        contentPart.setContent(html, &quot;text/html;charset=UTF-8&quot;);
+        multipart.addBodyPart(contentPart);
+
+        // 添加附件 ( smtp 方式没法使用文件流 )
+        File file = new File(&quot;/path/file&quot;);
+        BodyPart attachmentBodyPart = new MimeBodyPart();
+        DataSource source = new FileDataSource(file);
+        attachmentBodyPart.setDataHandler(new DataHandler(source));
+        attachmentBodyPart.setFileName(MimeUtility.encodeWord(file.getName()));
+        multipart.addBodyPart(attachmentBodyPart);
+        message.setContent(multipart);
+
+        // 连接sendcloud服务器，发送邮件
+        transport.connect();
+        transport.sendMessage(message, message.getRecipients(RecipientType.TO));
+
+        String messageId = getMessage(transport.getLastServerResponse());
+        String emailId = messageId + &quot;0$&quot; + to;
+        System.out.println(&quot;messageId:&quot; + messageId);
+        System.out.println(&quot;emailId:&quot; + emailId);
+        transport.close();
+    }
+}
+
+</code></pre>
+            <div class="ds-thread" data-thread-key="Java" data-title="Java" data-url=""></div>
+        </div>
+        
+    </div>
+    <footer class="clearfix footer">
+        <div class="container">
+            <ul class="list-unstyled list-inline pull-left">
+                <li><a href="http://sendcloud.sohu.com/aboutUs.html">关于我们</a> </li>
+                <li><a href="http://sendcloud.sohu.com/aboutUs.html#agreement">服务协议</a></li>
+                <li><a href="http://sendcloud.sohu.com/aboutUs.html#partners">合作伙伴</a></li>
+                <li><a href="https://sendcloud.kf5.com/" target="_blank">帮助中心</a></li>
+            </ul>
+            <p class="pull-right">copyright 2015 &copy; SendCloud</p>
+        </div>
+    </footer>
+    
+    <script src="../../../js/jquery-1.11.2.min.js"></script>
+    <script src="../../../js/bootstrap-3.0.3.min.js"></script>
+    <script src="../../../js/prettify-1.0.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    <script src="../../../js/base.js"></script>
+    <script type="text/javascript">
+    $('.ds-thread').attr('data-url', location.href).attr('data-thread-key', location.href)
+
+    var duoshuoQuery = {
+        short_name: "sendcloud"
+    };
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';
+        ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    </body>
+
+</html>
