@@ -1,10 +1,10 @@
 
 标签为用户发送邮件提供了另一个维度的统计方式.
     
-你可以使用 API 进行标签的查询, 添加, 删除, 更新操作
+你可以使用 API 对标签进行查询, 添加, 删除, 修改操作
 
 - - -
-##列表查询
+##查询 ( 批量查询 )
 
 返回标签的列表信息
     
@@ -40,7 +40,7 @@ http://api.sendcloud.sohu.com/apiv2/label/list?api_user=***&api_key=***&query=ed
 |labelId|标签ID|
 |labelName|标签名称|
 |gmtCreated|标签创建时间|
-|gmtModified|标签更新时间|
+|gmtModified|标签修改时间|
     
 **返回值示例**    
 ```
@@ -103,7 +103,7 @@ http://api.sendcloud.sohu.com/apiv2/label/get?api_user=***&api_key=***&labelId=8
 |labelId|标签ID|
 |labelName|标签名称|
 |gmtCreated|标签创建时间|
-|gmtModified|标签更新时间|
+|gmtModified|标签修改时间|
     
 **返回值示例**    
 ```
@@ -220,7 +220,7 @@ http://api.sendcloud.sohu.com/apiv2/label/delete?api_user=***&api_key=***&labelI
     
 - - -
 
-##更新
+##修改
 
 **URL**
 ```
@@ -238,7 +238,7 @@ post    get
 |:---|:---|:---|:---|
 |apiUser|string|是|API_USER|
 |apiKey|string|是|密码|
-|labelId|int|是|需要更新的标签ID|
+|labelId|int|是|需要修改的标签ID|
 |labelName|string|是|新的标签名称|
     
 **请求示例**    
@@ -250,7 +250,7 @@ http://api.sendcloud.sohu.com/apiv2/label/update?api_user=***&api_key=***&labelI
     
 |参数|说明|
 |:---|:---| 
-|count|更新成功的个数|
+|count|修改成功的个数|
     
 
 **返回值示例**    

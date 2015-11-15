@@ -1,13 +1,13 @@
 
-邮件地址列表为用户批量发送时使用.
+地址列表为用户批量发送时使用.
     
-你可以使用 API 进行列表的查询, 创建, 修改, 删除操作
-    
-以及每个列表中地址成员的查询, 添加, 修改, 删除操作
+你可以使用 API 对地址列表进行查询, 添加, 修改, 删除操作.
+
+也可以对地址列表中地址成员进行查询, 添加, 修改, 删除操作.
     
 - - -
 
-##列表查询    
+##查询地址列表 ( 批量查询 )
     
 **URL**    
 ```
@@ -67,7 +67,7 @@ http://api.sendcloud.sohu.com/apiv2/addresslist/list?api_user=***&api_key=***&li
 
 - - -
 
-##列表创建
+##添加地址列表
     
 **URL**
 ```
@@ -85,7 +85,7 @@ post    get
 |:---|:---|:---|:---|
 |apiUser|string|是|API_USER|
 |apiKey|string|是|密码|
-|address|string|是|列表别称地址, 使用该别称地址进行调用, 格式为xxx@maillist.sendcloud.org|
+|address|string|是|别称地址, 使用该别称地址进行调用, 格式为xxx@maillist.sendcloud.org|
 |name|string|是|列表名称|
 |desc|string|否|对列表的描述信息|
     
@@ -98,7 +98,7 @@ http://api.sendcloud.sohu.com/apiv2/addresslist/add?api_user=***&api_key=***&add
     
 |参数|说明|
 |:---|:---| 
-|address|列表别称地址, 使用该别称地址进行调用|
+|address|别称地址, 使用该别称地址进行调用|
 |membersCount|列表中地址数|
 |name|列表名称|
 |description|列表描述信息|
@@ -125,7 +125,7 @@ http://api.sendcloud.sohu.com/apiv2/addresslist/add?api_user=***&api_key=***&add
 ```
 - - -
 
-##列表删除
+##删除地址列表
 
 **URL**
 ```
@@ -143,7 +143,7 @@ post    get
 |:---|:---|:---|:---|
 |apiUser|string|是|API_USER|
 |apiKey|string|是|密码|
-|address|string|是|列表别称地址, 使用该别称地址进行调用, 格式为xxx@maillist.sendcloud.org|
+|address|string|是|别称地址, 使用该别称地址进行调用, 格式为xxx@maillist.sendcloud.org|
     
 **请求示例**    
 ```
@@ -169,7 +169,7 @@ http://api.sendcloud.sohu.com/apiv2/addresslist/delete?api_user=***&api_key=***&
 ```
     
 - - -
-##列表修改
+##修改地址列表
 
 **URL**
 ```
@@ -187,7 +187,7 @@ post    get
 |:---|:---|:---|:---|
 |apiUser|string|是|API_USER|
 |apiKey|string|是|密码|
-|address|string|是|列表别称地址, 使用该别称地址进行调用, 格式为xxx@maillist.sendcloud.org|
+|address|string|是|别称地址, 使用该别称地址进行调用, 格式为xxx@maillist.sendcloud.org|
 |newAddress|string|否|修改后的别称地址|
 |name|string|否|修改后的列表名称|
 |desc|string|否|修改后的列表描述信息|
@@ -223,7 +223,7 @@ http://api.sendcloud.sohu.com/apiv2/addresslist/update?api_user=***&api_key=***&
     
 - - -
     
-##列表成员查询
+##查询列表成员 ( 批量查询 )
     
 **URL**
 ```
@@ -241,7 +241,7 @@ post    get
 |:---|:---|:---|:---|
 |apiUser|string|是|子账号|
 |apiKey|string|是|密码|
-|address|string|是|地址列表调用名称|    
+|address|string|是|地址列表的别称地址|    
 |start|int|否|查询起始位置, 取值区间 [0-], 默认为 0|
 |limit|int|否|查询个数, 取值区间 [0-100], 默认为 100|
     
@@ -298,7 +298,7 @@ http://api.sendcloud.sohu.com/apiv2/addressmember/list?api_user=***&api_key=***&
 
 - - -
     
-##列表成员查询2
+##查询列表成员
     
 **URL**
 ```
@@ -316,7 +316,7 @@ post    get
 |:---|:---|:---|:---|
 |apiUser|string|是|子账号|
 |apiKey|string|是|密码|
-|address|string|是|地址列表调用名称|    
+|address|string|是|地址列表的别称地址|    
 |members|list|是|列表成员地址|    
     
 **请求示例**
@@ -357,7 +357,7 @@ http://api.sendcloud.sohu.com/apiv2/addressmember/get?api_user=***&api_key=***&a
 
 - - -
 
-##列表成员添加
+##添加列表成员
     
 **URL**
 ```
@@ -375,7 +375,7 @@ post    get
 |:---|:---|:---|:---|
 |apiUser|string|是|子账号|
 |apiKey|string|是|密码|
-|address|string|是|地址列表调用名称|    
+|address|string|是|地址列表的别称地址|    
 |members|list|是|需要添加成员的地址, 多个地址用 `;` 分隔|
 |vars|list|否|替换变量, 与 members 一一对应, 变量格式为 {"money":"1000"} , 多个用 `;` 分隔|
 
@@ -395,7 +395,7 @@ http://api.sendcloud.sohu.com/apiv2/addressmember/add?apiUser=***&apiKey=***&add
     
 |参数|说明|
 |:---|:---|
-|count|创建成功的地址数|
+|count|添加成功的地址数|
     
 **返回值示例**
     
@@ -412,7 +412,7 @@ http://api.sendcloud.sohu.com/apiv2/addressmember/add?apiUser=***&apiKey=***&add
     
 - - -
     
-##列表成员更新
+##修改列表成员
     
 **URL**
 ```
@@ -430,7 +430,7 @@ post    get
 |:---|:---|:---|:---|
 |apiUser|string|是|子账号|
 |apiKey|string|是|密码|
-|address|string|是|地址列表调用名称|    
+|address|string|是|地址列表的别称地址|    
 |members|list|是|需要添加成员的地址, 多个地址用 `;` 分隔|
 |vars|list|否|替换变量, 与 members 一一对应, 变量格式为 {"money":"1000"} , 多个用 `;` 分隔|
 
@@ -465,7 +465,7 @@ http://api.sendcloud.sohu.com/apiv2/addressmember/update?apiUser=***&apiKey=***&
     
 - - -
     
-##列表成员删除
+##删除列表成员
    
 **URL**
 ```
@@ -483,7 +483,7 @@ post    get
 |:---|:---|:---|:---|
 |apiUser|string|是|子账号|
 |apiKey|string|是|密码|
-|address|string|是|地址列表调用名称|    
+|address|string|是|地址列表的别称地址|    
 |members|list|是|需要删除成员的地址, 多个地址用 `;` 分隔|
     
 **请求示例**

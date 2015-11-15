@@ -5,9 +5,9 @@
     
 - - -        
 
-##列表查询
+##查询 ( 批量查询 )
 
-返回邮件模板的列表信息
+返回邮件模板的基本信息
     
 **URL**    
 ```
@@ -46,7 +46,7 @@ http://api.sendcloud.sohu.com/apiv2/template/list?apiUser=***&apiKey=***&start=0
 |templateType|模板类型|
 |templateStat|审核状态|
 |gmtCreated|邮件模板创建时间|
-|gmtModified|邮件模板更新时间|
+|gmtModified|邮件模板修改时间|
 
 **返回值示例**
 ```
@@ -81,7 +81,7 @@ http://api.sendcloud.sohu.com/apiv2/template/list?apiUser=***&apiKey=***&start=0
 
 - - -        
 
-##查询    
+##查询
 
 返回邮件模板的详细信息
     
@@ -117,7 +117,7 @@ http://api.sendcloud.sohu.com/apiv2/template/get?apiUser=***&apiKey=***&invokeNa
 |templateType|模板类型|
 |templateStat|审核状态|
 |gmtCreated|邮件模板创建时间|
-|gmtModified|邮件模板更新时间|
+|gmtModified|邮件模板修改时间|
 |html|模板内容|
 |subject|模板标题|
 
@@ -144,7 +144,7 @@ http://api.sendcloud.sohu.com/apiv2/template/get?apiUser=***&apiKey=***&invokeNa
 
 - - -
     
-##添加    
+##添加
     
 **URL**    
 ```
@@ -188,7 +188,7 @@ curl -d 'apiUser=***&apiKey=***&invokeName=testtemplate&name=test&html=<p>add ne
 |templateType|模板类型|
 |templateStat|审核状态|
 |gmtCreated|邮件模板创建时间|
-|gmtModified|邮件模板更新时间|
+|gmtModified|邮件模板修改时间|
 |html|模板内容|
 |subject|模板标题|
     
@@ -215,7 +215,7 @@ curl -d 'apiUser=***&apiKey=***&invokeName=testtemplate&name=test&html=<p>add ne
  
 - - -
     
-##删除    
+##删除
     
 **URL**    
 ```
@@ -261,9 +261,9 @@ curl http://api.sendcloud.sohu.com/apiv2/template/delete?apiUser=***&apiKey=***&
  
 - - -
     
-##更新    
+##修改
     
-用于更新模板的名称, 内容, 主题, 模板类型
+用于修改模板的名称, 内容, 主题, 模板类型
 
 **URL**    
 ```
@@ -300,7 +300,7 @@ curl -d 'apiUser=***&apiKey=***&invokeName=testtemplate&name=test&html=<p>update
     
 |参数|说明|
 |:---|:---|
-|count|成功更新的模板个数|
+|count|成功修改的模板个数|
     
 **返回值示例**
 ```
@@ -347,7 +347,7 @@ http://api.sendcloud.sohu.com/apiv2/template/submit?apiUser=***&apiKey=***&invok
     
 |参数|说明|
 |:---|:---|
-|count|成功更新的模板数|
+|count|成功修改的模板数|
     
 **返回值示例**
 ```
