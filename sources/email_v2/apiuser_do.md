@@ -11,7 +11,7 @@ API_USER 是用户在 SendCloud 中发信的验证帐号.
     
 **URL**
 ```
-http://api.sendcloud.sohu.com/apiv2/apiuser/list
+http://api.sendcloud.net/apiv2/apiuser/list
 ```
     
 **HTTP请求方式**
@@ -31,7 +31,7 @@ post    get
     
 **请求示例**
 ```
-http://api.sendcloud.sohu.com/apiv2/apiUser/list?apiUser=***&apiKey=***&emailType=1&domainName=mail.liubida.cn 
+http://api.sendcloud.net/apiv2/apiUser/list?apiUser=***&apiKey=***&emailType=1&domainName=mail.liubida.cn 
 ```
     
 **返回值说明**
@@ -77,7 +77,7 @@ http://api.sendcloud.sohu.com/apiv2/apiUser/list?apiUser=***&apiKey=***&emailTyp
     
 **URL**
 ```
-http://api.sendcloud.sohu.com/apiv2/apiuser/add
+http://api.sendcloud.net/apiv2/apiuser/add
 ```
     
 **HTTP请求方式**
@@ -106,7 +106,7 @@ post    get
     
 **请求示例**
 ```
-http://api.sendcloud.sohu.com/apiv2/apiUser/add?apiUser=***&apiKey=***&name=liubida&emailType=1&domainName=mail.liubida.cn 
+http://api.sendcloud.net/apiv2/apiUser/add?apiUser=***&apiKey=***&name=liubida&emailType=1&domainName=mail.liubida.cn 
 ```
     
 **返回值说明**

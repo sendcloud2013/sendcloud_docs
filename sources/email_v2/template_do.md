@@ -11,7 +11,7 @@
     
 **URL**    
 ```
-http://api.sendcloud.sohu.com/apiv2/template/list
+http://api.sendcloud.net/apiv2/template/list
 ```
     
 **HTTP请求方式**
@@ -34,7 +34,7 @@ post    get
     
 **请求示例**
 ```
-http://api.sendcloud.sohu.com/apiv2/template/list?apiUser=***&apiKey=***&start=0&limit=3&templateStat=1
+http://api.sendcloud.net/apiv2/template/list?apiUser=***&apiKey=***&start=0&limit=3&templateStat=1
 ```
     
 **返回值说明**
@@ -87,7 +87,7 @@ http://api.sendcloud.sohu.com/apiv2/template/list?apiUser=***&apiKey=***&start=0
     
 **URL**    
 ```
-http://api.sendcloud.sohu.com/apiv2/template/get
+http://api.sendcloud.net/apiv2/template/get
 ```
     
 **HTTP请求方式**
@@ -105,7 +105,7 @@ post    get
     
 **请求示例**
 ```
-http://api.sendcloud.sohu.com/apiv2/template/get?apiUser=***&apiKey=***&invokeName=test
+http://api.sendcloud.net/apiv2/template/get?apiUser=***&apiKey=***&invokeName=test
 ```
     
 **返回值说明**
@@ -148,7 +148,7 @@ http://api.sendcloud.sohu.com/apiv2/template/get?apiUser=***&apiKey=***&invokeNa
     
 **URL**    
 ```
-http://api.sendcloud.sohu.com/apiv2/template/add
+http://api.sendcloud.net/apiv2/template/add
 ```
     
 **HTTP请求方式**
@@ -176,7 +176,7 @@ post    get
      
 **请求示例**
 ```
-curl -d 'apiUser=***&apiKey=***&invokeName=testtemplate&name=test&html=<p>add new template</p>&subject=test_subject&templateType=1' http://api.sendcloud.sohu.com/apiv2/template/add
+curl -d 'apiUser=***&apiKey=***&invokeName=testtemplate&name=test&html=<p>add new template</p>&subject=test_subject&templateType=1' http://api.sendcloud.net/apiv2/template/add
 ```
  
 **返回值说明**
@@ -219,7 +219,7 @@ curl -d 'apiUser=***&apiKey=***&invokeName=testtemplate&name=test&html=<p>add ne
     
 **URL**    
 ```
-http://api.sendcloud.sohu.com/apiv2/template/delete
+http://api.sendcloud.net/apiv2/template/delete
 ```
     
 **HTTP请求方式**
@@ -237,7 +237,7 @@ post    get
     
 **请求示例**
 ```
-curl http://api.sendcloud.sohu.com/apiv2/template/delete?apiUser=***&apiKey=***&invokeName=test
+curl http://api.sendcloud.net/apiv2/template/delete?apiUser=***&apiKey=***&invokeName=test
 ```
     
 **返回值说明**
@@ -267,7 +267,7 @@ curl http://api.sendcloud.sohu.com/apiv2/template/delete?apiUser=***&apiKey=***&
 
 **URL**    
 ```
-http://api.sendcloud.sohu.com/apiv2/template/update
+http://api.sendcloud.net/apiv2/template/update
 ```
     
 **HTTP请求方式**
@@ -293,7 +293,7 @@ post    get
     
 **请求示例**
 ```
-curl -d 'apiUser=***&apiKey=***&invokeName=testtemplate&name=test&html=<p>update template</p>&subject=test&templateType=1' http://api.sendcloud.sohu.com/apiv2/template/update
+curl -d 'apiUser=***&apiKey=***&invokeName=testtemplate&name=test&html=<p>update template</p>&subject=test&templateType=1' http://api.sendcloud.net/apiv2/template/update
 ```
     
 **返回值说明**
@@ -321,7 +321,7 @@ curl -d 'apiUser=***&apiKey=***&invokeName=testtemplate&name=test&html=<p>update
 
 **URL**    
 ```
-http://api.sendcloud.sohu.com/apiv2/template/submit
+http://api.sendcloud.net/apiv2/template/submit
 ```
     
 **HTTP请求方式**
@@ -338,9 +338,9 @@ post    get
 
 **请求示例**
 ```
-http://api.sendcloud.sohu.com/apiv2/template/submit?apiUser=***&apiKey=***&invokeName=testtemplate
+http://api.sendcloud.net/apiv2/template/submit?apiUser=***&apiKey=***&invokeName=testtemplate
 
-http://api.sendcloud.sohu.com/apiv2/template/submit?apiUser=***&apiKey=***&invokeName=testtemplate&cancel=1
+http://api.sendcloud.net/apiv2/template/submit?apiUser=***&apiKey=***&invokeName=testtemplate&cancel=1
 ```
     
 **返回值说明**

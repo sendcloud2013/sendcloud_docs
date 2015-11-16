@@ -3,7 +3,7 @@
 
 **URL**
 ```  
-http://api.sendcloud.sohu.com/apiv2/send
+http://api.sendcloud.net/apiv2/send
 ```
    
 **HTTP请求方式** 
@@ -51,7 +51,7 @@ post
 
 **URL**
 ```  
-http://api.sendcloud.sohu.com/apiv2/sendtemplate
+http://api.sendcloud.net/apiv2/sendtemplate
 ```
    
 **HTTP请求方式** 
@@ -103,7 +103,7 @@ post
     您好! 您本月在爱发信的消费金额为: %money% 元.
 #---------------------------------------------------
 # 调用模板发送, `%`需要 urlencode
-curl -d 'apiUser=***&apiKey=***&from=test@test.com&fromName=liubida&subject=测试&replyTo=reply@test.com&templateInvokeName=ifaxin_bill' --data-urlencode 'xsmtpapi={"to": ["ben@ifaxin.com", "joe@ifaxin.com"],"sub":{"%name%": ["Ben", "Joe"],"%money%":[288, 497]}}&headers={"header1": "value1", "header2": "value2"}' http://api.sendcloud.sohu.com/apiv2/sendtemplate
+curl -d 'apiUser=***&apiKey=***&from=test@test.com&fromName=liubida&subject=测试&replyTo=reply@test.com&templateInvokeName=ifaxin_bill' --data-urlencode 'xsmtpapi={"to": ["ben@ifaxin.com", "joe@ifaxin.com"],"sub":{"%name%": ["Ben", "Joe"],"%money%":[288, 497]}}&headers={"header1": "value1", "header2": "value2"}' http://api.sendcloud.net/apiv2/sendtemplate
 
 # 返回值
 {
@@ -133,7 +133,7 @@ curl -d 'apiUser=***&apiKey=***&from=test@test.com&fromName=liubida&subject=测�
 ```
 普通发送 ( 调用模板 ifaxin_bill, 调用地址列表 users@maillist.sendcloud.org, 用户可以根据返回的 `task_id` 在 [WebHook](../email/webhook.md#mail_list_task_id_list)  中使用 )
 ```
-curl -d 'apiUser=***&apiKey=***&from=test@test.com&fromName=liubida&to=noexist@maillist.sendcloud.org&subject=测试&replyTo=reply@test.com&templateInvokeName=ifaxin_bill' --data-urlencode 'headers={"header1": "value1", "header2": "value2"}' http://api.sendcloud.sohu.com/apiv2/sendtemplate
+curl -d 'apiUser=***&apiKey=***&from=test@test.com&fromName=liubida&to=noexist@maillist.sendcloud.org&subject=测试&replyTo=reply@test.com&templateInvokeName=ifaxin_bill' --data-urlencode 'headers={"header1": "value1", "header2": "value2"}' http://api.sendcloud.net/apiv2/sendtemplate
 
 # 返回值
 {
@@ -143,7 +143,7 @@ curl -d 'apiUser=***&apiKey=***&from=test@test.com&fromName=liubida&to=noexist@m
   "result": false
 }
 
-curl -d 'apiUser=***&apiKey=***&from=test@test.com&fromName=liubida&to=users@maillist.sendcloud.org&subject=测试&replyTo=reply@test.com&templateInvokeName=ifaxin_bill' --data-urlencode 'headers={"header1": "value1", "header2": "value2"}' http://api.sendcloud.sohu.com/apiv2/sendtemplate
+curl -d 'apiUser=***&apiKey=***&from=test@test.com&fromName=liubida&to=users@maillist.sendcloud.org&subject=测试&replyTo=reply@test.com&templateInvokeName=ifaxin_bill' --data-urlencode 'headers={"header1": "value1", "header2": "value2"}' http://api.sendcloud.net/apiv2/sendtemplate
 
 # 返回值
 {
@@ -164,7 +164,7 @@ curl -d 'apiUser=***&apiKey=***&from=test@test.com&fromName=liubida&to=users@mai
 
 **URL**
 ```  
-http://api.sendcloud.sohu.com/apiv2/sendcalendar
+http://api.sendcloud.net/apiv2/sendcalendar
 ```
    
 **HTTP请求方式** 

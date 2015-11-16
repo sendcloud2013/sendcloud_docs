@@ -1,7 +1,7 @@
 
 ## API 的请求格式
 
-`http://api.sendcloud.sohu.com/apiv2/<模块>/<动作>`
+`http://api.sendcloud.net/apiv2/<模块>/<动作>`
 
 模块: 功能模块名称.  比如: mail (邮件模块), addresslist (地址列表) 等.
 

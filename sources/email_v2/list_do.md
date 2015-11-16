@@ -11,7 +11,7 @@
     
 **URL**    
 ```
-http://api.sendcloud.sohu.com/apiv2/addresslist/list
+http://api.sendcloud.net/apiv2/addresslist/list
 ```
     
 **HTTP请求方式** 
@@ -31,7 +31,7 @@ post    get
     
 **请求示例**    
 ```
-http://api.sendcloud.sohu.com/apiv2/addresslist/list?api_user=***&api_key=***&limit=2
+http://api.sendcloud.net/apiv2/addresslist/list?api_user=***&api_key=***&limit=2
 ```
     
 **返回值说明**
@@ -71,7 +71,7 @@ http://api.sendcloud.sohu.com/apiv2/addresslist/list?api_user=***&api_key=***&li
     
 **URL**
 ```
-http://api.sendcloud.sohu.com/apiv2/addresslist/add
+http://api.sendcloud.net/apiv2/addresslist/add
 ```
     
 **HTTP请求方式**
@@ -91,7 +91,7 @@ post    get
     
 **请求示例**    
 ```
-http://api.sendcloud.sohu.com/apiv2/addresslist/add?api_user=***&api_key=***&address=justfortest@maillist.sendcloud.org&name=testlist&desc=test
+http://api.sendcloud.net/apiv2/addresslist/add?api_user=***&api_key=***&address=justfortest@maillist.sendcloud.org&name=testlist&desc=test
 ```
     
 **返回值说明**
@@ -129,7 +129,7 @@ http://api.sendcloud.sohu.com/apiv2/addresslist/add?api_user=***&api_key=***&add
 
 **URL**
 ```
-http://api.sendcloud.sohu.com/apiv2/addresslist/delete
+http://api.sendcloud.net/apiv2/addresslist/delete
 ```
     
 **HTTP请求方式**
@@ -147,7 +147,7 @@ post    get
     
 **请求示例**    
 ```
-http://api.sendcloud.sohu.com/apiv2/addresslist/delete?api_user=***&api_key=***&address=newtest@maillist.sendcloud.org
+http://api.sendcloud.net/apiv2/addresslist/delete?api_user=***&api_key=***&address=newtest@maillist.sendcloud.org
 ```
     
 **返回值说明**
@@ -173,7 +173,7 @@ http://api.sendcloud.sohu.com/apiv2/addresslist/delete?api_user=***&api_key=***&
 
 **URL**
 ```
-http://api.sendcloud.sohu.com/apiv2/addresslist/update
+http://api.sendcloud.net/apiv2/addresslist/update
 ```
     
 **HTTP请求方式**
@@ -199,7 +199,7 @@ post    get
     
 **请求示例**    
 ```
-http://api.sendcloud.sohu.com/apiv2/addresslist/update?api_user=***&api_key=***&address=justfortest@maillist.sendcloud.org&name=newtest
+http://api.sendcloud.net/apiv2/addresslist/update?api_user=***&api_key=***&address=justfortest@maillist.sendcloud.org&name=newtest
 ```
     
 **返回值说明**
@@ -227,7 +227,7 @@ http://api.sendcloud.sohu.com/apiv2/addresslist/update?api_user=***&api_key=***&
     
 **URL**
 ```
-http://api.sendcloud.sohu.com/apiv2/addressmember/list
+http://api.sendcloud.net/apiv2/addressmember/list
 ```
     
 **HTTP请求方式**
@@ -247,7 +247,7 @@ post    get
     
 **请求示例**
 ```
-http://api.sendcloud.sohu.com/apiv2/addressmember/list?api_user=***&api_key=***&address=newtest@maillist.sendcloud.org
+http://api.sendcloud.net/apiv2/addressmember/list?api_user=***&api_key=***&address=newtest@maillist.sendcloud.org
 ```        
     
 **返回值说明**
@@ -302,7 +302,7 @@ http://api.sendcloud.sohu.com/apiv2/addressmember/list?api_user=***&api_key=***&
     
 **URL**
 ```
-http://api.sendcloud.sohu.com/apiv2/addressmember/get
+http://api.sendcloud.net/apiv2/addressmember/get
 ```
     
 **HTTP请求方式**
@@ -321,7 +321,7 @@ post    get
     
 **请求示例**
 ```
-http://api.sendcloud.sohu.com/apiv2/addressmember/get?api_user=***&api_key=***&address=newtest@maillist.sendcloud.org&members=ben@ifaxin.com
+http://api.sendcloud.net/apiv2/addressmember/get?api_user=***&api_key=***&address=newtest@maillist.sendcloud.org&members=ben@ifaxin.com
 ```        
     
 **返回值说明**
@@ -361,7 +361,7 @@ http://api.sendcloud.sohu.com/apiv2/addressmember/get?api_user=***&api_key=***&a
     
 **URL**
 ```
-http://api.sendcloud.sohu.com/apiv2/addressmember/add
+http://api.sendcloud.net/apiv2/addressmember/add
 ```
      
 **HTTP请求方式**
@@ -388,7 +388,7 @@ post    get
     
 **请求示例**
 ```
-http://api.sendcloud.sohu.com/apiv2/addressmember/add?apiUser=***&apiKey=***&address=yourlist@maillist.sendcloud.org&members=1@1.com;2@2.com&vars={"money":"99"};{"money":"900"}
+http://api.sendcloud.net/apiv2/addressmember/add?apiUser=***&apiKey=***&address=yourlist@maillist.sendcloud.org&members=1@1.com;2@2.com&vars={"money":"99"};{"money":"900"}
 ```
     
 **返回值说明**
@@ -416,7 +416,7 @@ http://api.sendcloud.sohu.com/apiv2/addressmember/add?apiUser=***&apiKey=***&add
     
 **URL**
 ```
-http://api.sendcloud.sohu.com/apiv2/addressmember/update
+http://api.sendcloud.net/apiv2/addressmember/update
 ```
     
 **HTTP请求方式**
@@ -442,7 +442,7 @@ post    get
     
 **请求示例**
 ```
-http://api.sendcloud.sohu.com/apiv2/addressmember/update?apiUser=***&apiKey=***&address=yourlist@maillist.sendcloud.org&members=1@1.com;2@2.com&vars={"money":"199"};{"money":"1900"}
+http://api.sendcloud.net/apiv2/addressmember/update?apiUser=***&apiKey=***&address=yourlist@maillist.sendcloud.org&members=1@1.com;2@2.com&vars={"money":"199"};{"money":"1900"}
 ```
     
 **返回值说明**
@@ -469,7 +469,7 @@ http://api.sendcloud.sohu.com/apiv2/addressmember/update?apiUser=***&apiKey=***&
    
 **URL**
 ```
-http://api.sendcloud.sohu.com/apiv2/addressmember/delete
+http://api.sendcloud.net/apiv2/addressmember/delete
 ```
     
 **HTTP请求方式**
@@ -488,7 +488,7 @@ post    get
     
 **请求示例**
 ```
-http://api.sendcloud.sohu.com/apiv2/addressmember/delete?api_user=***&api_key=***&address=newtest@maillist.sendcloud.org&members=3@3.com;4@4.com
+http://api.sendcloud.net/apiv2/addressmember/delete?api_user=***&api_key=***&address=newtest@maillist.sendcloud.org&members=3@3.com;4@4.com
 ```
    
 **返回值说明**
