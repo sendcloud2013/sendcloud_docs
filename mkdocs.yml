@@ -49,7 +49,7 @@ pages:
 - [email_v2/label_do.md, '邮件API v2', '邮件标签']
 - [email_v2/domain_do.md, '邮件API v2', '域名']
 - [email_v2/apiuser_do.md, '邮件API v2', 'API_USER']
-#- [email_v2/user_info.md, '邮件API v2', '用户信息']
+- [email_v2/user_info.md, '邮件API v2', '用户信息']
 #- [email_v2/queuestatus_do.md, '邮件API v2', '队列状态']
 #- [email_v2/stats_do.md, '邮件API v2', '数据统计']
 #- [email_v2/bounce_do.md, '邮件API v2', '退信列表管理']
@@ -73,6 +73,6 @@ pages:
 - [downloads/code/nodejs.md, '代码示例','Nodejs']
 
 - [faq/index.md, 'FAQ', 'FAQ']
-#- [test/index.md, '测试平台', '测试中心']
+- [test/index.md, '测试平台', '测试中心']
 
 # theme: mkdocs

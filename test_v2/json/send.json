@@ -1936,6 +1936,40 @@
                     }
                 }
             }
+        },
+        "/userinfo/get": {
+            "get": {
+                "summary": "查询用户信息",
+                "parameters": [
+                    {
+                        "name": "apiUser",
+                        "in": "query",
+                        "description": "API_USER",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "apiKey",
+                        "in": "query",
+                        "description": "API_KEY",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    }
+                ],
+                "tags": [
+                    null
+                ],
+                "responses": {
+                    "200": {
+                        "description": "请求结果",
+                        "schema": {
+                            "$ref": "#/definitions/Result"
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
