@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">   
     <link rel="canonical" href="http://sendcloud.sohu.com/email/send_email/"> 
     <link rel="shortcut icon" href="../../favicon.ico">
-    <title>邮件发送 - SendCloud 文档中心</title>
+    <title>邮件发送 - SendCloud 文档中心 - SendCloud 文档中心</title>
     <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
     <link href="../../css/base.css" rel="stylesheet">
@@ -53,37 +53,37 @@
                 
                   <li class="pull-left">
                     
-                    <a href="../../guide/base/">开发者指南</a>
+                    <a href="../../guide/base">开发者指南</a>
                     
                   </li>
                 
                   <li class="pull-left active">
                     
-                    <a href="../">邮件API</a>
+                    <a href="..">邮件API</a>
                     
                   </li>
                 
                   <li class="pull-left">
                     
-                    <a href="../../sms/">短信API</a>
+                    <a href="../../email_v2">邮件API v2</a>
                     
                   </li>
                 
                   <li class="pull-left">
                     
-                    <a href="../../downloads/">代码示例</a>
+                    <a href="../../sms">短信API</a>
                     
                   </li>
                 
                   <li class="pull-left">
                     
-                    <a href="../../faq/">FAQ</a>
+                    <a href="../../downloads">代码示例</a>
                     
                   </li>
                 
                   <li class="pull-left">
                     
-                    <a href="../../test/">测试平台</a>
+                    <a href="../../faq">FAQ</a>
                     
                   </li>
                 
@@ -93,6 +93,10 @@
             
             <!-- Search, Navigation and Repo links -->
             <!-- <ul class="nav navbar-nav navbar-right">
+                
+                <li>
+                    <a href="#searchModal" data-toggle="modal"><i class="fa fa-search"></i> Search</a>
+                </li>
                 
                 
                 
@@ -142,14 +146,14 @@
           
 
               <li class="">
-                <a class="itm-l1" href="../">规则</a>
+                <a class="itm-l1" href="..">规则</a>
                 
               </li>
 
           
 
               <li class="active">
-                <a class="itm-l1" href="./">邮件发送</a>
+                <a class="itm-l1" href=".">邮件发送</a>
                 
                   <ul class="nav">
                   
@@ -166,70 +170,70 @@
           
 
               <li class="">
-                <a class="itm-l1" href="../template_do/">邮件模板</a>
+                <a class="itm-l1" href="../template_do">邮件模板</a>
                 
               </li>
 
           
 
               <li class="">
-                <a class="itm-l1" href="../list_do/">地址列表</a>
+                <a class="itm-l1" href="../list_do">地址列表</a>
                 
               </li>
 
           
 
               <li class="">
-                <a class="itm-l1" href="../label_do/">邮件标签</a>
+                <a class="itm-l1" href="../label_do">邮件标签</a>
                 
               </li>
 
           
 
               <li class="">
-                <a class="itm-l1" href="../queuestatus_do/">队列状态</a>
+                <a class="itm-l1" href="../queuestatus_do">队列状态</a>
                 
               </li>
 
           
 
               <li class="">
-                <a class="itm-l1" href="../stats_do/">数据统计</a>
+                <a class="itm-l1" href="../stats_do">数据统计</a>
                 
               </li>
 
           
 
               <li class="">
-                <a class="itm-l1" href="../user_info/">用户信息</a>
+                <a class="itm-l1" href="../user_info">用户信息</a>
                 
               </li>
 
           
 
               <li class="">
-                <a class="itm-l1" href="../bounce_do/">退信列表管理</a>
+                <a class="itm-l1" href="../bounce_do">退信列表管理</a>
                 
               </li>
 
           
 
               <li class="">
-                <a class="itm-l1" href="../unsubscribe_do/">取消订阅管理</a>
+                <a class="itm-l1" href="../unsubscribe_do">取消订阅管理</a>
                 
               </li>
 
           
 
               <li class="">
-                <a class="itm-l1" href="../spamreported_do/">垃圾举报管理</a>
+                <a class="itm-l1" href="../spamreported_do">垃圾举报管理</a>
                 
               </li>
 
           
 
               <li class="">
-                <a class="itm-l1" href="../webhook/">WebHook 详细</a>
+                <a class="itm-l1" href="../webhook">WebHook 详细</a>
                 
               </li>
 
@@ -301,7 +305,7 @@
 <td align="left">from</td>
 <td align="left">string</td>
 <td align="left">是</td>
-<td align="left">发件人地址. from 和<a href="../../guide/base/#_3">发信域名</a>, 会影响是否<a href="../../faq/#2">显示代发</a></td>
+<td align="left">发件人地址. from 和<a href="../../guide/base#_3">发信域名</a>, 会影响是否<a href="../../faq#2">显示代发</a></td>
 </tr>
 <tr>
 <td align="left">to</td>
@@ -367,13 +371,13 @@
 <td align="left">x_smtpapi</td>
 <td align="left">string</td>
 <td align="left">否</td>
-<td align="left">SMTP 扩展字段. 详见 <a href="../#x-smtpapi">X-SMTPAPI</a>.</td>
+<td align="left">SMTP 扩展字段. 详见 <a href="..#x-smtpapi">X-SMTPAPI</a>.</td>
 </tr>
 <tr>
 <td align="left">resp_email_id</td>
 <td align="left">string (true, false)</td>
 <td align="left">否</td>
-<td align="left">是否返回 <a href="../#messageid-emailid">emailId</a>. 有多个收件人时, 会返回 emailId 的列表</td>
+<td align="left">是否返回 <a href="..#messageid-emailid">emailId</a>. 有多个收件人时, 会返回 emailId 的列表</td>
 </tr>
 <tr>
 <td align="left">use_maillist</td>
@@ -427,7 +431,7 @@
 }
 </code></pre>
 
-<p>普通发送 ( post 方式, 使用地址列表 users@maillist.sendcloud.org, 用户可以根据返回的 <code>task_id</code> 在 <a href="../webhook/#mail_list_task_id_list">WebHook</a> 中使用 )</p>
+<p>普通发送 ( post 方式, 使用地址列表 users@maillist.sendcloud.org, 用户可以根据返回的 <code>task_id</code> 在 <a href="../webhook#mail_list_task_id_list">WebHook</a> 中使用 )</p>
 <pre><code>curl -d 'api_user=***&amp;api_key=***&amp;from=test@test.com&amp;fromname=来自测试发送&amp;subject=测试&amp;html=这是一封测试邮件&amp;to=ben@ifaxin.com;joe@ifaxin.com;users@maillist.sendcloud.org&amp;replyto=reply@test.com&amp;resp_email_id=true&amp;use_maillist=true' http://sendcloud.sohu.com/webapi/mail.send.json
 # 失败返回值 ( 地址列表不存在 )
 {
@@ -465,7 +469,7 @@ curl -F api_user='***' -F api_key='***' -F from='test@test.com' -F fromname='来
 <pre><code class="bash">post
 </code></pre>
 
-<p><strong>参数说明</strong>    </p>
+<p><strong>参数说明 <code>20150707 更新</code></strong>    </p>
 <table>
 <thead>
 <tr>
@@ -492,7 +496,7 @@ curl -F api_user='***' -F api_key='***' -F from='test@test.com' -F fromname='来
 <td align="left">from</td>
 <td align="left">string</td>
 <td align="left">是</td>
-<td align="left">发件人地址. from 和<a href="../../guide/base/#_3">发信域名</a>, 会影响是否<a href="../../faq/#2">显示代发</a></td>
+<td align="left">发件人地址. from 和<a href="../../guide/base#_3">发信域名</a>, 会影响是否<a href="../../faq#2">显示代发</a></td>
 </tr>
 <tr>
 <td align="left">substitution_vars</td>
@@ -509,8 +513,8 @@ curl -F api_user='***' -F api_key='***' -F from='test@test.com' -F fromname='来
 <tr>
 <td align="left">subject</td>
 <td align="left">string</td>
-<td align="left">是</td>
-<td align="left">标题. 不能为空</td>
+<td align="left"><code>否</code></td>
+<td align="left">邮件标题</td>
 </tr>
 <tr>
 <td align="left">template_invoke_name</td>
@@ -552,7 +556,7 @@ curl -F api_user='***' -F api_key='***' -F from='test@test.com' -F fromname='来
 <td align="left">resp_email_id</td>
 <td align="left">string (true, false)</td>
 <td align="left">否</td>
-<td align="left">是否返回 <a href="../#messageid-emailid">emailId</a>. 有多个收件人时, 会返回 emailId 的列表</td>
+<td align="left">是否返回 <a href="..#messageid-emailid">emailId</a>. 有多个收件人时, 会返回 emailId 的列表</td>
 </tr>
 <tr>
 <td align="left">use_maillist</td>
@@ -571,6 +575,8 @@ curl -F api_user='***' -F api_key='***' -F from='test@test.com' -F fromname='来
 <p>注意:</p>
 <ol>
 <li><code>to</code> 和 <code>substitution_vars</code> 分别对应地址列表使用与否的情况, 两者不能同时使用</li>
+<li>只能调用审核通过的模板</li>
+<li>API_USER 类型和模板类型必须一致</li>
 </ol>
 <p><strong>请求, 返回值示例</strong></p>
 <p>普通发送 ( 调用模板 ifaxin_bill )</p>
@@ -604,7 +610,7 @@ curl -d 'api_user=***&amp;api_key=***&amp;from=test@test.com&amp;fromname=来自
     您好! 您本月在爱发信的消费金额为: 497 元.
 </code></pre>
 
-<p>普通发送 ( 调用模板 ifaxin_bill, 调用地址列表 users@maillist.sendcloud.org, 用户可以根据返回的 <code>task_id</code> 在 <a href="../webhook/#mail_list_task_id_list">WebHook</a>  中使用 )</p>
+<p>普通发送 ( 调用模板 ifaxin_bill, 调用地址列表 users@maillist.sendcloud.org, 用户可以根据返回的 <code>task_id</code> 在 <a href="../webhook#mail_list_task_id_list">WebHook</a>  中使用 )</p>
 <pre><code>curl -d 'api_user=***&amp;api_key=***&amp;from=test@test.com&amp;fromname=来自测试发送&amp;subject=测试&amp;template_invoke_name=ifaxin_bill&amp;replyto=reply@test.com&amp;label=16800&amp;resp_email_id=true&amp;use_maillist=true&amp;to=users@maillist.sendcloud.org' http://sendcloud.sohu.com/webapi/mail.send_template.json
 
 # 返回值
@@ -638,22 +644,40 @@ curl -F api_user='***' -F api_key='***' -F from='test@test.com' -F fromname='来
     &quot;mail_list_task_id_list&quot;:[135677]
 }
 </code></pre>
-            <div class="ds-thread" data-thread-key="邮件发送" data-title="邮件发送" data-url=""></div>
+
+
+            <div class="ds-thread" data-thread-key="邮件发送 - SendCloud 文档中心" data-title="邮件发送 - SendCloud 文档中心" data-url=""></div>
         </div>
         
     </div>
     <footer class="clearfix footer">
         <div class="container">
             <ul class="list-unstyled list-inline pull-left">
-                <li><a href="http://sendcloud.sohu.com/aboutUs.html">关于我们</a> </li>
-                <li><a href="http://sendcloud.sohu.com/aboutUs.html#agreement">服务协议</a></li>
-                <li><a href="http://sendcloud.sohu.com/aboutUs.html#partners">合作伙伴</a></li>
-                <li><a href="https://sendcloud.kf5.com/" target="_blank">帮助中心</a></li>
+                <li><a target="_blank" href="http://sendcloud.sohu.com/aboutus.html">关于我们</a> </li>
+                <li><a target="_blank" href="http://sendcloud.sohu.com/aboutus.html#agreement">服务协议</a></li>
+                <li><a target="_blank" href="http://sendcloud.sohu.com/aboutus.html#partners">合作伙伴</a></li>
+                <li><a target="_blank" href="https://sendcloud.kf5.com/" target="_blank">帮助中心</a></li>
             </ul>
             <p class="pull-right">copyright 2015 &copy; SendCloud</p>
         </div>
     </footer>
-    
+    <!-- Search modal.  Not yet supported. -->
+<div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="searchModalLabel">Documentation search</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
     <script src="../../js/jquery-1.11.2.min.js"></script>
     <script src="../../js/bootstrap-3.0.3.min.js"></script>
     <script src="../../js/prettify-1.0.min.js"></script>

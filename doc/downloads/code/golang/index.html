@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">   
     <link rel="canonical" href="http://sendcloud.sohu.com/downloads/code/golang/"> 
     <link rel="shortcut icon" href="../../../favicon.ico">
-    <title>Golang - SendCloud 文档中心</title>
+    <title>Golang - SendCloud 文档中心 - SendCloud 文档中心</title>
     <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="../../../css/font-awesome-4.0.3.css" rel="stylesheet">
     <link href="../../../css/base.css" rel="stylesheet">
@@ -53,37 +53,37 @@
                 
                   <li class="pull-left">
                     
-                    <a href="../../../guide/base/">开发者指南</a>
+                    <a href="../../../guide/base">开发者指南</a>
                     
                   </li>
                 
                   <li class="pull-left">
                     
-                    <a href="../../../email/">邮件API</a>
+                    <a href="../../../email">邮件API</a>
                     
                   </li>
                 
                   <li class="pull-left">
                     
-                    <a href="../../../sms/">短信API</a>
+                    <a href="../../../email_v2">邮件API v2</a>
+                    
+                  </li>
+                
+                  <li class="pull-left">
+                    
+                    <a href="../../../sms">短信API</a>
                     
                   </li>
                 
                   <li class="pull-left active">
                     
-                    <a href="../../">代码示例</a>
+                    <a href="../..">代码示例</a>
                     
                   </li>
                 
                   <li class="pull-left">
                     
-                    <a href="../../../faq/">FAQ</a>
-                    
-                  </li>
-                
-                  <li class="pull-left">
-                    
-                    <a href="../../../test/">测试平台</a>
+                    <a href="../../../faq">FAQ</a>
                     
                   </li>
                 
@@ -93,6 +93,10 @@
             
             <!-- Search, Navigation and Repo links -->
             <!-- <ul class="nav navbar-nav navbar-right">
+                
+                <li>
+                    <a href="#searchModal" data-toggle="modal"><i class="fa fa-search"></i> Search</a>
+                </li>
                 
                 
                 
@@ -149,70 +153,78 @@
     
       
         
+      
+
+    
+      
+        
           
 
               <li class="">
-                <a class="itm-l1" href="../../">代码示例</a>
+                <a class="itm-l1" href="../..">代码示例</a>
                 
               </li>
 
           
 
               <li class="">
-                <a class="itm-l1" href="../curl/">Curl</a>
+                <a class="itm-l1" href="../curl">Curl</a>
                 
               </li>
 
           
 
               <li class="">
-                <a class="itm-l1" href="../python/">Python</a>
+                <a class="itm-l1" href="../python/python">Python</a>
                 
               </li>
 
           
 
               <li class="">
-                <a class="itm-l1" href="../java/">Java</a>
+                <a class="itm-l1" href="../java/java">Java</a>
                 
               </li>
 
           
 
               <li class="">
-                <a class="itm-l1" href="../php/">Php</a>
+                <a class="itm-l1" href="../php/php">PHP</a>
                 
               </li>
 
           
 
               <li class="">
-                <a class="itm-l1" href="../ruby/">Ruby</a>
+                <a class="itm-l1" href="../ruby/ruby">Ruby</a>
                 
               </li>
 
           
 
               <li class="">
-                <a class="itm-l1" href="../perl/">Perl</a>
+                <a class="itm-l1" href="../perl/perl">Perl</a>
                 
               </li>
 
           
 
               <li class="">
-                <a class="itm-l1" href="../csharp/">C#</a>
+                <a class="itm-l1" href="../csharp">C#</a>
                 
               </li>
 
           
 
               <li class="active">
-                <a class="itm-l1" href="./">Golang</a>
+                <a class="itm-l1" href=".">Golang</a>
                 
                   <ul class="nav">
                   
-                    <li class="active "><a href="#webapi">WEBAPI</a></li>
+                    <li class="active "><a href="#webapi">WEBAPI 普通发送</a></li>
+                    
+                  
+                    <li class=""><a href="#webapi_1">WEBAPI 模板发送</a></li>
                     
                   
                   </ul>
@@ -222,16 +234,11 @@
           
 
               <li class="">
-                <a class="itm-l1" href="../nodejs/">Node.js</a>
+                <a class="itm-l1" href="../nodejs">Nodejs</a>
                 
               </li>
 
           
-        
-      
-
-    
-      
         
       
 
@@ -248,7 +255,7 @@
 
 <h1>Golang</h1>
 
-<h2 id="webapi">WEBAPI</h2>
+<h2 id="webapi">WEBAPI 普通发送</h2>
 <p>感谢 Dannys Han ^_^</p>
 <hr />
 <pre><code>package main
@@ -290,22 +297,131 @@ func main() {
     SendMail()
 }
 </code></pre>
-            <div class="ds-thread" data-thread-key="Golang" data-title="Golang" data-url=""></div>
+
+<h2 id="webapi_1">WEBAPI 模板发送</h2>
+<p>感谢 smartwalle ^_^ <a href="https://github.com/smartwalle/sendcloud">github</a></p>
+<hr />
+<pre><code>package sendcloud
+
+import (
+    &quot;net/url&quot;
+    &quot;bytes&quot;
+    &quot;net/http&quot;
+    &quot;io/ioutil&quot;
+    &quot;encoding/json&quot;
+    &quot;errors&quot;
+)
+
+const (
+    SEND_CLOUD_TEMPLATE_MAIL_API_URL = &quot;http://sendcloud.sohu.com/webapi/mail.send_template.json&quot;
+)
+
+var (
+    MailApiUser = &quot;&quot;
+    MailApiKey  = &quot;&quot;
+)
+
+func UpdateApiInfo(apiUser, apiKey string) {
+    MailApiUser = apiUser
+    MailApiKey  = apiKey
+}
+
+func SendMailWithTemplate(template, from, fromName, replyTo, subject string, toList []map[string]string) (bool, error, string) {
+
+    if len(MailApiKey) == 0 || len(MailApiUser) == 0 {
+        return false, errors.New(&quot;请先配置 api 信息&quot;), &quot;&quot;
+    }
+
+    var toMap = map[string]interface{}{}
+    var toMailList = make([]string, len(toList))
+    var sub = map[string][]string{}
+
+    for index, item := range toList {
+        for key, value := range item {
+            if key == &quot;to&quot; {
+                toMailList[index] = value
+            } else {
+                if _, ok := sub[key]; !ok {
+                    sub[key] = make([]string, len(toList))
+                }
+                sub[key][index] = value
+            }
+        }
+    }
+    toMap[&quot;to&quot;] = toMailList
+    if len(sub) &gt; 0 {
+        toMap[&quot;sub&quot;] = sub
+    }
+
+    var substitutionVarsBytes, err = json.Marshal(toMap)
+    if err != nil {
+        return false ,err, &quot;&quot;
+    }
+
+    var substitutionVars  = string(substitutionVarsBytes)
+    params := url.Values {
+        &quot;api_user&quot;: {MailApiUser},
+        &quot;api_key&quot;:  {MailApiKey},
+        &quot;from&quot;:     {from},
+        &quot;fromname&quot;: {fromName},
+        &quot;replyto&quot;:  {replyTo},
+        &quot;subject&quot;:  {subject},
+        &quot;template_invoke_name&quot;: {template},
+        &quot;substitution_vars&quot;:    {substitutionVars},
+    }
+
+    var body = bytes.NewBufferString(params.Encode())
+    responseHandler, err := http.Post(SEND_CLOUD_TEMPLATE_MAIL_API_URL, &quot;application/x-www-form-urlencoded&quot;, body)
+    if err != nil {
+        return false, err, &quot;&quot;
+    }
+    defer responseHandler.Body.Close()
+
+    bodyByte, err := ioutil.ReadAll(responseHandler.Body)
+    if err != nil {
+        return false, err, string(bodyByte)
+    }
+
+    var result map[string]interface{}
+    err = json.Unmarshal(bodyByte, &amp;result)
+    return (result[&quot;message&quot;] == &quot;success&quot;), err, string(bodyByte)
+}
+
+</code></pre>
+
+
+            <div class="ds-thread" data-thread-key="Golang - SendCloud 文档中心" data-title="Golang - SendCloud 文档中心" data-url=""></div>
         </div>
         
     </div>
     <footer class="clearfix footer">
         <div class="container">
             <ul class="list-unstyled list-inline pull-left">
-                <li><a href="http://sendcloud.sohu.com/aboutUs.html">关于我们</a> </li>
-                <li><a href="http://sendcloud.sohu.com/aboutUs.html#agreement">服务协议</a></li>
-                <li><a href="http://sendcloud.sohu.com/aboutUs.html#partners">合作伙伴</a></li>
-                <li><a href="https://sendcloud.kf5.com/" target="_blank">帮助中心</a></li>
+                <li><a target="_blank" href="http://sendcloud.sohu.com/aboutus.html">关于我们</a> </li>
+                <li><a target="_blank" href="http://sendcloud.sohu.com/aboutus.html#agreement">服务协议</a></li>
+                <li><a target="_blank" href="http://sendcloud.sohu.com/aboutus.html#partners">合作伙伴</a></li>
+                <li><a target="_blank" href="https://sendcloud.kf5.com/" target="_blank">帮助中心</a></li>
             </ul>
             <p class="pull-right">copyright 2015 &copy; SendCloud</p>
         </div>
     </footer>
-    
+    <!-- Search modal.  Not yet supported. -->
+<div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="searchModalLabel">Documentation search</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
     <script src="../../../js/jquery-1.11.2.min.js"></script>
     <script src="../../../js/bootstrap-3.0.3.min.js"></script>
     <script src="../../../js/prettify-1.0.min.js"></script>

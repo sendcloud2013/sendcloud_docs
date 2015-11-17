@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">   
     <link rel="canonical" href="http://sendcloud.sohu.com/downloads/code/curl/"> 
     <link rel="shortcut icon" href="../../../favicon.ico">
-    <title>Curl - SendCloud 文档中心</title>
+    <title>Curl - SendCloud 文档中心 - SendCloud 文档中心</title>
     <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="../../../css/font-awesome-4.0.3.css" rel="stylesheet">
     <link href="../../../css/base.css" rel="stylesheet">
@@ -53,37 +53,37 @@
                 
                   <li class="pull-left">
                     
-                    <a href="../../../guide/base/">开发者指南</a>
+                    <a href="../../../guide/base">开发者指南</a>
                     
                   </li>
                 
                   <li class="pull-left">
                     
-                    <a href="../../../email/">邮件API</a>
+                    <a href="../../../email">邮件API</a>
                     
                   </li>
                 
                   <li class="pull-left">
                     
-                    <a href="../../../sms/">短信API</a>
+                    <a href="../../../email_v2">邮件API v2</a>
+                    
+                  </li>
+                
+                  <li class="pull-left">
+                    
+                    <a href="../../../sms">短信API</a>
                     
                   </li>
                 
                   <li class="pull-left active">
                     
-                    <a href="../../">代码示例</a>
+                    <a href="../..">代码示例</a>
                     
                   </li>
                 
                   <li class="pull-left">
                     
-                    <a href="../../../faq/">FAQ</a>
-                    
-                  </li>
-                
-                  <li class="pull-left">
-                    
-                    <a href="../../../test/">测试平台</a>
+                    <a href="../../../faq">FAQ</a>
                     
                   </li>
                 
@@ -93,6 +93,10 @@
             
             <!-- Search, Navigation and Repo links -->
             <!-- <ul class="nav navbar-nav navbar-right">
+                
+                <li>
+                    <a href="#searchModal" data-toggle="modal"><i class="fa fa-search"></i> Search</a>
+                </li>
                 
                 
                 
@@ -149,17 +153,22 @@
     
       
         
+      
+
+    
+      
+        
           
 
               <li class="">
-                <a class="itm-l1" href="../../">代码示例</a>
+                <a class="itm-l1" href="../..">代码示例</a>
                 
               </li>
 
           
 
               <li class="active">
-                <a class="itm-l1" href="./">Curl</a>
+                <a class="itm-l1" href=".">Curl</a>
                 
                   <ul class="nav">
                   
@@ -176,65 +185,60 @@
           
 
               <li class="">
-                <a class="itm-l1" href="../python/">Python</a>
+                <a class="itm-l1" href="../python/python">Python</a>
                 
               </li>
 
           
 
               <li class="">
-                <a class="itm-l1" href="../java/">Java</a>
+                <a class="itm-l1" href="../java/java">Java</a>
                 
               </li>
 
           
 
               <li class="">
-                <a class="itm-l1" href="../php/">Php</a>
+                <a class="itm-l1" href="../php/php">PHP</a>
                 
               </li>
 
           
 
               <li class="">
-                <a class="itm-l1" href="../ruby/">Ruby</a>
+                <a class="itm-l1" href="../ruby/ruby">Ruby</a>
                 
               </li>
 
           
 
               <li class="">
-                <a class="itm-l1" href="../perl/">Perl</a>
+                <a class="itm-l1" href="../perl/perl">Perl</a>
                 
               </li>
 
           
 
               <li class="">
-                <a class="itm-l1" href="../csharp/">C#</a>
+                <a class="itm-l1" href="../csharp">C#</a>
                 
               </li>
 
           
 
               <li class="">
-                <a class="itm-l1" href="../golang/">Golang</a>
+                <a class="itm-l1" href="../golang">Golang</a>
                 
               </li>
 
           
 
               <li class="">
-                <a class="itm-l1" href="../nodejs/">Node.js</a>
+                <a class="itm-l1" href="../nodejs">Nodejs</a>
                 
               </li>
 
           
-        
-      
-
-    
-      
         
       
 
@@ -266,7 +270,7 @@ curl -d 'api_user=***&amp;api_key=***&amp;from=test@test.com&amp;fromname=来自
 curl -F api_user='***' -F api_key='***' -F from='test@test.com' -F fromname='来自测试发送' -F subject='测试' -F html='这是一封测试邮件' -F to='ben@ifaxin.com' -F replyto='reply@test.com' -F resp_email_id='true' -F files=@/path/attach.pdf http://sendcloud.sohu.com/webapi/mail.send.json
 </code></pre>
 
-<p>更多示例, 请见<a href="../../../email/send_email/"><code>邮件API - 邮件发送</code></a></p>
+<p>更多示例, 请见<a href="../../../email/send_email"><code>邮件API - 邮件发送</code></a></p>
 <hr />
 <h2 id="smtp">SMTP</h2>
 <pre><code>curl smtp://smtpcloud.sohu.com:25 -v \
@@ -275,22 +279,40 @@ curl -F api_user='***' -F api_key='***' -F from='test@test.com' -F fromname='来
 -u api_user:api_key \
 -T mail_content.eml
 </code></pre>
-            <div class="ds-thread" data-thread-key="Curl" data-title="Curl" data-url=""></div>
+
+
+            <div class="ds-thread" data-thread-key="Curl - SendCloud 文档中心" data-title="Curl - SendCloud 文档中心" data-url=""></div>
         </div>
         
     </div>
     <footer class="clearfix footer">
         <div class="container">
             <ul class="list-unstyled list-inline pull-left">
-                <li><a href="http://sendcloud.sohu.com/aboutUs.html">关于我们</a> </li>
-                <li><a href="http://sendcloud.sohu.com/aboutUs.html#agreement">服务协议</a></li>
-                <li><a href="http://sendcloud.sohu.com/aboutUs.html#partners">合作伙伴</a></li>
-                <li><a href="https://sendcloud.kf5.com/" target="_blank">帮助中心</a></li>
+                <li><a target="_blank" href="http://sendcloud.sohu.com/aboutus.html">关于我们</a> </li>
+                <li><a target="_blank" href="http://sendcloud.sohu.com/aboutus.html#agreement">服务协议</a></li>
+                <li><a target="_blank" href="http://sendcloud.sohu.com/aboutus.html#partners">合作伙伴</a></li>
+                <li><a target="_blank" href="https://sendcloud.kf5.com/" target="_blank">帮助中心</a></li>
             </ul>
             <p class="pull-right">copyright 2015 &copy; SendCloud</p>
         </div>
     </footer>
-    
+    <!-- Search modal.  Not yet supported. -->
+<div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="searchModalLabel">Documentation search</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
     <script src="../../../js/jquery-1.11.2.min.js"></script>
     <script src="../../../js/bootstrap-3.0.3.min.js"></script>
     <script src="../../../js/prettify-1.0.min.js"></script>

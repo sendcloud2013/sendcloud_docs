@@ -113,6 +113,9 @@ code {
     color: #c7254e;
     background-color: #f9f2f4;
     font-size: 75%;
+    display: inline-block;
+    max-width: 100%;
+    overflow-x: auto;
 }
 
 code,
@@ -398,5 +401,11 @@ footer {
 @media (max-width: 768px) {
     .one-fifth {
         width: 100%;
+    }
+    .affix{
+        position: static!important;
+    }
+    .github-edit{
+        display: none;
     }
 }

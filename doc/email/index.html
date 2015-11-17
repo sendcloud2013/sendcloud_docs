@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">   
     <link rel="canonical" href="http://sendcloud.sohu.com/email/"> 
     <link rel="shortcut icon" href="../favicon.ico">
-    <title>规则 - SendCloud 文档中心</title>
+    <title>规则 - SendCloud 文档中心 - SendCloud 文档中心</title>
     <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="../css/font-awesome-4.0.3.css" rel="stylesheet">
     <link href="../css/base.css" rel="stylesheet">
@@ -53,37 +53,37 @@
                 
                   <li class="pull-left">
                     
-                    <a href="../guide/base/">开发者指南</a>
+                    <a href="../guide/base">开发者指南</a>
                     
                   </li>
                 
                   <li class="pull-left active">
                     
-                    <a href="./">邮件API</a>
+                    <a href=".">邮件API</a>
                     
                   </li>
                 
                   <li class="pull-left">
                     
-                    <a href="../sms/">短信API</a>
+                    <a href="../email_v2">邮件API v2</a>
                     
                   </li>
                 
                   <li class="pull-left">
                     
-                    <a href="../downloads/">代码示例</a>
+                    <a href="../sms">短信API</a>
                     
                   </li>
                 
                   <li class="pull-left">
                     
-                    <a href="../faq/">FAQ</a>
+                    <a href="../downloads">代码示例</a>
                     
                   </li>
                 
                   <li class="pull-left">
                     
-                    <a href="../test/">测试平台</a>
+                    <a href="../faq">FAQ</a>
                     
                   </li>
                 
@@ -93,6 +93,10 @@
             
             <!-- Search, Navigation and Repo links -->
             <!-- <ul class="nav navbar-nav navbar-right">
+                
+                <li>
+                    <a href="#searchModal" data-toggle="modal"><i class="fa fa-search"></i> Search</a>
+                </li>
                 
                 
                 
@@ -142,7 +146,7 @@
           
 
               <li class="active">
-                <a class="itm-l1" href="./">规则</a>
+                <a class="itm-l1" href=".">规则</a>
                 
                   <ul class="nav">
                   
@@ -158,9 +162,6 @@
                     <li class=""><a href="#messageid-emailid">messageId 和 emailId</a></li>
                     
                   
-                    <li class=""><a href="#_1">变量替换</a></li>
-                    
-                  
                     <li class=""><a href="#x-smtpapi">X-SMTPAPI 扩展字段</a></li>
                     
                   
@@ -171,77 +172,77 @@
           
 
               <li class="">
-                <a class="itm-l1" href="send_email/">邮件发送</a>
+                <a class="itm-l1" href="send_email">邮件发送</a>
                 
               </li>
 
           
 
               <li class="">
-                <a class="itm-l1" href="template_do/">邮件模板</a>
+                <a class="itm-l1" href="template_do">邮件模板</a>
                 
               </li>
 
           
 
               <li class="">
-                <a class="itm-l1" href="list_do/">地址列表</a>
+                <a class="itm-l1" href="list_do">地址列表</a>
                 
               </li>
 
           
 
               <li class="">
-                <a class="itm-l1" href="label_do/">邮件标签</a>
+                <a class="itm-l1" href="label_do">邮件标签</a>
                 
               </li>
 
           
 
               <li class="">
-                <a class="itm-l1" href="queuestatus_do/">队列状态</a>
+                <a class="itm-l1" href="queuestatus_do">队列状态</a>
                 
               </li>
 
           
 
               <li class="">
-                <a class="itm-l1" href="stats_do/">数据统计</a>
+                <a class="itm-l1" href="stats_do">数据统计</a>
                 
               </li>
 
           
 
               <li class="">
-                <a class="itm-l1" href="user_info/">用户信息</a>
+                <a class="itm-l1" href="user_info">用户信息</a>
                 
               </li>
 
           
 
               <li class="">
-                <a class="itm-l1" href="bounce_do/">退信列表管理</a>
+                <a class="itm-l1" href="bounce_do">退信列表管理</a>
                 
               </li>
 
           
 
               <li class="">
-                <a class="itm-l1" href="unsubscribe_do/">取消订阅管理</a>
+                <a class="itm-l1" href="unsubscribe_do">取消订阅管理</a>
                 
               </li>
 
           
 
               <li class="">
-                <a class="itm-l1" href="spamreported_do/">垃圾举报管理</a>
+                <a class="itm-l1" href="spamreported_do">垃圾举报管理</a>
                 
               </li>
 
           
 
               <li class="">
-                <a class="itm-l1" href="webhook/">WebHook 详细</a>
+                <a class="itm-l1" href="webhook">WebHook 详细</a>
                 
               </li>
 
@@ -305,7 +306,7 @@
 
 <hr />
 <h2 id="smtp">SMTP 请求方式</h2>
-<p>为开发者提供 SMTP 协议的投递方式, 以下是会话过程. 详细的代码示例, 请移步<a href="../downloads/code/python/#smtp">这里</a></p>
+<p>为开发者提供 SMTP 协议的投递方式, 以下是会话过程. 详细的代码示例, 请移步<a href="../downloads/code/python/python#smtp">这里</a></p>
 <pre><code>S: 220 SendCloud Inbound Server ESMTP Haraka 2.2.4 ready
 
 C: ehlo ifaxin.com
@@ -369,22 +370,6 @@ emailId_C = messageId + to.index(C) + '$' + C
 1425758592214_4576_32113_9310.sc-10_10_127_105-inbound99$lianzimi@ifaxin.com  # emailId
 </code></pre>
 
-<hr />
-<h2 id="_1">变量替换</h2>
-<p>SendCloud 支持在邮件中使用「变量」. </p>
-<p>变量的格式: 首尾使用 <code>%</code> 包含, 即为用户定义的一个变量. 举例:</p>
-<pre><code>亲爱的%name%: # name是变量
-
-    欢迎注册爱发信, 这是您的验证码: %active_code%. # active_code是变量
-</code></pre>
-
-<p>变量的用法:</p>
-<ol>
-<li>在 <em>普通发送</em>, <em>模板发送</em> 中使用变量, 来作为占位符</li>
-<li>在 <em>地址列表</em>, <em>X-SMTPAPI</em> 中设置变量的值</li>
-<li>SendCloud 会根据不同收件人, 来替换邮件内容中相应变量的值</li>
-</ol>
-<p><strong>注意</strong>: 邮件标题中的变量不会被替换, 所以不要在标题中设置变量</p>
 <hr />
 <h2 id="x-smtpapi">X-SMTPAPI 扩展字段</h2>
 <p>X-SMTPAPI 是 SendCloud 为开发者提供的邮件个性化定制的处理方式, 开发者通过这个特殊的 <strong>信头扩展字段</strong>, 可以设置邮件处理方式的很多参数.  一般的, 开发者在使用 SMTP 接入时会使用此字段. 不过, WEBAPI 的方式也支持此参数. </p>
@@ -506,22 +491,40 @@ emailId_C = messageId + to.index(C) + '$' + C
     }
 }
 </code></pre>
-            <div class="ds-thread" data-thread-key="规则" data-title="规则" data-url=""></div>
+
+
+            <div class="ds-thread" data-thread-key="规则 - SendCloud 文档中心" data-title="规则 - SendCloud 文档中心" data-url=""></div>
         </div>
         
     </div>
     <footer class="clearfix footer">
         <div class="container">
             <ul class="list-unstyled list-inline pull-left">
-                <li><a href="http://sendcloud.sohu.com/aboutUs.html">关于我们</a> </li>
-                <li><a href="http://sendcloud.sohu.com/aboutUs.html#agreement">服务协议</a></li>
-                <li><a href="http://sendcloud.sohu.com/aboutUs.html#partners">合作伙伴</a></li>
-                <li><a href="https://sendcloud.kf5.com/" target="_blank">帮助中心</a></li>
+                <li><a target="_blank" href="http://sendcloud.sohu.com/aboutus.html">关于我们</a> </li>
+                <li><a target="_blank" href="http://sendcloud.sohu.com/aboutus.html#agreement">服务协议</a></li>
+                <li><a target="_blank" href="http://sendcloud.sohu.com/aboutus.html#partners">合作伙伴</a></li>
+                <li><a target="_blank" href="https://sendcloud.kf5.com/" target="_blank">帮助中心</a></li>
             </ul>
             <p class="pull-right">copyright 2015 &copy; SendCloud</p>
         </div>
     </footer>
-    
+    <!-- Search modal.  Not yet supported. -->
+<div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="searchModalLabel">Documentation search</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
     <script src="../js/jquery-1.11.2.min.js"></script>
     <script src="../js/bootstrap-3.0.3.min.js"></script>
     <script src="../js/prettify-1.0.min.js"></script>

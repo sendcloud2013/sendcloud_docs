@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">   
     <link rel="canonical" href="http://sendcloud.sohu.com/faq/"> 
     <link rel="shortcut icon" href="../favicon.ico">
-    <title>FAQ - SendCloud 文档中心</title>
+    <title>FAQ - SendCloud 文档中心 - SendCloud 文档中心</title>
     <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="../css/font-awesome-4.0.3.css" rel="stylesheet">
     <link href="../css/base.css" rel="stylesheet">
@@ -53,37 +53,37 @@
                 
                   <li class="pull-left">
                     
-                    <a href="../guide/base/">开发者指南</a>
+                    <a href="../guide/base">开发者指南</a>
                     
                   </li>
                 
                   <li class="pull-left">
                     
-                    <a href="../email/">邮件API</a>
+                    <a href="../email">邮件API</a>
                     
                   </li>
                 
                   <li class="pull-left">
                     
-                    <a href="../sms/">短信API</a>
+                    <a href="../email_v2">邮件API v2</a>
                     
                   </li>
                 
                   <li class="pull-left">
                     
-                    <a href="../downloads/">代码示例</a>
+                    <a href="../sms">短信API</a>
+                    
+                  </li>
+                
+                  <li class="pull-left">
+                    
+                    <a href="../downloads">代码示例</a>
                     
                   </li>
                 
                   <li class="pull-left active">
                     
-                    <a href="./">FAQ</a>
-                    
-                  </li>
-                
-                  <li class="pull-left">
-                    
-                    <a href="../test/">测试平台</a>
+                    <a href=".">FAQ</a>
                     
                   </li>
                 
@@ -93,6 +93,10 @@
             
             <!-- Search, Navigation and Repo links -->
             <!-- <ul class="nav navbar-nav navbar-right">
+                
+                <li>
+                    <a href="#searchModal" data-toggle="modal"><i class="fa fa-search"></i> Search</a>
+                </li>
                 
                 
                 
@@ -154,10 +158,15 @@
     
       
         
+      
+
+    
+      
+        
           
 
               <li class="active">
-                <a class="itm-l1" href="./">FAQ</a>
+                <a class="itm-l1" href=".">FAQ</a>
                 
                   <ul class="nav">
                   
@@ -188,16 +197,14 @@
                     <li class=""><a href="#9-sendcloud-smtp-25">9. SendCloud 的 SMTP 服务只开放了 25 端口么?</a></li>
                     
                   
+                    <li class=""><a href="#10">10. 邮件模板, 模板匹配, 模板发送, 我有点晕?</a></li>
+                    
+                  
                   </ul>
                 
               </li>
 
           
-        
-      
-
-    
-      
         
       
 
@@ -214,20 +221,20 @@
 <ul>
 <li>注册帐号, 激活邮件 ( 每日额度: +30 )</li>
 <li>完善信息 ( 每日额度: +30 )</li>
-<li>创建<a href="../guide/base/#_3">发信域名</a> ( 每日额度: +60 )</li>
-<li>创建<a href="../guide/base/#api_user">API_USER</a> ( 每日额度: +40 ) </li>
-<li>创建<a href="../guide/base/#sample">样本</a>, 通过审核 ( 每日额度: +40 ) </li>
+<li>创建<a href="../guide/base#_3">发信域名</a> ( 每日额度: +60 )</li>
+<li>创建<a href="../guide/base#api_user">API_USER</a> ( 每日额度: +40 ) </li>
+<li>创建<a href="../guide/base#sample">样本</a>, 通过审核 ( 每日额度: +40 ) </li>
 </ul>
 <p><strong> 付费用户 ( 个人用户, 每日额度: 1000 )</strong></p>
 <ul>
-<li><a href="../guide/base/#_6">网站认证</a></li>
-<li><a href="../guide/base/#_6">商业认证</a></li>
+<li><a href="../guide/base#_6">网站认证</a></li>
+<li><a href="../guide/base#_6">商业认证</a></li>
 <li>充值 ( 需先完成前两项 )</li>
 </ul>
 <p><strong> 付费用户 ( 企业用户, 每日额度: 3000 )</strong></p>
 <ul>
-<li><a href="../guide/base/#_6">网站认证</a></li>
-<li><a href="../guide/base/#_6">商业认证</a></li>
+<li><a href="../guide/base#_6">网站认证</a></li>
+<li><a href="../guide/base#_6">商业认证</a></li>
 <li>充值 ( 需先完成前两项 )</li>
 </ul>
 <p><strong> 付费用户 ( 每日额度: &gt; 6000 )</strong></p>
@@ -240,7 +247,7 @@
 </blockquote>
 <hr />
 <h2 id="2-mail-from-from-reply-to">2. 如何理解 mail from, from, reply-to?</h2>
-<p><strong>mail_from:</strong> 信封上的发件人, 由「前缀@域名」组成. 此域名就是所谓的<a href="../guide/base/#_3">发信域名</a></p>
+<p><strong>mail_from:</strong> 信封上的发件人, 由「前缀@域名」组成. 此域名就是所谓的<a href="../guide/base#_3">发信域名</a></p>
 <p><strong>from:</strong> 信件内容里的发件人. 用户可以任意填写, 支持别名显示.</p>
 <p>「代发」是否出现, 就是看 <em>mail_from</em> 和 <em>from</em> 是否相同.</p>
 <p><strong>reply-to:</strong> 信件回复的收件人. 用户直接回复邮件时, <em>reply-to</em> 就是默认的收件人. 如果用户不指定它, <em>from</em> 就是默认的收件人.</p>
@@ -251,12 +258,12 @@ String from = MimeUtility.encodeText("爱发信客服", "UTF-8", "B") + "&lt;sup
 <h2 id="3">3. 邮件中为什么会显示代发?</h2>
 <p>邮件中存在 <em>mail_from</em> 和 <em>from</em> 两个概念, 如果这两者不一致, 则 ESP 会在客户端上显示代发, 用以提醒收件人两者的不同.</p>
 <p>显示代发如下图: </p>
-<p><img alt="pic" src="../resources/domain_liubida.cn.png" /></p>
+<p><img alt="pic" src="..//resources/domain_liubida.cn.png" /></p>
 <pre><code>from = 'test@liubida.cn'
 mail_from = '98a47302-beee-11e4-a3b9-00163e12fa99@push.liubida.cn'
 </code></pre>
 <p>如果两者一致, 则不会显示代发, 如下图: </p>
-<p><img alt="pic" src="../resources/domain_push.liubida.cn.png" /></p>
+<p><img alt="pic" src="..//resources/domain_push.liubida.cn.png" /></p>
 <p>当然, 有些 ESP 并不会要求这两者完全一致, 而是只要求两者的域名相同 ( 比如 QQ 邮箱 ) .</p>
 <p>由于 SendCloud 对 <em>mail_from</em> 的前缀使用的是随机串, 所以, 如果碰到严苛的 ESP ( <em>mail_from</em> 和 <em>from</em> 必须完全一致才不显示代发, 比如网易邮箱 ), 那也只能爱莫能助了.</p>
 <p>如果你对不显示代发有非常强烈的需求, 可以联系SendCloud客服, 帮你再想想办法.</p>
@@ -332,7 +339,7 @@ s.login(API_USER + '#' + label_id, API_KEY)
 <hr />
 <h2 id="8-sendcloud">8. 如何在客户端上使用 SendCloud 发信?</h2>
 <p>将发件服务器设置为 <code>smtpcloud.sohu.com</code>, 帐号和密码分别对应 SendCloud 的 API_USER 和 API_KEY. 下图以 Foxmail 客户端为例.</p>
-<p><img alt="pic" src="../resources/foxmail.jpg" /></p>
+<p><img alt="pic" src="..//resources/foxmail.jpg" /></p>
 <hr />
 <h2 id="9-sendcloud-smtp-25">9. SendCloud 的 SMTP 服务只开放了 25 端口么?</h2>
 <p>考虑到部分云服务商封禁了其内网对外 25 端口的访问, 所以 SendCloud 在 <code>220.181.69.174</code> 上开放了 2525 端口.</p>
@@ -345,22 +352,45 @@ s.login(API_USER + '#' + label_id, API_KEY)
 <p>修改连接为 smtpcloud.sohu.com:2525</p>
 </li>
 </ul>
-            <div class="ds-thread" data-thread-key="FAQ" data-title="FAQ" data-url=""></div>
+<hr />
+<h2 id="10">10. 邮件模板, 模板匹配, 模板发送, 我有点晕?</h2>
+<p><strong>邮件模板</strong>: 简单的说, 邮件模板 (template) 就是预先定义的一段邮件内容.</p>
+<p><strong>模板匹配</strong>: SendCloud 为了防止用户发送色情, 欺诈等非法邮件, 要求用户根据发送的内容预先创建邮件模板. 在审核通过之后, 用户才能发送此内容的邮件. 在发送时, 系统会根据邮件内容和模板内容进行匹配, 匹配成功的邮件才能被允许发送, 否则用户会收到 <code>553 template_validate not match, ...</code> 的错误提示. 详细的匹配细则参见<a href="../guide/base#template">模板</a>.</p>
+<p><strong>模板发送</strong>: 模板除了内容审核, 也是一个方便用户发送邮件的功能. 用户在请求接口时, 可以不再传输邮件内容, 只需在参数中指定模板的「调用名称」即可. 另外, 模板也支持变量. 这就是模板发送, 这个功能用户需要调用模板发送API 来使用.</p>
+<p>SMTP 和普通发送API 不能也不应该调用模板来发送邮件, 对于这两种方式, 模板只起了内容审核的作用.</p>
+
+            <div class="ds-thread" data-thread-key="FAQ - SendCloud 文档中心" data-title="FAQ - SendCloud 文档中心" data-url=""></div>
         </div>
         
     </div>
     <footer class="clearfix footer">
         <div class="container">
             <ul class="list-unstyled list-inline pull-left">
-                <li><a href="http://sendcloud.sohu.com/aboutUs.html">关于我们</a> </li>
-                <li><a href="http://sendcloud.sohu.com/aboutUs.html#agreement">服务协议</a></li>
-                <li><a href="http://sendcloud.sohu.com/aboutUs.html#partners">合作伙伴</a></li>
-                <li><a href="https://sendcloud.kf5.com/" target="_blank">帮助中心</a></li>
+                <li><a target="_blank" href="http://sendcloud.sohu.com/aboutus.html">关于我们</a> </li>
+                <li><a target="_blank" href="http://sendcloud.sohu.com/aboutus.html#agreement">服务协议</a></li>
+                <li><a target="_blank" href="http://sendcloud.sohu.com/aboutus.html#partners">合作伙伴</a></li>
+                <li><a target="_blank" href="https://sendcloud.kf5.com/" target="_blank">帮助中心</a></li>
             </ul>
             <p class="pull-right">copyright 2015 &copy; SendCloud</p>
         </div>
     </footer>
-    
+    <!-- Search modal.  Not yet supported. -->
+<div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="searchModalLabel">Documentation search</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
     <script src="../js/jquery-1.11.2.min.js"></script>
     <script src="../js/bootstrap-3.0.3.min.js"></script>
     <script src="../js/prettify-1.0.min.js"></script>

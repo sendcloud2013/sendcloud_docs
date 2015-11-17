@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">   
     <link rel="canonical" href="http://sendcloud.sohu.com/guide/base/"> 
     <link rel="shortcut icon" href="../../favicon.ico">
-    <title>基本概念 - SendCloud 文档中心</title>
+    <title>基本概念 - SendCloud 文档中心 - SendCloud 文档中心</title>
     <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
     <link href="../../css/base.css" rel="stylesheet">
@@ -53,37 +53,37 @@
                 
                   <li class="pull-left active">
                     
-                    <a href="./">开发者指南</a>
+                    <a href=".">开发者指南</a>
                     
                   </li>
                 
                   <li class="pull-left">
                     
-                    <a href="../../email/">邮件API</a>
+                    <a href="../../email">邮件API</a>
                     
                   </li>
                 
                   <li class="pull-left">
                     
-                    <a href="../../sms/">短信API</a>
+                    <a href="../../email_v2">邮件API v2</a>
                     
                   </li>
                 
                   <li class="pull-left">
                     
-                    <a href="../../downloads/">代码示例</a>
+                    <a href="../../sms">短信API</a>
                     
                   </li>
                 
                   <li class="pull-left">
                     
-                    <a href="../../faq/">FAQ</a>
+                    <a href="../../downloads">代码示例</a>
                     
                   </li>
                 
                   <li class="pull-left">
                     
-                    <a href="../../test/">测试平台</a>
+                    <a href="../../faq">FAQ</a>
                     
                   </li>
                 
@@ -93,6 +93,10 @@
             
             <!-- Search, Navigation and Repo links -->
             <!-- <ul class="nav navbar-nav navbar-right">
+                
+                <li>
+                    <a href="#searchModal" data-toggle="modal"><i class="fa fa-search"></i> Search</a>
+                </li>
                 
                 
                 
@@ -137,7 +141,7 @@
           
 
               <li class="active">
-                <a class="itm-l1" href="./">基本概念</a>
+                <a class="itm-l1" href=".">基本概念</a>
                 
                   <ul class="nav">
                   
@@ -165,16 +169,19 @@
                     <li class=""><a href="#_3">发信域名配置</a></li>
                     
                   
-                    <li class=""><a href="#sample">样本审核 (sample)</a></li>
+                    <li class=""><a href="#template">邮件模板 (template)</a></li>
                     
                   
-                    <li class=""><a href="#_4">当天请求额度</a></li>
+                    <li class=""><a href="#_4">变量替换</a></li>
                     
                   
-                    <li class=""><a href="#_5">信誉度</a></li>
+                    <li class=""><a href="#_5">当天请求额度</a></li>
                     
                   
-                    <li class=""><a href="#_6">用户认证</a></li>
+                    <li class=""><a href="#_6">信誉度</a></li>
+                    
+                  
+                    <li class=""><a href="#_7">用户认证</a></li>
                     
                   
                   </ul>
@@ -184,7 +191,7 @@
           
 
               <li class="">
-                <a class="itm-l1" href="../advance/">高级功能</a>
+                <a class="itm-l1" href="../advance">高级功能</a>
                 
               </li>
 
@@ -240,7 +247,7 @@
 <p>注意: SendCloud 要求收件地址来源自会员注册, 发送内容是用户主动订阅, 且不带有广告营销性质.</p>
 <hr />
 <h2 id="smtp">通过SMTP接入</h2>
-<p>使用 SMTP 协议传输数据到 SendCloud 的邮件服务器 ( smtpcloud.sohu.com:25 )</p>
+<p>使用 SMTP 协议传输数据到 SendCloud 的邮件服务器 ( smtp.sendcloud.org:25 smtpcloud.sohu.com:25 )</p>
 <ul>
 <li>用户可以编写程序连接邮件服务器, 发送邮件 </li>
 <li>用户可以配置客户端连接邮件服务器, 只需修改用户名, 密码和 SMTP 配置即可</li>
@@ -305,18 +312,18 @@
 <p>注意, <strong>已经配置MX记录的域名</strong>不建议配置成发信域名, 你可以使用其子域名来进行配置.</p>
 <p>下面列举了使用不同发信域名的邮件示例: </p>
 <p><strong>使用测试域名: W0YoeJHepAzA7v1JDuG6e8reehqEuPoP.sendcloud.org 发送的邮件</strong>
-<img alt="pic" src="../../resources/domain_test.png" /></p>
+<img alt="pic" src="../..//resources/domain_test.png" /></p>
 <pre><code> * 前缀: beb31150-bef0-11e4-9dbb-00163e15002f
  * 发信域名: W0YoeJHepAzA7v1JDuG6e8reehqEuPoP.sendcloud.org
  * mail from的组成: 前缀@发信域名 (beb31150-bef0-11e4-9dbb-00163e15002f@W0YoeJHepAzA7v1JDuG6e8reehqEuPoP.sendcloud.org)
 </code></pre>
 <p><strong>使用自有域名 ( 自己创建的域名 ) : push.liubida.cn 发送的邮件</strong>
-<img alt="pic" src="../../resources/domain_liubida.cn.png" /></p>
+<img alt="pic" src="../..//resources/domain_liubida.cn.png" /></p>
 <pre><code> * 前缀: 98a47302-beee-11e4-a3b9-00163e12fa99
  * 发信域名: push.liubida.cn
  * mail from的组成: 前缀@发信域名(98a47302-beee-11e4-a3b9-00163e12fa99@push.liubida.cn)
 </code></pre>
-<p><a href="../../faq/#3">邮件中为什么会显示代发?</a></p>
+<p><a href="../../faq#3">邮件中为什么会显示代发?</a></p>
 <hr />
 <h2 id="_3">发信域名配置</h2>
 <p>创建发信域名之后, 需要完成必要的配置, 才能使用其进行发信. 这些配置项是保证域名能够优质出信的基础, 如果使用未配置的域名发信, 出信量和到达率都会很糟糕.</p>
@@ -346,7 +353,7 @@
 <p>DKIM 是防止欺诈邮件的一个重要技术手段, 通常发送方会在电子邮件的标头插入 DKIM-Signature 及电子签名资讯, 而接收方则透过 DNS 查询得到公钥后进行验证. 建议配置, 特别是国外域比较多的用户.</p>
 <p><code>注意: 正是因为发信域名如此的重要, 所以 SendCloud 要求用户必须创建自己的发信域名, 并且完成配置, 才能正式接入</code></p>
 <p>我们在系统中给出了详细的配置引导, 用户需要按照配置引导的内容到自己的域名管理系统中去做配置. 以下举例说明:</p>
-<p><img alt="pic" src="../../resources/domain_config_example.png" /></p>
+<p><img alt="pic" src="../..//resources/domain_config_example.png" /></p>
 <ol>
 <li>标注红星, 表示此项配置为必配项</li>
 <li>状态: 是否配置正确, 并通过 SendCloud 验证.</li>
@@ -355,22 +362,22 @@
 <li>现有记录值: SendCloud 查询得到的记录值. ( 用户需要在自己的域名管理系统中做配置, 使<code>现有记录值</code>和<code>需配置的记录值</code>匹配)</li>
 </ol>
 <hr />
-<h2 id="sample">样本审核 (sample)</h2>
-<p>为了防止用户利用 SendCloud 平台发送色情, 欺诈等非法邮件, SendCloud 要求用户将每次发送的邮件内容提交审核. 流程如下:</p>
+<h2 id="template">邮件模板 (template)</h2>
+<p><code>20150707 SendCloud 平台更新: 模板和样本功能合二为一. 新建模板时增加字段: 邮件标题, 模板类型.</code></p>
+<p>为了防止用户利用 SendCloud 平台发送色情, 欺诈等非法邮件, SendCloud 要求用户根据发送的内容创建一个邮件模板, 提交审核. 在审核通过之后, 用户才能发送此内容的邮件. </p>
+<p>流程如下:</p>
 <ol>
-<li>用户将邮件内容复制, 创建样本, 并提交审核</li>
-<li>样本审核通过之后, 用户就可以发送此类邮件</li>
+<li>用户根据邮件标题, 邮件内容和模板类型, 创建模板, 并提交审核</li>
+<li>模板审核通过之后, 用户就可以发送此类邮件</li>
 </ol>
-<p>SendCloud 在接收客户邮件之后, 会对邮件和样本进行匹配. 只要能成功匹配一个样本, 既验证通过.</p>
-<p>邮件和样本匹配的要素有如下几点:</p>
+<p>邮件和模板匹配的要素有如下几点:</p>
 <ol>
-<li>发送邮件时使用的 API_USER 的类型 ( 触发/批量 ) 和样本的类型 ( 触发/批量 )  一致</li>
-<li>邮件的附件个数和样本中声明的附件个数 一致</li>
-<li>邮件中图片个数和样本中的图片个数 一致</li>
-<li>邮件中每张图片的内容和样本中相应图片的内容 一致 ( 如果修改图片内容, 请重新提交审核 )</li>
-<li>邮件中文本内容和样本文本内容达到一定比例的匹配, 容许两者有差异</li>
+<li>发送邮件时使用的 API_USER 的类型 ( 触发/批量 ) 和模板的类型 ( 触发/批量 )  一致</li>
+<li>邮件中图片个数和模板中的图片个数 一致</li>
+<li>邮件中每张图片的内容和模板中相应图片的内容 一致 ( 如果修改图片内容, 请重新提交审核 )</li>
+<li>邮件中文本内容和模板文本内容达到一定比例的匹配, 容许两者有差异</li>
 </ol>
-<p>样本匹配失败时, 用户会收到 '553 sample_validate not match, ...' 的错误提示, 说明如下:</p>
+<p>内容匹配失败时, 用户会收到 '553 template_validate not match, ...' 的错误提示, 说明如下:</p>
 <table>
 <thead>
 <tr>
@@ -380,37 +387,56 @@
 </thead>
 <tbody>
 <tr>
-<td align="left">553 sample_validate not match, reason:no corresponding sample found</td>
-<td align="left">没有和 API_USER 类型相同的样本存在</td>
+<td align="left">553 template_validate not match, reason:no corresponding template found</td>
+<td align="left">没有和 API_USER 类型相同的模板存在</td>
 </tr>
 <tr>
-<td align="left">553 sample_validate not match, reason:unequal image content: image link not in sample</td>
-<td align="left">邮件中的图片链接和样本中的图片链接不一致</td>
+<td align="left">553 template_validate not match, reason:unequal image content: image link not in template</td>
+<td align="left">邮件中的图片链接和模板中的图片链接不一致</td>
 </tr>
 <tr>
-<td align="left">553 sample_validate not match, reason:unequal image content: <code>url</code> md5 not match</td>
-<td align="left">邮件的图片内容和样本中的图片内容不一致, <code>url</code>为差异的图片链接</td>
+<td align="left">553 template_validate not match, reason:unequal image content: md5 not match</td>
+<td align="left">邮件的图片内容和模板中的图片内容不一致</td>
 </tr>
 <tr>
-<td align="left">553 sample_validate not match, reason:unequal content</td>
-<td align="left">邮件文本内容和样本文本内容差异过大</td>
+<td align="left">553 template_validate not match, reason:unequal content</td>
+<td align="left">邮件文本内容和模板文本内容差异过大</td>
 </tr>
 </tbody>
 </table>
 <blockquote>
-<p>对于大多数用户来说, 每封邮件的差异性不大, 所以样本审核没有问题. 
-但是, 如果你发送的邮件差异性很大, 那样本审核就有可能给你带来困扰. 
+<p>对于大多数用户来说, 每封邮件的差异性不大, 所以审核没有问题. 
+但是, 如果你发送的每封邮件差异性很大, 那审核就有可能给你带来困扰. 
 如果你遇到此问题, 请在系统中提交工单, 会有同学为你解决此问题.</p>
 </blockquote>
+<p>同时, 邮件模板也是一个方便用户发送邮件的功能. 用户编辑/上传邮件模板并审核通过后, 在请求接口时, 不需要再传输邮件内容, 只需在参数中指定模板的「调用名称」即可.</p>
+<p>用户可以通过<code>【发送相关】-【邮件模板】</code>来创建【邮件模板】</p>
+<p><code>注意: 用户可以调用模板发送, 也可以普通发送(上传内容发送). 两种发送方式都要求最终的内容和至少一个模板匹配</code></p>
 <hr />
-<h2 id="_4">当天请求额度</h2>
+<h2 id="_4">变量替换</h2>
+<p>SendCloud 支持在邮件中使用「变量」. </p>
+<p>变量的格式: 首尾使用 <code>%</code> 包含, 即为用户定义的一个变量. 举例:</p>
+<pre><code>亲爱的%name%: # name是变量
+
+    欢迎注册爱发信, 这是您的验证码: %active_code%. # active_code是变量
+</code></pre>
+
+<p>变量的用法:</p>
+<ol>
+<li>在 <em>普通发送</em>, <em>模板发送</em> 中使用变量, 来作为占位符</li>
+<li>在 <em>地址列表</em>, <em>X-SMTPAPI</em> 中设置变量的值</li>
+<li>SendCloud 会根据不同收件人, 来替换邮件内容中相应变量的值</li>
+</ol>
+<p><strong>注意</strong>: 邮件标题中可以含有一个变量 <code>20150707 更新</code></p>
+<hr />
+<h2 id="_5">当天请求额度</h2>
 <p>用户每天能够请求的额度值, 即每天能够发送给 SendCloud 的最大邮件数量. </p>
 <blockquote>
 <p>用户请求超过此值时, 用户会收到 'Request quota exceeded' 的错误提示.</p>
 </blockquote>
-<p>**注意: SendCloud 当天成功接收的邮件请求, 并不一定能够在当天发送完毕. 部分邮件可能会处于发送 - 暂停 - 发送 - 暂停的队列状态, 这样的<a href="../../faq/#4-">队列状态</a>可能会持续数日.</p>
+<p>**注意: SendCloud 当天成功接收的邮件请求, 并不一定能够在当天发送完毕. 部分邮件可能会处于发送 - 暂停 - 发送 - 暂停的队列状态, 这样的<a href="../../faq#4-">队列状态</a>可能会持续数日.</p>
 <hr />
-<h2 id="_5">信誉度</h2>
+<h2 id="_6">信誉度</h2>
 <p>用户在 SendCloud 平台的信誉评分. 「信誉度」和「当天请求额度」是高度正相关的两个数值. 当信誉度小于 0 时, 当天请求额度为 0 .</p>
 <p>此评分是由 SendCloud 根据用户的邮件发送数据实时计算出来的</p>
 <ul>
@@ -419,15 +445,15 @@
 </ul>
 <p><strong>注意: 短时间内「无效地址」,「垃圾举报」的激增会直接导致信誉度减为负数 , 用户无法继续请求.</strong></p>
 <hr />
-<h2 id="_6">用户认证</h2>
+<h2 id="_7">用户认证</h2>
 <p>用户在正式接入 SendCloud 之前, 必须完成一些信息的认证. SendCloud 目前提供了<strong>个人用户</strong>和<strong>企业用户</strong>两种认证方式.</p>
 <p><strong>个人用户</strong></p>
 <ul>
 <li>
-<p>完善信息: 此项认证需要填写企业相关信息.</p>
+<p>完善信息: 此项认证需要填写个人详细信息.</p>
 </li>
 <li>
-<p>网站认证: 此项认证需要你为「商业网站」的(子)域名添加一条指定的TXT记录. <a href="../../resources/shifan.doc">点击下载认证步骤示范</a></p>
+<p>网站认证: 此项认证需要你为「商业网站」的(子)域名添加一条指定的TXT记录. <a href="../..//resources/shifan.doc">点击下载认证步骤示范</a></p>
 </li>
 <li>
 <p>商业认证: 此项认证需要你提供「身份证」,「手持身份证半身照」</p>
@@ -436,10 +462,10 @@
 <p><strong>企业用户</strong></p>
 <ul>
 <li>
-<p>完善信息: 此项认证需要填写个人详细信息.</p>
+<p>完善信息: 此项认证需要填写企业相关信息.</p>
 </li>
 <li>
-<p>网站认证: 此项认证需要你为「商业网站」的(子)域名添加一条指定的TXT记录. <a href="../../resources/shifan.doc">点击下载认证步骤示范</a></p>
+<p>网站认证: 此项认证需要你为「商业网站」的(子)域名添加一条指定的TXT记录. <a href="../..//resources/shifan.doc">点击下载认证步骤示范</a></p>
 </li>
 <li>
 <p>商业认证: 此项认证需要你提供「营业执照」,「组织机构代码证」,「税务登记证」. 网站认证的ICP备案信息和商业认证的公司信息, 两者需要一致</p>
@@ -450,22 +476,39 @@
 <p>如果用户没有商业网站域名, 则该用户不能升级成为付费用户.</p>
 </blockquote>
 <p><code>个人用户的当天请求额度初始值为1000, 企业用户的当天请求额度初始值为3000</code></p>
-            <div class="ds-thread" data-thread-key="基本概念" data-title="基本概念" data-url=""></div>
+
+            <div class="ds-thread" data-thread-key="基本概念 - SendCloud 文档中心" data-title="基本概念 - SendCloud 文档中心" data-url=""></div>
         </div>
         
     </div>
     <footer class="clearfix footer">
         <div class="container">
             <ul class="list-unstyled list-inline pull-left">
-                <li><a href="http://sendcloud.sohu.com/aboutUs.html">关于我们</a> </li>
-                <li><a href="http://sendcloud.sohu.com/aboutUs.html#agreement">服务协议</a></li>
-                <li><a href="http://sendcloud.sohu.com/aboutUs.html#partners">合作伙伴</a></li>
-                <li><a href="https://sendcloud.kf5.com/" target="_blank">帮助中心</a></li>
+                <li><a target="_blank" href="http://sendcloud.sohu.com/aboutus.html">关于我们</a> </li>
+                <li><a target="_blank" href="http://sendcloud.sohu.com/aboutus.html#agreement">服务协议</a></li>
+                <li><a target="_blank" href="http://sendcloud.sohu.com/aboutus.html#partners">合作伙伴</a></li>
+                <li><a target="_blank" href="https://sendcloud.kf5.com/" target="_blank">帮助中心</a></li>
             </ul>
             <p class="pull-right">copyright 2015 &copy; SendCloud</p>
         </div>
     </footer>
-    
+    <!-- Search modal.  Not yet supported. -->
+<div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="searchModalLabel">Documentation search</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
     <script src="../../js/jquery-1.11.2.min.js"></script>
     <script src="../../js/bootstrap-3.0.3.min.js"></script>
     <script src="../../js/prettify-1.0.min.js"></script>
