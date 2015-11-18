@@ -3,7 +3,7 @@
 
 - - -
 
-##查询用户信息
+##查询
 
 **URL**
 ```
@@ -53,14 +53,14 @@ http://api.sendcloud.net/apiv2/userinfo/get?apiUser=***&apiKey=***
   "info": {
     "avaliableBalance": 40.54,
     "balance": 44.02,
-    "phone": "189860398721",
+    "phone": "***",
     "quota": 2500,
     "regTime": "2013-03-28",
-    "email": "f22@sendcloud.im",
+    "email": "***",
     "reputation": 50.26,
     "websiteAuthStatus": true,
     "accountType": "付费用户",
-    "userName": "delong",
+    "userName": "***",
     "businessAuthStatus": false,
     "todayUsedQuota": 2
   }

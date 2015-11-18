@@ -3,7 +3,7 @@
 
 **URL**
 ```  
-http://api.sendcloud.net/apiv2/send
+http://api.sendcloud.net/apiv2/mail/send
 ```
    
 **HTTP请求方式** 
@@ -18,9 +18,9 @@ post
 |apiUser|string|是|API_USER|
 |apiKey|string|是|API_KEY|
 |from|string|是|发件人地址. 举例: `support@ifaxin.com`, `爱发信支持<support@ifaxin.com>`|  
-|to|string|是|收件人地址. 多个地址使用';'分隔, 如 `ben@ifaxin.com;joe@ifaxin.com`|  
+|to|string|*|收件人地址. 多个地址使用';'分隔, 如 `ben@ifaxin.com;joe@ifaxin.com`|  
 |subject|string|是|标题. 不能为空|  
-|html|string|是|邮件的内容. 邮件格式为 `text/html`|  
+|html|string|*|邮件的内容. 邮件格式为 `text/html`|  
 |fromName|string|否|发件人名称. 显示如: `ifaxin客服支持<support@ifaxin.com>`|  
 |cc|string|否|抄送地址. 多个地址使用';'分隔|  
 |bcc|string|否|密送地址. 多个地址使用';'分隔|  
@@ -51,7 +51,7 @@ post
 
 **URL**
 ```  
-http://api.sendcloud.net/apiv2/sendtemplate
+http://api.sendcloud.net/apiv2/mail/sendtemplate
 ```
    
 **HTTP请求方式** 
@@ -164,7 +164,7 @@ curl -d 'apiUser=***&apiKey=***&from=test@test.com&fromName=liubida&to=users@mai
 
 **URL**
 ```  
-http://api.sendcloud.net/apiv2/sendcalendar
+http://api.sendcloud.net/apiv2/mail/sendcalendar
 ```
    
 **HTTP请求方式** 
@@ -179,9 +179,9 @@ post
 |apiUser|string|是|API_USER|
 |apiKey|string|是|API_KEY|
 |from|string|是|发件人地址. 举例: `support@ifaxin.com`, `爱发信支持<support@ifaxin.com>`|  
-|to|string|是|收件人地址. 多个地址使用';'分隔, 如 `ben@ifaxin.com;joe@ifaxin.com`|  
+|to|string|*|收件人地址. 多个地址使用';'分隔, 如 `ben@ifaxin.com;joe@ifaxin.com`|  
 |subject|string|是|标题. 不能为空|  
-|html|string|是|邮件的内容. 邮件格式为 `text/html`|  
+|html|string|*|邮件的内容. 邮件格式为 `text/html`|  
 |fromName|string|否|发件人名称. 显示如: `ifaxin客服支持<support@ifaxin.com>`|  
 |cc|string|否|抄送地址. 多个地址使用';'分隔|  
 |bcc|string|否|密送地址. 多个地址使用';'分隔|  

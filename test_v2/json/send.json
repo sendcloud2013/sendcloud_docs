@@ -47,7 +47,7 @@
                         "name": "to",
                         "in": "query",
                         "description": "收件人地址",
-                        "required": true,
+                        "required": false,
                         "type": "string",
                         "format": "email"
                     },
@@ -64,7 +64,7 @@
                         "name": "html",
                         "in": "query",
                         "description": "邮件内容 (text/html)",
-                        "required": true,
+                        "required": false,
                         "type": "string",
                         "format": null,
                         "default": "你太棒了！你已成功的从SendCloud发送了一封测试邮件，接下来快登录前台去完善账户信息吧！\n"
@@ -362,7 +362,7 @@
                         "name": "to",
                         "in": "query",
                         "description": "收件人地址",
-                        "required": true,
+                        "required": false,
                         "type": "string",
                         "format": "email"
                     },
@@ -379,7 +379,7 @@
                         "name": "html",
                         "in": "query",
                         "description": "邮件内容 (text/html)",
-                        "required": true,
+                        "required": false,
                         "type": "string",
                         "format": null,
                         "default": "你太棒了！你已成功的从SendCloud发送了一封测试邮件，接下来快登录前台去完善账户信息吧！\n"
@@ -1959,7 +1959,7 @@
                     }
                 ],
                 "tags": [
-                    null
+                    "userinfo"
                 ],
                 "responses": {
                     "200": {

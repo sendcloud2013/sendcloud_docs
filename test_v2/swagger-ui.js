@@ -332,7 +332,7 @@ this["Handlebars"]["templates"]["main"] = Handlebars.template({"1":function(dept
   var stack1, buffer = "<!--div class='info' id='api_info'>\n";
   stack1 = helpers['if'].call(depth0, (depth0 != null ? depth0.info : depth0), {"name":"if","hash":{},"fn":this.program(1, data),"inverse":this.noop,"data":data});
   if (stack1 != null) { buffer += stack1; }
-  return buffer + "</div-->\n<div class=\"container\" id='resources_container'>\n  <div class=\"col-md-3\">\n    <div class=\"bs-sidebar hidden-print affix-top\" data-spy=\"affix\" data-offset-top=\"80\" role=\"complementary\">\n      <ul class=\"nav bs-sidenav\">\n        <li class=\"active\">\n          <a href=\".\" class=\"\">测试平台</a>\n          <ul class=\"nav\">\n            <li class=\"active\">\n                <a class=\"itm-l1\" href=\"./\">发送测试</a>\n            </li>\n            <li>\n                <a class=\"itm-l1\" href=\"webhook.html\">WebHook 测试</a>\n            </li>\n          </ul>\n        </li>\n      </ul>\n  </div>\n  </div>\n  <div class=\"col-md-9 swagger-ui-wrap\">\n      <h1 class=\"page-header\">发送测试</h1>\n      <ul id='resources'></ul>\n  </div>";
+  return buffer + "</div-->\n<div class=\"container\" id='resources_container'>\n  <div class=\"col-md-3\">\n    <div class=\"bs-sidebar hidden-print affix-top\" data-spy=\"affix\" data-offset-top=\"80\" role=\"complementary\">\n      <ul class=\"nav bs-sidenav\">\n        <li class=\"active\">\n          <a href=\".\" class=\"\">TRY IT</a>\n          <ul class=\"nav\">\n            <li class=\"active\">\n                <a class=\"itm-l1\" href=\"./\">APIV2</a>\n            </li>\n            <li>\n                <a class=\"itm-l1\" href=\"webhook.html\">WebHook</a>\n            </li>\n          </ul>\n        </li>\n      </ul>\n  </div>\n  </div>\n  <div class=\"col-md-9 swagger-ui-wrap\">\n      <h1 class=\"page-header\">APIV2</h1>\n<ul id='resources'></ul>\n  </div>";
 },"useData":true});
 this["Handlebars"]["templates"]["operation"] = Handlebars.template({"1":function(depth0,helpers,partials,data) {
   return "deprecated";
@@ -373,7 +373,7 @@ this["Handlebars"]["templates"]["operation"] = Handlebars.template({"1":function
   },"22":function(depth0,helpers,partials,data) {
   return "";
 },"24":function(depth0,helpers,partials,data) {
-  return "          <div class='sandbox_header'>\n            <input class='submit' name='commit' type='button' value='测试' />\n            <a href='#' class='response_hider' style='display:none'>隐藏返回</a>\n            <span class='response_throbber' style='display:none'></span>\n          </div>\n";
+  return "          <div class='sandbox_header'>\n            <input class='submit' name='commit' type='button' value='try it' />\n            <a href='#' class='response_hider' style='display:none'>隐藏返回</a>\n            <span class='response_throbber' style='display:none'></span>\n          </div>\n";
   },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
   var stack1, helper, options, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, blockHelperMissing=helpers.blockHelperMissing, buffer = "\n  <ul class='operations' >\n    <li class='"
     + escapeExpression(((helper = (helper = helpers.method || (depth0 != null ? depth0.method : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"method","hash":{},"data":data}) : helper)))

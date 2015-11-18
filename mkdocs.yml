@@ -73,6 +73,6 @@ pages:
 - [downloads/code/nodejs.md, '代码示例','Nodejs']
 
 - [faq/index.md, 'FAQ', 'FAQ']
-- [test/index.md, '测试平台', '测试中心']
+- [test/index.md, 'TRY IT', 'TRY IT']
 
 # theme: mkdocs

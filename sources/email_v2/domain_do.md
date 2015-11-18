@@ -23,8 +23,8 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|apiUser|string|是|子账号|
-|apiKey|string|是|密码|
+|apiUser|string|是|API_USER|
+|apiKey|string|是|API_KEY|
 |name|string|否|域名名称. 多个 name 用 `;` 分隔|
 |type|int|否|域名类型: 0 (测试域名), 1(普通域名)|
 |verify|string|否|域名验证值. 举例: `verify=1`, 查询验证值为 1 的域名; `verify=>22`, 查询验证值大于等于 22 的域名; `verify=<12`, 查询验证值小于等于 12 的域名|
@@ -128,8 +128,8 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|apiUser|string|是|子账号|
-|apiKey|string|是|密码|
+|apiUser|string|是|API_USER|
+|apiKey|string|是|API_KEY|
 |name|string|是|域名名称|
 
 **说明**
@@ -202,8 +202,8 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|apiUser|string|是|子账号|
-|apiKey|string|是|密码|
+|apiUser|string|是|API_USER|
+|apiKey|string|是|API_KEY|
 |name|string|是|域名名称|
 |newName|string|是|新域名名称|
 

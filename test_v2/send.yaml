@@ -36,7 +36,7 @@ paths:
         - name: to
           in: query
           description: 收件人地址
-          required: true
+          required: false
           type: string
           format: email
         - name: subject
@@ -49,7 +49,7 @@ paths:
         - name: html
           in: query
           description: 邮件内容 (text/html)
-          required: true
+          required: false
           type: string
           format: null
           default: |
@@ -270,7 +270,7 @@ paths:
         - name: to
           in: query
           description: 收件人地址
-          required: true
+          required: false
           type: string
           format: email
         - name: subject
@@ -283,7 +283,7 @@ paths:
         - name: html
           in: query
           description: 邮件内容 (text/html)
-          required: true
+          required: false
           type: string
           format: null
           default: |

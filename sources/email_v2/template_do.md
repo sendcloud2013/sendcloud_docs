@@ -24,7 +24,7 @@ post    get
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
 |apiUser|string|是|API_USER|
-|apiKey|string|是|密码|
+|apiKey|string|是|API_KEY|
 |invokeName|string|否|邮件模板调用名称|
 |templateType|int|否|邮件模板类型: 0(触发), 1(批量)|
 |templateStat|int|否|邮件模板状态: -2(未提交审核), -1(审核不通过), 0(待审核), 1(审核通过)|
@@ -100,7 +100,7 @@ post    get
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
 |apiUser|string|是|API_USER|
-|apiKey|string|是|密码|
+|apiKey|string|是|API_KEY|
 |invokeName|string|是|邮件模板调用名称|
     
 **请求示例**
@@ -159,7 +159,7 @@ post    get
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
 |apiUser|string|是|API_USER|
-|apiKey|string|是|密码|
+|apiKey|string|是|API_KEY|
 |invokeName|string|是|邮件模板调用名称|
 |name|string|是|邮件模板名称|
 |html|string|是|html格式内容|
@@ -232,7 +232,7 @@ post    get
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
 |apiUser|string|是|API_USER|
-|apiKey|string|是|密码|
+|apiKey|string|是|API_KEY|
 |invokeName|string|是|邮件模板调用名称|
     
 **请求示例**
@@ -278,7 +278,7 @@ post    get
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
 |apiUser|string|是|API_USER|
-|apiKey|string|是|密码|
+|apiKey|string|是|API_KEY|
 |invokeName|string|是|邮件模板调用名称|
 |name|string|否|邮件模板名称|
 |html|string|否|html格式内容|
@@ -332,7 +332,7 @@ post    get
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
 |apiUser|string|是|API_USER|
-|apiKey|string|是|密码|
+|apiKey|string|是|API_KEY|
 |invokeName|string|是|邮件模板调用名称|
 |cancel|string|否|是否撤销审核: 1(撤销审核), 0(提交审核). 默认为 0|
 

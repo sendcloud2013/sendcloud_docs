@@ -23,8 +23,8 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|apiUser|string|是|子账号|
-|apiKey|string|是|密码|
+|apiUser|string|是|API_USER|
+|apiKey|string|是|API_KEY|
 |emailType|int|否|API_USER 的邮件类型: 0(触发), 1(批量)|
 |cType|int|否|API_USER 的类型: 0(测试), 1(普通)|
 |domainName|string|否|API_USER 绑定的域名名称|
@@ -90,7 +90,7 @@ post    get
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
 |apiUser|string|是|API_USER|
-|apiKey|string|是|密码|
+|apiKey|string|是|API_KEY|
 |name|string|是|API_USER 的名称|
 |emailType|int|是|API_USER 的邮件类型: 0(触发), 1(批量)|
 |domainName|string|是|API_USER 绑定的域名名称|

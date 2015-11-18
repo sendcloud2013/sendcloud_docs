@@ -24,7 +24,7 @@ post    get
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
 |apiUser|string|是|API_USER|
-|apiKey|string|是|密码|
+|apiKey|string|是|API_KEY|
 |address|list|否|别名地址的列表, 多个用 `;` 分隔|
 |start|int|否|查询起始位置, 取值区间 [0-], 默认为 0|
 |limit|int|否|查询个数, 取值区间 [0-100], 默认为 100|
@@ -84,7 +84,7 @@ post    get
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
 |apiUser|string|是|API_USER|
-|apiKey|string|是|密码|
+|apiKey|string|是|API_KEY|
 |address|string|是|别称地址, 使用该别称地址进行调用, 格式为xxx@maillist.sendcloud.org|
 |name|string|是|列表名称|
 |desc|string|否|对列表的描述信息|
@@ -142,7 +142,7 @@ post    get
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
 |apiUser|string|是|API_USER|
-|apiKey|string|是|密码|
+|apiKey|string|是|API_KEY|
 |address|string|是|别称地址, 使用该别称地址进行调用, 格式为xxx@maillist.sendcloud.org|
     
 **请求示例**    
@@ -186,7 +186,7 @@ post    get
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
 |apiUser|string|是|API_USER|
-|apiKey|string|是|密码|
+|apiKey|string|是|API_KEY|
 |address|string|是|别称地址, 使用该别称地址进行调用, 格式为xxx@maillist.sendcloud.org|
 |newAddress|string|否|修改后的别称地址|
 |name|string|否|修改后的列表名称|
@@ -239,8 +239,8 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|apiUser|string|是|子账号|
-|apiKey|string|是|密码|
+|apiUser|string|是|API_USER|
+|apiKey|string|是|API_KEY|
 |address|string|是|地址列表的别称地址|    
 |start|int|否|查询起始位置, 取值区间 [0-], 默认为 0|
 |limit|int|否|查询个数, 取值区间 [0-100], 默认为 100|
@@ -314,8 +314,8 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|apiUser|string|是|子账号|
-|apiKey|string|是|密码|
+|apiUser|string|是|API_USER|
+|apiKey|string|是|API_KEY|
 |address|string|是|地址列表的别称地址|    
 |members|list|是|列表成员地址|    
     
@@ -373,8 +373,8 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|apiUser|string|是|子账号|
-|apiKey|string|是|密码|
+|apiUser|string|是|API_USER|
+|apiKey|string|是|API_KEY|
 |address|string|是|地址列表的别称地址|    
 |members|list|是|需要添加成员的地址, 多个地址用 `;` 分隔|
 |vars|list|否|替换变量, 与 members 一一对应, 变量格式为 {"money":"1000"} , 多个用 `;` 分隔|
@@ -428,8 +428,8 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|apiUser|string|是|子账号|
-|apiKey|string|是|密码|
+|apiUser|string|是|API_USER|
+|apiKey|string|是|API_KEY|
 |address|string|是|地址列表的别称地址|    
 |members|list|是|需要添加成员的地址, 多个地址用 `;` 分隔|
 |vars|list|否|替换变量, 与 members 一一对应, 变量格式为 {"money":"1000"} , 多个用 `;` 分隔|
@@ -481,8 +481,8 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|apiUser|string|是|子账号|
-|apiKey|string|是|密码|
+|apiUser|string|是|API_USER|
+|apiKey|string|是|API_KEY|
 |address|string|是|地址列表的别称地址|    
 |members|list|是|需要删除成员的地址, 多个地址用 `;` 分隔|
     
