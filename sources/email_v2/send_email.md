@@ -33,7 +33,6 @@ post
 |respEmailId|string (true, false)|否|默认值: `true`. 是否返回 [emailId](index.md#messageid-emailid). 有多个收件人时, 会返回 emailId 的列表|  
 |useNotification|string (true, false)|否|默认值: `false`. 是否使用回执|
 |useAddressList|string (true, false)|否|默认值: `false`. 是否使用地址列表发送. 比如: `to=group1@maillist.sendcloud.org;group2@maillist.sendcloud.org`| 
-|gzipCompress|string (true, false)|否|默认值: `false`. 邮件内容是否使用 gzip 压缩|  
 
 注意:
 
@@ -81,7 +80,6 @@ post
 |respEmailId|string (true, false)|否|默认值: `true`. 是否返回 emailId. 有多个收件人时, 会返回 emailId 的列表|  
 |useNotification|string (true, false)|否|默认值: `false`. 是否使用回执|  
 |useAddressList|string (true, false)|否|默认值: `false`. 是否使用地址列表发送. 比如: `to=group1@maillist.sendcloud.org;group2@maillist.sendcloud.org`| 
-|gzipCompress|||不支持| 
 
 注意:
 

@@ -167,15 +167,6 @@
                         "type": "string",
                         "format": "true false",
                         "default": false
-                    },
-                    {
-                        "name": "gzipCompress",
-                        "in": "query",
-                        "description": "是否对邮件内容使用 gzip 压缩",
-                        "required": false,
-                        "type": "string",
-                        "format": "true false",
-                        "default": false
                     }
                 ],
                 "tags": [
