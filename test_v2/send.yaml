@@ -72,15 +72,9 @@ paths:
           required: false
           type: string
           format: email
-        - name: relplyTo
+        - name: replyTo
           in: query
           description: 默认的回复地址
-          required: false
-          type: string
-          format: email
-        - name: dispositionNotificationTo
-          in: query
-          description: 回执地址
           required: false
           type: string
           format: email
@@ -121,6 +115,13 @@ paths:
           type: string
           format: true false
           default: true
+        - name: useNotification
+          in: query
+          description: 是否使用回执
+          required: false
+          type: string
+          format: true false
+          default: false
         - name: useAddressList
           in: query
           description: 是否使用地址列表发送
@@ -194,15 +195,9 @@ paths:
           required: false
           type: string
           format: null
-        - name: relplyTo
+        - name: replyTo
           in: query
           description: 默认的回复地址
-          required: false
-          type: string
-          format: email
-        - name: dispositionNotificationTo
-          in: query
-          description: 回执地址
           required: false
           type: string
           format: email
@@ -224,6 +219,13 @@ paths:
           required: false
           type: file
           format: null
+        - name: useNotification
+          in: query
+          description: 是否使用回执
+          required: false
+          type: string
+          format: true false
+          default: false
         - name: respEmailId
           in: query
           description: 是否返回 emailId
@@ -306,7 +308,7 @@ paths:
           required: false
           type: string
           format: email
-        - name: relplyTo
+        - name: replyTo
           in: query
           description: 默认的回复地址
           required: false
@@ -452,6 +454,18 @@ paths:
           required: false
           type: integer
           format: '-2 | -1 | 0 | 1'
+        - name: start
+          in: query
+          description: 查询的 start 序号
+          required: false
+          type: integer
+          format: null
+        - name: limit
+          in: query
+          description: 查询的 limit 限制
+          required: false
+          type: integer
+          format: null
       tags:
         - template
       responses:

@@ -5,7 +5,7 @@
         "description": "SendCloud Mail API Version II. Just have a try.",
         "version": "2.0.0"
     },
-    "host": "api.sendcloud.net",
+    "host": "127.0.0.1:8080",
     "schemes": [
         "http"
     ],
@@ -94,17 +94,9 @@
                         "format": "email"
                     },
                     {
-                        "name": "relplyTo",
+                        "name": "replyTo",
                         "in": "query",
                         "description": "默认的回复地址",
-                        "required": false,
-                        "type": "string",
-                        "format": "email"
-                    },
-                    {
-                        "name": "dispositionNotificationTo",
-                        "in": "query",
-                        "description": "回执地址",
                         "required": false,
                         "type": "string",
                         "format": "email"
@@ -157,6 +149,15 @@
                         "type": "string",
                         "format": "true false",
                         "default": true
+                    },
+                    {
+                        "name": "useNotification",
+                        "in": "query",
+                        "description": "是否使用回执",
+                        "required": false,
+                        "type": "string",
+                        "format": "true false",
+                        "default": false
                     },
                     {
                         "name": "useAddressList",
@@ -259,17 +260,9 @@
                         "format": null
                     },
                     {
-                        "name": "relplyTo",
+                        "name": "replyTo",
                         "in": "query",
                         "description": "默认的回复地址",
-                        "required": false,
-                        "type": "string",
-                        "format": "email"
-                    },
-                    {
-                        "name": "dispositionNotificationTo",
-                        "in": "query",
-                        "description": "回执地址",
                         "required": false,
                         "type": "string",
                         "format": "email"
@@ -297,6 +290,15 @@
                         "required": false,
                         "type": "file",
                         "format": null
+                    },
+                    {
+                        "name": "useNotification",
+                        "in": "query",
+                        "description": "是否使用回执",
+                        "required": false,
+                        "type": "string",
+                        "format": "true false",
+                        "default": false
                     },
                     {
                         "name": "respEmailId",
@@ -409,7 +411,7 @@
                         "format": "email"
                     },
                     {
-                        "name": "relplyTo",
+                        "name": "replyTo",
                         "in": "query",
                         "description": "默认的回复地址",
                         "required": false,
@@ -602,6 +604,22 @@
                         "required": false,
                         "type": "integer",
                         "format": "-2 | -1 | 0 | 1"
+                    },
+                    {
+                        "name": "start",
+                        "in": "query",
+                        "description": "查询的 start 序号",
+                        "required": false,
+                        "type": "integer",
+                        "format": null
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "查询的 limit 限制",
+                        "required": false,
+                        "type": "integer",
+                        "format": null
                     }
                 ],
                 "tags": [

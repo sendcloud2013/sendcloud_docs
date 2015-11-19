@@ -218,7 +218,7 @@ API 返回码如下:
 |40858|respEmailId不能为空|
 |40859|respEmailId格式错误|
 |40860|gzipCompress不能为空|
-|40861|gzipCompressId格式错误|
+|40861|gzipCompress格式错误|
 |40862|to中有格式错误的地址列表|
 |40863|to中有不存在的地址列表|
 |40864|地址列表的数目不能超过5|
