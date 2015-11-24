@@ -133,7 +133,7 @@ curl -d 'apiUser=***&apiKey=***&from=test@test.com&fromName=liubida&subject=测�
 ```
 普通发送 ( 调用模板 ifaxin_bill, 调用地址列表 users@maillist.sendcloud.org )
 ```
-curl -d 'apiUser=***&apiKey=***&from=test@test.com&fromName=liubida&to=noexist@maillist.sendcloud.org&subject=测试&replyTo=reply@test.com&templateInvokeName=ifaxin_bill' --data-urlencode 'headers={"header1": "value1", "header2": "value2"}' http://api.sendcloud.net/apiv2/sendtemplate
+curl -d 'apiUser=***&apiKey=***&from=test@test.com&fromName=liubida&to=noexist@maillist.sendcloud.org&subject=测试&replyTo=reply@test.com&templateInvokeName=ifaxin_bill&useAddressList=true' --data-urlencode 'headers={"header1": "value1", "header2": "value2"}' http://api.sendcloud.net/apiv2/sendtemplate
 
 # 返回值
 {
@@ -143,13 +143,13 @@ curl -d 'apiUser=***&apiKey=***&from=test@test.com&fromName=liubida&to=noexist@m
   "result": false
 }
 
-curl -d 'apiUser=***&apiKey=***&from=test@test.com&fromName=liubida&to=users@maillist.sendcloud.org&subject=测试&replyTo=reply@test.com&templateInvokeName=ifaxin_bill' --data-urlencode 'headers={"header1": "value1", "header2": "value2"}' http://api.sendcloud.net/apiv2/sendtemplate
+curl -d 'apiUser=***&apiKey=***&from=test@test.com&fromName=liubida&to=users@maillist.sendcloud.org&subject=测试&replyTo=reply@test.com&templateInvokeName=ifaxin_bill&useAddressList=true' --data-urlencode 'headers={"header1": "value1", "header2": "value2"}' http://api.sendcloud.net/apiv2/sendtemplate
 
 # 返回值
 {
   "statusCode": 40821,
   "info": {
-    "addressListTaskId": [
+    "maillistTaskId": [
       267131
     ]
   },

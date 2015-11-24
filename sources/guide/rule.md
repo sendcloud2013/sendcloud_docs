@@ -73,6 +73,11 @@ emailId_C = messageId + to.index(C) + '$' + C
 ```
 - - -
 
+## maillistTaskId
+
+当用户使用地址列表发送时, SendCloud 会调用后台服务来发送邮件, 这是一个异步调用过程. 而 SendCloud API 会返回用户一个 `maillistTaskId`, 用户可以凭此值来查询地址列表发送的具体数据.
+- - -
+
 ## X-SMTPAPI 扩展字段 
 
 X-SMTPAPI 是 SendCloud 为开发者提供的邮件个性化定制的处理方式, 开发者通过这个特殊的 **信头扩展字段**, 可以设置邮件处理方式的很多参数.  一般的, 开发者在使用 SMTP 接入时会使用此字段. 不过, WEBAPI 的方式也支持此参数. 
