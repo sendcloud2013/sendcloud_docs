@@ -9,6 +9,5 @@ SendCloud 为开发者提供了详尽的文档, 帮助开发者尽快的熟悉�
 ## [开发者指南](guide/base.md)
 ## [邮件API](email/index.md)
 ## [邮件API_V2](email_v2/index.md)
-## [代码示例](downloads/index.md)
 ## [FAQ](faq/index.md)
 

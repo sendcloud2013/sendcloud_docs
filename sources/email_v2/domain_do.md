@@ -59,52 +59,53 @@ http://api.sendcloud.net/apiv2/domain/get?apiUser=***&apiKey=***&type=0&verify=>
 ```
     
 **返回值说明**
-    
+
 |参数|说明|
 |:---|:---|
 |name|域名名称|
 |type|域名类型|
 |verify|域名验证值|
-|verifyKey|此域名 VERIFY_KEY 的配置值|
-|prefix|此域名 CNAME 配置的前缀|
-|dkim.selector|此域名 DKIM 的 selector|
-|dkim.pubkey|此域名 DKIM 的 公钥|
+|verifyKey.domain|此域名 VERIFY_KEY 的主机记录|
+|verifyKey.value|此域名 VERIFY_KEY 的配置值|
+|spf.domain|此域名 SPF 的主机记录|
+|spf.value|此域名 SPF 的配置值|
+|dkim.domain|此域名 DKIM 的主机记录|
+|dkim.value|此域名 DKIM 的配置值|
+|cname.domain|此域名 CNAME 的主机记录|
+|cname.value|此域名 CNAME 的配置值|
+|mx.domain|此域名 MX 的主机记录|
+|mx.value|此域名 MX 的配置值|
 |gmtCreated|域名创建时间|
 |gmtUpdated|域名修改时间|
 
 **返回值示例**
 ```
 {
-    statusCode: 200,
-    info: {
-        total: 2,
-        dataList: [
-            {
-                name: "xxx",
-                type: "测试",
-                verify: 23,
-                verifyKey: "d816618d-eb95-46f1-8aa2-652c340c0777-1410433325388",
-                prefix: "sctrack",
-                dkim.selector: "mail",
-                dkim.pubkey: "k=rsa;p=...",
-                gmtCreated: "2015-05-21 16:30:52",
-                gmtUpdated: "2015-09-02 10:46:54"
-            },
-            {
-                name: "xxx",
-                type: "普通",
-                verify: 31,
-                verifyKey: "9f14aaaa-a634-48b3-ae29-add1aea8e817-1366970248014",
-                prefix: "sctrack",
-                dkim.selector: "mail",
-                dkim.pubkey: "k=rsa;p=...",
-                gmtCreated: "2014-10-28 20:44:44",
-                gmtUpdated: "2015-09-25 13:49:26"
-            }
-        ]
-    },
-    message: "请求成功",
-    result: true
+  "result": true,
+  "statusCode": 200,
+  "message": "请求成功",
+  "info": {
+    "dataList": [
+      {
+        "name": "***",
+        "type": "普通",
+        "verify": 30,
+        "verifyKey.domain": "***",
+        "verifyKey.value": "***",
+        "spf.domain": "***",
+        "spf.value": "v=spf1 include:spf.sendcloud.org ~all",
+        "dkim.domain": "***",
+        "dkim.value": "k=rsa;p=***",
+        "cname.domain": "***",
+        "cname.value": "***",
+        "mx.domain": "***",
+        "mx.value": "***",
+        "gmtCreated": "2014-11-01 22:41:52",
+        "gmtUpdated": "2015-09-25 10:56:06"
+      }
+    ],
+    "count": 1
+  }
 }
 ```
 
@@ -153,10 +154,16 @@ http://api.sendcloud.net/apiv2/domain/add?apiUser=***&apiKey=***&name=mail.liubi
 |name|域名名称|
 |type|域名类型|
 |verify|域名验证值|
-|verifyKey|此域名 VERIFY_KEY 的配置值|
-|prefix|此域名 CNAME 配置的前缀|
-|dkim.selector|此域名 DKIM 的 selector|
-|dkim.pubkey|此域名 DKIM 的 公钥|
+|verifyKey.domain|此域名 VERIFY_KEY 的主机记录|
+|verifyKey.value|此域名 VERIFY_KEY 的配置值|
+|spf.domain|此域名 SPF 的主机记录|
+|spf.value|此域名 SPF 的配置值|
+|dkim.domain|此域名 DKIM 的主机记录|
+|dkim.value|此域名 DKIM 的配置值|
+|cname.domain|此域名 CNAME 的主机记录|
+|cname.value|此域名 CNAME 的配置值|
+|mx.domain|此域名 MX 的主机记录|
+|mx.value|此域名 MX 的配置值|
 |gmtCreated|域名创建时间|
 |gmtUpdated|域名修改时间|
 
@@ -166,15 +173,21 @@ http://api.sendcloud.net/apiv2/domain/add?apiUser=***&apiKey=***&name=mail.liubi
     statusCode: 200,
     info: {
         data: {
-            name: "xxx",
-            type: "普通",
-            verify: 0,
-            verifyKey: "aaaa0892-2b07-4a5b-9536-6200af3587e1-1443422994309",
-            prefix: "sctrack",
-            dkim.selector: "mail",
-            dkim.pubkey: "k=rsa;p=...",
-            gmtCreated: "2015-09-28 14:49:54",
-            gmtUpdated: "2015-09-28 14:49:54"
+            "name": "***",
+            "type": "普通",
+            "verify": 0,
+            "verifyKey.domain": "***",
+            "verifyKey.value": "***",
+            "spf.domain": "***",
+            "spf.value": "v=spf1 include:spf.sendcloud.org ~all",
+            "dkim.domain": "***",
+            "dkim.value": "k=rsa;p=***",
+            "cname.domain": "***",
+            "cname.value": "***",
+            "mx.domain": "***",
+            "mx.value": "***",
+            "gmtCreated": "2014-11-01 22:41:52",
+            "gmtUpdated": "2015-09-25 10:56:06"
         }
     },
     message: "请求成功",
@@ -226,10 +239,16 @@ http://api.sendcloud.net/apiv2/domain/update?apiUser=***&apiKey=***&name=mail.li
 |name|域名名称|
 |type|域名类型|
 |verify|域名验证值|
-|verifyKey|此域名 VERIFY_KEY 的配置值|
-|prefix|此域名 CNAME 配置的前缀|
-|dkim.selector|此域名 DKIM 的 selector|
-|dkim.pubkey|此域名 DKIM 的 公钥|
+|verifyKey.domain|此域名 VERIFY_KEY 的主机记录|
+|verifyKey.value|此域名 VERIFY_KEY 的配置值|
+|spf.domain|此域名 SPF 的主机记录|
+|spf.value|此域名 SPF 的配置值|
+|dkim.domain|此域名 DKIM 的主机记录|
+|dkim.value|此域名 DKIM 的配置值|
+|cname.domain|此域名 CNAME 的主机记录|
+|cname.value|此域名 CNAME 的配置值|
+|mx.domain|此域名 MX 的主机记录|
+|mx.value|此域名 MX 的配置值|
 |gmtCreated|域名创建时间|
 |gmtUpdated|域名修改时间|
 
@@ -239,15 +258,21 @@ http://api.sendcloud.net/apiv2/domain/update?apiUser=***&apiKey=***&name=mail.li
     statusCode: 200,
     info: {
         data: {
-            name: "xxx",
-            type: "普通",
-            verify: 0,
-            verifyKey: "aaaa0892-2b07-4a5b-9536-6200af3587e1-1443422994309",
-            prefix: "sctrack",
-            dkim.selector: "mail",
-            dkim.pubkey: "k=rsa;p=...",
-            gmtCreated: "2015-09-28 14:49:54",
-            gmtUpdated: "2015-09-28 15:49:54"
+            "name": "***",
+            "type": "普通",
+            "verify": 30,
+            "verifyKey.domain": "***",
+            "verifyKey.value": "***",
+            "spf.domain": "***",
+            "spf.value": "v=spf1 include:spf.sendcloud.org ~all",
+            "dkim.domain": "***",
+            "dkim.value": "k=rsa;p=***",
+            "cname.domain": "***",
+            "cname.value": "***",
+            "mx.domain": "***",
+            "mx.value": "***",
+            "gmtCreated": "2014-11-01 22:41:52",
+            "gmtUpdated": "2015-09-25 10:56:06"
         }
     },
     message: "请求成功",

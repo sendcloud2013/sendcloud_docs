@@ -1,3 +1,121 @@
+
+## WEBAPI 普通发送
+```
+#coding:utf-8                                                                   
+
+import requests                                                                 
+
+url = "http://sendcloud.sohu.com/webapi/mail.send.json"                         
+
+API_USER = '...'
+API_KEY = '...'
+
+params = {                                                                      
+    "api_user": API_USER, # 使用api_user和api_key进行验证                       
+    "api_key" : API_KEY,                                             
+    "to" : "to1@domain.com;to2@domain.com", # 收件人地址, 用正确邮件地址替代, 多个地址用';'分隔  
+    "from" : "sendcloud@sendcloud.org", # 发信人, 用正确邮件地址替代     
+    "fromname" : "SendCloud",                                                    
+    "subject" : "SendCloud python common",                              
+    "html": "欢迎使用SendCloud",
+    "resp_email_id": "true",
+}                                                                               
+
+filename = "/path/file.pdf"
+display_filename = "attachment.pdf"
+
+files = { "file1" : (display_filename, open(filename,"rb"))}
+
+r = requests.post(url, files=files, data=params)
+
+print r.text
+
+```
+[downloads](../downloads/code/python/python_common.py)
+
+- - - 
+
+## WEBAPI 模板发送
+```
+#coding:utf-8                                                                   
+
+import requests, json                                                                
+
+url = "http://sendcloud.sohu.com/webapi/mail.send_template.json"                         
+
+API_USER = '...'
+API_KEY = '...'
+
+sub_vars = {
+    'to': ['to1@domain.com', 'to2@domain.com'],
+    'sub': {
+        '%name%': ['user1', 'user2'],
+        '%money%': ['1000', '2000'],
+    }
+}
+
+params = {
+    "api_user": API_USER, # 使用api_user和api_key进行验证                       
+    "api_key" : API_KEY,                                             
+    "template_invoke_name" : "test_template",
+    "substitution_vars" : json.dumps(sub_vars),
+    "from" : "sendcloud@sendcloud.org", # 发信人, 用正确邮件地址替代
+    "fromname" : "SendCloud",
+    "subject" : "SendCloud python template",
+    "resp_email_id": "true",
+}
+
+filename = "..."
+display_filename = "..."
+
+files = { "file1" : (display_filename, open(filename,"rb"))}
+
+r = requests.post(url, files=files, data=params)
+
+print r.text
+
+```
+[downloads](../downloads/code/python/python_template.py)
+
+- - - 
+
+## WEBAPI 模板 && 地址列表 发送
+```
+#coding:utf-8                                                                   
+
+import requests                                                                 
+
+url = "http://sendcloud.sohu.com/webapi/mail.send_template.json"                         
+
+API_USER = '...'
+API_KEY = '...'
+
+params = {                                                                      
+    "api_user": API_USER, # 使用api_user和api_key进行验证                       
+    "api_key" : API_KEY,                                             
+    "to" : "test@maillist.sendcloud.org", # 使用地址列表的别称地址
+    "from" : "sendcloud@sendcloud.org", # 发信人, 用正确邮件地址替代
+    "fromname" : "SendCloud",                                                    
+    "subject" : "SendCloud python template address_list",                              
+    "template_invoke_name" : "sendcloud_template",
+    "use_maillist" : "true",
+    "resp_email_id": "true",
+}                                                                               
+
+filename = "/path/file.pdf"
+display_filename = "attachment.pdf"
+
+files = { "file1" : (display_filename, open(filename,"rb"))}
+
+r = requests.post(url, files=files, data=params)
+
+print r.text
+```
+[downloads](../downloads/code/python/python_template_maillist.py)
+- - - 
+
+## SMTP 方式发送
+```
 # -*- coding:utf-8 -*-                                                          
 
 from smtplib import SMTP
@@ -12,11 +130,9 @@ import base64, time, simplejson, os, json
 from datetime import datetime, date
 
 HOST = 'smtpcloud.sohu.com'
-HOST = '220.181.69.174'
-HOST = '220.181.11.80'
 PORT = 25
-API_USER = 'lamonli_test_Zzr7PS'
-API_KEY = 'aIrnyvvOjX3hgtud'
+API_USER = '...'
+API_KEY = '...'
 
 DEBUG_MODE = False
 USE_SSL = False
@@ -123,12 +239,10 @@ def test_send():
     mail_from = 'anything@ifaxin.com' # useless
     ffrom = formataddr((str(Header(u'爱发信客服支持', 'utf-8')), "support@ifaxin.com"))
     rcpt_tos = ["ben@ifaxin.com", "joe@ifaxin.com"]
-    rcpt_tos = ["d@sendcloud.im"]
     reply_to = 'service@ifaxin.com'
     subject = '关于问题1901的回复'
     content = "请登录爱发信, 查看此问题的回复.  <br/> <a href='http://www.ifaxin.com'>http://www.ifaxin.com</a>"
     files = ['/path/file1', '/path/files2', ]
-    files = []
 
     send(mail_from, ffrom, rcpt_tos, reply_to, subject, content, files)
 
@@ -159,8 +273,11 @@ def main():
     test_send()
 
     # send email with x_smtpapi
-    #test_sendn()
+    test_sendn()
 
 if __name__ == '__main__':                                                      
     main()
+    
+```
+[downloads](../downloads/code/python_smtp.py)
     
