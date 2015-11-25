@@ -28,9 +28,9 @@ post
 |labelId|int|否|本次发送所使用的标签ID. 此标签需要事先创建|  
 |headers|string|否|邮件头部信息. JSON 格式, 比如:`{"header1": "value1", "header2": "value2"}`|  
 |attachments|file|否|邮件附件. 发送附件时, 必须使用 multipart/form-data 进行 post 提交 (表单提交)|  
-|xsmtpapi|string|否|SMTP 扩展字段. 详见 [X-SMTPAPI](index.md#x-smtpapi). |  
+|xsmtpapi|string|否|SMTP 扩展字段. 详见 [X-SMTPAPI](../guide/rule.md#x-smtpapi)|  
 |plain|string|否|邮件的内容. 邮件格式为 `text/plain`|  
-|respEmailId|string (true, false)|否|默认值: `true`. 是否返回 [emailId](index.md#messageid-emailid). 有多个收件人时, 会返回 emailId 的列表|  
+|respEmailId|string (true, false)|否|默认值: `true`. 是否返回 [emailId](../guide/rule.md#messageid-emailid). 有多个收件人时, 会返回 emailId 的列表|  
 |useNotification|string (true, false)|否|默认值: `false`. 是否使用回执|
 |useAddressList|string (true, false)|否|默认值: `false`. 是否使用地址列表发送. 比如: `to=group1@maillist.sendcloud.org;group2@maillist.sendcloud.org`| 
 
@@ -42,7 +42,7 @@ post
 4. 非地址列表发送时, 使用 xsmtpapi 指定收件人, 多个收件人是单独发送. 此时参数 to, cc, bcc 失效.
 5. 参数 to, cc, bcc 的收件人个数不能超过 100, xsmtpapi 中的 to 的收件人个数不能超过 100.
 6. html 和 plain 不能同时为空. 如果都不为空, 以 html 的值为优先.
-7. subject, html, plain 中都可以使用[变量](../guide/base#_4). 由于变量的 '%' 为特殊字符, 做 HTTP 请求时请注意处理.
+7. subject, html, plain 中都可以使用[变量](../guide/base.md#_4). 由于变量的 '%' 为特殊字符, 做 HTTP 请求时请注意处理.
 8. 使用回执功能, 收件人在收到邮件之后, 可以选择是否发送阅读回执到 from 的邮箱地址.
 
 - - - 
@@ -67,7 +67,7 @@ post
 |apiKey|string|是|API_KEY|
 |from|string|是|发件人地址. 举例: `support@ifaxin.com`, `爱发信支持<support@ifaxin.com>`|  
 |to|string|*|地址列表. 在 `useAddressList=true` 时使用|
-|xsmtpapi|string|*|SMTP 扩展字段. 详见 [X-SMTPAPI](index.md#x-smtpapi). |  
+|xsmtpapi|string|*|SMTP 扩展字段. 详见 [X-SMTPAPI](../guide/rule.md#x-smtpapi)|  
 |subject|string|*|邮件标题|  
 |templateInvokeName|string|是|邮件模板调用名称| 
 |fromName|string|否|发件人名称. 显示如: `ifaxin客服支持<support@ifaxin.com>`|  
@@ -77,7 +77,7 @@ post
 |labelId|int|否|本次发送所使用的标签ID. 此标签需要事先创建|  
 |headers|string|否|邮件头部信息. JSON 格式, 比如:`{"header1": "value1", "header2": "value2"}`|  
 |attachments|file|否|邮件附件. 发送附件时, 必须使用 multipart/form-data 进行 post 提交 (表单提交)|  
-|respEmailId|string (true, false)|否|默认值: `true`. 是否返回 emailId. 有多个收件人时, 会返回 emailId 的列表|  
+|respEmailId|string (true, false)|否|默认值: `true`. 是否返回 [emailId](../guide/rule.md#messageid-emailid). 有多个收件人时, 会返回 emailId 的列表|  
 |useNotification|string (true, false)|否|默认值: `false`. 是否使用回执|  
 |useAddressList|string (true, false)|否|默认值: `false`. 是否使用地址列表发送. 比如: `to=group1@maillist.sendcloud.org;group2@maillist.sendcloud.org`| 
 
@@ -90,7 +90,7 @@ post
 5. API_USER 类型和模板类型必须一致. 触发或者批量.
 6. 只能调用审核通过的模板.
 7. 默认取邮件模板的标题作为邮件主题, 除非参数 subject 为非空. 如果两者都为空, 则返回错误.
-8. subject, 模板中都可以使用[变量](../guide/base#_4). 由于变量的 '%' 为特殊字符, 做 HTTP 请求时请注意处理.
+8. subject, 模板中都可以使用[变量](../guide/base.md#_4). 由于变量的 '%' 为特殊字符, 做 HTTP 请求时请注意处理.
 9. 使用回执功能, 收件人在收到邮件之后, 可以选择是否发送阅读回执到 from 的邮箱地址.
 
 **请求, 返回值示例**

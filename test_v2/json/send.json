@@ -208,7 +208,8 @@
                         "description": "发件人地址",
                         "required": true,
                         "type": "string",
-                        "format": "email"
+                        "format": "email",
+                        "default": "test@sendcloud.org"
                     },
                     {
                         "name": "to",

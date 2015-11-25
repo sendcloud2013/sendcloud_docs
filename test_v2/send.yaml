@@ -158,6 +158,7 @@ paths:
           required: true
           type: string
           format: email
+          default: test@sendcloud.org
         - name: to
           in: query
           description: 收件人地址
