@@ -76,6 +76,7 @@ emailId_C = messageId + to.index(C) + '$' + C
 ## maillistTaskId
 
 当用户使用地址列表发送时, SendCloud 会调用后台服务来发送邮件, 这是一个异步调用过程. 而 SendCloud API 会返回用户一个 `maillistTaskId`, 用户可以凭此值来查询地址列表发送的具体数据.
+
 - - -
 
 ## X-SMTPAPI 扩展字段 

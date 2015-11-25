@@ -176,7 +176,7 @@ public boolean verify(String appkey, String token, long timestamp,
     
 **事件说明**
     
-目前 WebHook 支持的事件类型包括: 请求, 发送, 打开, 点击, 取消订阅, 软退信, 举报, 无效邮件.
+目前 WebHook 支持的事件类型包括: 请求, 发送, 打开, 点击, 取消订阅, 举报, 无效邮件.
 
 ##### 请求事件 ( request )
 
@@ -186,9 +186,11 @@ public boolean verify(String appkey, String token, long timestamp,
 |:---|:---|:---|
 |event|string|事件类型:"request"|
 |message|string|消息内容|
-|mail_list_task_id|long|如果使用邮件类表发送，将产生邮件列表任务id|
+|maillistTaskId|long|如果使用地址列表发送，将产生任务id|
+|mail_list_task_id|long|同 maillistTaskId|
 |messageId|string|messageId|
-|category|string|发信子账号, 就是 API_USER|
+|apiUser|string|API_USER|
+|category|string|同 apiUser|
 |recipientArray|list|请求的收件人|
 |emailIds|list|emailId 数组|
 |labelId|int|自定义的标签ID|
@@ -197,23 +199,6 @@ public boolean verify(String appkey, String token, long timestamp,
 |token|string|随机产生的长度为50的字符串|
 |signature|string|签名字符串|
     
-**POST 数据示例**
-
-```
-signature: d46a5c69c23b23a8270efa8b7fbb9c2d9230d30559e215a539909b432983a2f8
-timestamp: 1426571113188
-recipientArray: ["123@qq.com"]
-emailIds: ["1426571113174_27372_24044_6376.sc-10_10_127_119-inbound0$123@qq.com"]
-mail_list_task_id:
-labelId: ***
-category: ***
-event: request
-recipientSize: 1
-message: successfully request
-messageId: 1426571113174_27372_24044_6376.sc-10_10_127_119-inbound
-token: iSXtPWbCNO5qiBrLhTRX48dbRujd3t0lL8RLg7ocJbhiDh6WxJ
-```
-
 ##### 发送 ( deliver )
     
 **参数说明**
@@ -222,29 +207,16 @@ token: iSXtPWbCNO5qiBrLhTRX48dbRujd3t0lL8RLg7ocJbhiDh6WxJ
 |:---|:---|:---|
 |event|string|事件类型:"deliver"|
 |message|string|消息内容|
-|category|string|发信子账号, 就是 API_USER|
-|mail_list_task_id|long|如果使用邮件类表发送，将产生邮件列表任务id|
+|apiUser|string|API_USER|
+|category|string|同 apiUser|
+|maillistTaskId|long|如果使用地址列表发送，将产生任务id|
+|mail_list_task_id|long|同 maillistTaskId|
 |emailId|string|每封email的唯一ID|
 |recipient|string|收信人|
 |labelId|int|自定义的标签ID|
 |timestamp|long|时间戳|
 |token|string|随机产生的长度为50的字符串|
 |signature|string|签名字符串|
-    
-**POST 数据示例**
-
-```
-timestamp: 1426571118712
-event: deliver
-category: ***
-labelId: *** 
-emailId: 1426571113174_27372_24044_6376.sc-10_10_127_119-inbound0$123@qq.com
-recipient: 123@qq.com
-mail_list_task_id:
-message: Successfully delivered
-signature: ac1ebc61754fde9553196d0a4c8e987e2891e03fccb283fc2c49ff42ad34b21f
-token: M1Q4BUFJRpQpjx9YIQvDz7ZCODPOYMHMKRLmS2Gd9rbxfcfGb8
-```
 
 ##### 打开 ( open )
     
@@ -254,8 +226,10 @@ token: M1Q4BUFJRpQpjx9YIQvDz7ZCODPOYMHMKRLmS2Gd9rbxfcfGb8
 |:---|:---|:---|
 |event|string|事件类型:"open"|
 |message|string|消息内容|
-|category|string|发信子账号, 就是 API_USER|
-|mail_list_task_id|long|如果使用邮件类表发送，将产生邮件列表任务id|
+|apiUser|string|API_USER|
+|category|string|同 apiUser|
+|maillistTaskId|long|如果使用地址列表发送，将产生任务id|
+|mail_list_task_id|long|同 maillistTaskId|
 |emailId|string|每封email的唯一ID|
 |recipient|string|收信人|
 |labelId|int|自定义的标签ID|
@@ -268,26 +242,6 @@ token: M1Q4BUFJRpQpjx9YIQvDz7ZCODPOYMHMKRLmS2Gd9rbxfcfGb8
 |token|string|随机产生的长度为50的字符串|
 |signature|string|签名字符串|
     
-**POST 数据示例**
-
-```
-timestamp: 1426571228078
-message: open email
-oSName: Windows 7
-recipient: 123@qq.com
-event: open
-category: ***
-signature: 53bf46e97878f45c3191d697c9340a609ad3c1e27eab20133a6e2e7baf0fe1ce
-emailId: 1426571113174_27372_24044_6376.sc-10_10_127_119-inbound0$123@qq.com
-token: uBZHXO4o0qCJ1HkLPl7dXTb1ltglOCcmfqLQW4aBsoGp8HWcvv
-explorerVer: 34.0.1847
-labelId: ***
-ip: ***
-oSVer:
-mail_list_task_id:
-explorerName: Chromium
-```
-
 ##### 点击 ( click )
     
 **参数说明**
@@ -296,12 +250,14 @@ explorerName: Chromium
 |:---|:---|:---|
 |event|string|事件类型:"click"|
 |message|string|消息内容|
-|category|string|发信子账号, 就是 API_USER|
-|mail_list_task_id|long|如果使用邮件类表发送，将产生邮件列表任务id|
+|apiUser|string|API_USER|
+|category|string|同 apiUser|
+|maillistTaskId|long|如果使用地址列表发送，将产生任务id|
+|mail_list_task_id|long|同 maillistTaskId|
 |emailId|string|每封email的唯一ID|
 |recipient|string|收信人|
 |labelId|int|自定义的标签ID|
-|url|被点击的链接|
+|url|string|被点击的链接|
 |ip|string|点击的Ip地址|
 |explorerName|string|浏览器名称|
 |explorerVer|string|浏览器版本|
@@ -311,27 +267,6 @@ explorerName: Chromium
 |token|string|随机产生的长度为50的字符串|
 |signature|string|签名字符串|
     
-**POST 数据示例**
-
-```
-timestamp: 1426571238869
-message: click email
-oSName: Windows 7 
-recipient: 123@qq.com
-event: click
-category: ***
-emailId: 1426571113174_27372_24044_6376.sc-10_10_127_119-inbound0$123@qq.com
-signature: 9e27ab6c7eb4cffede24c721f7224b41df2e545526b894f5d83f9e57f26e790d
-url: http://www.ifaxin.com
-token: NxUUuxAzbgbm6Sx8k7GDRCJQOB5PrGNwBBSp8YLq4deNT18VLJ
-explorerVer: 34.0.1847
-labelId: ***
-ip: ***
-oSVer:
-mail_list_task_id:
-explorerName: Chromium
-```
-
 ##### 取消订阅 ( unsubscribe )
     
 **参数说明**
@@ -340,9 +275,11 @@ explorerName: Chromium
 |:---|:---|:---|
 |event|string|事件类型:"unsubscribe"|
 |message|string|消息内容|
-|category|string|发信子账号, 就是 API_USER|
+|apiUser|string|API_USER|
+|category|string|同 apiUser|
 |labelId|int|自定义的标签ID|
-|mail_list_task_id|long|如果使用邮件类表发送，将产生邮件列表任务id|
+|maillistTaskId|long|如果使用地址列表发送，将产生任务id|
+|mail_list_task_id|long|同 maillistTaskId|
 |emailId|string|每封email的唯一ID|
 |recipient|string|收信人|
 |labelId|int|自定义的标签ID|
@@ -355,26 +292,6 @@ explorerName: Chromium
 |token|string|随机产生的长度为50的字符串|
 |signature|string|签名字符串|
     
-**POST 数据示例**
-
-```
-timestamp: 1426571263755
-message: unsubscribe email
-oSName:
-recipient: 123@qq.com
-event: unsubscribe
-category: ***
-signature: 058c24197d3e2c9d179d8303c3290a22af237a7bbb2827bd546b5e3929c2b349
-emailId: 1426571113174_27372_24044_6376.sc-10_10_127_119-inbound0$123@qq.com
-token: DGoaUftgLIj3ePopdeB3y8Cm04ChhKWlr9m5ELHRfzH6lvQuxG
-explorerVer:
-labelId: ***
-ip:
-oSVer:
-mail_list_task_id:
-explorerName:
-```
-
 ##### 软退信 ( bounce )
     
 **参数说明**    
@@ -383,9 +300,11 @@ explorerName:
 |:---|:---|:---|
 |event|string|事件类型:"bounce"|
 |message|string|消息内容|
-|category|string|发信子账号, 就是 API_USER|
+|apiUser|string|API_USER|
+|category|string|同 apiUser|
 |labelId|int|自定义的标签ID|
-|mail_list_task_id|long|如果使用邮件类表发送，将产生邮件列表任务id|
+|maillistTaskId|long|如果使用地址列表发送，将产生任务id|
+|mail_list_task_id|long|同 maillistTaskId|
 |emailId|string|每封email的唯一ID|
 |recipient|string|收信人|
 |reason|string|弹回原因|
@@ -401,9 +320,11 @@ explorerName:
 |:---|:---|:---|
 |event|string|事件类型:"report_spam"|
 |message|string|消息内容|
-|category|string|发信子账号, 就是 API_USER|
+|apiUser|string|API_USER|
+|category|string|同 apiUser|
 |labelId|int|自定义的标签ID|
-|mail_list_task_id|long|如果使用邮件类表发送，将产生邮件列表任务id|
+|maillistTaskId|long|如果使用地址列表发送，将产生任务id|
+|mail_list_task_id|long|同 maillistTaskId|
 |emailId|string|每封email的唯一ID|
 |recipient|string|收信人|
 |timestamp|long|时间戳|
@@ -418,9 +339,11 @@ explorerName:
 |:---|:---|:---|
 |event|string|事件类型:"invalid"|
 |message|string|消息内容|
-|category|string|发信子账号, 就是 API_USER|
+|apiUser|string|API_USER|
+|category|string|同 apiUser|
 |labelId|int|自定义的标签ID|
-|mail_list_task_id|long|如果使用地址列表发送，将产生邮件列表任务id|
+|maillistTaskId|long|如果使用地址列表发送，将产生任务id|
+|mail_list_task_id|long|同 maillistTaskId|
 |emailId|string|每封email的唯一ID|
 |recipient|string|收信人|
 |timestamp|long|时间戳|
