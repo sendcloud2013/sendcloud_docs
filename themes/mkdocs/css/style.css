@@ -1,10 +1,10 @@
 @font-face {
 	font-family: 'icomoon';
-	src:url('fonts/icomoon.eot?9d0dam');
-	src:url('fonts/icomoon.eot?#iefix9d0dam') format('embedded-opentype'),
-		url('fonts/icomoon.woff?9d0dam') format('woff'),
-		url('fonts/icomoon.ttf?9d0dam') format('truetype'),
-		url('fonts/icomoon.svg?9d0dam#icomoon') format('svg');
+	src:url('fonts/icomoon.eot?spxwls');
+	src:url('fonts/icomoon.eot?spxwls#iefix') format('embedded-opentype'),
+		url('fonts/icomoon.ttf?spxwls') format('truetype'),
+		url('fonts/icomoon.woff?spxwls') format('woff'),
+		url('fonts/icomoon.svg?spxwls#icomoon') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -23,39 +23,37 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.icon-rocket:before {
+	content: "\e900";
+}
+.icon-paperplane:before {
+	content: "\e601";
+}
 .icon-mark-github:before {
 	content: "\e606";
 }
-
-.icon-anchor:before {
-	content: "\e608";
-}
-
 .icon-question-circle:before {
 	content: "\e602";
 }
-
+.icon-anchor:before {
+	content: "\e608";
+}
+.icon-question-circle:before {
+	content: "\e602";
+}
 .icon-life-bouy:before {
 	content: "\e603";
 }
-
 .icon-file-code-o:before {
 	content: "\e604";
 }
-
 .icon-code:before {
 	content: "\e605";
 }
-
 .icon-comment:before {
 	content: "\e607";
 }
-
 .icon-email:before {
 	content: "\e600";
-}
-
-.icon-paperplane:before {
-	content: "\e601";
 }
 
