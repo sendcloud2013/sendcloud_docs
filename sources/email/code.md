@@ -51,8 +51,6 @@
 
 [模板发送&&地址列表](email/downloads/php/php_template_maillist.php)
 
-[SMTP发送](email/downloads/python/python_smtp.py)
-
 ## Ruby
 
 依赖
@@ -68,8 +66,6 @@ gem install rest_client
 [模板发送](email/downloads/ruby/ruby_template.rb)
 
 [模板发送&&地址列表](email/downloads/ruby/ruby_template_maillist.rb)
-
-[SMTP发送](email/downloads/python/smtp.rb)
 
 ## Perl
 
@@ -88,7 +84,7 @@ https://metacpan.org/pod/JSON
 
 [模板发送&&地址列表](email/downloads/perl/perl_template_maillist.pm)
 
-[SMTP发送](email/downloads/python/perl_smtp.pm)
+[SMTP发送](email/downloads/perl/perl_smtp.pm)
 
 ## CSharp
 
@@ -96,7 +92,7 @@ https://metacpan.org/pod/JSON
 
 [模板发送&&附件](email/downloads/csharp/csharp_template.cs)
 
-[SMTP发送](email/downloads/python/csharp_smtp.cs)
+[SMTP发送](email/downloads/csharp/csharp_smtp.cs)
 
 ## Golang
 
