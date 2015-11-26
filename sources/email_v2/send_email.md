@@ -158,4 +158,62 @@ curl -d 'apiUser=***&apiKey=***&from=test@test.com&fromName=liubida&to=users@mai
 }
 ```
 
+- - -
 
+
+##地址列表发送任务查询
+
+**URL**
+```
+http://api.sendcloud.net/apiv2/mail/taskinfo
+```
+    
+**HTTP请求方式**
+```bash
+post    get
+```
+    
+**参数说明**
+    
+|参数|类型|必须|说明|
+|:---|:---|:---|:---|
+|apiUser|string|是|API_USER|
+|apiKey|string|是|API_KEY|
+|maillistTaskId|int|是|返回的maillistTaskId|
+    
+**请求示例**    
+```
+http://api.sendcloud.net/apiv2/label/update?api_user=***&api_key=***&maillistTaskId=1
+```
+    
+**返回值说明**
+    
+|参数|说明|
+|:---|:---| 
+|maillistTaskId|返回的maillistTaskId|
+|apiUser|调用的apiUser|
+|addressList|调用的地址列表的别称|
+|memberCount|发送的地址个数|
+|gmtCreated|创建时间|
+|gmtUpdated|修改时间|
+|status|地址列表请求状态|
+
+**返回值示例**    
+```
+{
+  "result": true,
+  "statusCode": 200,
+  "message": "请求成功",
+  "info": {
+    "data": {
+      "maillistTaskId": ***,
+      "apiUser": "***",
+      "addressList": "***",
+      "memberCount": 300,
+      "gmtCreated": "2015-11-26 14:38:09",
+      "gmtUpdated": "2015-11-26 14:38:23",
+      "status": "请求完毕"
+    }
+  }
+}
+```

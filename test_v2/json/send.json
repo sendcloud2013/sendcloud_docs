@@ -324,6 +324,48 @@
                 }
             }
         },
+        "/mail/taskinfo": {
+            "get": {
+                "summary": "查询地址列表发送任务",
+                "parameters": [
+                    {
+                        "name": "apiUser",
+                        "in": "query",
+                        "description": "API_USER",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "apiKey",
+                        "in": "query",
+                        "description": "API_KEY",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "maillistTaskId",
+                        "in": "query",
+                        "description": "返回的maillistTaskId",
+                        "required": false,
+                        "type": "integer",
+                        "format": null
+                    }
+                ],
+                "tags": [
+                    "mail"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "请求结果",
+                        "schema": {
+                            "$ref": "#/definitions/Result"
+                        }
+                    }
+                }
+            }
+        },
         "/template/list": {
             "get": {
                 "summary": "查询邮件模板 (批量)",
