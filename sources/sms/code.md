@@ -19,7 +19,6 @@ def send():
 
     param = {
         'smsUser': SMS_USER,
-        'smsKey' : SMS_KEY,
         'templateId' : 381,
         'phone' : 13488888888,
         'vars' : '{"%content%":"liubidatest"}'
@@ -48,7 +47,6 @@ def sendn():
 
     param = {
         'smsUser': SMS_USER,
-        'smsKey' : SMS_KEY,
         'templateId' : 381,
         'tos' : '[{"phone":"13488888888", "vars":{"%content%":"liubidatest"}},{"phone":"15688888888", "vars":{"%content%":"jiangliantest"}}]'
     }
