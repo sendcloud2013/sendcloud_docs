@@ -44,6 +44,7 @@ post
 6. html 和 plain 不能同时为空. 如果都不为空, 以 html 的值为优先.
 7. subject, html, plain 中都可以使用[变量](../guide/base.md#_4). 由于变量的 '%' 为特殊字符, 做 HTTP 请求时请注意处理.
 8. 使用回执功能, 收件人在收到邮件之后, 可以选择是否发送阅读回执到 from 的邮箱地址.
+9. 如果参数 headers 中某个 Key 以 "SC-Custom-" 开头, 则这个 Key:Value 会通过 WebHook 返回给用户.
 
 - - - 
 
@@ -92,6 +93,7 @@ post
 7. 默认取邮件模板的标题作为邮件主题, 除非参数 subject 为非空. 如果两者都为空, 则返回错误.
 8. subject, 模板中都可以使用[变量](../guide/base.md#_4). 由于变量的 '%' 为特殊字符, 做 HTTP 请求时请注意处理.
 9. 使用回执功能, 收件人在收到邮件之后, 可以选择是否发送阅读回执到 from 的邮箱地址.
+10. 如果参数 headers 中某个 Key 以 "SC-Custom-" 开头, 则这个 Key:Value 会通过 WebHook 返回给用户.
 
 **请求, 返回值示例**
 

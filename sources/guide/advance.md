@@ -198,6 +198,8 @@ public boolean verify(String appkey, String token, long timestamp,
 |timestamp|long|时间戳|
 |token|string|随机产生的长度为50的字符串|
 |signature|string|签名字符串|
+|userHeaders|string|用户自定义, 并且以"SC-Custom-"开头的头部信息|
+
     
 ##### 发送 ( deliver )
     
@@ -217,6 +219,7 @@ public boolean verify(String appkey, String token, long timestamp,
 |timestamp|long|时间戳|
 |token|string|随机产生的长度为50的字符串|
 |signature|string|签名字符串|
+|userHeaders|string|用户自定义, 并且以"SC-Custom-"开头的头部信息|
 
 ##### 打开 ( open )
     
@@ -241,6 +244,7 @@ public boolean verify(String appkey, String token, long timestamp,
 |timestamp|long|时间戳|
 |token|string|随机产生的长度为50的字符串|
 |signature|string|签名字符串|
+|userHeaders|string|用户自定义, 并且以"SC-Custom-"开头的头部信息|
     
 ##### 点击 ( click )
     
@@ -266,6 +270,7 @@ public boolean verify(String appkey, String token, long timestamp,
 |timestamp|long|时间戳|
 |token|string|随机产生的长度为50的字符串|
 |signature|string|签名字符串|
+|userHeaders|string|用户自定义, 并且以"SC-Custom-"开头的头部信息|
     
 ##### 取消订阅 ( unsubscribe )
     
@@ -291,6 +296,7 @@ public boolean verify(String appkey, String token, long timestamp,
 |timestamp|long|时间戳|
 |token|string|随机产生的长度为50的字符串|
 |signature|string|签名字符串|
+|userHeaders|string|用户自定义, 并且以"SC-Custom-"开头的头部信息|
     
 ##### 软退信 ( bounce )
     
@@ -311,6 +317,7 @@ public boolean verify(String appkey, String token, long timestamp,
 |timestamp|long|时间戳|
 |token|string|随机产生的长度为50的字符串|
 |signature|string|签名字符串|
+|userHeaders|string|用户自定义, 并且以"SC-Custom-"开头的头部信息|
     
 ##### 垃圾举报 ( report_spam )
     
@@ -330,6 +337,7 @@ public boolean verify(String appkey, String token, long timestamp,
 |timestamp|long|时间戳|
 |token|string|随机产生的长度为50的字符串|
 |signature|string|签名字符串|
+|userHeaders|string|用户自定义, 并且以"SC-Custom-"开头的头部信息|
 
 ##### 无效邮件 ( invalid )
     
@@ -349,6 +357,7 @@ public boolean verify(String appkey, String token, long timestamp,
 |timestamp|long|时间戳|
 |token|string|随机产生的长度为50的字符串|
 |signature|string|签名字符串|
+|userHeaders|string|用户自定义, 并且以"SC-Custom-"开头的头部信息|
 
 **快速体验**
 

@@ -41,6 +41,7 @@ post   get
 4. API 参数 to 的收件人个数不能超过100
 5. X-SMTPAPI 中的 to 的收件人个数不能超过100
 6. 地址列表中的收件人个数不能超过 100000
+7. 如果参数 headers 中某个 Key 以 "SC-Custom-" 开头, 则这个 Key:Value 会通过 WebHook 返回给用户.
 
 **请求, 返回值示例**
 
@@ -144,6 +145,7 @@ post
 1. `to` 和 `substitution_vars` 分别对应地址列表使用与否的情况, 两者不能同时使用
 2. 只能调用审核通过的模板
 3. API_USER 类型和模板类型必须一致
+4. 如果参数 headers 中某个 Key 以 "SC-Custom-" 开头, 则这个 Key:Value 会通过 WebHook 返回给用户.
 
 **请求, 返回值示例**
 
