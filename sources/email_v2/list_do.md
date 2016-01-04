@@ -41,6 +41,8 @@ http://api.sendcloud.net/apiv2/addresslist/list?api_user=***&api_key=***&limit=2
 |name|地址列表的名称|
 |address|列表别称地址, 使用该别称地址进行调用, 格式为xxx@maillist.sendcloud.org|
 |membersCount|地址列表包含的地址个数|
+|description|地址列表描述|
+|listType|地址列表类型|
 |gmtCreated|地址列表创建时间|
 |gmtUpdated|地址列表修改时间|
     
@@ -55,6 +57,8 @@ http://api.sendcloud.net/apiv2/addresslist/list?api_user=***&api_key=***&limit=2
             gmtCreated: "2015-09-15 20:29:01",
             gmtUpdated: "2015-09-15 20:29:01",
             address: "developers4@sendcloud.com",
+            description: "desc",
+            listType: 0,
             memberCount: 0,
             name: "211"
         }]
@@ -88,6 +92,7 @@ post    get
 |address|string|是|别称地址, 使用该别称地址进行调用, 格式为xxx@maillist.sendcloud.org|
 |name|string|是|列表名称|
 |desc|string|否|对列表的描述信息|
+|listType|int|否|列表的类型. 0: 普通地址列表, 1: 高级地址列表(需要开通权限才能使用). 默认为0|
     
 **请求示例**    
 ```
@@ -102,6 +107,7 @@ http://api.sendcloud.net/apiv2/addresslist/add?api_user=***&api_key=***&address=
 |membersCount|列表中地址数|
 |name|列表名称|
 |description|列表描述信息|
+|listType|地址列表类型|
 |gmtCreated|地址列表创建时间|
 |gmtUpdated|地址列表修改时间|
 
@@ -116,6 +122,7 @@ http://api.sendcloud.net/apiv2/addresslist/add?api_user=***&api_key=***&address=
             address: "developers41@sendcloud.com",
             memberCount: 0,
             description: "41",
+            listType: 0,
             name: "developer41"
         }
     },
@@ -258,6 +265,7 @@ http://api.sendcloud.net/apiv2/addressmember/list?api_user=***&api_key=***&addre
 |gmtUpdated|成员修改时间|
 |address|所属地址列表|
 |member|成员邮件地址|
+|name|成员姓名|
 |vars|变量|
     
 **返回值示例**
@@ -271,6 +279,7 @@ http://api.sendcloud.net/apiv2/addressmember/list?api_user=***&api_key=***&addre
         "gmtUpdated": "2015-04-30 11:15:43",
         "address": "test@maillist.sendcloud.org",
         "member": "001@160it.com",
+        "name": "001",
         "vars": ""
       },
       {
@@ -278,6 +287,7 @@ http://api.sendcloud.net/apiv2/addressmember/list?api_user=***&api_key=***&addre
         "gmtUpdated": "2015-04-30 11:17:01",
         "address": "test@maillist.sendcloud.org",
         "member": "01@mail.yedao.cc",
+        "name": "002",
         "vars": ""
       },
       {
@@ -332,6 +342,7 @@ http://api.sendcloud.net/apiv2/addressmember/get?api_user=***&api_key=***&addres
 |gmtUpdated|成员修改时间|
 |address|所属地址列表|
 |member|成员邮件地址|
+|name|成员姓名|
 |vars|变量|
     
 **返回值示例**
@@ -347,6 +358,7 @@ http://api.sendcloud.net/apiv2/addressmember/get?api_user=***&api_key=***&addres
         "gmtUpdated": "2015-04-30 11:15:43",
         "address": "***",
         "member": "001@160it.com",
+        "name": "001",
         "vars": ""
       }
     ],
@@ -377,13 +389,16 @@ post    get
 |apiKey|string|是|API_KEY|
 |address|string|是|地址列表的别称地址|    
 |members|list|是|需要添加成员的地址, 多个地址用 `;` 分隔|
+|names|list|否|地址成员姓名, 多个地址用 `;` 分隔|    
 |vars|list|否|替换变量, 与 members 一一对应, 变量格式为 {"money":"1000"} , 多个用 `;` 分隔|
 
 **说明**
 ```
 1. 每次请求最多可以添加1000个成员
 2. 如果包含 vars 变量, 则必须与 members 的成员数量一致
-3. 此时添加 vars 变量, 注意 key 不需要被 带上 '%'
+3. 添加 vars 变量, 注意 key 不需要 带上 '%'
+4. vars 变量中, key 为 name 的变量会被参数 name 覆盖
+5. 地址列表发送时, 可以使用全局变量 recipient, 值为收件人的邮箱地址
 ```
     
 **请求示例**
@@ -432,12 +447,12 @@ post    get
 |apiKey|string|是|API_KEY|
 |address|string|是|地址列表的别称地址|    
 |members|list|是|需要添加成员的地址, 多个地址用 `;` 分隔|
+|names|list|否|地址成员姓名, 多个地址用 `;` 分隔|    
 |vars|list|否|替换变量, 与 members 一一对应, 变量格式为 {"money":"1000"} , 多个用 `;` 分隔|
 
 **说明**
 ```
 1. 每次请求最多可以修改1000个成员
-2. 如果包含 vars 变量, 则必须与 members 的成员数量一致
 ```
     
 **请求示例**
