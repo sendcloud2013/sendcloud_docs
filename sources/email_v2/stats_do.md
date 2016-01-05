@@ -5,7 +5,7 @@
     
 **URL**    
 ```
-http://sendcloud.sohu.com/webapi/stats.get.json
+http://api.sendcloud.net/apiv2/statDay/list
 ```
     
 **HTTP请求方式**   
@@ -17,19 +17,25 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|api_user|string|是|子账号|
-|api_key|string|是|密码|
+|apiUser|string|是|子账号|
+|apiKey|string|是|密码|
 |days|int|*|过去 days 天内的统计数据 (`days=1`表示今天)| 
-|start_date|string|*|开始日期, 格式为`yyyy-MM-dd`|
-|end_date|string|*|结束日期, 格式为`yyyy-MM-dd`|
-|api_user_list|string|否|获取指定 API_USER 的统计数据, 多个 API_USER 用`;`分开, 如:`api_user_list=a;b;c`|
-|label_id_list|string|否|获取指定标签下的统计数据, 多个标签用`;`分开, 如:`label_id_list=a;b;c`|
-|domain_list|string|否|获取指定域名下的统计数据, 多个域名用`;`分开, 如:`domain_list=a;b;c`|
-|aggregate|int(1, 0)|否|默认为0. 如果为1, 则返回聚合数据|
-    
+|startDate|string|*|开始日期, 格式为`yyyy-MM-dd`|
+|endDate|string|*|结束日期, 格式为`yyyy-MM-dd`|
+|apiUserList|string|否|获取指定 API_USER 的统计数据, 多个 API_USER 用`;`分开, 如:`apiUserList=a;b;c`|
+|labelIdList|string|否|获取指定标签下的统计数据, 多个标签用`;`分开, 如:`labelIdList=a;b;c`|
+|domainList|string|否|获取指定域名下的统计数据, 多个域名用`;`分开, 如:`domainList=a;b;c`|
+|aggregate|boolean(1, 0)|否|默认为0. 如果为1, 则返回聚合数据|
+|aggregate|string (true, false)|否|默认值: `false`. 如果为true, 则返回聚合数据|
+|aggregateByDate|string (true, false)|否|默认值: `false`. 如果为true, 则时间维度会被聚合|
+|aggregateByApiUser|string (true, false)|否|默认值: `false`. 如果为true, 则APIUser维度会被聚合|
+|aggregateByLabel|string (true, false)|否|默认值: `false`. 如果为true, 则Label维度会被聚合|
+|aggregateByDomain|string (true, false)|否|默认值: `false`. 如果为true, 则Domain维度会被聚合|
+
 提示:
 
-1. 获取统计数据时, 必须指定时间区间. 即 **start_date 与 end_date 的组合** 或者 **days 参数** 需二者取一
+//1. 获取统计数据时, 必须指定时间区间. 即 **startDate 与 endDate 的组合** 或者 **days 参数** 需二者取一
+1. 如果已指定参数 days, 则忽略参数 startDate 和 endDate
 2. 查询的天数不超过 100
 3. 当`aggregate`为 1 时, 会将所有维度的数据聚合累加
     

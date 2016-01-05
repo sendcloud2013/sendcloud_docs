@@ -3,9 +3,9 @@ info:
   title: SendCloud APIv2
   description: SendCloud Mail API Version II. Just have a try.
   version: 2.0.0
-host: 'api.sendcloud.net'
+host: 'sendcloud.sohu.com'
 schemes:
-  - http
+  - https
 basePath: /apiv2
 produces:
   - application/json
