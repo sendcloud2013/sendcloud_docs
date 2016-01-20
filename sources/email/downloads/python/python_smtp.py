@@ -73,7 +73,7 @@ def send(mail_from, ffrom, rcpt_tos, reply_to, subject, content, files):
     print ret
     return ret
 
-def sendn(mail_from, ffrom, x_smtpapi, reply_to, subject, content, files): 
+def sendn(mail_from, ffrom, x_smtpapi, reply_to, subject, content, files, custom_headers = {}): 
     ret = {}
 
     s = SMTP('%s:%d' % (HOST, PORT))
@@ -86,6 +86,8 @@ def sendn(mail_from, ffrom, x_smtpapi, reply_to, subject, content, files):
     msg['subject'] = subject
     msg['from'] = ffrom
     msg['reply-to'] = reply_to
+    for k, v in custom_headers.items():
+        msg[k] = Header(v)
     msg['X-SMTPAPI'] = Header(base64.b64encode(simplejson.dumps(x_smtpapi)))
 
     part = MIMEText(content, 'html', 'utf8')
@@ -126,7 +128,6 @@ def test_send():
     subject = '关于问题1901的回复'
     content = "请登录爱发信, 查看此问题的回复.  <br/> <a href='http://www.ifaxin.com'>http://www.ifaxin.com</a>"
     files = ['/path/file1', '/path/files2', ]
-    files = []
 
     send(mail_from, ffrom, rcpt_tos, reply_to, subject, content, files)
 
@@ -149,15 +150,19 @@ def test_sendn():
     subject = "爱发信2015年1月份消费账单"
     content = "亲爱的%name%: <br/> 您好! 您本月在爱发信的消费金额为: %money% 元. <br/> <br/> <a href='http://www.ifaxin.com'>http://www.ifaxin.com</a>"
     files = ['/path/file1', '/path/files2', ]
+    custom_headers = {
+        "userheader" : "value1",
+        "SC-Custom-userheader" : "value2",
+    }
 
-    sendn(mail_from, ffrom, x_smtpapi, reply_to, subject, content, files)
+    sendn(mail_from, ffrom, x_smtpapi, reply_to, subject, content, files, custom_headers)
 
 def main():
     # send email one by one
-    test_send()
+    #test_send()
 
     # send email with x_smtpapi
-    #test_sendn()
+    test_sendn()
 
 if __name__ == '__main__':                                                      
     main()
