@@ -40,8 +40,8 @@ def send():
     res = requests.post(url,data=param)
     print res.text
 
-def sendn():
-    url = 'http://sendcloud.sohu.com/smsapi/sendn'
+def sendx():
+    url = 'http://sendcloud.sohu.com/smsapi/sendx'
     SMS_USER = '***'
     SMS_KEY = '***'
 
@@ -69,7 +69,7 @@ def sendn():
 
 if __name__ == '__main__':
     #send()
-    sendn()
+    sendx()
 
 ```
 
