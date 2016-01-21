@@ -1,6 +1,6 @@
 ## send
      
-发送一个短信模板给一个用户
+发送一个短信模板给一个或多个用户
 
 **URL**
 ```
@@ -23,18 +23,18 @@ GET POST
 |:--------------|:--------------|:----------|:---|
 |smsUser        |string         |是         |子账号|
 |templateId     |int            |是         |模板ID|
-|phone          |string         |是         |收信人手机号|
+|phone          |string         |是         |收信人手机号,多个手机号用逗号,分隔, 号码最多不能超过2000|
 |vars           |string         |否         |替换变量的json串|
 |signature      |string         |是         |签名, 合法性验证|
 |timestamp      |string         |否         |UNIX时间戳|
     
 *vars格式示例:*
 
-    {"name": "lucy"} or {"%name%": "lucy"}
+    {"name": "lucy"} or {"%money%": "100"}
 
 `注意`: 
 
-1. 参数 vars 可能含有特殊字符, 记得 `urlencode`
+1. 系统会用vars中的参数替换短信模板中的变量, 所有手机号收到替换后的同一个内容. 参数 vars 可能含有特殊字符, 记得 `urlencode`.
 
 2. vars 所传递的变量的值, 长度不能超过 32 个字符, 变量中不能含有 HTTP 链接
 
@@ -42,13 +42,13 @@ GET POST
 
 - - -
 
-## sendn (暂不开通)
+## sendx (暂不开通)
 
 发送一个短信模板给多个用户, 每个用户对应一个替换变量.
     
 **URL**
 ```
-http://sendcloud.sohu.com/smsapi/sendn
+http://sendcloud.sohu.com/smsapi/sendx
 ```
 
 **返回数据格式**
@@ -67,7 +67,7 @@ GET POST
 |:--------------|:--------------|:----------|:---|
 |smsUser        |string         |是         |子账号|
 |templateId     |int            |是         |模板ID|
-|tos            |string         |是         |手机号和替换变量的对应的json串|
+|tos            |string         |是         |手机号和替换变量的对应的json串, 手机号最多不能超过200|
 |signature      |string         |是         |签名, 合法性验证|
 |timestamp      |string         |否         |UNIX时间戳|
 
