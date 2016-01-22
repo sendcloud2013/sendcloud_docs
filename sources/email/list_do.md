@@ -242,7 +242,7 @@ post    get
     
 **请求示例**
 ```
-http://sendcloud.sohu.com/webapi/list_member.get.json?api_user=***&api_key=***&mail_list_address=newtest@maillist.sendcloud.org
+http://sendcloud.sohu.com/webapi/list_member.get.json?api_user=***&api_key=***&mail_list_addr=newtest@maillist.sendcloud.org
 ```        
     
 **返回值说明**

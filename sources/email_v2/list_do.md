@@ -40,7 +40,7 @@ http://api.sendcloud.net/apiv2/addresslist/list?api_user=***&api_key=***&limit=2
 |:---|:---| 
 |name|地址列表的名称|
 |address|列表别称地址, 使用该别称地址进行调用, 格式为xxx@maillist.sendcloud.org|
-|membersCount|地址列表包含的地址个数|
+|memberCount|地址列表包含的地址个数|
 |description|地址列表描述|
 |listType|地址列表类型|
 |gmtCreated|地址列表创建时间|
@@ -104,7 +104,7 @@ http://api.sendcloud.net/apiv2/addresslist/add?api_user=***&api_key=***&address=
 |参数|说明|
 |:---|:---| 
 |address|别称地址, 使用该别称地址进行调用|
-|membersCount|列表中地址数|
+|memberCount|列表中地址数|
 |name|列表名称|
 |description|列表描述信息|
 |listType|地址列表类型|
