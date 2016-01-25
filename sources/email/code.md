@@ -50,33 +50,31 @@
 [模板发送](email/downloads/php/php_template.php)
 
 [模板发送&&地址列表](email/downloads/php/php_template_maillist.php)
-    
 
 ```
 SMTP 代码依赖邮件发送模块,首先需安装pear.
+
 pear安装步骤：
 下载安装包: curl -o go-pear.php  http://pear.php.net/go-pear.phar
 安装: php go-pear.php
-然后,通过pear来安装依赖库:
+然后, 通过pear来安装依赖库:
 pear install Mail 
 pear install Mail_Mime
 pear install Net_SMTP
-操作完成
-快速发送，不需要获取[messageId](../../email/#messageid-emailid).
 ```    
-[SMTP_代码示例1](email/downloads/php/php_smtp_1.php)    
+
+[SMTP_代码示例1](email/downloads/php/php_smtp_1.php) (快速发送，不需要获取[messageId](../guide/rule/#messageid-emailid))
+
+[SMTP_代码示例2](email/downloads/php/php_smtp_2.php) (需要获取[messageId](../guide/rule/#messageid-emailid))
 
 ```
-如果需要获取[messageId](../../email/#messageid-emailid), 我们采取的简单方法是修改相关模块的代码. 如下: 
 1. php的lib库中, 找到Mail/smtp.php文件
 2. 将 329 行 `send` 函数的返回值做修改. 如下图所示将 `return true` 改为 `return $args`.
+接下来您就可以调用以下的代码进行邮件的发送, 并获取messageId了.
+```
       
 ![pic](/resources/php.png) 
           
-接下来您就可以调用以下的代码进行邮件的发送, 并获取messageId了.
-```
-[SMTP_代码示例2](email/downloads/php/php_smtp_2.php)
-
 
 ## Ruby
 
@@ -94,21 +92,23 @@ gem install rest_client
 
 [模板发送&&地址列表](email/downloads/ruby/ruby_template_maillist.rb)
 
-[SMTP_代码示例1](email/downloads/ruby/ruby_smtp_1.rb)
+[SMTP_代码示例1](email/downloads/ruby/ruby_smtp_1.rb) (快速发送，不需要获取[messageId](../guide/rule/#messageid-emailid))
+
+[SMTP_代码示例2](email/downloads/ruby/ruby_smtp_2.rb) (需要获取[messageId](../guide/rule/#messageid-emailid))
+
 ```
 SMTP发送依赖net/smtp.rb模块, 由于模块默认在发送成功时,不返回服务器的信息. 
 因此如果需要获得服务器返回的messageId,需要做如下操作. 首先在您的ruby的lib
 库中, 找到net/smtp.rb文件, 在915行data函数中加一个返回值,操作如下
+```
       
 ![pic](/resources/ruby2.png)
       
-接着在660行send_messages函数中增加一个返回值,修改如下
-     
-![pic](/resources/ruby1.png)
-    
-接下来您就可以调用以下的代码进行邮件的发送和MessageId的获取了.
 ```
-[SMTP_代码示例2](email/downloads/ruby/ruby_smtp_2.rb)
+接着在660行send_messages函数中增加一个返回值,修改如下
+```
+
+![pic](/resources/ruby1.png)
 
 ## Perl
 

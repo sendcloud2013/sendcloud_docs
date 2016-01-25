@@ -1,9 +1,11 @@
 ## 依赖
+
 代码需要安装rest_client
+
 ```
 gem install rest_client
 ```
-    
+
 - - -    
 
 ## WEBAPI 普通发送
