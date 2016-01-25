@@ -1,38 +1,64 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using CodeScales.Http;
-using CodeScales.Http.Entity;
-using CodeScales.Http.Entity.Mime;
-using CodeScales.Http.Methods;
+using System.Threading.Tasks;
+using System.Net.Http;
 
-namespace SendcloudWebapi
+namespace SendCloudExample
 {
-    // 普通发送
-    public class Common
+    class csharp_common
     {
-        public static void send()
+        public static void send(String tos)
         {
-            HttpClient client = new HttpClient();
-            HttpPost postMethod = new HttpPost(new Uri("http://sendcloud.sohu.com/webapi/mail.send.json"));
+            String url = "http://sendcloud.sohu.com/webapi/mail.send.json";
 
-            MultipartEntity multipartEntity = new MultipartEntity();
-            postMethod.Entity = multipartEntity;
+            String api_user = "***";
+            String api_key = "***";
 
-            multipartEntity.AddBody(new StringBody(Encoding.UTF8, "api_user", "***")); # 使用api_user和api_key进行验证
-            multipartEntity.AddBody(new StringBody(Encoding.UTF8, "api_key", "***"));
-            multipartEntity.AddBody(new StringBody(Encoding.UTF8, "from", "sendcloud@sendcloud.org")); # 发信人，用正确邮件地址替代
-            multipartEntity.AddBody(new StringBody(Encoding.UTF8, "fromname", "SendCloud"));
-            multipartEntity.AddBody(new StringBody(Encoding.UTF8, "to", "to1@domain.com;to2@domain.com")); # 收件人地址，用正确邮件地址替代，多个地址用';'分隔
-            multipartEntity.AddBody(new StringBody(Encoding.UTF8, "subject", "SendCloud c# webapi example"));
-            multipartEntity.AddBody(new StringBody(Encoding.UTF8, "html", "欢迎使用SendCloud"));
+            HttpClient client = null;
+            HttpResponseMessage response = null;
 
-            HttpResponse response = client.Execute(postMethod);
+            try
+            {
+                client = new HttpClient();
 
-            Console.WriteLine("Response Code: " + response.ResponseCode);
-            Console.WriteLine("Response Content: " + EntityUtils.ToString(response.Entity));
+                List<KeyValuePair<String, String>> paramList = new List<KeyValuePair<String, String>>();
+
+                paramList.Add(new KeyValuePair<string, string>("api_user", api_user)); 
+                paramList.Add(new KeyValuePair<string, string>("api_key", api_key));
+                paramList.Add(new KeyValuePair<string, string>("from", "sendcloud@sendcloud.org")); 
+                paramList.Add(new KeyValuePair<string, string>("fromname", "SendCloud"));
+                paramList.Add(new KeyValuePair<string, string>("to", tos)); 
+                paramList.Add(new KeyValuePair<string, string>("subject", "SendCloud c# webapi example"));
+                paramList.Add(new KeyValuePair<string, string>("html", "欢迎使用SendCloud"));
+
+                response = client.PostAsync(url, new FormUrlEncodedContent(paramList)).Result;
+                String result = response.Content.ReadAsStringAsync().Result;
+                Console.WriteLine("result:{0}", result);	
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("\nException Caught!");
+                Console.WriteLine("Message :{0} ", e.Message);
+            }
+            finally
+            {
+                if (null != client)
+                {
+                    client.Dispose();
+                }
+            }
         }
-    }
-}
 
+        static void Main(string[] args)
+        {
+            String tos = "to1@sendcloud.org;to2@sendcloud.org";
+            send(tos);
+            Console.ReadKey();
+        }
+
+    }
+
+
+}

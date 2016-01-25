@@ -1,44 +1,61 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using CodeScales.Http;
-using CodeScales.Http.Entity;
-using CodeScales.Http.Entity.Mime;
-using CodeScales.Http.Methods;
+using System.Net.Http;
 
 namespace SendcloudWebapi
 {
     // 模板发送
-    class Template
+    class csharp_template
     {
-        public static void send()
+        public static void send(String substitution_vars)
         {
-            HttpClient client = new HttpClient();
-            HttpPost postMethod = new HttpPost(new Uri("http://sendcloud.sohu.com/webapi/mail.send_template.json"));
+            String url = "http://sendcloud.sohu.com/webapi/mail.send_template.json";
 
-            MultipartEntity multipartEntity = new MultipartEntity();
-            postMethod.Entity = multipartEntity;
+            String api_user = "";
+            String api_key = "";
 
-            multipartEntity.AddBody(new StringBody(Encoding.UTF8, "api_user", "***"));
-            multipartEntity.AddBody(new StringBody(Encoding.UTF8, "api_key", "***"));
-            multipartEntity.AddBody(new StringBody(Encoding.UTF8, "from", "sendcloud@sendcloud.org"));
-            multipartEntity.AddBody(new StringBody(Encoding.UTF8, "fromname", "SendCloud"));
-            multipartEntity.AddBody(new StringBody(Encoding.UTF8, "subject", "SendCloud c# webapi template example"));
-            multipartEntity.AddBody(new StringBody(Encoding.UTF8, "template_invoke_name", "***"));
-            multipartEntity.AddBody(new StringBody(Encoding.UTF8, "substitution_vars", "{\"to\": [\"test@163.com\", \"test@qq.com\"], \"sub\" : { \"%name%\" : [\"name1\", \"name2\"], \"%money%\" : [\"1000\", \"2000\"]}}"));
+            HttpClient client = null;
+            HttpResponseMessage response = null;
 
-            FileInfo fileInfo = new FileInfo(@"c:\1.txt");
+            try
+            {
+                client = new HttpClient();
 
-            UTF8FileBody fileBody = new UTF8FileBody("file1", "attachment.txt ", fileInfo);
-            multipartEntity.AddBody(fileBody);
+                List<KeyValuePair<String, String>> paramList = new List<KeyValuePair<String, String>>();
 
-            HttpResponse response = client.Execute(postMethod);
+                paramList.Add(new KeyValuePair<string, string>("api_user", api_user));
+                paramList.Add(new KeyValuePair<string, string>("api_key", api_key));
+                paramList.Add(new KeyValuePair<string, string>("from", "sendcloud@sendcloud.org"));
+                paramList.Add(new KeyValuePair<string, string>("fromname", "SendCloud"));
+                paramList.Add(new KeyValuePair<string, string>("subject", "SendCloud c# webapi template example"));
+                paramList.Add(new KeyValuePair<string, string>("template_invoke_name", "***"));
+                paramList.Add(new KeyValuePair<string, string>("substitution_vars", substitution_vars));
 
-            Console.WriteLine("Response Code: " + response.ResponseCode);
-            Console.WriteLine("Response Content: " + EntityUtils.ToString(response.Entity));
+                response = client.PostAsync(url, new FormUrlEncodedContent(paramList)).Result;
+                String result = response.Content.ReadAsStringAsync().Result;
+                Console.WriteLine("result:{0}", result);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("\nException Caught!");
+                Console.WriteLine("Message :{0} ", e.Message);
+            }
+            finally
+            {
+                if (null != client)
+                {
+                    client.Dispose();
+                }
+            }
+        }
 
-            Console.ReadLine();
+        static void Main(string[] args)
+        {
+            String substitution_vars = "{\"to\": [\"test@163.com\", \"test@qq.com\"], \"sub\" : { \"%name%\" : [\"name1\", \"name2\"], \"%money%\" : [\"1000\", \"2000\"]}}";
+            send(substitution_vars);
+            Console.ReadKey();
         }
     }
 }

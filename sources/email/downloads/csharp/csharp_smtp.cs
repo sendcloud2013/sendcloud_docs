@@ -1,22 +1,27 @@
-using System;
+﻿using System;
 using System.IO;
 using System.Collections.Generic;
 using System.Net.Mail;
 using System.Net.Mime;
 using System.Text;
 
-namespace  SendMailTest
+namespace SendMailTest
 {
-    class Example
+    class Example1
     {
         static void Main()
         {
-          try
+            try
             {
+                String api_user = "";
+                String api_key = "";
+
+                String to = "to1@sendcloud.org";
+
                 MailMessage mailMsg = new MailMessage();
 
                 // 收件人地址，用正确邮件地址替代
-                mailMsg.To.Add(new MailAddress("to@sendcloud.org"));
+                mailMsg.To.Add(new MailAddress(to));
                 // 发信人，用正确邮件地址替代
                 mailMsg.From = new MailAddress("from@sendcloud.org", "fromname");
 
@@ -30,17 +35,18 @@ namespace  SendMailTest
                 mailMsg.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(html, null, MediaTypeNames.Text.Html));
 
                 // 添加附件
-                string file = "C:\\file.pdf ";
+                string file = "E:\\1.txt ";
                 Attachment data = new Attachment(file, MediaTypeNames.Application.Octet);
                 mailMsg.Attachments.Add(data);
 
                 // 连接到sendcloud服务器
                 SmtpClient smtpClient = new SmtpClient("smtpcloud.sohu.com", Convert.ToInt32(25));
                 // 使用api_user和api_key进行验证
-                System.Net.NetworkCredential credentials = new System.Net.NetworkCredential("api_user", "api_key");
+                System.Net.NetworkCredential credentials = new System.Net.NetworkCredential(api_user, api_key);
                 smtpClient.Credentials = credentials;
 
                 smtpClient.Send(mailMsg);
+                Console.ReadKey();
             }
             catch (Exception ex)
             {
