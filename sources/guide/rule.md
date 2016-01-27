@@ -90,7 +90,10 @@ SMTP 调用时, 开发者可以在邮件中自行插入各种头域信息, 这�
 X-SMTPAPI:value
 
 value 是使用 base64 编码封装过的 JSON 字符串. 代码示例:   
+```
 
+[代码示例](../email/downloads/python/python_smtp.py)
+```
 x_smtpapi = {
     "to": ["d@163.com",'i@163.com'],
     "sub": {
@@ -103,11 +106,11 @@ msg['SC-Custom-test_key2'] = "value2";
 msg['X-SMTPAPI'] = Header(base64.b64encode(simplejson.dumps(x_smtpapi)))
 ```
 
-[代码示例](../email/downloads/python/python_smtp.py)
+SMTP 服务器会对邮件中 **key** 为 `X-SMTPAPI` 的头域信息做格式检查. 如果不符合上述要求, 则会报 `xsmtpapi error` 的错误.
 
 需要注意的是: 
 
-1. SMTP 调用时, X-SMTPAPI 必须是头域字段的最后一个.
+1. SMTP 调用时, X-SMTPAPI 必须是头域字段的最后一个. 否则, 可能导致 `xsmtpapi error` 的错误.
 2. API 调用时, 直接传入 JSON 字符串即可, 无需 base64 编码封装
 
 value 封装的 JSON 字符串的结构和用途见下: 
