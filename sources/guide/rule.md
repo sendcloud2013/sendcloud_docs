@@ -81,9 +81,39 @@ emailId_C = messageId + to.index(C) + '$' + C
 
 ## X-SMTPAPI 扩展字段 
 
-X-SMTPAPI 是 SendCloud 为开发者提供的邮件个性化定制的处理方式, 开发者通过这个特殊的 **信头扩展字段**, 可以设置邮件处理方式的很多参数.  一般的, 开发者在使用 SMTP 接入时会使用此字段. 不过, WEBAPI 的方式也支持此参数. 
+X-SMTPAPI 是 SendCloud 为开发者提供的邮件个性化定制的处理方式, 开发者通过这个特殊的 **信头扩展字段**, 可以设置邮件处理方式的很多参数.  一般的, 开发者在使用 SMTP 接入时会使用此字段. 不过, API 的方式也支持此参数. 
 
-X-SMTPAPI 是一个 JSON 格式的字符串, 里面包含邮件处理方式的参数. SMTP 调用时, 需要使用 base64 编码进行封装, API 调用时, 直接传入 JSON 串即可. 
+X-SMTPAPI 扩展字段是一个 key:value 的邮件头域信息. `key` = 是一个 JSON 格式的字符串, 里面包含邮件处理方式的参数.
+
+SMTP 调用时, 需要使用 base64 编码对 JSON 字符串(X-SMTPAPI) 进行封装.
+
+```
+x_smtpapi = {
+    "to": ["d@163.com",'i@163.com'],
+    "sub": {
+        "%content%": ['nihao0', 'nihao1']
+    },
+}
+
+msg['X-SMTPAPI'] = Header(base64.b64encode(simplejson.dumps(x_smtpapi)))
+```
+
+需要注意的是: SMTP 调用时, X-SMTPAPI 必须是头域字段的最后一个.
+
+```
+x_smtpapi = {
+    "to": ["d@163.com",'i@163.com'],
+    "sub": {
+        "%content%": ['nihao0', 'nihao1']
+    },
+}
+
+msg['SC-Custom-test_key1'] = "value1";
+msg['SC-Custom-test_key2'] = "value2";
+msg['X-SMTPAPI'] = Header(base64.b64encode(simplejson.dumps(x_smtpapi)))
+```
+
+API 调用时, 直接传入 JSON 字符串(X-SMTPAPI) 即可. 
 
 具体结构见下: 
 
