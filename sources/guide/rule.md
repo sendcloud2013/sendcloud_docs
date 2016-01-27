@@ -83,24 +83,14 @@ emailId_C = messageId + to.index(C) + '$' + C
 
 X-SMTPAPI 是 SendCloud 为开发者提供的邮件个性化定制的处理方式, 开发者通过这个特殊的 **信头扩展字段**, 可以设置邮件处理方式的很多参数.  一般的, 开发者在使用 SMTP 接入时会使用此字段. 不过, API 的方式也支持此参数. 
 
-X-SMTPAPI 扩展字段是一个 key:value 的邮件头域信息. `key` = 是一个 JSON 格式的字符串, 里面包含邮件处理方式的参数.
+SMTP 调用时, 开发者可以在邮件中自行插入各种头域信息, 这是 SMTP 协议所允许的. 而 SendCloud 会检索 **key** 为 `X-SMTPAPI` 的头域信息, 如果发现含有此头域, 则其 **value** 的值可以被解析, 用来改变邮件的处理方式.
 
-SMTP 调用时, 需要使用 base64 编码对 JSON 字符串(X-SMTPAPI) 进行封装.
-
+格式说明:
 ```
-x_smtpapi = {
-    "to": ["d@163.com",'i@163.com'],
-    "sub": {
-        "%content%": ['nihao0', 'nihao1']
-    },
-}
+X-SMTPAPI:value
 
-msg['X-SMTPAPI'] = Header(base64.b64encode(simplejson.dumps(x_smtpapi)))
-```
+value 是使用 base64 编码封装过的 JSON 字符串. 代码示例:   
 
-需要注意的是: SMTP 调用时, X-SMTPAPI 必须是头域字段的最后一个.
-
-```
 x_smtpapi = {
     "to": ["d@163.com",'i@163.com'],
     "sub": {
@@ -113,11 +103,16 @@ msg['SC-Custom-test_key2'] = "value2";
 msg['X-SMTPAPI'] = Header(base64.b64encode(simplejson.dumps(x_smtpapi)))
 ```
 
-API 调用时, 直接传入 JSON 字符串(X-SMTPAPI) 即可. 
+[代码示例](../email/downloads/python/python_smtp.py)
 
-具体结构见下: 
+需要注意的是: 
 
-**`to` 含有收件人地址的数组**. 
+1. SMTP 调用时, X-SMTPAPI 必须是头域字段的最后一个.
+2. API 调用时, 直接传入 JSON 字符串即可, 无需 base64 编码封装
+
+value 封装的 JSON 字符串的结构和用途见下: 
+
+**`to` 含有收件人地址的数组, 指定邮件的收件人**. 
 ```    
     {
         "to": ["ben@ifaxin.com", "joe@ifaxin.com"]
@@ -125,14 +120,14 @@ API 调用时, 直接传入 JSON 字符串(X-SMTPAPI) 即可.
 ```    
 **注意**:
 
-* X-SMTPAPI 里的 `to` 会覆盖收件人参数 `to`
-* X-SMTPAPI 中的 `to` 的收件人个数不能超过100
+* 这里的 `to` 会覆盖收件人参数 `to`
+* 这里的 `to` 的收件人个数不能超过100
 
-**`sub` 是一个[关联数组](http://baike.baidu.com/view/1654988.htm). **它的 `key` 是「变量」, `value` 是「替换值数组」.
+**`sub` 是一个关联数组. **它的 `key` 是「变量」, `value` 是「替换值数组」.
 
 用法解释: 每一个「变量」对应一个「替换值数组」, 在做邮件内容替换时, 每一个「收件人」按其在「收件人数组」中出现的位置使用「替换值数组」中相应位置的值来替换「变量」的值.
 
-相信你一定没看懂上面的饶口令, 所以, 请参见如下示例: 
+参见如下示例: 
 ```
 # 邮件内容
 亲爱的%name%:
