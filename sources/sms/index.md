@@ -160,7 +160,7 @@ timestamp 参数需要被包含在 signature 中, 参与生成数字签名.
 |送达(deliver)          |短信发送成功     |
 |处理失败(workererror)  |短信处理失败     |
 |发送失败(delivererror) |短信发送失败     |
-|回复(reply)            |用户回复 (开发中)|
+|回复(reply)            |用户回复         |
 
 使用方法:
 
@@ -360,5 +360,40 @@ timestamp: 1434685829536
 labelId: 0
 templateId: 29999
 ```
+    
+** 回复 (reply)** 
+    
+|参数|类型|说明|
+|:---|:---|:---|
+|event|string|事件类型:"reply"|
+|eventType|int|事件类型代码:6|
+|smsUser|string|smsUser|
+|templateId|int|模板ID|
+|phone|string|手机号|
+|timestamp|long|时间戳|
+|token|string|随机产生的长度为50的字符串|
+|signature|string|签名字符串|
+|userId|int|用户ID|
+|labelId|int|预留, 暂不用|
+|replyContent|string|回复内容|
+|replyTime|Datetime|回复时间|
+    
+POST 数据示例
+    
+```
+token: bNmTl6jfT0nmX8dnRPiZZzPBrtsnkhrVjd1SZTPyx1UhtbEXvG
+timestamp: 1455685829536
+labelId: 0
+phone: 13888888888
+replyContent: test_reply
+replyTime: 2015-07-16 16:16:16
+userId: 19999
+templateId: 0
+smsUser: smsuser
+event: reply
+signature: 5ea667531adacf550c30fdc07225b04fd7f44fce23fe806a561c67150a17b20c
+eventType: 6
+```
+    
 - - - 
 
