@@ -39,6 +39,8 @@
 
 [SMTP_代码示例](email/downloads/java/SendCloudSmtp.java)
 
+[SMTP_代码示例2](email/downloads/java/SendCloudSmtp2.java)
+
 ## PHP
 
 [普通发送](email/downloads/php/php_common.php)
