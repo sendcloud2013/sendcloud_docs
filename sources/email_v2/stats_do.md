@@ -82,9 +82,10 @@ http://api.sendcloud.net/apiv2/statday/list?apiUser=***&apiKey=***&startDate=201
 返回值示例:
 ```
 {
-    "message": "success",
-    "stats": [
-        {
+    "statusCode":200,
+    "info": {
+       "dataList": [
+         {
             "sendDate": "2015-03-12",
             "apiUser": "...",
             "domain": "ifaxin.com",
@@ -109,8 +110,8 @@ http://api.sendcloud.net/apiv2/statday/list?apiUser=***&apiKey=***&startDate=201
             "uniqueOpensPercent": 0,
             "uniqueClicksPercent": 0,
             "invalidEmailsPercent": 100
-        },
-        {
+          },
+          {
             "sendDate": "2015-03-12",
             "apiUser": "...",
             "domain": "qq.com",
@@ -135,14 +136,18 @@ http://api.sendcloud.net/apiv2/statday/list?apiUser=***&apiKey=***&startDate=201
             "uniqueOpensPercent": 0,
             "uniqueClicksPercent": 0,
             "invalidEmailsPercent": 0
-        }
-    ]
+          }
+      ]
+    },
+    "message": "请求成功",
+    "result": true
 }
 
 # 聚合数据, aggregate = 1
 {
-    "message": "success",
-    "stats": {
+    "statusCode":200,
+    "info": {
+      "dataList": {
         "requestNum": "48",
         "deliveredNum": "28",
         "clickNum": "0",
@@ -162,7 +167,9 @@ http://api.sendcloud.net/apiv2/statday/list?apiUser=***&apiKey=***&startDate=201
         "uniqueOpensPercent": 0,
         "uniqueClicksPercent": 0,
         "invalidEmailsPercent": 41.66
-    }
+      },
+    "message": "请求成功",
+    "result": true
 }
 
 ```
@@ -240,9 +247,12 @@ http://api.sendcloud.net/apiv2/stathour/list?apiUser=***&apiKey=***&startDate=20
 ```
 # sendHour 没有返回的时间点, 表示那个小时没有数据
 {
-    "message": "success",
-    "stats": [
-        {
+    
+
+    "statusCode":200,
+    "info":{
+      "dataList": [
+           {
             "sendDate": "2015-03-12",
             "apiUser": "...",
             "labelId": 0,
@@ -266,8 +276,10 @@ http://api.sendcloud.net/apiv2/stathour/list?apiUser=***&apiKey=***&startDate=20
             "uniqueOpens_percent": 0,
             "uniqueClicks_percent": 0,
             "invalidEmails_percent": 62.5
-        }
-    ]
+           }
+       ],
+    "message": "请求成功",
+    "result": true
 }
 ```
 
@@ -280,7 +292,7 @@ http://api.sendcloud.net/apiv2/stathour/list?apiUser=***&apiKey=***&startDate=20
     
 **URL**    
 ```
-http://sendcloud.sohu.com/webapi/invalidStat.get.json
+http://api.sendcloud.net/apiv2/invalidstat/list
 ```
     
 **HTTP请求方式**   
@@ -292,14 +304,14 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|api_user|string|是|子账号|
-|api_key|string|是|密码|
+|apiUser|string|是|子账号|
+|apiKey|string|是|密码|
 |days|int|*|过去 days 天内的统计数据 (`days=1`表示今天)| 
-|start_date|string|*|开始日期, 格式为`yyyy-MM-dd`|
-|end_date|string|*|结束日期, 格式为`yyyy-MM-dd`|
-|api_user_list|string|否|获取指定 API_USER 的统计数据, 多个 API_USER 用`;`分开, 如:`api_user_list=a;b;c`|
-|label_id_list|string|否|获取指定标签下的统计数据, 多个标签用`;`分开, 如:`label_id_list=a;b;c`|
-|domain_list|string|否|获取指定域名下的统计数据, 多个域名用`;`分开, 如:`domain_list=a;b;c`|
+|startDate|string|*|开始日期, 格式为`yyyy-MM-dd`|
+|endDate|string|*|结束日期, 格式为`yyyy-MM-dd`|
+|apiUserList|string|否|获取指定 API_USER 的统计数据, 多个 API_USER 用`;`分开, 如:`api_user_list=a;b;c`|
+|labelIdList|string|否|获取指定标签下的统计数据, 多个标签用`;`分开, 如:`label_id_list=a;b;c`|
+|domainList|string|否|获取指定域名下的统计数据, 多个域名用`;`分开, 如:`domain_list=a;b;c`|
 |aggregate|int(1, 0)|否|默认为0. 如果为1, 则返回聚合数据|
     
 提示:
@@ -309,7 +321,7 @@ post    get
     
 请求示例:    
 ```
-http://sendcloud.sohu.com/webapi/invalidStat.get.json?api_user=***&api_key=***&start_date=2015-03-12&end_date=2015-03-12
+http://api.sendcloud.net/apiv2/invalidstat/list?apiUser=***&apiKey=***&startDate=2015-03-12&endDate=2015-03-12
 ```
     
 **返回值说明**    
@@ -334,24 +346,28 @@ http://sendcloud.sohu.com/webapi/invalidStat.get.json?api_user=***&api_key=***&s
 返回值示例:    
 ```
 {
-    "message": "success",
-    "stats": [
-        {
-            "sendDate": "2015-03-12",
-            "apiUser": "...",
-            "labelId": 0,
-            "labelName": null,
-            "domain": "qq.com",
-            "sendcloudBlacklist": 12,
-            "ubsubscribe": 11,
-            "espUnvaliable": 0,
-            "recipientAddressError": 0,
-            "recipientNotFound": 7,
-            "spamEmails": 0,
-            "senderOrRecipientRejected": 0,
-            "others": 0
-        }
-    ]
+  "statusCode":200,
+  "info":{
+    "dataList":[
+       {
+        "sendDate":"2016-02-01",
+        "apiUser":"postmaster@delong.sendcloud.org",
+        "labelId":5285,
+        "labelName":"中文测试1", 
+        "domain":"gmail.com",
+        "sendcloudBlacklist":1,
+        "ubsubscribe":0,
+        "espUnvaliable":0,
+        "recipientAddressError":0,
+        "recipientNotFound":0,
+        "spamEmail":0,
+        "senderOrRecipientRejected":0,
+        "others":0
+       }
+   ]
+  },
+  "message": "请求成功",
+  "result": true
 }
 ```
 

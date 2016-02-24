@@ -114,6 +114,7 @@ http://api.sendcloud.net/apiv2/bounce/delete?apiUser=***&apiKey=***&email=***
 **返回值示例**
 ```
 {
+    
     "statusCode":200,
     "info":{
         "count":1

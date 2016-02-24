@@ -10,7 +10,7 @@
      
 **URL**
 ```  
-https://sendcloud.sohu.com/webapi/spamReported.get.json
+http://api.sendcloud.net/apiv2/spamreported/list
 ```
    
 **HTTP请求方式**   
@@ -22,11 +22,11 @@ post    get
     
 |参数|类型|必须|说明|    
 |:---|:---|:---|:---|
-|api_user|string|是|子账号|
-|api_key|string|是|密码|
+|apiUser|string|是|子账号|
+|apiKey|string|是|密码|
 |days|int|*|过去 days 天内的统计数据 (`days=1`表示今天)| 
-|start_date|string|*|开始日期, 格式为`yyyy-MM-dd`|
-|end_date|string|*|结束日期, 格式为`yyyy-MM-dd`|
+|startDate|string|*|开始日期, 格式为`yyyy-MM-dd`|
+|endDate|string|*|结束日期, 格式为`yyyy-MM-dd`|
 |email|string|*|查询该地址在举报列表中的详情|
 |start|int|否|查询起始位置, 取值区间 [0-], 默认为 0|
 |limit|int|否|查询个数, 取值区间 [0-100], 默认为 100|
@@ -39,7 +39,7 @@ post    get
 
 请求示例:    
 ```
-http://sendcloud.sohu.com/webapi/spamReported.get.json?api_user=***&api_key=***
+http://api.sendcloud.net/apiv2/spamreported/list?apiUser=***&apiKey=***
 ```
     
 **返回值说明**
@@ -49,14 +49,21 @@ http://sendcloud.sohu.com/webapi/spamReported.get.json?api_user=***&api_key=***
 **返回值示例**    
 ```
 {
-    "message": "success",
-    "bounces": [
-        {
-            "email": "123@qq.com",
-            "reason": "spam reported",
-            "create_at": "2014-11-10 18:26:30"
-        }
-    ]
+    "statusCode":200
+    "info":{
+      "dataList":[
+         {
+            "receiver":"9978977@qq.com",
+            "reason":"from softbounce",
+            "spamReportedTime":"2016-02-22 14:40:25",
+            "domain":"qq.com"
+         }
+       ],
+      "count":1
+     },
+     "message":"请求成功",
+     "result":true
+  
 }
 ```
 
