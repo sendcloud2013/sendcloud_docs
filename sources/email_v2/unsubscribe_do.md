@@ -29,8 +29,8 @@ post    get
 |startDate|string|*|开始日期, 格式为`yyyy-MM-dd`|
 |endDate|string|*|结束日期, 格式为`yyyy-MM-dd`|
 |email|string|*|查询该地址在取消订阅列表中的详情|
-|apiUserList|string|否|获取指定 API_USER 的统计数据, 多个 API_USER 用`;`分开, 如:`api_user_list=a;b;c`|
-|labelIdList|string|否|获取指定标签下的统计数据, 多个标签用`;`分开, 如:`label_id_list=a;b;c`|
+|apiUserList|string|否|获取指定 API_USER 的统计数据, 多个 API_USER 用`;`分开, 如:`apiUserList=a;b;c`|
+|labelIdList|string|否|获取指定标签下的统计数据, 多个标签用`;`分开, 如:`labelIdList=a;b;c`|
 |start|int|否|查询起始位置, 取值区间 [0-], 默认为 0|
 |limit|int|否|查询个数, 取值区间 [0-100], 默认为 100|
 
@@ -51,8 +51,8 @@ http://api.sendcloud.net/apiv2/unsubscribe/list?apiUser=***&apiKey=***&apiUserLi
 |email|邮件地址|
 |domain|邮件地址对应的域名|
 |labelId|标签ID|
-|apiUser|api_user名称|
-|createAt|取消订阅的发生时间|
+|apiUser|apiUser名称|
+|unsubscribeTime|取消订阅的发生时间|
     
 返回值示例:
 ```
@@ -191,7 +191,6 @@ http://api.sendcloud.net/apiv2/unsubscribe/delete?apiUser=***&apiKey=*** &email=
 ```
 {   
     "statusCode":200,
-    "message": "success",
     "info":{"count":1},
     "message":"请求成功",
     "result":true

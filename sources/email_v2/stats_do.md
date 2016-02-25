@@ -26,11 +26,6 @@ post    get
 |labelIdList|string|否|获取指定标签下的统计数据, 多个标签用`;`分开, 如:`labelIdList=a;b;c`|
 |domainList|string|否|获取指定域名下的统计数据, 多个域名用`;`分开, 如:`domainList=a;b;c`|
 |aggregate|boolean(1, 0)|否|默认为0. 如果为1, 则返回聚合数据|
-|aggregate|string (true, false)|否|默认值: `false`. 如果为true, 则返回聚合数据|
-|aggregateByDate|string (true, false)|否|默认值: `false`. 如果为true, 则时间维度会被聚合|
-|aggregateByApiUser|string (true, false)|否|默认值: `false`. 如果为true, 则APIUser维度会被聚合|
-|aggregateByLabel|string (true, false)|否|默认值: `false`. 如果为true, 则Label维度会被聚合|
-|aggregateByDomain|string (true, false)|否|默认值: `false`. 如果为true, 则Domain维度会被聚合|
 
 提示:
 
@@ -64,17 +59,17 @@ http://api.sendcloud.net/apiv2/statday/list?apiUser=***&apiKey=***&startDate=201
 |bounceNum|弹回数量|
 |spamReportedNum|垃圾举报数量|
 |unsubscribeNum|取消订阅数量|
-|uniqueOpensNum|独立打开数量|
-|uniqueClicksNum|独立点击数量|
-|invalidEmailsNum|无效邮件数量|
+|uniqueOpenNum|独立打开数量|
+|uniqueClickNum|独立点击数量|
+|invalidEmailNum|无效邮件数量|
 |deliveredPercent|送达比例|
 |clickPercent|点击比例|
 |openPercent|打开比例|
 |bouncePercent|弹回比例|
 |spamReportedPercent|垃圾举报比例|
 |unsubscribePercent|取消订阅比例|
-|uniqueOpensPercent|独立打开比例|
-|uniqueClicksPercent|独立点击比例|
+|uniqueOpenPercent|独立打开比例|
+|uniqueClickPercent|独立点击比例|
 |invalidEmailsPercent|无效邮件比例|
 
 
@@ -98,18 +93,18 @@ http://api.sendcloud.net/apiv2/statday/list?apiUser=***&apiKey=***&startDate=201
             "bounceNum": 0,
             "spamReportedNum": 0,
             "unsubscribeNum": 0,
-            "uniqueOpensNum": 0,
-            "uniqueClicksNum": 0,
-            "invalidEmailsNum": 20,
+            "uniqueOpenNum": 0,
+            "uniqueClickNum": 0,
+            "invalidEmailNum": 20,
             "deliveredPercent": 0,
             "clickPercent": 0,
             "openPercent": 0,
             "bouncePercent": 0,
             "spamReportedPercent": 0,
             "unsubscribePercent": 0,
-            "uniqueOpensPercent": 0,
-            "uniqueClicksPercent": 0,
-            "invalidEmailsPercent": 100
+            "uniqueOpenPercent": 0,
+            "uniqueClickPercent": 0,
+            "invalidEmailPercent": 100
           },
           {
             "sendDate": "2015-03-12",
@@ -124,9 +119,9 @@ http://api.sendcloud.net/apiv2/statday/list?apiUser=***&apiKey=***&startDate=201
             "bounceNum": 0,
             "spamReportedNum": 0,
             "unsubscribeNum": 0,
-            "uniqueOpensNum": 0,
-            "uniqueClicksNum": 0,
-            "invalidEmailsNum": 0,
+            "uniqueOpenNum": 0,
+            "uniqueClickNum": 0,
+            "invalidEmailNum": 0,
             "deliveredPercent": 100,
             "clickPercent": 0,
             "openPercent": 0,
@@ -134,8 +129,8 @@ http://api.sendcloud.net/apiv2/statday/list?apiUser=***&apiKey=***&startDate=201
             "spamReportedPercent": 0,
             "unsubscribePercent": 0,
             "uniqueOpensPercent": 0,
-            "uniqueClicksPercent": 0,
-            "invalidEmailsPercent": 0
+            "uniqueClickPercent": 0,
+            "invalidEmailPercent": 0
           }
       ]
     },
@@ -155,18 +150,18 @@ http://api.sendcloud.net/apiv2/statday/list?apiUser=***&apiKey=***&startDate=201
         "bounceNum": "0",
         "spamReportedNum": "0",
         "unsubscribeNum": "0",
-        "uniqueOpensNum": "0",
-        "uniqueClicksNum": "0",
-        "invalidEmailsNum": "20",
+        "uniqueOpenNum": "0",
+        "uniqueClickNum": "0",
+        "invalidEmailNum": "20",
         "deliveredPercent": 58.33,
         "clickPercent": 0,
         "openPercent": 0,
         "bouncePercent": 0,
         "spamReportedPercent": 0,
         "unsubscribePercent": 0,
-        "uniqueOpensPercent": 0,
-        "uniqueClicksPercent": 0,
-        "invalidEmailsPercent": 41.66
+        "uniqueOpenPercent": 0,
+        "uniqueClickPercent": 0,
+        "invalidEmailPercent": 41.66
       },
     "message": "请求成功",
     "result": true
@@ -199,8 +194,8 @@ post    get
 |days|int|*|过去 days 天内的统计数据 (`days=1`表示今天)| 
 |startDate|string|*|开始日期, 格式为`yyyy-MM-dd`|
 |endDate|string|*|结束日期, 格式为`yyyy-MM-dd`|
-|apiUserList|string|否|获取指定 API_USER 的统计数据, 多个 API_USER 用`;`分开, 如:`api_user_list=a;b;c`|
-|labelIdList|string|否|获取指定标签下的统计数据, 多个标签用`;`分开, 如:`label_id_list=a;b;c`|
+|apiUserList|string|否|获取指定 API_USER 的统计数据, 多个 API_USER 用`;`分开, 如:`apiUserList=a;b;c`|
+|labelIdList|string|否|获取指定标签下的统计数据, 多个标签用`;`分开, 如:`labelIdList=a;b;c`|
     
 提示:
 
@@ -231,8 +226,8 @@ http://api.sendcloud.net/apiv2/stathour/list?apiUser=***&apiKey=***&startDate=20
 |spamReportedNum|垃圾举报数量|
 |unsubscribeNum|取消订阅数量|
 |uniqueOpensNum|独立打开数量|
-|uniqueClicksNum|独立点击数量|
-|invalidEmailsNum|无效邮件数量|
+|uniqueClickNum|独立点击数量|
+|invalidEmailNum|无效邮件数量|
 |deliveredPercent|送达比例|
 |clickPercent|点击比例|
 |openPercent|打开比例|
@@ -264,18 +259,18 @@ http://api.sendcloud.net/apiv2/stathour/list?apiUser=***&apiKey=***&startDate=20
             "bounceNum": 0,
             "spamReportedNum": 0,
             "unsubscribeNum": 0,
-            "uniqueOpensNum": 0,
-            "uniqueClicksNum": 0,
-            "invalidEmailsNum": 5,
-            "delivered_percent": 75,
-            "click_percent": 0,
-            "open_percent": 0,
-            "bounce_percent": 0,
-            "spamReported_percent": 0,
-            "unsubscribe_percent": 0,
-            "uniqueOpens_percent": 0,
-            "uniqueClicks_percent": 0,
-            "invalidEmails_percent": 62.5
+            "uniqueOpenNum": 0,
+            "uniqueClickNum": 0,
+            "invalidEmailNum": 5,
+            "deliveredPercent": 75,
+            "clickPercent": 0,
+            "openPercent": 0,
+            "bouncePercent": 0,
+            "spamReportedPercent": 0,
+            "unsubscribePercent": 0,
+            "uniqueOpenPercent": 0,
+            "uniqueClickpercent": 0,
+            "invalidEmailPercent": 62.5
            }
        ],
     "message": "请求成功",
@@ -309,9 +304,9 @@ post    get
 |days|int|*|过去 days 天内的统计数据 (`days=1`表示今天)| 
 |startDate|string|*|开始日期, 格式为`yyyy-MM-dd`|
 |endDate|string|*|结束日期, 格式为`yyyy-MM-dd`|
-|apiUserList|string|否|获取指定 API_USER 的统计数据, 多个 API_USER 用`;`分开, 如:`api_user_list=a;b;c`|
-|labelIdList|string|否|获取指定标签下的统计数据, 多个标签用`;`分开, 如:`label_id_list=a;b;c`|
-|domainList|string|否|获取指定域名下的统计数据, 多个域名用`;`分开, 如:`domain_list=a;b;c`|
+|apiUserList|string|否|获取指定 API_USER 的统计数据, 多个 API_USER 用`;`分开, 如:`apiUserList=a;b;c`|
+|labelIdList|string|否|获取指定标签下的统计数据, 多个标签用`;`分开, 如:`labelIdList=a;b;c`|
+|domainList|string|否|获取指定域名下的统计数据, 多个域名用`;`分开, 如:`domainList=a;b;c`|
 |aggregate|int(1, 0)|否|默认为0. 如果为1, 则返回聚合数据|
     
 提示:
