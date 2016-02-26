@@ -109,7 +109,7 @@ POST    get
 |:---|:---|:---|:---| 
 |apiUser|string|是|子账号| 
 |apiKey|string|是|密码| 
-|email|string|否|要添加的地址|
+|email|string|是|要添加的地址|
     
 请求示例:
     

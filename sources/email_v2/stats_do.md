@@ -29,8 +29,7 @@ post    get
 
 提示:
 
-//1. 获取统计数据时, 必须指定时间区间. 即 **startDate 与 endDate 的组合** 或者 **days 参数** 需二者取一
-1. 如果已指定参数 days, 则忽略参数 startDate 和 endDate
+1. 获取统计数据时, 必须指定时间区间. 即 **startDate 与 endDate 的组合** 或者 **days 参数** 需二者取一
 2. 查询的天数不超过 100
 3. 当`aggregate`为 1 时, 会将所有维度的数据聚合累加
     
@@ -49,7 +48,7 @@ http://api.sendcloud.net/apiv2/statday/list?apiUser=***&apiKey=***&startDate=201
 |:---|:---|
 |sendDate|发送日期|
 |apiUser|子账号|
-|domain|域名|
+|domain|收信域名|
 |labelId|标签ID|
 |labelName|标签名|
 |requestNum|请求总数|
@@ -59,17 +58,17 @@ http://api.sendcloud.net/apiv2/statday/list?apiUser=***&apiKey=***&startDate=201
 |bounceNum|弹回数量|
 |spamReportedNum|垃圾举报数量|
 |unsubscribeNum|取消订阅数量|
-|uniqueOpenNum|独立打开数量|
-|uniqueClickNum|独立点击数量|
-|invalidEmailNum|无效邮件数量|
+|uniqueOpensNum|独立打开数量|
+|uniqueClicksNum|独立点击数量|
+|invalidEmailsNum|无效邮件数量|
 |deliveredPercent|送达比例|
 |clickPercent|点击比例|
 |openPercent|打开比例|
 |bouncePercent|弹回比例|
 |spamReportedPercent|垃圾举报比例|
 |unsubscribePercent|取消订阅比例|
-|uniqueOpenPercent|独立打开比例|
-|uniqueClickPercent|独立点击比例|
+|uniqueOpensPercent|独立打开比例|
+|uniqueClicksPercent|独立点击比例|
 |invalidEmailsPercent|无效邮件比例|
 
 
@@ -93,18 +92,18 @@ http://api.sendcloud.net/apiv2/statday/list?apiUser=***&apiKey=***&startDate=201
             "bounceNum": 0,
             "spamReportedNum": 0,
             "unsubscribeNum": 0,
-            "uniqueOpenNum": 0,
-            "uniqueClickNum": 0,
-            "invalidEmailNum": 20,
+            "uniqueOpensNum": 0,
+            "uniqueClicksNum": 0,
+            "invalidEmailsNum": 20,
             "deliveredPercent": 0,
             "clickPercent": 0,
             "openPercent": 0,
             "bouncePercent": 0,
             "spamReportedPercent": 0,
             "unsubscribePercent": 0,
-            "uniqueOpenPercent": 0,
-            "uniqueClickPercent": 0,
-            "invalidEmailPercent": 100
+            "uniqueOpensPercent": 0,
+            "uniqueClicksPercent": 0,
+            "invalidEmailsPercent": 100
           },
           {
             "sendDate": "2015-03-12",
@@ -119,9 +118,9 @@ http://api.sendcloud.net/apiv2/statday/list?apiUser=***&apiKey=***&startDate=201
             "bounceNum": 0,
             "spamReportedNum": 0,
             "unsubscribeNum": 0,
-            "uniqueOpenNum": 0,
-            "uniqueClickNum": 0,
-            "invalidEmailNum": 0,
+            "uniqueOpensNum": 0,
+            "uniqueClicksNum": 0,
+            "invalidEmailsNum": 0,
             "deliveredPercent": 100,
             "clickPercent": 0,
             "openPercent": 0,
@@ -129,8 +128,8 @@ http://api.sendcloud.net/apiv2/statday/list?apiUser=***&apiKey=***&startDate=201
             "spamReportedPercent": 0,
             "unsubscribePercent": 0,
             "uniqueOpensPercent": 0,
-            "uniqueClickPercent": 0,
-            "invalidEmailPercent": 0
+            "uniqueClicksPercent": 0,
+            "invalidEmailsPercent": 0
           }
       ]
     },
@@ -159,9 +158,9 @@ http://api.sendcloud.net/apiv2/statday/list?apiUser=***&apiKey=***&startDate=201
         "bouncePercent": 0,
         "spamReportedPercent": 0,
         "unsubscribePercent": 0,
-        "uniqueOpenPercent": 0,
-        "uniqueClickPercent": 0,
-        "invalidEmailPercent": 41.66
+        "uniqueOpensPercent": 0,
+        "uniqueClicksPercent": 0,
+        "invalidEmailsPercent": 41.66
       },
     "message": "请求成功",
     "result": true
@@ -226,8 +225,8 @@ http://api.sendcloud.net/apiv2/stathour/list?apiUser=***&apiKey=***&startDate=20
 |spamReportedNum|垃圾举报数量|
 |unsubscribeNum|取消订阅数量|
 |uniqueOpensNum|独立打开数量|
-|uniqueClickNum|独立点击数量|
-|invalidEmailNum|无效邮件数量|
+|uniqueClicksNum|独立点击数量|
+|invalidEmailsNum|无效邮件数量|
 |deliveredPercent|送达比例|
 |clickPercent|点击比例|
 |openPercent|打开比例|
@@ -259,18 +258,18 @@ http://api.sendcloud.net/apiv2/stathour/list?apiUser=***&apiKey=***&startDate=20
             "bounceNum": 0,
             "spamReportedNum": 0,
             "unsubscribeNum": 0,
-            "uniqueOpenNum": 0,
-            "uniqueClickNum": 0,
-            "invalidEmailNum": 5,
+            "uniqueOpensNum": 0,
+            "uniqueClicksNum": 0,
+            "invalidEmailsNum": 5,
             "deliveredPercent": 75,
             "clickPercent": 0,
             "openPercent": 0,
             "bouncePercent": 0,
             "spamReportedPercent": 0,
             "unsubscribePercent": 0,
-            "uniqueOpenPercent": 0,
-            "uniqueClickpercent": 0,
-            "invalidEmailPercent": 62.5
+            "uniqueOpensPercent": 0,
+            "uniqueClickspercent": 0,
+            "invalidEmailsPercent": 62.5
            }
        ],
     "message": "请求成功",
@@ -311,7 +310,7 @@ post    get
     
 提示:
 
-1. 获取统计数据时, 必须指定时间区间. 即 **start_date 与 end_date 的组合** 或者 **days 参数** 需二者取一
+1. 获取统计数据时, 必须指定时间区间. 即 **startDate 与 endDate 的组合** 或者 **days 参数** 需二者取一
 2. 当`aggregate`为 1 时, 会将所有维度的数据聚合累加
     
 请求示例:    
@@ -327,7 +326,7 @@ http://api.sendcloud.net/apiv2/invalidstat/list?apiUser=***&apiKey=***&startDate
 |apiUser|子账号|
 |labelId|标签ID|
 |labelName|标签名称|
-|domain|域名|
+|domain|收信域名|
 |sendcloudBlacklist|在sendcloud黑名单的个数|
 |ubsubscribe|在取消订阅列表的个数|
 |espUnvaliable|esp服务器不可达的个数|
