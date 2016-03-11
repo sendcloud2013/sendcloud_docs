@@ -173,7 +173,18 @@ public boolean verify(String appkey, String token, long timestamp,
     return signatureCal.equals(signature);
 }
 ```
-    
+
+**php 代码示例**
+```
+function verify($appkey,$token,$timestamp,$signature){
+    $hash="sha256";
+    $result=hash_hmac($hash,$timestamp.$token,$appkey);
+    return strcmp($result,$signature)==0?1:0;
+}
+```
+
+
+
 **事件说明**
     
 目前 WebHook 支持的事件类型包括: 请求, 发送, 打开, 点击, 取消订阅, 举报, 无效邮件.
