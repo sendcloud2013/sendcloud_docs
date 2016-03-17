@@ -20,6 +20,7 @@ def send():
     param = {
         'smsUser': SMS_USER,
         'templateId' : 381,
+        'msgType': 0,
         'phone' : 13488888888,
         'vars' : '{"%content%":"liubidatest"}'
     }
@@ -40,36 +41,8 @@ def send():
     res = requests.post(url,data=param)
     print res.text
 
-def sendx():
-    url = 'http://sendcloud.sohu.com/smsapi/sendx'
-    SMS_USER = '***'
-    SMS_KEY = '***'
-
-    param = {
-        'smsUser': SMS_USER,
-        'templateId' : 381,
-        'tos' : '[{"phone":"13488888888", "vars":{"%content%":"liubidatest"}},{"phone":"15688888888", "vars":{"%content%":"jiangliantest"}}]'
-    }
-
-    param_keys = list(param.keys())
-    param_keys.sort()
-
-    param_str = ""
-    for key in param_keys:
-        param_str += key + '=' + str(param[key]) + '&'
-    param_str = param_str[:-1]
-
-    sign_str = SMS_KEY + '&' + param_str + '&' + SMS_KEY
-    sign = generate_md5(sign_str)
-
-    param['signature'] = sign
-
-    res = requests.post(url,data=param)
-    print res.text
-
 if __name__ == '__main__':
-    #send()
-    sendx()
+    send()
 
 ```
 
@@ -103,6 +76,7 @@ public class SmsApi {
         Map<String, String> params = new HashMap<String, String>();
         params.put("smsUser", "***");
         params.put("templateId", "1");
+        params.put("msgType", "0");
         params.put("phone", "13412345678");
         params.put("vars", "{\"code\":\"123455\"}");
         
@@ -164,6 +138,7 @@ function send_sms() {
         $param = array(
             'smsUser' => '***', 
             'templateId' => '1',
+            'msgType' => '0',
             'phone' => '13412345678',
             'vars' => '{"%code%":"123456"}'
         );
@@ -182,6 +157,7 @@ function send_sms() {
         $param = array(
             'smsUser' => '***', 
             'templateId' => '1',
+            'msgType' => '0',
             'phone' => '13412345678',
             'vars' => '{"%code%":"123456"}',
             'signature' => $sSignature
@@ -223,7 +199,8 @@ end
 def send_mail
         param = {
             "smsUser"=> "***", 
-            "templateId"=> "1",
+            "templateId"=> "11",
+            "msgType" => "0",
             "phone"=> '13412345678',
             "vars"=>'{"%code%":"123456"}'  
         }
@@ -244,6 +221,7 @@ def send_mail
         response = RestClient.post "http://sendcloud.sohu.com/smsapi/send?",
             :smsUser => "***",
             :templateId => "11",
+            :msgType => '0',
             :phone => '13412345678',
             :vars =>'{"%code%":"123456"}',
             :signature => sign
@@ -271,6 +249,7 @@ my $ua = LWP::UserAgent->new;
 my %param = (
     "smsUser" => '***',
     "templateId" => '1',
+    "msgType" => '0',
     "phone" => '13412345678', 
     "vars" => '{"%code%":"123456"}');
 my $api_key = "***";
@@ -289,6 +268,7 @@ my $request = POST $uri,
     Content => [
         smsUser => '***', 
         templateId => '1',
+        msgType => '0',
         phone => '13412345678', 
         vars => '{"%code%":"123456"}',
         signature => $sign
