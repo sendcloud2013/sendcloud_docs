@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Net.Http;
 
-namespace SendCloudExample
+namespace SendcloudWebapi
 {
     // 模板发送
     class csharp_template
     {
-        public static void send(String xsmtpapi)
+        public static void send(String substitution_vars)
         {
-            String url = "http://api.sendcloud.net/apiv2/mail/sendtemplate";
+            String url = "http://sendcloud.sohu.com/webapi/mail.send_template.json";
 
             String api_user = "";
             String api_key = "";
@@ -25,13 +25,13 @@ namespace SendCloudExample
 
                 List<KeyValuePair<String, String>> paramList = new List<KeyValuePair<String, String>>();
 
-                paramList.Add(new KeyValuePair<string, string>("apiUser", api_user));
-                paramList.Add(new KeyValuePair<string, string>("apiKey", api_key));
+                paramList.Add(new KeyValuePair<string, string>("api_user", api_user));
+                paramList.Add(new KeyValuePair<string, string>("api_key", api_key));
                 paramList.Add(new KeyValuePair<string, string>("from", "sendcloud@sendcloud.org"));
                 paramList.Add(new KeyValuePair<string, string>("fromname", "SendCloud"));
-                paramList.Add(new KeyValuePair<string, string>("xsmtpapi", xsmtpapi));
-                paramList.Add(new KeyValuePair<string, string>("subject", "SendCloud c# apiv2 template example"));
-                paramList.Add(new KeyValuePair<string, string>("templateInvokeName", "test_template"));
+                paramList.Add(new KeyValuePair<string, string>("subject", "SendCloud c# webapi template example"));
+                paramList.Add(new KeyValuePair<string, string>("template_invoke_name", "***"));
+                paramList.Add(new KeyValuePair<string, string>("substitution_vars", substitution_vars));
 
                 response = client.PostAsync(url, new FormUrlEncodedContent(paramList)).Result;
                 String result = response.Content.ReadAsStringAsync().Result;
@@ -53,8 +53,8 @@ namespace SendCloudExample
 
         static void Main(string[] args)
         {
-            String xsmtpapi = "{\"to\": [\"test@163.com\", \"test@qq.com\"], \"sub\" : { \"%name%\" : [\"name1\", \"name2\"], \"%money%\" : [\"1000\", \"2000\"]}}";
-            send(xsmtpapi);
+            String substitution_vars = "{\"to\": [\"test@163.com\", \"test@qq.com\"], \"sub\" : { \"%name%\" : [\"name1\", \"name2\"], \"%money%\" : [\"1000\", \"2000\"]}}";
+            send(substitution_vars);
             Console.ReadKey();
         }
     }

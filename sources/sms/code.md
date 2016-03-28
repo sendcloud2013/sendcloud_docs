@@ -308,7 +308,7 @@ namespace SendCloud
             MD5 md5 = new MD5CryptoServiceProvider();
 
             //compute hash from the bytes of text
-            md5.ComputeHash(ASCIIEncoding.ASCII.GetBytes(str));
+            md5.ComputeHash(Encoding.GetEncoding("utf-8").GetBytes(str));
 
             //get hash result after compute it
             byte[] result = md5.Hash;

@@ -2,19 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Net.Http;
 
 namespace SendCloudExample
 {
-    // 模板发送
-    class csharp_template
+    class csharp_common
     {
-        public static void send(String xsmtpapi)
+        public static void send(String tos)
         {
-            String url = "http://api.sendcloud.net/apiv2/mail/sendtemplate";
+            String url = "http://sendcloud.sohu.com/webapi/mail.send.json";
 
-            String api_user = "";
-            String api_key = "";
+            String api_user = "***";
+            String api_key = "***";
 
             HttpClient client = null;
             HttpResponseMessage response = null;
@@ -25,17 +25,17 @@ namespace SendCloudExample
 
                 List<KeyValuePair<String, String>> paramList = new List<KeyValuePair<String, String>>();
 
-                paramList.Add(new KeyValuePair<string, string>("apiUser", api_user));
-                paramList.Add(new KeyValuePair<string, string>("apiKey", api_key));
-                paramList.Add(new KeyValuePair<string, string>("from", "sendcloud@sendcloud.org"));
+                paramList.Add(new KeyValuePair<string, string>("api_user", api_user)); 
+                paramList.Add(new KeyValuePair<string, string>("api_key", api_key));
+                paramList.Add(new KeyValuePair<string, string>("from", "sendcloud@sendcloud.org")); 
                 paramList.Add(new KeyValuePair<string, string>("fromname", "SendCloud"));
-                paramList.Add(new KeyValuePair<string, string>("xsmtpapi", xsmtpapi));
-                paramList.Add(new KeyValuePair<string, string>("subject", "SendCloud c# apiv2 template example"));
-                paramList.Add(new KeyValuePair<string, string>("templateInvokeName", "test_template"));
+                paramList.Add(new KeyValuePair<string, string>("to", tos)); 
+                paramList.Add(new KeyValuePair<string, string>("subject", "SendCloud c# webapi example"));
+                paramList.Add(new KeyValuePair<string, string>("html", "欢迎使用SendCloud"));
 
                 response = client.PostAsync(url, new FormUrlEncodedContent(paramList)).Result;
                 String result = response.Content.ReadAsStringAsync().Result;
-                Console.WriteLine("result:{0}", result);
+                Console.WriteLine("result:{0}", result);	
             }
             catch (Exception e)
             {
@@ -53,10 +53,12 @@ namespace SendCloudExample
 
         static void Main(string[] args)
         {
-            String xsmtpapi = "{\"to\": [\"test@163.com\", \"test@qq.com\"], \"sub\" : { \"%name%\" : [\"name1\", \"name2\"], \"%money%\" : [\"1000\", \"2000\"]}}";
-            send(xsmtpapi);
+            String tos = "to1@sendcloud.org;to2@sendcloud.org";
+            send(tos);
             Console.ReadKey();
         }
-    }
-}
 
+    }
+
+
+}

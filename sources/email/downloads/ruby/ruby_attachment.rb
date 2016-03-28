@@ -12,7 +12,7 @@ def send_mail
         :fromname => "SendCloud",
         :to => "to1@domain.com;to2@domain.com", # 收件人地址，用正确邮件地址替代，多个地址用';'分隔
         :subject => "SendCloud ruby webapi common with attachment example",
-        :html => '欢迎使用SendCloud',
+        :html => '欢迎使用SendCloud'
 
 return response
 end

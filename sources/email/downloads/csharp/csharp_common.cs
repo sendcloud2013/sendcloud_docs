@@ -7,14 +7,15 @@ using System.Net.Http;
 
 namespace SendCloudExample
 {
+    // 普通发送
     class csharp_common
     {
         public static void send(String tos)
         {
-            String url = "http://sendcloud.sohu.com/webapi/mail.send.json";
+            String url = "http://api.sendcloud.net/apiv2/mail/send";
 
-            String api_user = "***";
-            String api_key = "***";
+            String api_user = "";
+            String api_key = "";
 
             HttpClient client = null;
             HttpResponseMessage response = null;
@@ -25,17 +26,17 @@ namespace SendCloudExample
 
                 List<KeyValuePair<String, String>> paramList = new List<KeyValuePair<String, String>>();
 
-                paramList.Add(new KeyValuePair<string, string>("api_user", api_user)); 
-                paramList.Add(new KeyValuePair<string, string>("api_key", api_key));
-                paramList.Add(new KeyValuePair<string, string>("from", "sendcloud@sendcloud.org")); 
+                paramList.Add(new KeyValuePair<string, string>("apiUser", api_user));
+                paramList.Add(new KeyValuePair<string, string>("apiKey", api_key));
+                paramList.Add(new KeyValuePair<string, string>("from", "sendcloud@sendcloud.org"));
                 paramList.Add(new KeyValuePair<string, string>("fromname", "SendCloud"));
-                paramList.Add(new KeyValuePair<string, string>("to", tos)); 
-                paramList.Add(new KeyValuePair<string, string>("subject", "SendCloud c# webapi example"));
+                paramList.Add(new KeyValuePair<string, string>("to", tos));
+                paramList.Add(new KeyValuePair<string, string>("subject", "SendCloud c# apiv2 example"));
                 paramList.Add(new KeyValuePair<string, string>("html", "欢迎使用SendCloud"));
 
                 response = client.PostAsync(url, new FormUrlEncodedContent(paramList)).Result;
                 String result = response.Content.ReadAsStringAsync().Result;
-                Console.WriteLine("result:{0}", result);	
+                Console.WriteLine("result:{0}", result);
             }
             catch (Exception e)
             {
@@ -51,7 +52,7 @@ namespace SendCloudExample
             }
         }
 
-        static void Main(string[] args)
+        static void Main2(string[] args)
         {
             String tos = "to1@sendcloud.org;to2@sendcloud.org";
             send(tos);
@@ -62,3 +63,4 @@ namespace SendCloudExample
 
 
 }
+

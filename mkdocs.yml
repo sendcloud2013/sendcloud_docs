@@ -57,6 +57,7 @@ pages:
 - [email_v2/unsubscribe_do.md, '邮件API v2', '取消订阅管理']
 - [email_v2/spamreported_do.md, '邮件API v2', '垃圾举报管理']
 #- [email_v2/webhook.md, '邮件API v2', 'WebHook 详细']
+- [email_v2/code.md, '邮件API v2', '代码示例']
 
 - [sms/index.md, '短信API', '规则']
 - [sms/api.md, '短信API', 'API']
