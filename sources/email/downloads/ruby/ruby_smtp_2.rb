@@ -18,7 +18,7 @@ def getMessageId(res)
 end
 
 #调用api_user和api_key发送邮件
-Net::SMTP.start('smtpcloud.sohu.com', 25,'localhost', 'api_user', 'api_key',:login) do |smtp|
+Net::SMTP.start('smtp.sendcloud.net', 25,'localhost', 'api_user', 'api_key',:login) do |smtp|
     res = smtp.send_message message, from, receiver
     messageId = getMessageId(res)
     puts messageId

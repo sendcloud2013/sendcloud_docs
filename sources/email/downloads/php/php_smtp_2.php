@@ -21,7 +21,7 @@ $body = "<html><head></head><body>
 
 # smtp参数, 用正确api_user和api_key验证
 $param = array (
-   'host'=>'smtpcloud.sohu.com',
+   'host'=>'smtp.sendcloud.net',
    'ip'=>25,
    'auth'=>true,
    'username'=>'api_user',

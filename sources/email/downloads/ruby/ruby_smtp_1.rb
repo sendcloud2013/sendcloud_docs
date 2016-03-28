@@ -5,7 +5,7 @@ $KCODE = 'U' #utf8
 
 Mail.defaults do                                                                
     delivery_method :smtp, {                                                       
-        :address   => "smtpcloud.sohu.com",                                     
+        :address   => "smtp.sendcloud.net",                                     
         :port      => 25,                                                       
         :user_name => "api_user",                     
         :password  => "api_key",                                          

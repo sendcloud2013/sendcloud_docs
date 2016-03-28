@@ -11,7 +11,7 @@ from email import encoders
 import base64, time, simplejson, os, json
 from datetime import datetime, date
 
-HOST = 'smtpcloud.sohu.com'
+HOST = 'smtp.sendcloud.net'
 PORT = 25
 API_USER = '***'
 API_KEY = '***'

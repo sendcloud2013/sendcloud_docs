@@ -24,7 +24,7 @@ import com.sun.mail.smtp.SMTPTransport;
 
 public class SendCloudSmtp {
 
-	private static final String SENDCLOUD_SMTP_HOST = "smtpcloud.sohu.com";
+	private static final String SENDCLOUD_SMTP_HOST = "smtp.sendcloud.net";
 	private static final int SENDCLOUD_SMTP_PORT = 25;
 
 	private static String getMessage(String reply) {

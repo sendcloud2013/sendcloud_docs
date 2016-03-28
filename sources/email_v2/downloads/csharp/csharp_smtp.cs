@@ -40,7 +40,7 @@ namespace SendMailTest
                 mailMsg.Attachments.Add(data);
 
                 // 连接到sendcloud服务器
-                SmtpClient smtpClient = new SmtpClient("smtpcloud.sohu.com", Convert.ToInt32(25));
+                SmtpClient smtpClient = new SmtpClient("smtp.sendcloud.net", Convert.ToInt32(25));
                 // 使用api_user和api_key进行验证
                 System.Net.NetworkCredential credentials = new System.Net.NetworkCredential(api_user, api_key);
                 smtpClient.Credentials = credentials;

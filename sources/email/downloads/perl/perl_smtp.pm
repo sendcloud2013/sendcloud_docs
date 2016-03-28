@@ -55,7 +55,7 @@ $mime->attach ( Path      => $file1,
 ) or die "Error adding attachement, name=$filename1!\n";                        
 
 # 连接sendcloud服务器                                                           
-my $smtp = Net::SMTP->new('smtpcloud.sohu.com',                                 
+my $smtp = Net::SMTP->new('smtp.sendcloud.net',                                 
                         Port=> 25,                                              
                         Timeout => 60,                                          
                         Hello => "youdomain.com",                               

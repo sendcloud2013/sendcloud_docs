@@ -19,7 +19,7 @@ $body = "<html><head></head><body>
 $username = "api_user"; 
 $password = "api_key";  
 
-$host = "smtpcloud.sohu.com";
+$host = "smtp.sendcloud.net";
 $port = 25;
 
 $headers = array (
