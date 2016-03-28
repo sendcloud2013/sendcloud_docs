@@ -22,7 +22,7 @@ params = {
 filename = "./test.txt"
 display_filename = "filename"
 
-files = { "file1" : (display_filename, open(filename,"rb"))}
+files = { "attachments" : (display_filename, open(filename,"rb"))}
 
 r = requests.post(url, files=files, data=params)
 

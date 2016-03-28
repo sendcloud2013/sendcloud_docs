@@ -22,8 +22,7 @@ params = {
     "xsmtpapi" : json.dumps(xsmtpapi),
     "from" : "sendcloud@sendcloud.org", # 发信人, 用正确邮件地址替代
     "fromName" : "SendCloud",
-    "subject" : "SendCloud python template",
-    "respEmailId": "true",
+    "subject" : "SendCloud python template"
 }
 
 filename = "./test.txt"
