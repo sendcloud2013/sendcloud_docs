@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Net.Http;
+using System.IO;
 
 namespace SendCloudExample
 {
-    // 普通发送
-    class csharp_common
+    // 模板发送
+    class csharp_template_attachment_v2
     {
-        public static void send(String tos)
+        public static void send(String xsmtpapi)
         {
-            String url = "http://api.sendcloud.net/apiv2/mail/send";
+            String url = "http://api.sendcloud.net/apiv2/mail/sendtemplate";
 
             String api_user = "";
             String api_key = "";
@@ -30,11 +30,19 @@ namespace SendCloudExample
                 paramList.Add(new KeyValuePair<string, string>("apiKey", api_key));
                 paramList.Add(new KeyValuePair<string, string>("from", "sendcloud@sendcloud.org"));
                 paramList.Add(new KeyValuePair<string, string>("fromname", "SendCloud"));
-                paramList.Add(new KeyValuePair<string, string>("to", tos));
-                paramList.Add(new KeyValuePair<string, string>("subject", "SendCloud c# apiv2 example"));
-                paramList.Add(new KeyValuePair<string, string>("html", "欢迎使用SendCloud"));
+                paramList.Add(new KeyValuePair<string, string>("xsmtpapi", xsmtpapi));
+                paramList.Add(new KeyValuePair<string, string>("subject", "SendCloud c# apiv2 template example"));
+                paramList.Add(new KeyValuePair<string, string>("templateInvokeName", "test_template"));
 
-                response = client.PostAsync(url, new FormUrlEncodedContent(paramList)).Result;
+                var multipartFormDataContent = new MultipartFormDataContent();
+                foreach (var keyValuePair in paramList)
+                {
+                    multipartFormDataContent.Add(new StringContent(keyValuePair.Value), String.Format("\"{0}\"", keyValuePair.Key));
+                }
+
+                multipartFormDataContent.Add(new ByteArrayContent(File.ReadAllBytes("D:\\1.txt")), "\"attachments\"", "\"test1.txt\"");
+
+                response = client.PostAsync(url, multipartFormDataContent).Result;
                 String result = response.Content.ReadAsStringAsync().Result;
                 Console.WriteLine("result:{0}", result);
             }
@@ -52,15 +60,12 @@ namespace SendCloudExample
             }
         }
 
-        static void Main2(string[] args)
+        static void Main1(string[] args)
         {
-            String tos = "to1@sendcloud.org;to2@sendcloud.org";
-            send(tos);
+            String xsmtpapi = "{\"to\": [\"test@163.com\", \"test@qq.com\"], \"sub\" : { \"%name%\" : [\"name1\", \"name2\"], \"%money%\" : [\"1000\", \"2000\"]}}";
+            send(xsmtpapi);
             Console.ReadKey();
         }
-
     }
-
-
 }
 

@@ -131,11 +131,14 @@ https://metacpan.org/pod/JSON
 
 ## CSharp
 
-[普通发送](email_v2/downloads/csharp/csharp_common.cs)
+[普通发送](email_v2/downloads/csharp/csharp_common_v2.cs)
 
-[模板发送&&附件](email_v2/downloads/csharp/csharp_template.cs)
+[普通发送&&附件](email_v2/downloads/csharp/csharp_common_attachment_v2.cs)
+
+[模板发送](email_v2/downloads/csharp/csharp_template_v2.cs)
+
+[模板发送&&附件](email_v2/downloads/csharp/csharp_template_attachment_v2.cs)
 
 [SMTP发送](email/downloads/csharp/csharp_smtp.cs)
-
 
 

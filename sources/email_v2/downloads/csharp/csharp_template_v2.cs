@@ -7,7 +7,7 @@ using System.Net.Http;
 namespace SendCloudExample
 {
     // 模板发送
-    class csharp_template
+    class csharp_template_v2
     {
         public static void send(String xsmtpapi)
         {
@@ -51,7 +51,7 @@ namespace SendCloudExample
             }
         }
 
-        static void Main(string[] args)
+        static void Main1(string[] args)
         {
             String xsmtpapi = "{\"to\": [\"test@163.com\", \"test@qq.com\"], \"sub\" : { \"%name%\" : [\"name1\", \"name2\"], \"%money%\" : [\"1000\", \"2000\"]}}";
             send(xsmtpapi);
