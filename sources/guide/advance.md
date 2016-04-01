@@ -297,7 +297,6 @@ function verify($appkey,$token,$timestamp,$signature){
 |mail_list_task_id|long|同 maillistTaskId|
 |emailId|string|每封email的唯一ID|
 |recipient|string|收信人|
-|labelId|int|自定义的标签ID|
 |ip|string|Ip地址|
 |explorerName|string|浏览器名称|
 |explorerVer|string|浏览器版本|
