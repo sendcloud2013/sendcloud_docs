@@ -15,7 +15,7 @@
 ## Java
 
 依赖
-代码示例需要依赖如下jar包
+WEBAPI_4.2代码示例需要依赖如下jar包 (httpclient版本4.2)
 ```
 <dependency>
     <groupId>org.apache.httpcomponents</groupId>
@@ -33,9 +33,31 @@
     <version>20140107</version>
 </dependency>
 ```
-[httpclient](http://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient/4.2) [httpmime](http://mvnrepository.com/artifact/org.apache.httpcomponents/httpmime/4.2) [org.json](http://mvnrepository.com/artifact/org.json/json/20140107)
+     
+WEBAPI_4.4代码示例需要依赖如下jar包 (httpclient版本4.4)
+```
+<dependency>
+    <groupId>org.apache.httpcomponents</groupId>
+    <artifactId>httpclient</artifactId>
+    <version>4.4</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.httpcomponents</groupId>
+    <artifactId>httpmime</artifactId>
+    <version>4.4</version>
+</dependency>
+<dependency>
+    <groupId>org.json</groupId>
+    <artifactId>json</artifactId>
+    <version>20140107</version>
+</dependency>
+```
+    
+[httpclient](http://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient) [httpmime](http://mvnrepository.com/artifact/org.apache.httpcomponents/httpmime) [org.json](http://mvnrepository.com/artifact/org.json/json/20140107)
 
-[WEBAPI_代码示例](email/downloads/java/SendCloud.java)
+[WEBAPI_httpclient4.2版本代码示例](email/downloads/java/SendCloud.java)
+          
+[WEBAPI_httpclient4.4版本代码示例](email/downloads/java/SendCloud44.java)
 
 [SMTP_代码示例](email/downloads/java/SendCloudSmtp.java)
 
