@@ -6,6 +6,8 @@
 
 [普通发送](email/downloads/python/python_common.py)
 
+[附件发送](email/downloads/python/python_common_attachments.py)
+
 [模板发送](email/downloads/python/python_template.py)
 
 [模板发送&&地址列表](email/downloads/python/python_template_maillist.py)
