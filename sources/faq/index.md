@@ -186,3 +186,42 @@ s.login(API_USER + '#' + label_id, API_KEY)
 
 SMTP 和普通发送API 不能也不应该调用模板来发送邮件, 对于这两种方式, 模板只起了内容审核的作用.
 
+- - -
+
+## 11. 通过 SendCloud 发送的邮件能否指定 Message-ID ?
+
+可以的. 使用 API 调用发送, `headers` 参数里指定下 `Message-ID` 即可. 举例:
+
+```
+{
+    "Message-Id": "<uuid...uuid@ifaxincom>", 
+    ...
+}
+```
+需要注意的点:
+
+1. 用户指定的 `Message-ID` 需要符合 RFC 规范. 否则, 一些 ESP 会对 `Message-ID` 做格式的检查. 
+2. 使用 `cc`, `bcc` , `xsmtpapi` 扩展字段时, 邮件会发送给多个人的, 如果用户定义了 `Message-ID`, 会导致这些邮件的 `Message-ID` 相同. 这种情况是不推荐的.
+
+- - -
+
+## 12. WebHook 的数据中可否带有我埋在邮件里的信息 ?
+
+可以的. 使用 API 调用发送, 如果参数 headers 中某个 Key 以 "SC-Custom-" 开头, 则这个 Key:Value 会通过 WebHook 返回给用户.  举例:
+
+```
+{
+    "SC-Custom-key1": "value1", 
+    "SC-Custom-key2": "value2", 
+    ...
+}
+```
+
+然后用户收到的 WebHook 数据中就会带有这些信息.
+
+![pic](/resources/faq12.png)
+
+
+
+
+
