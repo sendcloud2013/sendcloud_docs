@@ -200,8 +200,9 @@ SMTP 和普通发送API 不能也不应该调用模板来发送邮件, 对于这
 ```
 需要注意的点:
 
-1. 用户指定的 `Message-ID` 需要符合 RFC 规范. 否则, 一些 ESP 会对 `Message-ID` 做格式的检查. 
-2. 使用 `cc`, `bcc` , `xsmtpapi` 扩展字段时, 邮件会发送给多个人的, 如果用户定义了 `Message-ID`, 会导致这些邮件的 `Message-ID` 相同. 这种情况是不推荐的.
+1. 此 `Message-ID` 非 SendCloud 系统中的 [messageId](../faq/#11-sendcloud-message-id), 而是邮件头中的 `Message-ID`.
+2. 用户指定的 `Message-ID` 需要符合 RFC 规范. 否则, 一些 ESP 会对 `Message-ID` 做格式的检查. 
+3. 使用 `cc`, `bcc` , `xsmtpapi` 扩展字段时, 邮件会发送给多个人的, 如果用户定义了 `Message-ID`, 会导致这些邮件的 `Message-ID` 相同. 这种情况是不推荐的.
 
 - - -
 
@@ -221,7 +222,41 @@ SMTP 和普通发送API 不能也不应该调用模板来发送邮件, 对于这
 
 ![pic](/resources/faq12.png)
 
+## 13. SendCloud 支持内嵌图片的邮件发送么?
 
+APIV2 是支持的. 代码示例:
 
+``` python
+import requests                                                                 
 
+url = "http://api.sendcloud.net/apiv2/mail/send"                         
+
+API_USER = '...'
+API_KEY = '...'
+
+params = {                                                                      
+    "apiUser": API_USER, # 使用api_user和api_key进行验证                       
+    "apiKey" : API_KEY,                                             
+    "from" : "sendcloud@sendcloud.org", # 发信人, 用正确邮件地址替代                                        
+    "to" : "d@ifaxin.com", # 收件人地址, 用正确邮件地址替代, 多个地址用';'分隔                                
+    "subject" : "SendCloud python embed example",                              
+    "html": '<p>1st image</p> <img src="cid:image1"> <p>2nd image</p> <img src="cid:image2"/> <p>3rd image</p> <img src="cid:image1"/>',
+    "embeddedCid": "image1;image2",
+}                                                                               
+
+filename1 = "/path/image1.jpg"
+display_filename_1 = "image1"
+
+filename2 = "/path/image2.jpg"
+display_filename_2 = "image2"
+
+files = [
+    ("embeddedImage", (display_filename_1, open(filename1, 'rb'),'application/octet-stream')),
+    ("embeddedImage", (display_filename_2, open(filename2, 'rb'),'application/octet-stream'))
+]
+
+r = requests.post(url, files=files, data=params)
+
+print r.text
+```
 
