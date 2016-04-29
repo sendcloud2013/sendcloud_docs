@@ -111,7 +111,8 @@ SMTP 服务器会对邮件中 **key** 为 `X-SMTPAPI` 的头域信息做格式�
 需要注意的是: 
 
 1. SMTP 调用时, X-SMTPAPI 必须是头域字段的最后一个. 否则, 可能导致 `xsmtpapi error` 的错误.
-2. API 调用时, 直接传入 JSON 字符串即可, 无需 base64 编码封装
+2. API 调用时, 直接传入 JSON 字符串即可, 无需 base64 编码封装.
+3. X-SMTPAPI 的总长度不能超过 1M.
 
 value 封装的 JSON 字符串的结构和用途见下: 
 
