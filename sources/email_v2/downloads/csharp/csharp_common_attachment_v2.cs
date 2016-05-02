@@ -40,7 +40,9 @@ namespace SendCloudExampleV2
                     multipartFormDataContent.Add(new StringContent(keyValuePair.Value), String.Format("\"{0}\"", keyValuePair.Key));
                 }
 
-                multipartFormDataContent.Add(new ByteArrayContent(File.ReadAllBytes("D:\\1.txt")), "\"attachments\"", "\"test1.txt\"");
+                multipartFormDataContent.Add(new ByteArrayContent(File.ReadAllBytes("D:\\附件1.txt")), "\"attachments\"", "\"附件名称.txt\"");
+
+                multipartFormDataContent.Add(new ByteArrayContent(File.ReadAllBytes("D:\\附件2.txt")), "\"attachments\"", "\"附件名称.txt\"");
 
                 response = client.PostAsync(url, multipartFormDataContent).Result;
 
