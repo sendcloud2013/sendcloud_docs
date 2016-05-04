@@ -11,6 +11,22 @@ namespace SendCloudExampleV2
     // 普通发送
     class csharp_common_attachment_v2
     {
+        private static StreamContent createStream(String filePath, String paramKey, String fileName)
+        {
+            FileStream fs = File.OpenRead(filePath);
+            StreamContent streamContent = new StreamContent(fs);
+            streamContent.Headers.Add("Content-Type", "application/octet-stream");
+            String headerValue = "form-data; name=\"" + paramKey + "\"; filename=\"" + fileName + "\"";
+            byte[] bytes1 = Encoding.UTF8.GetBytes(headerValue);
+            headerValue = "";
+            foreach (byte b1 in bytes1)
+            {
+                headerValue += (Char)b1;
+            }
+            streamContent.Headers.Add("Content-Disposition", headerValue);
+            return streamContent;
+        }
+
         public static void send(String tos)
         {
             String url = "http://api.sendcloud.net/apiv2/mail/send";
@@ -29,7 +45,7 @@ namespace SendCloudExampleV2
                 paramList.Add(new KeyValuePair<string, string>("apiUser", api_user));
                 paramList.Add(new KeyValuePair<string, string>("apiKey", api_key));
                 paramList.Add(new KeyValuePair<string, string>("from", "sendcloud@sendcloud.org"));
-                paramList.Add(new KeyValuePair<string, string>("fromname", "SendCloud"));
+                paramList.Add(new KeyValuePair<string, string>("fromName", "SendCloud"));
                 paramList.Add(new KeyValuePair<string, string>("to", tos));
                 paramList.Add(new KeyValuePair<string, string>("subject", "SendCloud c# apiv2 example"));
                 paramList.Add(new KeyValuePair<string, string>("html", "欢迎使用SendCloud"));
@@ -40,9 +56,9 @@ namespace SendCloudExampleV2
                     multipartFormDataContent.Add(new StringContent(keyValuePair.Value), String.Format("\"{0}\"", keyValuePair.Key));
                 }
 
-                multipartFormDataContent.Add(new ByteArrayContent(File.ReadAllBytes("D:\\附件1.txt")), "\"attachments\"", "\"附件名称1.txt\"");
+                multipartFormDataContent.Add(createStream("D:\\附件2.txt", "attachments", "附件名称2.txt"));
 
-                multipartFormDataContent.Add(new ByteArrayContent(File.ReadAllBytes("D:\\附件2.txt")), "\"attachments\"", "\"附件名称2.txt\"");
+                multipartFormDataContent.Add(createStream("D:\\附件1.txt", "attachments", "附件名称1.txt"));
 
                 response = client.PostAsync(url, multipartFormDataContent).Result;
 

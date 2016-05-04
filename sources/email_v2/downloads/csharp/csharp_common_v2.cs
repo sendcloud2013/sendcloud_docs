@@ -10,6 +10,7 @@ namespace SendCloudExample
     // 普通发送
     class csharp_common_v2
     {
+
         public static void send(String tos)
         {
             String url = "http://api.sendcloud.net/apiv2/mail/send";
@@ -29,7 +30,7 @@ namespace SendCloudExample
                 paramList.Add(new KeyValuePair<string, string>("apiUser", api_user));
                 paramList.Add(new KeyValuePair<string, string>("apiKey", api_key));
                 paramList.Add(new KeyValuePair<string, string>("from", "sendcloud@sendcloud.org"));
-                paramList.Add(new KeyValuePair<string, string>("fromname", "SendCloud"));
+                paramList.Add(new KeyValuePair<string, string>("fromName", "SendCloud"));
                 paramList.Add(new KeyValuePair<string, string>("to", tos));
                 paramList.Add(new KeyValuePair<string, string>("subject", "SendCloud c# apiv2 example"));
                 paramList.Add(new KeyValuePair<string, string>("html", "欢迎使用SendCloud"));

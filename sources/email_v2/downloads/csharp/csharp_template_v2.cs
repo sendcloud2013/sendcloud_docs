@@ -28,7 +28,7 @@ namespace SendCloudExample
                 paramList.Add(new KeyValuePair<string, string>("apiUser", api_user));
                 paramList.Add(new KeyValuePair<string, string>("apiKey", api_key));
                 paramList.Add(new KeyValuePair<string, string>("from", "sendcloud@sendcloud.org"));
-                paramList.Add(new KeyValuePair<string, string>("fromname", "SendCloud"));
+                paramList.Add(new KeyValuePair<string, string>("fromName", "SendCloud"));
                 paramList.Add(new KeyValuePair<string, string>("xsmtpapi", xsmtpapi));
                 paramList.Add(new KeyValuePair<string, string>("subject", "SendCloud c# apiv2 template example"));
                 paramList.Add(new KeyValuePair<string, string>("templateInvokeName", "test_template"));
