@@ -113,16 +113,26 @@ public class SendCloudAPIV2 {
 		entity.addPart("html", new StringBody(html, Charset.forName("UTF-8")));
 
 		// 添加附件
-		File file = new File("D:\\1.txt");
+		File file = new File("D:\\测试.txt");
 		FileBody attachment = new FileBody(file, "application/octet-stream", "UTF-8");
 		entity.addPart("attachments", attachment);
+		//多附件
+		File file1 = new File("D:\\测试1.txt");
+		FileBody attachment1 = new FileBody(file1, "application/octet-stream","UTF-8");
+		entity.addPart("attachments", attachment1);
 
-		// 添加附件, 文件流形式
-		// File file = new File("D:\\1.txt");
-		// String attachName = "attach.txt";
-		// InputStreamBody is = new InputStreamBody(new FileInputStream(file),
-		// attachName);
-		// entity.addPart("attachments", is);
+		//添加附件, 文件流形式
+		//File file = new File("D:\\1.txt");
+		//String attachName = "attach.txt";
+		//InputStreamBody is = new InputStreamBody(new FileInputStream(file),
+		//attachName);
+		//entity.addPart("attachments", is);
+		//多附件
+		//File file1 = new File("D:\\1.txt");
+		//String attachName1 = "attach.txt";
+		//InputStreamBody is1 = new InputStreamBody(new FileInputStream(file1),
+		//attachName1);
+		//entity.addPart("attachments", is1);
 
 		httpPost.setEntity(entity);
 
@@ -242,16 +252,23 @@ public class SendCloudAPIV2 {
 		entity.addPart("subject", new StringBody(subject, Charset.forName("UTF-8")));
 
 		// 添加附件
-		File file = new File("D:\\1.txt");
+		File file = new File("D:\\测试.txt");
 		FileBody attachment = new FileBody(file, "application/octet-stream", "UTF-8");
 		entity.addPart("attachments", attachment);
-
-		// 添加附件, 文件流形式
-		// File file = new File("D:\\1.txt");
-		// String attachName = "attach.txt";
-		// InputStreamBody is = new InputStreamBody(new FileInputStream(file),
-		// attachName);
-		// entity.addPart("attachments", is);
+		//多附件
+		File file1 = new File("D:\\测试1.txt");
+		FileBody attachment1 = new FileBody(file1, "application/octet-stream","UTF-8");
+		entity.addPart("attachments", attachment1);
+		//添加附件, 文件流形式
+		//File file = new File("D:\\1.txt");
+		//String attachName = "attach.txt";
+		//InputStreamBody is = new InputStreamBody(new FileInputStream(file), attachName);
+		//entity.addPart("attachments", is);
+		//多附件
+		//File file1 = new File("D:\\1.txt");
+		//String attachName1 = "attach.txt";
+		//InputStreamBody is1 = new InputStreamBody(new FileInputStream(file1), attachName1);
+		//entity.addPart("attachments", is1);
 
 		httpost.setEntity(entity);
 
@@ -267,8 +284,8 @@ public class SendCloudAPIV2 {
 	}
 
 	public static void main(String[] args) throws Exception {
-		send_common();
-		// send_common_with_attachment();
+		//send_common();
+	    send_common_with_attachment();
 		// send_template();
 		// send_template_maillist();
 		// send_template_with_attachment();

@@ -93,7 +93,7 @@ public class SendCloudAPIV2_44 {
 		final String apiUser = "***";
 		final String apiKey = "***";
         final String rcpt_to = "***";
-		
+        
 		String subject = "...";
 		String html = "...";
 
@@ -114,16 +114,25 @@ public class SendCloudAPIV2_44 {
 		entity.addTextBody("html", html, TEXT_PLAIN);	
 		
 		// 添加附件
-		File file = new File("D:\\测试.txt");
-		String attachName = "附件名称.txt";
 		ContentType OCTEC_STREAM = ContentType.create("application/octet-stream", Charset.forName("UTF-8"));
+		
+		File file = new File("D:\\测试.txt");
+		String attachName = "附件名称.txt";	
 		entity.addBinaryBody("attachments", file, OCTEC_STREAM, attachName);
-
-		 //添加附件, 文件流形式
+		
+		//多附件
+		File file1 = new File("D:\\测试1.txt");
+		String attachName1 = "附件名称1.txt";	
+		entity.addBinaryBody("attachments", file1, OCTEC_STREAM, attachName1);
+		
+		//添加附件, 文件流形式
 		//File file = new File("D:\\测试.txt");
-		//ContentType OCTEC_STREAM = ContentType.create("application/octet-stream", Charset.forName("UTF-8"));
 		//String attachName = "附件名称.txt";
-		//entity.addBinaryBody("files", new FileInputStream(file), OCTEC_STREAM, attachName);
+		//entity.addBinaryBody("attachments", new FileInputStream(file), OCTEC_STREAM, attachName);
+		//多附件
+		//File file1 = new File("D:\\测试1.txt");
+		//String attachName1 = "附件名称1.txt";
+		//entity.addBinaryBody("attachments", new FileInputStream(file1), OCTEC_STREAM, attachName1);
 
 		httpPost.setEntity(entity.build());
 
@@ -245,18 +254,24 @@ public class SendCloudAPIV2_44 {
 		entity.addTextBody("subject", subject, TEXT_PLAIN);
 		
 		// 添加附件
+		ContentType OCTEC_STREAM = ContentType.create("application/octet-stream", Charset.forName("UTF-8"));
 		File file = new File("D:\\测试.txt");
 		String attachName = "附件名称.txt";
-		ContentType OCTEC_STREAM = ContentType.create("application/octet-stream", Charset.forName("UTF-8"));
 		entity.addBinaryBody("attachments", file, OCTEC_STREAM, attachName);
 
-		 //添加附件, 文件流形式
-//		File file = new File("D:\\测试.txt");
-//		ContentType OCTEC_STREAM = ContentType.create(
-//				"application/octet-stream", Charset.forName("UTF-8"));
-//		String attachName = "附件名称.txt";
-//		entity.addBinaryBody("files", new FileInputStream(file), OCTEC_STREAM,
-//				attachName);
+	    //多附件
+		File file1 = new File("D:\\测试1.txt");
+		String attachName1 = "附件名称1.txt";	
+		entity.addBinaryBody("attachments", file1, OCTEC_STREAM, attachName1);
+
+		//添加附件, 文件流形式
+	    //File file = new File("D:\\测试.txt");
+	    //String attachName = "附件名称.txt";
+		//entity.addBinaryBody("attachments", new FileInputStream(file), OCTEC_STREAM, attachName);
+		//多附件
+		//File file1 = new File("D:\\测试1.txt");
+		//String attachName1 = "附件名称1.txt";
+		//entity.addBinaryBody("attachments", new FileInputStream(file1), OCTEC_STREAM, attachName1);
 
 		httpost.setEntity(entity.build());
 
@@ -274,9 +289,9 @@ public class SendCloudAPIV2_44 {
 	public static void main(String[] args) throws Exception {
 	    //send_common();
 		//send_common_with_attachment();
-		 //send_template();
-		 //send_template_maillist();
-		 send_template_with_attachment();
+		//send_template();
+		//send_template_maillist();
+		send_template_with_attachment();
 
 	}
 }
