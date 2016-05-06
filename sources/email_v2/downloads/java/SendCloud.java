@@ -69,7 +69,7 @@ public class SendCloudAPIV2 {
 		params.add(new BasicNameValuePair("apiKey", apiKey));
 		params.add(new BasicNameValuePair("to", rcpt_to));
 		params.add(new BasicNameValuePair("from", "sendcloud@sendcloud.org"));
-		params.add(new BasicNameValuePair("fromname", "SendCloud"));
+		params.add(new BasicNameValuePair("fromName", "SendCloud"));
 		params.add(new BasicNameValuePair("subject", subject));
 		params.add(new BasicNameValuePair("html", html));
 
@@ -108,7 +108,7 @@ public class SendCloudAPIV2 {
 		entity.addPart("apiKey", new StringBody(apiKey, Charset.forName("UTF-8")));
 		entity.addPart("to", new StringBody(rcpt_to, Charset.forName("UTF-8")));
 		entity.addPart("from", new StringBody("sendcloud@sendcloud.org", Charset.forName("UTF-8")));
-		entity.addPart("fromname", new StringBody("SendCloud", Charset.forName("UTF-8")));
+		entity.addPart("fromName", new StringBody("SendCloud", Charset.forName("UTF-8")));
 		entity.addPart("subject", new StringBody(subject, Charset.forName("UTF-8")));
 		entity.addPart("html", new StringBody(html, Charset.forName("UTF-8")));
 
@@ -171,7 +171,7 @@ public class SendCloudAPIV2 {
 		params.add(new BasicNameValuePair("xsmtpapi", xsmtpapi));
 		params.add(new BasicNameValuePair("templateInvokeName", "test_template"));
 		params.add(new BasicNameValuePair("from", "sendcloud@sendcloud.org"));
-		params.add(new BasicNameValuePair("fromname", "SendCloud"));
+		params.add(new BasicNameValuePair("fromName", "SendCloud"));
 		params.add(new BasicNameValuePair("subject", subject));
 
 		httpPost.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
@@ -206,7 +206,7 @@ public class SendCloudAPIV2 {
 		params.add(new BasicNameValuePair("to", to));
 		params.add(new BasicNameValuePair("templateInvokeName", "test_template"));
 		params.add(new BasicNameValuePair("from", "sendcloud@sendcloud.org"));
-		params.add(new BasicNameValuePair("fromname", "SendCloud"));
+		params.add(new BasicNameValuePair("fromName", "SendCloud"));
 		params.add(new BasicNameValuePair("subject", subject));
 		params.add(new BasicNameValuePair("useAddressList", "true"));
 
@@ -248,7 +248,7 @@ public class SendCloudAPIV2 {
 		entity.addPart("xsmtpapi", new StringBody(xsmtpapi, Charset.forName("UTF-8")));
 		entity.addPart("templateInvokeName", new StringBody("test_template", Charset.forName("UTF-8")));
 		entity.addPart("from", new StringBody("sendcloud@sendcloud.org", Charset.forName("UTF-8")));
-		entity.addPart("fromname", new StringBody("SendCloud", Charset.forName("UTF-8")));
+		entity.addPart("fromName", new StringBody("SendCloud", Charset.forName("UTF-8")));
 		entity.addPart("subject", new StringBody(subject, Charset.forName("UTF-8")));
 
 		// 添加附件

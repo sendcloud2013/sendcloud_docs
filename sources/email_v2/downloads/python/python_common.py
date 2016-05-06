@@ -11,7 +11,7 @@ params = {
     "apiKey" : API_KEY,                                             
     "to" : "test@ifaxin.com", # 收件人地址, 用正确邮件地址替代, 多个地址用';'分隔  
     "from" : "sendcloud@sendcloud.org", # 发信人, 用正确邮件地址替代     
-    "fromname" : "SendCloud",                                                    
+    "fromName" : "SendCloud",                                                    
     "subject" : "SendCloud python common",                              
     "html": "欢迎使用SendCloud"
 }                                                                               

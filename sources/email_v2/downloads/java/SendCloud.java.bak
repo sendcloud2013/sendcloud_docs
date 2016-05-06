@@ -84,7 +84,7 @@ public class SendCloud {
 		params.add(new BasicNameValuePair("api_key", apiKey));
 		params.add(new BasicNameValuePair("to", rcpt_to));
 		params.add(new BasicNameValuePair("from", "sendcloud@sendcloud.org"));
-		params.add(new BasicNameValuePair("fromname", "SendCloud"));
+		params.add(new BasicNameValuePair("fromName", "SendCloud"));
 		params.add(new BasicNameValuePair("subject", subject));
 		params.add(new BasicNameValuePair("html", html));
 		params.add(new BasicNameValuePair("resp_email_id", "true"));
@@ -123,7 +123,7 @@ public class SendCloud {
 		entity.addPart("api_key", new StringBody(apiKey, Charset.forName("UTF-8")));
 		entity.addPart("to", new StringBody(rcpt_to, Charset.forName("UTF-8")));
 		entity.addPart("from", new StringBody("sendcloud@sendcloud.org", Charset.forName("UTF-8")));
-		entity.addPart("fromname", new StringBody("SendCloud", Charset.forName("UTF-8")));
+		entity.addPart("fromName", new StringBody("SendCloud", Charset.forName("UTF-8")));
 		entity.addPart("subject", new StringBody(subject, Charset.forName("UTF-8")));
 		entity.addPart("html", new StringBody(html, Charset.forName("UTF-8")));
 		entity.addPart("resp_email_id", new StringBody("true"));
@@ -177,7 +177,7 @@ public class SendCloud {
 		params.add(new BasicNameValuePair("substitution_vars", vars));
 		params.add(new BasicNameValuePair("template_invoke_name", "test_template"));
 		params.add(new BasicNameValuePair("from", "sendcloud@sendcloud.org"));
-		params.add(new BasicNameValuePair("fromname", "SendCloud"));
+		params.add(new BasicNameValuePair("fromName", "SendCloud"));
 		params.add(new BasicNameValuePair("subject", subject));
 		params.add(new BasicNameValuePair("resp_email_id", "true"));
 
@@ -212,7 +212,7 @@ public class SendCloud {
 		params.add(new BasicNameValuePair("to", to));
 		params.add(new BasicNameValuePair("template_invoke_name", "test_template"));
 		params.add(new BasicNameValuePair("from", "sendcloud@sendcloud.org"));
-		params.add(new BasicNameValuePair("fromname", "SendCloud"));
+		params.add(new BasicNameValuePair("fromName", "SendCloud"));
 		params.add(new BasicNameValuePair("subject", subject));
 		params.add(new BasicNameValuePair("use_maillist", "true"));
 		params.add(new BasicNameValuePair("resp_email_id", "true"));
@@ -254,7 +254,7 @@ public class SendCloud {
 		entity.addPart("substitution_vars", new StringBody(vars, Charset.forName("UTF-8")));
 		entity.addPart("template_invoke_name", new StringBody("test_template", Charset.forName("UTF-8")));
 		entity.addPart("from", new StringBody("sendcloud@sendcloud.org", Charset.forName("UTF-8")));
-		entity.addPart("fromname", new StringBody("SendCloud", Charset.forName("UTF-8")));
+		entity.addPart("fromName", new StringBody("SendCloud", Charset.forName("UTF-8")));
 		entity.addPart("subject", new StringBody(subject, Charset.forName("UTF-8")));
 		entity.addPart("resp_email_id", new StringBody("true"));
 

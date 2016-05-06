@@ -68,7 +68,7 @@ public class SendCloudAPIV2_44 {
 		params.add(new BasicNameValuePair("apiKey", apiKey));
 		params.add(new BasicNameValuePair("to", rcpt_to));
 		params.add(new BasicNameValuePair("from", "sendcloud@sendcloud.org"));
-		params.add(new BasicNameValuePair("fromname", "SendCloud"));
+		params.add(new BasicNameValuePair("fromName", "SendCloud"));
 		params.add(new BasicNameValuePair("subject", subject));
 		params.add(new BasicNameValuePair("html", html));
 
@@ -109,7 +109,7 @@ public class SendCloudAPIV2_44 {
 		entity.addTextBody("apiKey", apiKey, TEXT_PLAIN);
 		entity.addTextBody("to", rcpt_to, TEXT_PLAIN);
 		entity.addTextBody("from", "sendcloud@sendcloud.org", TEXT_PLAIN);
-		entity.addTextBody("fromname", "SendCloud", TEXT_PLAIN);
+		entity.addTextBody("fromName", "SendCloud", TEXT_PLAIN);
 		entity.addTextBody("subject", subject, TEXT_PLAIN);
 		entity.addTextBody("html", html, TEXT_PLAIN);	
 		
@@ -171,7 +171,7 @@ public class SendCloudAPIV2_44 {
 		params.add(new BasicNameValuePair("xsmtpapi", xsmtpapi));
 		params.add(new BasicNameValuePair("templateInvokeName", "test_template"));
 		params.add(new BasicNameValuePair("from", "sendcloud@sendcloud.org"));
-		params.add(new BasicNameValuePair("fromname", "SendCloud"));
+		params.add(new BasicNameValuePair("fromName", "SendCloud"));
 		params.add(new BasicNameValuePair("subject", subject));
 
 		httpPost.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
@@ -206,7 +206,7 @@ public class SendCloudAPIV2_44 {
 		params.add(new BasicNameValuePair("to", to));
 		params.add(new BasicNameValuePair("templateInvokeName", "test_template"));
 		params.add(new BasicNameValuePair("from", "sendcloud@sendcloud.org"));
-		params.add(new BasicNameValuePair("fromname", "SendCloud"));
+		params.add(new BasicNameValuePair("fromName", "SendCloud"));
 		params.add(new BasicNameValuePair("subject", subject));
 		params.add(new BasicNameValuePair("useAddressList", "true"));
 
@@ -250,7 +250,7 @@ public class SendCloudAPIV2_44 {
 		entity.addTextBody("xsmtpapi", xsmtpapi, TEXT_PLAIN);
 		entity.addTextBody("templateInvokeName", "test_template", TEXT_PLAIN);
 		entity.addTextBody("from", "sendcloud@sendcloud.org", TEXT_PLAIN);
-		entity.addTextBody("fromname", "SendCloud", TEXT_PLAIN);
+		entity.addTextBody("fromName", "SendCloud", TEXT_PLAIN);
 		entity.addTextBody("subject", subject, TEXT_PLAIN);
 		
 		// 添加附件
