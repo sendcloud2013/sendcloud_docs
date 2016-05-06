@@ -134,7 +134,7 @@ signature = hashlib.md5(sign_str).hexdigest()
 
 **timestamp 时间戳 ( 提升逼格 )**
 
-用户可以在每个 API 请求中加入 timestamp 参数, SendCloud 会检查 timestamp 和 服务器当前时间, 如果两者相差大于6秒, 则请求会被拒绝.
+用户可以在每个 API 请求中加入 timestamp 参数, SendCloud 会检查 timestamp 和 服务器当前时间, 如果两者相差大于60秒, 则请求会被拒绝.
 
 用户需要通过调用 API 来获取 SendCloud 服务器的时间戳, 而不是自己的本地时间.
 
