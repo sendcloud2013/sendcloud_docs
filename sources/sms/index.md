@@ -297,6 +297,7 @@ labelId: 0
 |event|string|事件类型:"workererror"|
 |eventType|int|事件类型代码:4|
 |message|string|消息内容|
+|encodeMessage|string|base64编码的消息内容|
 |statusCode|int|错误码|
 |smsUser|string|smsUser|
 |smsId|int|短信ID|
@@ -316,6 +317,7 @@ eventType: 4
 token: O9CDUhNXxw7y23hMCLSpveIS6VTDF7McFr0EMF0XuJleTAAAAA
 signature: cddc66d39d357feae4993ea224eda165e13190640af1a004d2fb67be5a1aaaaa
 message: smsworker:address in unsubscribe list
+encodeMessage: c21zd29ya2VyOmFkZHJlc3MgaW4gdW5zdWJzY3JpYmUgbGlzdA==
 userId: 19999
 smsUser: smsuser
 templateId: 29999
@@ -335,6 +337,7 @@ labelId: 0
 |event|string|事件类型:"delivererror"|
 |eventType|int|事件类型代码:5|
 |message|string|消息内容|
+|encodeMessage|string|base64编码的消息内容|
 |statusCode|int|错误码|
 |smsUser|string|smsUser|
 |smsId|int|短信ID|
@@ -354,6 +357,7 @@ eventType: 5
 token: ZqozWAlTLjosjb3yrCDxBttAQyfAdBFo5PxrhF5iGkqbCAAAAA
 signature: 16699442298213ccf099b2b80a938e3cb7ec0e3c153b2fc185017c9958eaaaaa
 message: 12
+encodeMessage: MTI=
 userId: 19999
 smsUser: smsuser
 statusCode: 500
@@ -379,6 +383,7 @@ templateId: 29999
 |userId|int|用户ID|
 |labelId|int|预留, 暂不用|
 |replyContent|string|回复内容|
+|encodeReplyContent|string|base64编码的回复内容|
 |replyTime|Datetime|回复时间|
     
 POST 数据示例
@@ -389,6 +394,7 @@ timestamp: 1455685829536
 labelId: 0
 phone: 13888888888
 replyContent: test_reply
+encodeReplyContent: dGVzdF9yZXBseQ==
 replyTime: 2015-07-16 16:16:16
 userId: 19999
 templateId: 0
