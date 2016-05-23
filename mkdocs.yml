@@ -62,6 +62,7 @@ pages:
 - [sms/index.md, '短信API', '规则']
 - [sms/api.md, '短信API', 'API']
 - [sms/code.md, '短信API', '短信代码示例']
+- [sms/code_voice.md, '短信API', '语音代码示例']
 
 #- [downloads/index.md, '代码示例', '代码示例']
 #- [downloads/code/curl.md, '代码示例','Curl']

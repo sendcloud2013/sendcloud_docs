@@ -216,6 +216,16 @@ public boolean verify(String appkey, String token, long timestamp,
             .toString().getBytes())));
     return signatureCal.equals(signature);
 }
+
+```
+
+**php 代码示例**
+```
+function verify($appkey,$token,$timestamp,$signature){
+        $hash="sha256";
+            $result=hash_hmac($hash,$timestamp.$token,$appkey);
+                return strcmp($result,$signature)==0?1:0;
+}
 ```
 
 #### 事件说明

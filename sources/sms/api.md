@@ -37,7 +37,7 @@ GET POST
 
 1. 系统会用vars中的参数替换短信模板中的变量, 所有手机号收到替换后的同一个内容. 参数 vars 可能含有特殊字符, 记得 `urlencode`.
 
-2. vars 所传递的变量的值, 长度不能超过 32 个字符, 变量中不能含有 HTTP 链接
+2. vars 所传递的变量的值, 长度不能超过 32 个字符, 格式为字符串, 变量中不能含有 HTTP 链接
 
 3. 生成签名时, 参数不要使用 `urlencode`. 在调用 api 时, 才需要对参数做 `urlencode`
 
@@ -85,9 +85,49 @@ GET POST
 
 1. 参数 vars 可能含有特殊字符, 记得 `urlencode`
 
-2. vars 所传递的变量的值, 长度不能超过 32 个字符, 变量中不能含有 HTTP 链接
+2. vars 所传递的变量的值, 长度不能超过 32 个字符, 格式为字符串, 变量中不能含有 HTTP 链接
 
 3. 生成签名时, 参数不要使用 `urlencode`. 在调用 api 时, 才需要对参数做 `urlencode`
+
+- - -
+
+## sendVoice
+
+发送语音验证码
+
+***URL***
+```
+http://sendcloud.sohu.com/smsapi/sendVoice
+```
+
+**返回数据格式**
+```
+json
+```
+
+**HTTP请求方式**
+```bash
+GET POST
+```
+
+**参数说明**
+    
+|参数           |类型           |必选       |说明| 
+|:--------------|:--------------|:----------|:---|
+|smsUser        |string         |是         |子账号| 
+|phone          |string         |是         |收信人手机号|
+|code           |string         |是         |验证码|
+|signature      |string         |是         |签名, 合法性验证| 
+|timestamp      |string         |否         |UNIX时间戳|
+
+*code格式示例:*
+    
+    {"code": "123456"}
+
+`注意`:
+
+1. 参数 code 格式为字符串,内容为4-6位长度的数字
+- - -
 
 - - -
     
