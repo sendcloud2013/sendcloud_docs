@@ -185,7 +185,7 @@ post    get
     
 **请求示例**    
 ```
-http://api.sendcloud.net/apiv2/label/update?api_user=***&api_key=***&maillistTaskId=1
+http://api.sendcloud.net/apiv2/label/update?apiUser=***&apiKey=***&maillistTaskId=1
 ```
     
 **返回值说明**

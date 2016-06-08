@@ -31,7 +31,7 @@ post    get
     
 **请求示例**    
 ```
-http://api.sendcloud.net/apiv2/addresslist/list?api_user=***&api_key=***&limit=2
+http://api.sendcloud.net/apiv2/addresslist/list?apiUser=***&apiKey=***&limit=2
 ```
     
 **返回值说明**
@@ -96,7 +96,7 @@ post    get
     
 **请求示例**    
 ```
-http://api.sendcloud.net/apiv2/addresslist/add?api_user=***&api_key=***&address=justfortest@maillist.sendcloud.org&name=testlist&desc=test
+http://api.sendcloud.net/apiv2/addresslist/add?apiUser=***&apiKey=***&address=justfortest@maillist.sendcloud.org&name=testlist&desc=test
 ```
     
 **返回值说明**
@@ -154,7 +154,7 @@ post    get
     
 **请求示例**    
 ```
-http://api.sendcloud.net/apiv2/addresslist/delete?api_user=***&api_key=***&address=newtest@maillist.sendcloud.org
+http://api.sendcloud.net/apiv2/addresslist/delete?apiUser=***&apiKey=***&address=newtest@maillist.sendcloud.org
 ```
     
 **返回值说明**
@@ -206,7 +206,7 @@ post    get
     
 **请求示例**    
 ```
-http://api.sendcloud.net/apiv2/addresslist/update?api_user=***&api_key=***&address=justfortest@maillist.sendcloud.org&name=newtest
+http://api.sendcloud.net/apiv2/addresslist/update?apiUser=***&apiKey=***&address=justfortest@maillist.sendcloud.org&name=newtest
 ```
     
 **返回值说明**
@@ -254,7 +254,7 @@ post    get
     
 **请求示例**
 ```
-http://api.sendcloud.net/apiv2/addressmember/list?api_user=***&api_key=***&address=newtest@maillist.sendcloud.org
+http://api.sendcloud.net/apiv2/addressmember/list?apiUser=***&apiKey=***&address=newtest@maillist.sendcloud.org
 ```        
     
 **返回值说明**
@@ -331,7 +331,7 @@ post    get
     
 **请求示例**
 ```
-http://api.sendcloud.net/apiv2/addressmember/get?api_user=***&api_key=***&address=newtest@maillist.sendcloud.org&members=ben@ifaxin.com
+http://api.sendcloud.net/apiv2/addressmember/get?apiUser=***&apiKey=***&address=newtest@maillist.sendcloud.org&members=ben@ifaxin.com
 ```        
     
 **返回值说明**
@@ -503,7 +503,7 @@ post    get
     
 **请求示例**
 ```
-http://api.sendcloud.net/apiv2/addressmember/delete?api_user=***&api_key=***&address=newtest@maillist.sendcloud.org&members=3@3.com;4@4.com
+http://api.sendcloud.net/apiv2/addressmember/delete?apiUser=***&apiKey=***&address=newtest@maillist.sendcloud.org&members=3@3.com;4@4.com
 ```
    
 **返回值说明**

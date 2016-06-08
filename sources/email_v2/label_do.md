@@ -30,7 +30,7 @@ post    get
     
 **请求示例**    
 ```
-http://api.sendcloud.net/apiv2/label/list?api_user=***&api_key=***&query=edm&start=0&limit=200
+http://api.sendcloud.net/apiv2/label/list?apiUser=***&apiKey=***&query=edm&start=0&limit=200
 ```
     
 **返回值说明**
@@ -93,7 +93,7 @@ post    get
     
 **请求示例**    
 ```
-http://api.sendcloud.net/apiv2/label/get?api_user=***&api_key=***&labelId=89
+http://api.sendcloud.net/apiv2/label/get?apiUser=***&apiKey=***&labelId=89
 ```
     
 **返回值说明**
@@ -145,7 +145,7 @@ post    get
     
 **请求示例**    
 ```
-http://api.sendcloud.net/apiv2/label/add?api_user=***&api_key=***&labelName=test
+http://api.sendcloud.net/apiv2/label/add?apiUser=***&apiKey=***&labelName=test
 ```
     
 **返回值说明**
@@ -197,7 +197,7 @@ post    get
     
 **请求示例**    
 ```
-http://api.sendcloud.net/apiv2/label/delete?api_user=***&api_key=***&labelId=89
+http://api.sendcloud.net/apiv2/label/delete?apiUser=***&apiKey=***&labelId=89
 ```
     
 **返回值说明**
@@ -243,7 +243,7 @@ post    get
     
 **请求示例**    
 ```
-http://api.sendcloud.net/apiv2/label/update?api_user=***&api_key=***&labelId=89&labelName=testnew
+http://api.sendcloud.net/apiv2/label/update?apiUser=***&apiKey=***&labelId=89&labelName=testnew
 ```
     
 **返回值说明**
