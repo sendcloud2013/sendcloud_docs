@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="./favicon.ico">
+    <title>短信 signature</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/base.css">
+    <script src="lib/jquery.min.js"></script>
+    <script src="lib/bootstrap.min.js"></script>
+    <script src="lib/md5.js"></script>
+</head>
+
+<body>
+    <div class="navbar navbar-default" role="navigation">
+        <div class="container">
+            <!-- Collapsed navigation -->
+            <div class="navbar-header">
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- Main title -->
+                <a class="navbar-brand" href="http://sendcloud.sohu.com">SendCloud 文档中心</a>
+            </div>
+            <!-- Expanded navigation -->
+            <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="pull-left">
+                        <a href="/doc">文档首页</a>
+                    </li>
+                    <li class="pull-left">
+                        <a href="/doc/guide/base/">开发者指南</a>
+                    </li>
+                    <li class="pull-left">
+                        <a href="/doc/email/">邮件API</a>
+                    </li>
+                    <li class="pull-left">
+                        <a href="/doc/email_v2/">邮件API_V2</a>
+                    </li>
+                    <li class="pull-left">
+                        <a href="/doc/sms/">短信API</a>
+                    </li>
+                    <li class="pull-left">
+                        <a href="/doc/faq/">FAQ</a>
+                    </li>
+                    <li class="pull-left active">
+                        <a href="/doc/test/">TRY IT</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="col-md-3">
+            <div class="bs-sidebar hidden-print affix-top" data-spy="affix" data-offset-top="80" role="complementary">
+                <ul class="nav bs-sidenav">
+                    <li class="active">
+                        <a href="." class="">TRY IT</a>
+                        <ul class="nav">
+                            <li>
+                                <a class="itm-l1" href="index.html">邮件 APIV2</a>
+                            </li>
+                            <li>
+                                <a class="itm-l1" href="webhook.html">WebHook</a>
+                            </li>
+                            <li class="active">
+                                <a class="itm-l1" href="signature.html">短信 signature</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-9 content-body">
+            <h1 class="page-header">短信 signature</h1>
+            <p>本测试为用户提供了短信语音调用API时signature生成的校验，不做接口参数合法校验及发送测试。.</p>
+            <p>关于短信语音API中signature验证机制请查看<a href="http://sendcloud.sohu.com/doc/sms/#api/">API 验证机制。</a></p>
+            <p>由于smsKey不做参数明文传输，做加密使用，请先填写smsKey。</p>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">smsKey</span>
+                    <input type="text" name="smsKey" class="form-control smsKey-ipt">
+                </div>
+            </div>
+            <p class="alert-warning well well-sm">
+                测试校验中，会给出部分必传参数的KEY，其余的KEY用户可根据使用和不同的接口自行选择相应的Key和Value。
+            </p>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>key</th>
+                            <th>value</th>
+                            <th>是否使用</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>smsUser</td>
+                            <td>
+                                <input name="smsUser" type="text" class="form-control smsUser-ipt">
+                            </td>
+                            <td>
+                                <input data-target="smsUser" checked disabled type="checkbox">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>phone</td>
+                            <td>
+                                <input name="phone" type="text" class="form-control phone-ipt">
+                            </td>
+                            <td>
+                                <input data-target="phone" checked disabled type="checkbox">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>templateId</td>
+                            <td>
+                                <input name="templateId" type="text" class="form-control templateId-ipt">
+                            </td>
+                            <td>
+                                <input data-target="templateId" type="checkbox">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>msgType</td>
+                            <td>
+                                <input name="msgType" type="text" class="form-control msgType-ipt">
+                            </td>
+                            <td>
+                                <input data-target="msgType" type="checkbox">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>vars</td>
+                            <td>
+                                <input name="vars" type="text" class="form-control vars-ipt">
+                            </td>
+                            <td>
+                                <input data-target="vars" type="checkbox">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>code</td>
+                            <td>
+                                <input name="code" type="text" class="form-control code-ipt">
+                            </td>
+                            <td>
+                                <input data-target="code" type="checkbox">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>timestamp</td>
+                            <td>
+                                <input name="timestamp" type="text" class="form-control timestamp-ipt">
+                            </td>
+                            <td>
+                                <input data-target="timestamp" type="checkbox">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-signature btn-success btn-block">生成 signature</button>
+            </div>
+            <div class="form-group">
+                <label>请求参数</label>
+                <div class="form-control-static raw-str">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>signature</label>
+                <div class="form-control-static md5-val">
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="messageModal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="messageModal">提示：</h4>
+                    </div>
+                    <div class="modal-body">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="col-md-12 footer">
+            <div class="container">
+                <ul class="list-unstyled list-inline pull-left">
+                    <li><a href="http://sendcloud.sohu.com/aboutUs.html">关于我们</a> </li>
+                    <li><a href="http://sendcloud.sohu.com/aboutUs.html#agreement">服务协议</a></li>
+                    <li><a href="http://sendcloud.sohu.com/aboutUs.html#partners">合作伙伴</a></li>
+                    <li><a href="https://sendcloud.kf5.com/" target="_blank">帮助中心</a></li>
+                </ul>
+                <p class="pull-right">copyright 2015 © SendCloud</p>
+            </div>
+        </footer>
+        <script src="lib/signature.js"></script>
+</body>
+
+</html>
