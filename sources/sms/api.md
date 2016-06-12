@@ -1,6 +1,6 @@
 ## send
      
-发送一个短信模板给一个用户
+发送一个短信模板给一个或多个用户
 
 **URL**
 ```
@@ -23,32 +23,33 @@ GET POST
 |:--------------|:--------------|:----------|:---|
 |smsUser        |string         |是         |子账号|
 |templateId     |int            |是         |模板ID|
-|phone          |string         |是         |收信人手机号|
+|msgType        |int            |否         |0表示短信, 1表示彩信, 默认值为0|
+|phone          |string         |是         |收信人手机号,多个手机号用逗号,分隔, 号码最多不能超过100|
 |vars           |string         |否         |替换变量的json串|
 |signature      |string         |是         |签名, 合法性验证|
 |timestamp      |string         |否         |UNIX时间戳|
     
 *vars格式示例:*
 
-    {"name": "lucy"} or {"%name%": "lucy"}
+    {"name": "lucy"} or {"%money%": "100"}
 
 `注意`: 
 
-1. 参数 vars 可能含有特殊字符, 记得 `urlencode`
+1. 系统会用vars中的参数替换短信模板中的变量, 所有手机号收到替换后的同一个内容. 参数 vars 可能含有特殊字符, 记得 `urlencode`.
 
-2. vars 所传递的变量的值, 长度不能超过 32 个字符, 变量中不能含有 HTTP 链接
+2. vars 所传递的变量的值, 长度不能超过 32 个字符, 格式为字符串, 变量中不能含有 HTTP 链接
 
 3. 生成签名时, 参数不要使用 `urlencode`. 在调用 api 时, 才需要对参数做 `urlencode`
 
 - - -
 
-## sendn (暂不开通)
+## sendx (暂不开通)
 
 发送一个短信模板给多个用户, 每个用户对应一个替换变量.
     
 **URL**
 ```
-http://sendcloud.sohu.com/smsapi/sendn
+http://sendcloud.sohu.com/smsapi/sendx
 ```
 
 **返回数据格式**
@@ -67,7 +68,8 @@ GET POST
 |:--------------|:--------------|:----------|:---|
 |smsUser        |string         |是         |子账号|
 |templateId     |int            |是         |模板ID|
-|tos            |string         |是         |手机号和替换变量的对应的json串|
+|msgType        |int            |否         |0表示短信, 1表示彩信, 默认值为0|
+|tos            |string         |是         |手机号和替换变量的对应的json串, 手机号最多不能超过200|
 |signature      |string         |是         |签名, 合法性验证|
 |timestamp      |string         |否         |UNIX时间戳|
 
@@ -83,9 +85,49 @@ GET POST
 
 1. 参数 vars 可能含有特殊字符, 记得 `urlencode`
 
-2. vars 所传递的变量的值, 长度不能超过 32 个字符, 变量中不能含有 HTTP 链接
+2. vars 所传递的变量的值, 长度不能超过 32 个字符, 格式为字符串, 变量中不能含有 HTTP 链接
 
 3. 生成签名时, 参数不要使用 `urlencode`. 在调用 api 时, 才需要对参数做 `urlencode`
+
+- - -
+
+## sendVoice
+
+发送语音验证码
+
+***URL***
+```
+http://sendcloud.sohu.com/smsapi/sendVoice
+```
+
+**返回数据格式**
+```
+json
+```
+
+**HTTP请求方式**
+```bash
+GET POST
+```
+
+**参数说明**
+    
+|参数           |类型           |必选       |说明| 
+|:--------------|:--------------|:----------|:---|
+|smsUser        |string         |是         |子账号| 
+|phone          |string         |是         |收信人手机号|
+|code           |string         |是         |验证码|
+|signature      |string         |是         |签名, 合法性验证| 
+|timestamp      |string         |否         |UNIX时间戳|
+
+*code格式示例:*
+    
+    {"code": "123456"}
+
+`注意`:
+
+1. 参数 code 格式为字符串,内容为4-6位长度的数字
+- - -
 
 - - -
     
@@ -122,7 +164,7 @@ GET
 # 请求成功
 {
     "message":"请求成功",
-    "info":{},
+    "info":{"successCount":1,"smsIds":["1458113381893_15_3_11_1ainnq$131112345678"]}},
     "result":true,
     "statusCode":200
 }
@@ -141,7 +183,8 @@ GET
     "info":{
             "successCount":1,
             "failedCount":1,
-            "items":[{"phone":"1312222","vars":{},"message":"手机号格式错误"}]
+            "items":[{"phone":"1312222","vars":{},"message":"手机号格式错误"}],
+            "smsIds":["1458113381893_15_3_11_1ainnq$131112345678"]}
             },
     "result":true,
     "statusCode":311

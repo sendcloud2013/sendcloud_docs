@@ -2,11 +2,14 @@
     
 ## 短信类型
 
-**短信目前只对内测用户开放，若要使用，请联系在线客服（QQ 4000069990）进行申请。**
 
-目前 SendCloud 的短信服务只支持触发短信
+目前 SendCloud 的短信服务支持验证码, 行业通知和营销短信.
     
-**触发短信**：由用户行为触发生产, 如:动态密码, 手机验证, 订单通知等.
+**验证码短信**：注册密码, 修改密码, 身份有验证等.
+    
+**行业通知短信**：由用户行为触发生产的通知, 如:订单通知, 回复通知等.
+    
+**营销短信**: 向用户统一发送的消息通知等.
 
 - - -  
 ## 接入方式    
@@ -44,6 +47,12 @@ SendCloud 支持在短信中使用「变量」.
 2. 在短信 API 中设置变量的值
 3. SendCloud 会根据请求参数, 来替换短信内容中相应变量的值
 4. 变量的值的长度不能超过 32 个字符, 变量的值中不能含有 HTTP 链接
+
+变量的命名规则:
+
+1. 变量名可包含字母（大小写均可）、数字、'_'(下划线)或'-'(中划线)的任意组合，不得出现其他字符
+2. 变量名以字母(大小写均可)、数字、'_'(下划线)或'-'(中划线)开头
+3. 变量名长度不得超过32个字符
 
 **签名**
     
@@ -134,7 +143,7 @@ signature = hashlib.md5(sign_str).hexdigest()
 
 **timestamp 时间戳 ( 提升逼格 )**
 
-用户可以在每个 API 请求中加入 timestamp 参数, SendCloud 会检查 timestamp 和 服务器当前时间, 如果两者相差大于6秒, 则请求会被拒绝.
+用户可以在每个 API 请求中加入 timestamp 参数, SendCloud 会检查 timestamp 和 服务器当前时间, 如果两者相差大于60秒, 则请求会被拒绝.
 
 用户需要通过调用 API 来获取 SendCloud 服务器的时间戳, 而不是自己的本地时间.
 
@@ -160,7 +169,7 @@ timestamp 参数需要被包含在 signature 中, 参与生成数字签名.
 |送达(deliver)          |短信发送成功     |
 |处理失败(workererror)  |短信处理失败     |
 |发送失败(delivererror) |短信发送失败     |
-|回复(reply)            |用户回复 (开发中)|
+|回复(reply)            |用户回复         |
 
 使用方法:
 
@@ -206,6 +215,16 @@ public boolean verify(String appkey, String token, long timestamp,
     String signatureCal = new String(Hex.encodeHex(sha256HMAC.doFinal(buf
             .toString().getBytes())));
     return signatureCal.equals(signature);
+}
+
+```
+
+**php 代码示例**
+```
+function verify($appkey,$token,$timestamp,$signature){
+        $hash="sha256";
+            $result=hash_hmac($hash,$timestamp.$token,$appkey);
+                return strcmp($result,$signature)==0?1:0;
 }
 ```
 
@@ -294,6 +313,7 @@ labelId: 0
 |event|string|事件类型:"workererror"|
 |eventType|int|事件类型代码:4|
 |message|string|消息内容|
+|encodeMessage|string|base64编码的消息内容|
 |statusCode|int|错误码|
 |smsUser|string|smsUser|
 |smsId|int|短信ID|
@@ -313,6 +333,7 @@ eventType: 4
 token: O9CDUhNXxw7y23hMCLSpveIS6VTDF7McFr0EMF0XuJleTAAAAA
 signature: cddc66d39d357feae4993ea224eda165e13190640af1a004d2fb67be5a1aaaaa
 message: smsworker:address in unsubscribe list
+encodeMessage: c21zd29ya2VyOmFkZHJlc3MgaW4gdW5zdWJzY3JpYmUgbGlzdA==
 userId: 19999
 smsUser: smsuser
 templateId: 29999
@@ -332,6 +353,7 @@ labelId: 0
 |event|string|事件类型:"delivererror"|
 |eventType|int|事件类型代码:5|
 |message|string|消息内容|
+|encodeMessage|string|base64编码的消息内容|
 |statusCode|int|错误码|
 |smsUser|string|smsUser|
 |smsId|int|短信ID|
@@ -351,6 +373,7 @@ eventType: 5
 token: ZqozWAlTLjosjb3yrCDxBttAQyfAdBFo5PxrhF5iGkqbCAAAAA
 signature: 16699442298213ccf099b2b80a938e3cb7ec0e3c153b2fc185017c9958eaaaaa
 message: 12
+encodeMessage: MTI=
 userId: 19999
 smsUser: smsuser
 statusCode: 500
@@ -360,5 +383,42 @@ timestamp: 1434685829536
 labelId: 0
 templateId: 29999
 ```
+    
+** 回复 (reply)** 
+    
+|参数|类型|说明|
+|:---|:---|:---|
+|event|string|事件类型:"reply"|
+|eventType|int|事件类型代码:6|
+|smsUser|string|smsUser|
+|templateId|int|模板ID|
+|phone|string|手机号|
+|timestamp|long|时间戳|
+|token|string|随机产生的长度为50的字符串|
+|signature|string|签名字符串|
+|userId|int|用户ID|
+|labelId|int|预留, 暂不用|
+|replyContent|string|回复内容|
+|encodeReplyContent|string|base64编码的回复内容|
+|replyTime|Datetime|回复时间|
+    
+POST 数据示例
+    
+```
+token: bNmTl6jfT0nmX8dnRPiZZzPBrtsnkhrVjd1SZTPyx1UhtbEXvG
+timestamp: 1455685829536
+labelId: 0
+phone: 13888888888
+replyContent: test_reply
+encodeReplyContent: dGVzdF9yZXBseQ==
+replyTime: 2015-07-16 16:16:16
+userId: 19999
+templateId: 0
+smsUser: smsuser
+event: reply
+signature: 5ea667531adacf550c30fdc07225b04fd7f44fce23fe806a561c67150a17b20c
+eventType: 6
+```
+    
 - - - 
 

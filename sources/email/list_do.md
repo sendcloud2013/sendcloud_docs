@@ -233,7 +233,7 @@ post    get
 |:---|:---|:---|:---|
 |api_user|string|是|子账号|
 |api_key|string|是|密码|
-|mail_list_addr|string|是|地址列表调用名称|    
+|mail_list_addr|string|是|地址列表调用名称|
 |member_addr|string|否|需要查询信息的地址|
 |start|int|否|查询起始位置, 取值区间 [0-], 默认为 0|
 |limit|int|否|查询个数, 取值区间 [0-100], 默认为 100|
@@ -242,7 +242,7 @@ post    get
     
 **请求示例**
 ```
-http://sendcloud.sohu.com/webapi/list_member.get.json?api_user=***&api_key=***&address=newtest@maillist.sendcloud.org
+http://sendcloud.sohu.com/webapi/list_member.get.json?api_user=***&api_key=***&mail_list_addr=newtest@maillist.sendcloud.org
 ```        
     
 **返回值说明**

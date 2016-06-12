@@ -22,6 +22,7 @@ post    get
 |:---|:---|:---|:---|
 |api_user|string|是|子账号|
 |api_key|string|是|密码|
+|query|string|否|模糊查询的关键词
 |start|int|否|查询起始位置, 取值区间 [0-], 默认为 0|
 |limit|int|否|查询个数, 取值区间 [0-100], 默认为 100|
     
@@ -76,7 +77,12 @@ post    get
 |:---|:---|:---|:---|
 |api_user|string|是|子账号|
 |api_key|string|是|密码|
-|labelId|string|是|标签ID|
+|labelId|string|*|标签ID|
+|labelName|string|*|标签名称|
+
+提示:
+
+1.  **labelId 与 labelName 的组合** 或者 **labelId 参数labelName** 需二者取一
     
 **请求示例**    
 ```

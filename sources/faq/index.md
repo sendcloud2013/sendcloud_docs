@@ -63,8 +63,6 @@
 
 由于 SendCloud 对 *mail_from* 的前缀使用的是随机串, 所以, 如果碰到严苛的 ESP ( *mail_from* 和 *from* 必须完全一致才不显示代发, 比如网易邮箱 ), 那也只能爱莫能助了.
 
-如果你对不显示代发有非常强烈的需求, 可以联系SendCloud客服, 帮你再想想办法.
-
 - - -
 
 ## 4. 【发送相关-队列状态】中, 有些域的发送被暂停, 显示"域名发信超出额度限制". 是什么原因?
@@ -187,4 +185,78 @@ s.login(API_USER + '#' + label_id, API_KEY)
 **模板发送**: 模板除了内容审核, 也是一个方便用户发送邮件的功能. 用户在请求接口时, 可以不再传输邮件内容, 只需在参数中指定模板的「调用名称」即可. 另外, 模板也支持变量. 这就是模板发送, 这个功能用户需要调用模板发送API 来使用.
 
 SMTP 和普通发送API 不能也不应该调用模板来发送邮件, 对于这两种方式, 模板只起了内容审核的作用.
+
+- - -
+
+## 11. 通过 SendCloud 发送的邮件能否指定 Message-ID ?
+
+可以的. 使用 API 调用发送, `headers` 参数里指定下 `Message-ID` 即可. 举例:
+
+```
+{
+    "Message-Id": "<uuid...uuid@ifaxincom>", 
+    ...
+}
+```
+需要注意的点:
+
+1. 此 `Message-ID` 非 SendCloud 系统中的 [messageId](../faq/#11-sendcloud-message-id), 而是邮件头中的 `Message-ID`.
+2. 用户指定的 `Message-ID` 需要符合 RFC 规范. 否则, 一些 ESP 会对 `Message-ID` 做格式的检查. 
+3. 使用 `cc`, `bcc` , `xsmtpapi` 扩展字段时, 邮件会发送给多个人的, 如果用户定义了 `Message-ID`, 会导致这些邮件的 `Message-ID` 相同. 这种情况是不推荐的.
+
+- - -
+
+## 12. WebHook 的数据中可否带有我埋在邮件里的信息 ?
+
+可以的. 使用 API 调用发送, 如果参数 headers 中某个 Key 以 "SC-Custom-" 开头, 则这个 Key:Value 会通过 WebHook 返回给用户.  举例:
+
+```
+{
+    "SC-Custom-key1": "value1", 
+    "SC-Custom-key2": "value2", 
+    ...
+}
+```
+
+然后用户收到的 WebHook 数据中就会带有这些信息.
+
+![pic](/resources/faq12.png)
+
+## 13. SendCloud 支持内嵌图片的邮件发送么?
+
+APIV2 是支持的. 代码示例:
+
+``` python
+import requests                                                                 
+
+url = "http://api.sendcloud.net/apiv2/mail/send"                         
+
+API_USER = '...'
+API_KEY = '...'
+
+params = {                                                                      
+    "apiUser": API_USER, # 使用api_user和api_key进行验证                       
+    "apiKey" : API_KEY,                                             
+    "from" : "sendcloud@sendcloud.org", # 发信人, 用正确邮件地址替代                                        
+    "to" : "d@ifaxin.com", # 收件人地址, 用正确邮件地址替代, 多个地址用';'分隔                                
+    "subject" : "SendCloud python embed example",                              
+    "html": '<p>1st image</p> <img src="cid:image1"> <p>2nd image</p> <img src="cid:image2"/> <p>3rd image</p> <img src="cid:image1"/>',
+    "embeddedCid": "image1;image2",
+}                                                                               
+
+filename1 = "/path/image1.jpg"
+display_filename_1 = "image1"
+
+filename2 = "/path/image2.jpg"
+display_filename_2 = "image2"
+
+files = [
+    ("embeddedImage", (display_filename_1, open(filename1, 'rb'),'application/octet-stream')),
+    ("embeddedImage", (display_filename_2, open(filename2, 'rb'),'application/octet-stream'))
+]
+
+r = requests.post(url, files=files, data=params)
+
+print r.text
+```
 

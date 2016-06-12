@@ -1,0 +1,2560 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "SendCloud APIv2",
+        "description": "SendCloud Mail API Version II. Just have a try.",
+        "version": "2.0.0"
+    },
+    "host": "sendcloud.sohu.com",
+    "schemes": [
+        "https"
+    ],
+    "basePath": "/apiv2",
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/mail/send": {
+            "post": {
+                "summary": "发送普通邮件",
+                "parameters": [
+                    {
+                        "name": "apiUser",
+                        "in": "query",
+                        "description": "API_USER",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "apiKey",
+                        "in": "query",
+                        "description": "API_KEY",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "from",
+                        "in": "query",
+                        "description": "发件人地址",
+                        "required": true,
+                        "type": "string",
+                        "format": "email",
+                        "default": "test@sendcloud.org"
+                    },
+                    {
+                        "name": "to",
+                        "in": "query",
+                        "description": "收件人地址",
+                        "required": false,
+                        "type": "string",
+                        "format": "email"
+                    },
+                    {
+                        "name": "subject",
+                        "in": "query",
+                        "description": "邮件主题",
+                        "required": true,
+                        "type": "string",
+                        "format": null,
+                        "default": "来自SendCloud的第一封邮件！"
+                    },
+                    {
+                        "name": "html",
+                        "in": "query",
+                        "description": "邮件内容 (text/html)",
+                        "required": false,
+                        "type": "string",
+                        "format": null,
+                        "default": "你太棒了！你已成功的从SendCloud发送了一封测试邮件，接下来快登录前台去完善账户信息吧！\n"
+                    },
+                    {
+                        "name": "fromName",
+                        "in": "query",
+                        "description": "发件人名称",
+                        "required": false,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "cc",
+                        "in": "query",
+                        "description": "抄送地址",
+                        "required": false,
+                        "type": "string",
+                        "format": "email"
+                    },
+                    {
+                        "name": "bcc",
+                        "in": "query",
+                        "description": "密送地址",
+                        "required": false,
+                        "type": "string",
+                        "format": "email"
+                    },
+                    {
+                        "name": "replyTo",
+                        "in": "query",
+                        "description": "默认的回复地址",
+                        "required": false,
+                        "type": "string",
+                        "format": "email"
+                    },
+                    {
+                        "name": "labelId",
+                        "in": "query",
+                        "description": "标签ID",
+                        "required": false,
+                        "type": "integer",
+                        "format": null
+                    },
+                    {
+                        "name": "headers",
+                        "in": "query",
+                        "description": "用户自定义邮件头部",
+                        "required": false,
+                        "type": "string",
+                        "format": "json"
+                    },
+                    {
+                        "name": "attachments",
+                        "in": "formData",
+                        "description": "附件",
+                        "required": false,
+                        "type": "file",
+                        "format": null
+                    },
+                    {
+                        "name": "xsmtpapi",
+                        "in": "query",
+                        "description": "SMTP 扩展字段",
+                        "required": false,
+                        "type": "string",
+                        "format": "json"
+                    },
+                    {
+                        "name": "plain",
+                        "in": "query",
+                        "description": "邮件内容 (text/plain)",
+                        "required": false,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "respEmailId",
+                        "in": "query",
+                        "description": "是否返回 emailId",
+                        "required": false,
+                        "type": "string",
+                        "format": "true false",
+                        "default": true
+                    },
+                    {
+                        "name": "useNotification",
+                        "in": "query",
+                        "description": "是否使用回执",
+                        "required": false,
+                        "type": "string",
+                        "format": "true false",
+                        "default": false
+                    },
+                    {
+                        "name": "useAddressList",
+                        "in": "query",
+                        "description": "是否使用地址列表发送",
+                        "required": false,
+                        "type": "string",
+                        "format": "true false",
+                        "default": false
+                    }
+                ],
+                "tags": [
+                    "mail"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "请求结果",
+                        "schema": {
+                            "$ref": "#/definitions/Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/mail/sendtemplate": {
+            "post": {
+                "summary": "发送模板邮件",
+                "parameters": [
+                    {
+                        "name": "apiUser",
+                        "in": "query",
+                        "description": "API_USER",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "apiKey",
+                        "in": "query",
+                        "description": "API_KEY",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "from",
+                        "in": "query",
+                        "description": "发件人地址",
+                        "required": true,
+                        "type": "string",
+                        "format": "email",
+                        "default": "test@sendcloud.org"
+                    },
+                    {
+                        "name": "to",
+                        "in": "query",
+                        "description": "收件人地址",
+                        "required": false,
+                        "type": "string",
+                        "format": "email"
+                    },
+                    {
+                        "name": "xsmtpapi",
+                        "in": "query",
+                        "description": "SMTP 扩展字段",
+                        "required": false,
+                        "type": "string",
+                        "format": "json"
+                    },
+                    {
+                        "name": "subject",
+                        "in": "query",
+                        "description": "邮件主题",
+                        "required": false,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "templateInvokeName",
+                        "in": "query",
+                        "description": "邮件模板调用名称",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "fromName",
+                        "in": "query",
+                        "description": "发件人名称",
+                        "required": false,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "replyTo",
+                        "in": "query",
+                        "description": "默认的回复地址",
+                        "required": false,
+                        "type": "string",
+                        "format": "email"
+                    },
+                    {
+                        "name": "labelId",
+                        "in": "query",
+                        "description": "标签ID",
+                        "required": false,
+                        "type": "integer",
+                        "format": null
+                    },
+                    {
+                        "name": "headers",
+                        "in": "query",
+                        "description": "用户自定义邮件头部",
+                        "required": false,
+                        "type": "string",
+                        "format": "json"
+                    },
+                    {
+                        "name": "attachments",
+                        "in": "formData",
+                        "description": "附件",
+                        "required": false,
+                        "type": "file",
+                        "format": null
+                    },
+                    {
+                        "name": "useNotification",
+                        "in": "query",
+                        "description": "是否使用回执",
+                        "required": false,
+                        "type": "string",
+                        "format": "true false",
+                        "default": false
+                    },
+                    {
+                        "name": "respEmailId",
+                        "in": "query",
+                        "description": "是否返回 emailId",
+                        "required": false,
+                        "type": "string",
+                        "format": "true false",
+                        "default": true
+                    },
+                    {
+                        "name": "useAddressList",
+                        "in": "query",
+                        "description": "是否使用地址列表发送",
+                        "required": false,
+                        "type": "string",
+                        "format": "true false",
+                        "default": false
+                    }
+                ],
+                "tags": [
+                    "mail"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "请求结果",
+                        "schema": {
+                            "$ref": "#/definitions/Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/mail/taskinfo": {
+            "get": {
+                "summary": "查询地址列表发送任务",
+                "parameters": [
+                    {
+                        "name": "apiUser",
+                        "in": "query",
+                        "description": "API_USER",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "apiKey",
+                        "in": "query",
+                        "description": "API_KEY",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "maillistTaskId",
+                        "in": "query",
+                        "description": "返回的maillistTaskId",
+                        "required": false,
+                        "type": "integer",
+                        "format": null
+                    }
+                ],
+                "tags": [
+                    "mail"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "请求结果",
+                        "schema": {
+                            "$ref": "#/definitions/Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/template/list": {
+            "get": {
+                "summary": "查询邮件模板 (批量)",
+                "parameters": [
+                    {
+                        "name": "apiUser",
+                        "in": "query",
+                        "description": "API_USER",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "apiKey",
+                        "in": "query",
+                        "description": "API_KEY",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "invokeName",
+                        "in": "query",
+                        "description": "邮件模板的调用名称",
+                        "required": false,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "templateType",
+                        "in": "query",
+                        "description": "邮件模板类型",
+                        "required": false,
+                        "type": "integer",
+                        "format": "0 | 1"
+                    },
+                    {
+                        "name": "templateStat",
+                        "in": "query",
+                        "description": "邮件模板状态",
+                        "required": false,
+                        "type": "integer",
+                        "format": "-2 | -1 | 0 | 1"
+                    },
+                    {
+                        "name": "start",
+                        "in": "query",
+                        "description": "查询的 start 序号",
+                        "required": false,
+                        "type": "integer",
+                        "format": null
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "查询的 limit 限制",
+                        "required": false,
+                        "type": "integer",
+                        "format": null
+                    }
+                ],
+                "tags": [
+                    "template"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "请求结果",
+                        "schema": {
+                            "$ref": "#/definitions/Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/template/get": {
+            "get": {
+                "summary": "查询邮件模板",
+                "parameters": [
+                    {
+                        "name": "apiUser",
+                        "in": "query",
+                        "description": "API_USER",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "apiKey",
+                        "in": "query",
+                        "description": "API_KEY",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "invokeName",
+                        "in": "query",
+                        "description": "邮件模板的调用名称",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    }
+                ],
+                "tags": [
+                    "template"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "请求结果",
+                        "schema": {
+                            "$ref": "#/definitions/Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/template/add": {
+            "get": {
+                "summary": "添加邮件模板",
+                "parameters": [
+                    {
+                        "name": "apiUser",
+                        "in": "query",
+                        "description": "API_USER",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "apiKey",
+                        "in": "query",
+                        "description": "API_KEY",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "invokeName",
+                        "in": "query",
+                        "description": "邮件模板调用名称",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "邮件模板名称",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "subject",
+                        "in": "query",
+                        "description": "邮件模板标题 (邮件主题)",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "html",
+                        "in": "query",
+                        "description": "html 格式的内容",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "templateType",
+                        "in": "query",
+                        "description": "邮件模板类型",
+                        "required": true,
+                        "type": "integer",
+                        "format": "0 | 1"
+                    },
+                    {
+                        "name": "isSubmitAudit",
+                        "in": "query",
+                        "description": "是否提交审核",
+                        "required": false,
+                        "type": "integer",
+                        "format": "0 | 1"
+                    }
+                ],
+                "tags": [
+                    "template"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "请求结果",
+                        "schema": {
+                            "$ref": "#/definitions/Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/template/delete": {
+            "get": {
+                "summary": "删除邮件模板",
+                "parameters": [
+                    {
+                        "name": "apiUser",
+                        "in": "query",
+                        "description": "API_USER",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "apiKey",
+                        "in": "query",
+                        "description": "API_KEY",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "invokeName",
+                        "in": "query",
+                        "description": "邮件模板调用名称",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    }
+                ],
+                "tags": [
+                    "template"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "请求结果",
+                        "schema": {
+                            "$ref": "#/definitions/Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/template/update": {
+            "get": {
+                "summary": "修改邮件模板",
+                "parameters": [
+                    {
+                        "name": "apiUser",
+                        "in": "query",
+                        "description": "API_USER",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "apiKey",
+                        "in": "query",
+                        "description": "API_KEY",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "invokeName",
+                        "in": "query",
+                        "description": "邮件模板调用名称",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "修改后的邮件模板名称",
+                        "required": false,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "subject",
+                        "in": "query",
+                        "description": "修改后的邮件模板标题",
+                        "required": false,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "html",
+                        "in": "query",
+                        "description": "修改后的 html 格式的内容",
+                        "required": false,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "templateType",
+                        "in": "query",
+                        "description": "修改后的邮件模板类型",
+                        "required": false,
+                        "type": "integer",
+                        "format": "0 | 1"
+                    },
+                    {
+                        "name": "isSubmitAudit",
+                        "in": "query",
+                        "description": "是否提交审核",
+                        "required": false,
+                        "type": "integer",
+                        "default": 1,
+                        "format": "0 | 1"
+                    }
+                ],
+                "tags": [
+                    "template"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "请求结果",
+                        "schema": {
+                            "$ref": "#/definitions/Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/template/submit": {
+            "get": {
+                "summary": "提交/撤销模板审核",
+                "parameters": [
+                    {
+                        "name": "apiUser",
+                        "in": "query",
+                        "description": "API_USER",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "apiKey",
+                        "in": "query",
+                        "description": "API_KEY",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "invokeName",
+                        "in": "query",
+                        "description": "邮件模板调用名称",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "cancel",
+                        "in": "query",
+                        "description": "是否撤销审核",
+                        "required": false,
+                        "type": "integer",
+                        "default": 0
+                    }
+                ],
+                "tags": [
+                    "template"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "请求结果",
+                        "schema": {
+                            "$ref": "#/definitions/Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/addresslist/list": {
+            "get": {
+                "summary": "查询地址列表 (批量)",
+                "parameters": [
+                    {
+                        "name": "apiUser",
+                        "in": "query",
+                        "description": "API_USER",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "apiKey",
+                        "in": "query",
+                        "description": "API_KEY",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "address",
+                        "in": "query",
+                        "description": "地址列表的别称地址",
+                        "required": false,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "start",
+                        "in": "query",
+                        "description": "查询的 start 序号",
+                        "required": false,
+                        "type": "integer",
+                        "format": null
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "查询的 limit 限制",
+                        "required": false,
+                        "type": "integer",
+                        "format": "0-100"
+                    }
+                ],
+                "tags": [
+                    "addresslist"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "请求结果",
+                        "schema": {
+                            "$ref": "#/definitions/Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/addresslist/add": {
+            "get": {
+                "summary": "添加地址列表",
+                "parameters": [
+                    {
+                        "name": "apiUser",
+                        "in": "query",
+                        "description": "API_USER",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "apiKey",
+                        "in": "query",
+                        "description": "API_KEY",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "address",
+                        "in": "query",
+                        "description": "别称地址",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "名称",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "desc",
+                        "in": "query",
+                        "description": "描述信息",
+                        "required": false,
+                        "type": "string",
+                        "format": null
+                    }
+                ],
+                "tags": [
+                    "addresslist"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "请求结果",
+                        "schema": {
+                            "$ref": "#/definitions/Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/addresslist/delete": {
+            "get": {
+                "summary": "删除地址列表",
+                "parameters": [
+                    {
+                        "name": "apiUser",
+                        "in": "query",
+                        "description": "API_USER",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "apiKey",
+                        "in": "query",
+                        "description": "API_KEY",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "address",
+                        "in": "query",
+                        "description": "地址列表的别称地址",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    }
+                ],
+                "tags": [
+                    "addresslist"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "请求结果",
+                        "schema": {
+                            "$ref": "#/definitions/Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/addresslist/update": {
+            "get": {
+                "summary": "修改地址列表",
+                "parameters": [
+                    {
+                        "name": "apiUser",
+                        "in": "query",
+                        "description": "API_USER",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "apiKey",
+                        "in": "query",
+                        "description": "API_KEY",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "address",
+                        "in": "query",
+                        "description": "地址列表的别称地址",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "newAddress",
+                        "in": "query",
+                        "description": "修改后的别称地址",
+                        "required": false,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "修改后的名称",
+                        "required": false,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "desc",
+                        "in": "query",
+                        "description": "修改后的描述信息",
+                        "required": false,
+                        "type": "string",
+                        "format": null
+                    }
+                ],
+                "tags": [
+                    "addresslist"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "请求结果",
+                        "schema": {
+                            "$ref": "#/definitions/Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/addressmember/list": {
+            "get": {
+                "summary": "查询列表成员 (批量)",
+                "parameters": [
+                    {
+                        "name": "apiUser",
+                        "in": "query",
+                        "description": "API_USER",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "apiKey",
+                        "in": "query",
+                        "description": "API_KEY",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "address",
+                        "in": "query",
+                        "description": "地址列表的别称地址",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "start",
+                        "in": "query",
+                        "description": "查询的 start 序号",
+                        "required": false,
+                        "type": "integer",
+                        "format": null
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "查询的 limit 限制",
+                        "required": false,
+                        "type": "integer",
+                        "format": null
+                    }
+                ],
+                "tags": [
+                    "addressmember"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "请求结果",
+                        "schema": {
+                            "$ref": "#/definitions/Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/addressmember/get": {
+            "get": {
+                "summary": "查询列表成员",
+                "parameters": [
+                    {
+                        "name": "apiUser",
+                        "in": "query",
+                        "description": "API_USER",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "apiKey",
+                        "in": "query",
+                        "description": "API_KEY",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "address",
+                        "in": "query",
+                        "description": "地址列表的别称地址",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "members",
+                        "in": "query",
+                        "description": "列表成员地址",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "addressmember"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "请求结果",
+                        "schema": {
+                            "$ref": "#/definitions/Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/addressmember/add": {
+            "get": {
+                "summary": "添加列表成员",
+                "parameters": [
+                    {
+                        "name": "apiUser",
+                        "in": "query",
+                        "description": "API_USER",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "apiKey",
+                        "in": "query",
+                        "description": "API_KEY",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "address",
+                        "in": "query",
+                        "description": "地址列表的别称地址",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "members",
+                        "in": "query",
+                        "description": "列表成员地址",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "vars",
+                        "in": "query",
+                        "description": "替换变量",
+                        "required": true,
+                        "type": "string",
+                        "format": "json"
+                    }
+                ],
+                "tags": [
+                    "addressmember"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "请求结果",
+                        "schema": {
+                            "$ref": "#/definitions/Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/addressmember/update": {
+            "get": {
+                "summary": "修改列表成员",
+                "parameters": [
+                    {
+                        "name": "apiUser",
+                        "in": "query",
+                        "description": "API_USER",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "apiKey",
+                        "in": "query",
+                        "description": "API_KEY",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "address",
+                        "in": "query",
+                        "description": "地址列表的别称地址",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "members",
+                        "in": "query",
+                        "description": "列表成员地址",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "vars",
+                        "in": "query",
+                        "description": "替换变量",
+                        "required": false,
+                        "type": "string",
+                        "format": "json"
+                    }
+                ],
+                "tags": [
+                    "addressmember"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "请求结果",
+                        "schema": {
+                            "$ref": "#/definitions/Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/addressmember/delete": {
+            "get": {
+                "summary": "删除列表成员",
+                "parameters": [
+                    {
+                        "name": "apiUser",
+                        "in": "query",
+                        "description": "API_USER",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "apiKey",
+                        "in": "query",
+                        "description": "API_KEY",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "address",
+                        "in": "query",
+                        "description": "地址列表的别称地址",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "members",
+                        "in": "query",
+                        "description": "列表成员地址",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "addressmember"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "请求结果",
+                        "schema": {
+                            "$ref": "#/definitions/Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/label/list": {
+            "get": {
+                "summary": "查询标签 (批量)",
+                "parameters": [
+                    {
+                        "name": "apiUser",
+                        "in": "query",
+                        "description": "API_USER",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "apiKey",
+                        "in": "query",
+                        "description": "API_KEY",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "description": "模糊查询的关键词",
+                        "required": false,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "start",
+                        "in": "query",
+                        "description": "查询的 start 序号",
+                        "required": false,
+                        "type": "integer",
+                        "format": null
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "查询的 limit 限制",
+                        "required": false,
+                        "type": "integer",
+                        "format": "0-100"
+                    }
+                ],
+                "tags": [
+                    "label_op"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "请求结果",
+                        "schema": {
+                            "$ref": "#/definitions/Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/label/get": {
+            "get": {
+                "summary": "查询标签",
+                "parameters": [
+                    {
+                        "name": "apiUser",
+                        "in": "query",
+                        "description": "API_USER",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "apiKey",
+                        "in": "query",
+                        "description": "API_KEY",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "labelId",
+                        "in": "query",
+                        "description": "标签ID",
+                        "required": true,
+                        "type": "integer",
+                        "format": null
+                    }
+                ],
+                "tags": [
+                    "label_op"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "请求结果",
+                        "schema": {
+                            "$ref": "#/definitions/Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/label/add": {
+            "get": {
+                "summary": "添加标签",
+                "description": "添加标签\n",
+                "parameters": [
+                    {
+                        "name": "apiUser",
+                        "in": "query",
+                        "description": "API_USER",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "apiKey",
+                        "in": "query",
+                        "description": "API_KEY",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "labelName",
+                        "in": "query",
+                        "description": "标签名称",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    }
+                ],
+                "tags": [
+                    "label_op"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "请求结果",
+                        "schema": {
+                            "$ref": "#/definitions/Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/label/delete": {
+            "get": {
+                "summary": "删除标签",
+                "description": "删除标签\n",
+                "parameters": [
+                    {
+                        "name": "apiUser",
+                        "in": "query",
+                        "description": "API_USER",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "apiKey",
+                        "in": "query",
+                        "description": "API_KEY",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "labelId",
+                        "in": "query",
+                        "description": "标签ID",
+                        "required": true,
+                        "type": "integer",
+                        "format": null
+                    }
+                ],
+                "tags": [
+                    "label_op"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "请求结果",
+                        "schema": {
+                            "$ref": "#/definitions/Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/label/update": {
+            "get": {
+                "summary": "修改标签",
+                "description": "修改标签\n",
+                "parameters": [
+                    {
+                        "name": "apiUser",
+                        "in": "query",
+                        "description": "API_USER",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "apiKey",
+                        "in": "query",
+                        "description": "API_KEY",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "labelId",
+                        "in": "query",
+                        "description": "标签ID",
+                        "required": true,
+                        "type": "integer",
+                        "format": null
+                    },
+                    {
+                        "name": "labelName",
+                        "in": "query",
+                        "description": "标签名称",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    }
+                ],
+                "tags": [
+                    "label_op"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "请求结果",
+                        "schema": {
+                            "$ref": "#/definitions/Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/domain/list": {
+            "get": {
+                "summary": "查询域名 (批量)",
+                "parameters": [
+                    {
+                        "name": "apiUser",
+                        "in": "query",
+                        "description": "API_USER",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "apiKey",
+                        "in": "query",
+                        "description": "API_KEY",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "域名名称",
+                        "required": false,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "域名类型",
+                        "required": false,
+                        "type": "integer",
+                        "format": "0 | 1"
+                    },
+                    {
+                        "name": "verify",
+                        "in": "query",
+                        "description": "域名验证值",
+                        "required": false,
+                        "type": "string",
+                        "format": "21 | >21"
+                    }
+                ],
+                "tags": [
+                    "domain"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "请求结果",
+                        "schema": {
+                            "$ref": "#/definitions/Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/domain/add": {
+            "get": {
+                "summary": "添加域名",
+                "parameters": [
+                    {
+                        "name": "apiUser",
+                        "in": "query",
+                        "description": "API_USER",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "apiKey",
+                        "in": "query",
+                        "description": "API_KEY",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "域名名称",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    }
+                ],
+                "tags": [
+                    "domain"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "请求结果",
+                        "schema": {
+                            "$ref": "#/definitions/Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/domain/update": {
+            "get": {
+                "summary": "修改域名",
+                "parameters": [
+                    {
+                        "name": "apiUser",
+                        "in": "query",
+                        "description": "API_USER",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "apiKey",
+                        "in": "query",
+                        "description": "API_KEY",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "域名名称",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "newName",
+                        "in": "query",
+                        "description": "新域名名称",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    }
+                ],
+                "tags": [
+                    "domain"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "请求结果",
+                        "schema": {
+                            "$ref": "#/definitions/Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/apiuser/list": {
+            "get": {
+                "summary": "查询 API_USER (批量)",
+                "parameters": [
+                    {
+                        "name": "apiUser",
+                        "in": "query",
+                        "description": "API_USER",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "apiKey",
+                        "in": "query",
+                        "description": "API_KEY",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "emailType",
+                        "in": "query",
+                        "description": "API_USER 的邮件类型",
+                        "required": false,
+                        "type": "integer",
+                        "format": "0 | 1"
+                    },
+                    {
+                        "name": "cType",
+                        "in": "query",
+                        "description": "API_USER 的类型",
+                        "required": false,
+                        "type": "integer",
+                        "format": "0 | 1"
+                    },
+                    {
+                        "name": "domainName",
+                        "in": "query",
+                        "description": "API_USER 绑定的域名名称",
+                        "required": false,
+                        "type": "string",
+                        "format": null
+                    }
+                ],
+                "tags": [
+                    "API_USER"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "请求结果",
+                        "schema": {
+                            "$ref": "#/definitions/Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/apiuser/add": {
+            "get": {
+                "summary": "添加 API_USER",
+                "parameters": [
+                    {
+                        "name": "apiUser",
+                        "in": "query",
+                        "description": "API_USER",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "apiKey",
+                        "in": "query",
+                        "description": "API_KEY",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "API_USER 的名称",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "emailType",
+                        "in": "query",
+                        "description": "API_USER 的邮件类型",
+                        "required": true,
+                        "type": "integer",
+                        "format": "0 or 1"
+                    },
+                    {
+                        "name": "domainName",
+                        "in": "query",
+                        "description": "API_USER 绑定的域名名称",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "open",
+                        "in": "query",
+                        "description": "是否开启阅读追踪",
+                        "required": false,
+                        "type": "integer",
+                        "format": "0 or 1"
+                    },
+                    {
+                        "name": "click",
+                        "in": "query",
+                        "description": "是否开启点击追踪",
+                        "required": false,
+                        "type": "integer",
+                        "format": "0 or 1"
+                    },
+                    {
+                        "name": "unsubscribe",
+                        "in": "query",
+                        "description": "是否开启取消订阅追踪",
+                        "required": false,
+                        "type": "integer",
+                        "format": "0 or 1"
+                    }
+                ],
+                "tags": [
+                    "API_USER"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "请求结果",
+                        "schema": {
+                            "$ref": "#/definitions/Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/userinfo/get": {
+            "get": {
+                "summary": "查询用户信息",
+                "parameters": [
+                    {
+                        "name": "apiUser",
+                        "in": "query",
+                        "description": "API_USER",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "apiKey",
+                        "in": "query",
+                        "description": "API_KEY",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    }
+                ],
+                "tags": [
+                    "userinfo"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "请求结果",
+                        "schema": {
+                            "$ref": "#/definitions/Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/statday/list": {
+            "get": {
+                "summary": "按天统计的邮件数据",
+                "parameters": [
+                    {
+                        "name": "apiUser",
+                        "in": "query",
+                        "description": "子账号",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "apiKey",
+                        "in": "query",
+                        "description": "密码",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "days",
+                        "in": "query",
+                        "description": "过去 days 天内的统计数据 (days=1表示今天)",
+                        "required": false,
+                        "type": "integer",
+                        "format": "1-100"
+                    },
+                    {
+                        "name": "startDate",
+                        "in": "query",
+                        "description": "开始日期, 格式为yyyy-MM-dd",
+                        "required": false,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "endDate",
+                        "in": "query",
+                        "description": "结束日期, 格式为yyyy-MM-dd",
+                        "required": false,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "apiUserList",
+                        "in": "query",
+                        "description": "获取指定 API_USER 的统计数据, 多个 API_USER 用;分开, 如:apiUserList=a;b;c",
+                        "required": false,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "labelIdList",
+                        "in": "query",
+                        "description": "获取指定标签下的统计数据, 多个标签用;分开, 如:labelIdList=a;b;c",
+                        "required": false,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "domainList",
+                        "in": "query",
+                        "description": "获取指定域名下的统计数据, 多个域名用;分开, 如:domainList=a;b;c",
+                        "required": false,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "aggregate",
+                        "in": "query",
+                        "description": "默认为0. 如果为1, 则返回聚合数据",
+                        "required": false,
+                        "type": "integer",
+                        "default": 0,
+                        "format": "0 | 1"
+                    }
+                ],
+                "tags": [
+                    "statday"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "请求结果",
+                        "schema": {
+                            "$ref": "#/definitions/Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/stathour/list": {
+            "get": {
+                "summary": "按小时统计的邮件数据",
+                "parameters": [
+                    {
+                        "name": "apiUser",
+                        "in": "query",
+                        "description": "子账号",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "apiKey",
+                        "in": "query",
+                        "description": "密码",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "days",
+                        "in": "query",
+                        "description": "过去 days 天内的统计数据 (days=1表示今天)",
+                        "required": false,
+                        "type": "integer",
+                        "format": "1-100"
+                    },
+                    {
+                        "name": "startDate",
+                        "in": "query",
+                        "description": "开始日期, 格式为yyyy-MM-dd",
+                        "required": false,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "endDate",
+                        "in": "query",
+                        "description": "结束日期, 格式为yyyy-MM-dd",
+                        "required": false,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "apiUserList",
+                        "in": "query",
+                        "description": "获取指定 API_USER 的统计数据, 多个 API_USER 用;分开, 如:apiUserList=a;b;c",
+                        "required": false,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "labelIdList",
+                        "in": "query",
+                        "description": "获取指定标签下的统计数据, 多个标签用;分开, 如:labelIdList=a;b;c",
+                        "required": false,
+                        "type": "string",
+                        "format": null
+                    }
+                ],
+                "tags": [
+                    "stathour"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "请求结果",
+                        "schema": {
+                            "$ref": "#/definitions/Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/invalidstat/list": {
+            "get": {
+                "summary": "查询无效邮件的分类统计信息",
+                "parameters": [
+                    {
+                        "name": "apiUser",
+                        "in": "query",
+                        "description": "子账号",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "apiKey",
+                        "in": "query",
+                        "description": "密码",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "days",
+                        "in": "query",
+                        "description": "过去 days 天内的统计数据 (days=1表示今天)",
+                        "required": false,
+                        "type": "integer",
+                        "format": null
+                    },
+                    {
+                        "name": "startDate",
+                        "in": "query",
+                        "description": "开始日期, 格式为yyyy-MM-dd",
+                        "required": false,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "endDate",
+                        "in": "query",
+                        "description": "结束日期, 格式为yyyy-MM-dd",
+                        "required": false,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "apiUserList",
+                        "in": "query",
+                        "description": "获取指定 API_USER 的统计数据, 多个 API_USER 用;分开, 如:apiUserList=a;b;c",
+                        "required": false,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "labelIdList",
+                        "in": "query",
+                        "description": "获取指定标签下的统计数据, 多个标签用;分开, 如:labelIdList=a;b;c",
+                        "required": false,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "domainList",
+                        "in": "query",
+                        "description": "获取指定域名下的统计数据, 多个域名用;分开, 如:domainList=a;b;c",
+                        "required": false,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "aggregate",
+                        "in": "query",
+                        "description": "默认为0. 如果为1, 则返回聚合数据",
+                        "required": false,
+			"type": "integer",
+                        "default": 0,
+                        "format": "0 | 1"
+                    }
+                ],
+                "tags": [
+                    "invalidstat"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "请求结果",
+                        "schema": {
+                            "$ref": "#/definitions/Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/bounce/list": {
+            "get": {
+                "summary": "查询退信列表",
+                "parameters": [
+                    {
+                        "name": "apiUser",
+                        "in": "query",
+                        "description": "子账号",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "apiKey",
+                        "in": "query",
+                        "description": "密码",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "days",
+                        "in": "query",
+                        "description": "过去 days 天内的统计数据 (days=1表示今天)",
+                        "required": false,
+                        "type": "integer",
+                        "format": null
+                    },
+                    {
+                        "name": "startDate",
+                        "in": "query",
+                        "description": "开始日期, 格式为yyyy-MM-dd",
+                        "required": false,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "endDate",
+                        "in": "query",
+                        "description": "结束日期, 格式为yyyy-MM-dd",
+                        "required": false,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "查询该地址在退信列表中的详情",
+                        "required": false,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "start",
+                        "in": "query",
+                        "description": "查询起始位置, 取值区间 [0-], 默认为 0",
+                        "required": false,
+                        "type": "integer",
+                        "format": null
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "查询个数, 取值区间 [0-100], 默认为 100",
+                        "required": false,
+                        "type": "integer",
+                        "default": 100,
+                        "format": "0-100"
+                    }
+                ],
+                "tags": [
+                    "bounce"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "请求结果",
+                        "schema": {
+                            "$ref": "#/definitions/Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/bounce/delete": {
+            "get": {
+                "summary": "删除退信列表",
+                "parameters": [
+                    {
+                        "name": "apiUser",
+                        "in": "query",
+                        "description": "子账号",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "apiKey",
+                        "in": "query",
+                        "description": "密码",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "startDate",
+                        "in": "query",
+                        "description": "开始日期, 格式为yyyy-MM-dd",
+                        "required": false,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "endDate",
+                        "in": "query",
+                        "description": "结束日期, 格式为yyyy-MM-dd",
+                        "required": false,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "查询该地址在退信列表中的详情",
+                        "required": false,
+                        "type": "string",
+                        "format": "eamil"
+                    }
+                ],
+                "tags": [
+                    "bounce"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "请求结果",
+                        "schema": {
+                            "$ref": "#/definitions/Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/bounce/count": {
+            "get": {
+                "summary": "查询退信列表地址数量",
+                "parameters": [
+                    {
+                        "name": "apiUser",
+                        "in": "query",
+                        "description": "子账号",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "apiKey",
+                        "in": "query",
+                        "description": "密码",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "days",
+                        "in": "query",
+                        "description": "过去 days 天内的统计数据 (days=1表示今天)",
+                        "required": false,
+                        "type": "integer",
+                        "format": null
+                    },
+                    {
+                        "name": "startDate",
+                        "in": "query",
+                        "description": "开始日期, 格式为yyyy-MM-dd",
+                        "required": false,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "endDate",
+                        "in": "query",
+                        "description": "结束日期, 格式为yyyy-MM-dd",
+                        "required": false,
+                        "type": "string",
+                        "format": null
+                    }
+                ],
+                "tags": [
+                    "bounce"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "请求结果",
+                        "schema": {
+                            "$ref": "#/definitions/Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/unsubscribe/list": {
+            "get": {
+                "summary": "查询取消订阅的用户邮件地址",
+                "parameters": [
+                    {
+                        "name": "apiUser",
+                        "in": "query",
+                        "description": "子账号",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "apiKey",
+                        "in": "query",
+                        "description": "密码",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "days",
+                        "in": "query",
+                        "description": "过去 days 天内的统计数据 (days=1表示今天)",
+                        "required": false,
+                        "type": "integer",
+                        "format": null
+                    },
+                    {
+                        "name": "startDate",
+                        "in": "query",
+                        "description": "开始日期, 格式为yyyy-MM-dd",
+                        "required": false,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "endDate",
+                        "in": "query",
+                        "description": "结束日期, 格式为yyyy-MM-dd",
+                        "required": false,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "查询该地址在退信列表中的详情",
+                        "required": false,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "apiUserList",
+                        "in": "query",
+                        "description": "获取指定 API_USER 的统计数据, 多个 API_USER 用;分开, 如:apiUserList=a;b;c",
+                        "required": false,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "labelIdList",
+                        "in": "query",
+                        "description": "获取指定标签下的统计数据, 多个标签用;分开, 如:labelIdList=a;b;c",
+                        "required": false,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "start",
+                        "in": "query",
+                        "description": "查询起始位置, 取值区间 [0-], 默认为 0",
+                        "required": false,
+                        "type": "integer",
+                        "default": 0,
+                        "format": null
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "查询个数, 取值区间 [0-100], 默认为 100",
+                        "required": false,
+                        "type": "integer",
+                        "default": 100,
+                        "format": "0-100"
+                    }
+                ],
+                "tags": [
+                    "unsubscribe"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "请求结果",
+                        "schema": {
+                            "$ref": "#/definitions/Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/unsubscribe/add": {
+            "get": {
+                "summary": "添加取消订阅的用户邮件地址",
+                "parameters": [
+                    {
+                        "name": "apiUser",
+                        "in": "query",
+                        "description": "子账号",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "apiKey",
+                        "in": "query",
+                        "description": "密码",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "要添加的地址",
+                        "required": true,
+                        "type": "string",
+                        "format": "email"
+                    }
+                ],
+                "tags": [
+                    "unsubscribe"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "请求结果",
+                        "schema": {
+                            "$ref": "#/definitions/Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/unsubscribe/delete": {
+            "get": {
+                "summary": "删除取消订阅的用户邮件地址",
+                "parameters": [
+                    {
+                        "name": "apiUser",
+                        "in": "query",
+                        "description": "子账号",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "apiKey",
+                        "in": "query",
+                        "description": "密码",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "startDate",
+                        "in": "query",
+                        "description": "开始日期, 格式为yyyy-MM-dd",
+                        "required": false,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "endDate",
+                        "in": "query",
+                        "description": "结束日期, 格式为yyyy-MM-dd",
+                        "required": false,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "删除该地址",
+                        "required": false,
+                        "type": "string",
+                        "format": "email"
+                    }
+                ],
+                "tags": [
+                    "unsubscribe"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "请求结果",
+                        "schema": {
+                            "$ref": "#/definitions/Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/spamreported/list": {
+            "get": {
+                "summary": "查询垃圾举报的地址列表",
+                "parameters": [
+                    {
+                        "name": "apiUser",
+                        "in": "query",
+                        "description": "子账号",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "apiKey",
+                        "in": "query",
+                        "description": "密码",
+                        "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "days",
+                        "in": "query",
+                        "description": "过去 days 天内的统计数据 (days=1表示今天)",
+                        "required": false,
+                        "type": "integer",
+                        "format": "1-100"
+                    },
+                    {
+                        "name": "startDate",
+                        "in": "query",
+                        "description": "开始日期, 格式为yyyy-MM-dd",
+                        "required": false,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "endDate",
+                        "in": "query",
+                        "description": "结束日期, 格式为yyyy-MM-dd",
+                        "required": false,
+                        "type": "string",
+                        "format": null
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "查询该地址在举报列表中的详情",
+                        "required": false,
+                        "type": "string",
+                        "format": "email"
+                    },
+                    {
+                        "name": "start",
+                        "in": "query",
+                        "description": "查询起始位置, 取值区间 [0-], 默认为 0",
+                        "required": false,
+                        "type": "integer",
+                        "default": 0,
+                        "format": null
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "查询个数, 取值区间 [0-100], 默认为 100",
+                        "required": false,
+                        "type": "integer",
+                        "default": 100,
+                        "format": "0-100"
+                    }
+                ],
+                "tags": [
+                    "spamreported"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "请求结果",
+                        "schema": {
+                            "$ref": "#/definitions/Result"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Result": {
+            "type": "object",
+            "properties": {
+                "result": {
+                    "type": "boolean",
+                    "description": "请求成功与否"
+                },
+                "statusCode": {
+                    "type": "integer",
+                    "description": "状态码"
+                },
+                "message": {
+                    "type": "string",
+                    "description": "状态信息"
+                },
+                "info": {
+                    "type": "object",
+                    "description": "返回结果"
+                }
+            }
+        }
+    }
+}

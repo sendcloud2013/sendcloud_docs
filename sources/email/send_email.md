@@ -28,12 +28,10 @@ post   get
 |label|int|否|本次发送所使用的标签ID. 此标签需要事先创建|  
 |headers|string|否|邮件头部信息. JSON 格式, 比如:`{"header1": "value1", "header2": "value2"}`|  
 |files|string|否|邮件附件. 发送附件时, 必须使用 multipart/form-data 进行 post 提交 (表单提交)|  
-|x_smtpapi|string|否|SMTP 扩展字段. 详见 [X-SMTPAPI](index.md#x-smtpapi). |  
-|resp_email_id|string (true, false)|否|是否返回 [emailId](index.md#messageid-emailid). 有多个收件人时, 会返回 emailId 的列表|  
+|x_smtpapi|string|否|SMTP 扩展字段. 详见 [X-SMTPAPI](../guide/rule.md#x-smtpapi)|  
+|resp_email_id|string (true, false)|否|是否返回 [emailId](../guide/rule.md#messageid-emailid). 有多个收件人时, 会返回 emailId 的列表|  
 |use_maillist|string (true, false)|否|参数 to 是否`含有`地址列表. 比如: `to=ben@ifaxin.com;users@maillist.sendcloud.org`| 
 |gzip_compress|string (true, false)|否|邮件内容是否使用gzip压缩. 默认不使用 gzip 压缩正文|  
-
-注意:
 
 1. API 参数 to 的收件人是全部显示在邮件中, X-SMTPAPI 中的 to 是独立显示在邮件中
 2. 如果 X-SMTPAPI 中指定了 to, 那么API 参数中的 to, cc 和 bcc 都会被忽略
@@ -41,6 +39,7 @@ post   get
 4. API 参数 to 的收件人个数不能超过100
 5. X-SMTPAPI 中的 to 的收件人个数不能超过100
 6. 地址列表中的收件人个数不能超过 100000
+7. 如果参数 headers 中某个 Key 以 "SC-Custom-" 开头, 则这个 Key:Value 会通过 WebHook 返回给用户.
 
 **请求, 返回值示例**
 
@@ -74,7 +73,7 @@ curl -d 'api_user=***&api_key=***&from=test@test.com&fromname=来自测试发送
 }
 ```
 
-普通发送 ( post 方式, 使用地址列表 users@maillist.sendcloud.org, 用户可以根据返回的 `task_id` 在 [WebHook](../email/webhook.md#mail_list_task_id_list) 中使用 )
+普通发送 ( post 方式, 使用地址列表 users@maillist.sendcloud.org )
 ```
 curl -d 'api_user=***&api_key=***&from=test@test.com&fromname=来自测试发送&subject=测试&html=这是一封测试邮件&to=ben@ifaxin.com;joe@ifaxin.com;users@maillist.sendcloud.org&replyto=reply@test.com&resp_email_id=true&use_maillist=true' http://sendcloud.sohu.com/webapi/mail.send.json
 # 失败返回值 ( 地址列表不存在 )
@@ -144,6 +143,7 @@ post
 1. `to` 和 `substitution_vars` 分别对应地址列表使用与否的情况, 两者不能同时使用
 2. 只能调用审核通过的模板
 3. API_USER 类型和模板类型必须一致
+4. 如果参数 headers 中某个 Key 以 "SC-Custom-" 开头, 则这个 Key:Value 会通过 WebHook 返回给用户.
 
 **请求, 返回值示例**
 
@@ -178,7 +178,7 @@ curl -d 'api_user=***&api_key=***&from=test@test.com&fromname=来自测试发送
     
     您好! 您本月在爱发信的消费金额为: 497 元.
 ```
-普通发送 ( 调用模板 ifaxin_bill, 调用地址列表 users@maillist.sendcloud.org, 用户可以根据返回的 `task_id` 在 [WebHook](../email/webhook.md#mail_list_task_id_list)  中使用 )
+普通发送 ( 调用模板 ifaxin_bill, 调用地址列表 users@maillist.sendcloud.org )
 ```
 curl -d 'api_user=***&api_key=***&from=test@test.com&fromname=来自测试发送&subject=测试&template_invoke_name=ifaxin_bill&replyto=reply@test.com&label=16800&resp_email_id=true&use_maillist=true&to=users@maillist.sendcloud.org' http://sendcloud.sohu.com/webapi/mail.send_template.json
 

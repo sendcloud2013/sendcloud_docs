@@ -22,7 +22,7 @@ SendCloud 为用户提供了 SMTP 和 WEBAPI 两种调用接口的方式, 用户
 
 ## 通过SMTP接入
 
-使用 SMTP 协议传输数据到 SendCloud 的邮件服务器 ( smtp.sendcloud.org:25 smtpcloud.sohu.com:25 )
+使用 SMTP 协议传输数据到 SendCloud 的邮件服务器 ( smtp.sendcloud.net:25 smtpcloud.sohu.com:25 )
 
 * 用户可以编写程序连接邮件服务器, 发送邮件 
 * 用户可以配置客户端连接邮件服务器, 只需修改用户名, 密码和 SMTP 配置即可
