@@ -10,18 +10,22 @@
       var item = itemArr[i]
       itemArr[i] = item + '=' + $('.' + item + '-ipt').val()
     }
-    var smsKey = $('.smsKey-ipt').val()
-    if (!smsKey) {
-      return '请输入 smsKey'
-    } else {
-      return (smsKey + '&' + itemArr.join('&') + '&' + smsKey)
-    }
+    return itemArr.join('&')
   }
   $('.btn-signature').on('click', function (e) {
-    var rawStr = mkStr()
+    var qStr = mkStr()
+    $('.raw-str').text(qStr)
+
+    var rawStr
+    var smsKey = $('.smsKey-ipt').val()
+    if (!smsKey) {
+      $('.raw-str').text('请输入 smsKey')
+      return
+    } else {
+      rawStr = smsKey + '&' + qStr + '&' + smsKey
+    }
+
     var signature = md5(rawStr)
-    console.log(rawStr)
-    $('.raw-str').text(rawStr)
     $('.md5-val').text(signature)
   })
 })(this)
