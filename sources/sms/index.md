@@ -155,26 +155,26 @@ timestamp 参数需要被包含在 signature 中, 参与生成数字签名.
 
 #### SMSHook 机制
 
-用户将短信请求发送给 SendCloud 之后, SendCloud 会把「请求结果」同步返回给用户, 而短信的「发送结果」和 「其他事件结果」是通过 SMSHook 异步返回给用户的.
+用户将短信、语音请求发送给 SendCloud 之后, SendCloud 会把「请求结果」同步返回给用户, 而短信、语音的「发送结果」和 「其他事件结果」是通过 SMSHook 异步返回给用户的.
 
-* SendCloud 为客户提供了一些短信事件, 客户可以选择关注某些事件
+* SendCloud 为客户提供了一些事件, 客户可以选择关注某些事件
 * 当某事件发生, 就会触发 SendCloud 向客户设置的 URL 发送数据 ( POST )
 * 客户收到数据, 解析出事件和数据, 做后续的处理
        
-目前 SendCloud 支持的短信事件如下:
+目前 SendCloud 支持的事件如下:
      
-|事件                   |触发条件         |
-|:----------------------|:--------------- |
-|请求(request)          |短信请求成功     |
-|送达(deliver)          |短信发送成功     |
-|处理失败(workererror)  |短信处理失败     |
-|发送失败(delivererror) |短信发送失败     |
-|回复(reply)            |用户回复         |
+|事件                   |触发条件                     |
+|:----------------------|:----------------------------|
+|请求(request)          |请求成功                     |
+|送达(deliver)          |发送成功                     |
+|处理失败(workererror)  |处理失败                     |
+|发送失败(delivererror) |发送失败                     |
+|回复(reply)            |用户回复（仅短信有）         |
 
 使用方法:
 
 * 用户自行编写 HTTP 服务, 使之能够处理相应的事件, 解析相关数据, 并开放出相应URL
-* 用户在 SendCloud 的 `【短信】- 【短信设置】-【SMSHook】` 中选择关注的事件, 配置接收数据的 URL
+* 用户在 SendCloud 的 `【短信语音】- 【发送设置】-【SMSHook】` 中选择关注的事件, 配置接收数据的 URL
 
 `注意: 我们会对用户提供的 URL 做检测. 需要此 HTTP 服务能够正确响应 get | post 请求, 并且保证返回的 HTTP 状态码 为 200`
    
@@ -184,7 +184,7 @@ timestamp 参数需要被包含在 signature 中, 参与生成数字签名.
 
 安全认证的方法如下:
      
-* 通过`【短信】- 【短信设置】-【SMSHook】`获取 `APP KEY`
+* 通过`【短信语音】- 【发送设置】-【SMSHook】`获取 `APP KEY`
 * 解析出 POST 数据中的 `token`, `timestamp` 和 `signature`
 * 使用 `APP KEY`, `token` 和 `timestamp` 生成签名 `signature`, 与 POST 数据中的 `signature` 进行校验 ( 签名算法: [SHA256](http://en.wikipedia.org/wiki/SHA-2))
 
@@ -230,7 +230,7 @@ function verify($appkey,$token,$timestamp,$signature){
 
 #### 事件说明
     
-目前 SMSHook 支持的事件类型包括: 请求, 送达, 处理失败, 发送失败.
+目前 SMSHook 支持的事件类型包括: 请求, 送达, 处理失败, 发送失败, 用户回复.
 
 ** 请求 ( request )**
 
