@@ -242,7 +242,7 @@ function verify($appkey,$token,$timestamp,$signature){
 |eventType|int|事件类型代码:1|
 |message|string|消息内容|
 |smsUser|string|smsUser|
-|smsIds|list|短信ID组成的数组|
+|smsIds|list|短信(或语音)ID组成的数组|
 |templateId|int|模板ID|
 |phones|list|手机号组成的数组|
 |timestamp|long|时间戳|
@@ -278,7 +278,7 @@ labelId: 0
 |eventType|int|事件类型代码:2|
 |message|string|消息内容|
 |smsUser|string|smsUser|
-|smsId|int|短信ID|
+|smsId|int|短信(或语音)ID|
 |templateId|int|模板ID|
 |phone|string|手机号|
 |timestamp|long|时间戳|
@@ -316,7 +316,7 @@ labelId: 0
 |encodeMessage|string|base64编码的消息内容|
 |statusCode|int|错误码|
 |smsUser|string|smsUser|
-|smsId|int|短信ID|
+|smsId|int|短信(或语音)ID|
 |templateId|int|模板ID|
 |phone|string|手机号|
 |timestamp|long|时间戳|
@@ -356,7 +356,7 @@ labelId: 0
 |encodeMessage|string|base64编码的消息内容|
 |statusCode|int|错误码|
 |smsUser|string|smsUser|
-|smsId|int|短信ID|
+|smsId|int|短信(或语音)ID|
 |templateId|int|模板ID|
 |phone|string|手机号|
 |timestamp|long|时间戳|
