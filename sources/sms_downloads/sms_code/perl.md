@@ -7,7 +7,7 @@ use HTTP::Request::Common;
 use URI::Escape;
 use Digest::MD5;
 
-my $uri = 'http://sendcloud.sohu.com/smsapi/send';
+my $uri = 'http://www.sendcloud.net/smsapi/send';
 my $ua = LWP::UserAgent->new;
 my %param = (
     "smsUser" => '***',

@@ -31,7 +31,7 @@ namespace SendCloud
 
         public static void send()
         {
-            String url = "http://sendcloud.sohu.com/smsapi/send";
+            String url = "http://www.sendcloud.net/smsapi/send";
 
             String smsUser = "";
             String smsKey = "";

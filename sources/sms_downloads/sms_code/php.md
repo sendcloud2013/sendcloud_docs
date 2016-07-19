@@ -4,7 +4,7 @@
 <?php
 
 function send_sms() {
-        $url = 'http://sendcloud.sohu.com/smsapi/send';
+        $url = 'http://www.sendcloud.net/smsapi/send';
 
         $param = array(
             'smsUser' => '***', 

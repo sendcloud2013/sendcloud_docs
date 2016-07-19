@@ -23,7 +23,7 @@ public class SmsApi {
 
     public static void main(String[] args) {
 
-        String url = "http://sendcloud.sohu.com/smsapi/send";
+        String url = "http://www.sendcloud.net/smsapi/send";
         String smsKey = "***";
         
         // 填充参数

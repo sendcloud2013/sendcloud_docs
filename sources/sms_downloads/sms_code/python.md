@@ -13,7 +13,7 @@ def generate_md5(fp):
     return m.hexdigest()
 
 def send():
-    url = 'http://sendcloud.sohu.com/smsapi/send'
+    url = 'http://www.sendcloud.net/smsapi/send'
     SMS_USER = '***'
     SMS_KEY = '***'
 
@@ -42,7 +42,7 @@ def send():
     print res.text
 
 def sendn():
-    url = 'http://sendcloud.sohu.com/smsapi/sendn'
+    url = 'http://www.sendcloud.net/smsapi/sendn'
     SMS_USER = '***'
     SMS_KEY = '***'
 
@@ -103,7 +103,7 @@ public class SmsApi {
 
     public static void main(String[] args) {
 
-        String url = "http://sendcloud.sohu.com/smsapi/send";
+        String url = "http://www.sendcloud.net/smsapi/send";
         String smsKey = "***";
         
         // 填充参数
@@ -169,7 +169,7 @@ public class SmsApi {
 <?php
 
 function send_sms() {
-        $url = 'http://sendcloud.sohu.com/smsapi/send';
+        $url = 'http://www.sendcloud.net/smsapi/send';
 
         $param = array(
             'smsUser' => '***', 
@@ -251,7 +251,7 @@ def send_mail
         md5 = Digest::MD5.new
         sign = md5.update(paramstr)
         
-        response = RestClient.post "http://sendcloud.sohu.com/smsapi/send?",
+        response = RestClient.post "http://www.sendcloud.net/smsapi/send?",
             :smsUser => "***",
             :templateId => "11",
             :phone => '13412345678',
@@ -276,7 +276,7 @@ use HTTP::Request::Common;
 use URI::Escape;
 use Digest::MD5;
 
-my $uri = 'http://sendcloud.sohu.com/smsapi/send';
+my $uri = 'http://www.sendcloud.net/smsapi/send';
 my $ua = LWP::UserAgent->new;
 my %param = (
     "smsUser" => '***',

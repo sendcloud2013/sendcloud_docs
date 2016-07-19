@@ -4,7 +4,7 @@
 
 **URL**
 ```
-http://sendcloud.sohu.com/smsapi/send
+http://www.sendcloud.net/smsapi/send
 ```
 
 **返回数据格式**
@@ -49,7 +49,7 @@ GET POST
     
 **URL**
 ```
-http://sendcloud.sohu.com/smsapi/sendx
+http://www.sendcloud.net/smsapi/sendx
 ```
 
 **返回数据格式**
@@ -97,7 +97,7 @@ GET POST
 
 ***URL***
 ```
-http://sendcloud.sohu.com/smsapi/sendVoice
+http://www.sendcloud.net/smsapi/sendVoice
 ```
 
 **返回数据格式**
@@ -137,7 +137,7 @@ GET POST
 
 **URL**
 ```
-http://sendcloud.sohu.com/smsapi/timestamp/get
+http://www.sendcloud.net/smsapi/timestamp/get
 ```
 
 **返回数据格式**
@@ -219,7 +219,7 @@ GET
 |481|手机号和替换变量不能为空|
 |482|手机号和替换变量格式错误|
 |483|替换变量长度不能超过32个字符|
-|497|五分钟内给当前手机号发信太多|
+|496|一分钟内给当前手机号发信太多|
 |498|一天内给当前手机号发信太多|
 |499|账户额度不够|
 |501|服务器异常|

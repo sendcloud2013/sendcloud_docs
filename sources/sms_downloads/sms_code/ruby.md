@@ -32,7 +32,7 @@ def send_mail
         md5 = Digest::MD5.new
         sign = md5.update(paramstr)
         
-        response = RestClient.post "http://sendcloud.sohu.com/smsapi/send?",
+        response = RestClient.post "http://www.sendcloud.net/smsapi/send?",
             :smsUser => "***",
             :templateId => "11",
             :phone => '13412345678',

@@ -13,7 +13,7 @@ def generate_md5(fp):
     return m.hexdigest()
 
 def send():
-    url = 'http://sendcloud.sohu.com/smsapi/send'
+    url = 'http://www.sendcloud.net/smsapi/send'
     SMS_USER = '***'
     SMS_KEY = '***'
 
@@ -42,7 +42,7 @@ def send():
     print res.text
 
 def sendn():
-    url = 'http://sendcloud.sohu.com/smsapi/sendn'
+    url = 'http://www.sendcloud.net/smsapi/sendn'
     SMS_USER = '***'
     SMS_KEY = '***'
 
