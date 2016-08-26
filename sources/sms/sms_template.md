@@ -23,7 +23,9 @@ post    get
 
 
 **请求示例**
+```
 http://www.sendcloud.net/smsapi/get?smsUser=**&&templateIdStr=**&&signature=**
+```
 
 **返回值说明**
 
@@ -79,7 +81,9 @@ post    get
 
 
 **请求示例**
+```
 http://www.sendcloud.net/smsapi/list?smsUser=**&&isVerifyStr=**&&signature=**
+```
 
 **返回值说明**
 
@@ -145,7 +149,9 @@ post    get
 
 
 **请求示例**
+```
 http://www.sendcloud.net/smsapi/addsms?smsUser=**&&templateName=**&&templateText=**&&signName=**&&signPositionStr=**&&smsTypeStr=**&&signature=**
+```
     
 
 **返回值示例**
@@ -182,7 +188,9 @@ post    get
 
 
 **请求示例**
+```
 http://www.sendcloud.net/smsapi/submitsms?smsUser=**&&templateIdStr=**&&signature=**
+```
 
 **返回值示例**
 ```
@@ -223,7 +231,9 @@ post    get
 
 
 **请求示例**
+```
 http://www.sendcloud.net/smsapi/updatesms?smsUser=**&&templateIdStr=**&&templateName=**&&templateText=**&&signName=**&&signPositionStr=**&&smsTypeStr=**&&signature=**
+```
 
 **返回值示例**
 ```
@@ -259,7 +269,9 @@ post    get
 
 
 **请求示例**
+```
 http://www.sendcloud.net/smsapi/deletesms?smsUser=**&&templateIdStr=**&&signature=**
+```
 
 **返回值示例**
 ```

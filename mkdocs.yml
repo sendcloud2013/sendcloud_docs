@@ -61,10 +61,10 @@ pages:
 
 - [sms/index.md, '短信API', '规则']
 - [sms/api.md, '短信API', 'API']
-- [sms/sms_template.md, '短信模板', '短信模板']
 - [sms/code.md, '短信API', '短信代码示例']
 - [sms/code_voice.md, '短信API', '语音代码示例']
-- [sms/code_sms_template.md, '短信模板', '短信模板示例']
+- [sms/sms_template.md, '短信API', '短信模板']
+- [sms/sms_template.md, '短信API', '短信模板代码示例']
 
 #- [downloads/index.md, '代码示例', '代码示例']
 #- [downloads/code/curl.md, '代码示例','Curl']
