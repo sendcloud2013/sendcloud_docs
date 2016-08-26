@@ -203,7 +203,7 @@ http://www.sendcloud.net/smsapi/submitsms?smsUser=**&&templateIdStr=**&&signatur
 ```
 
 - - -
-#更新模板
+##更新模板
 返回是否提交成功的基本信息
     
 **URL**    
@@ -246,7 +246,7 @@ http://www.sendcloud.net/smsapi/updatesms?smsUser=**&&templateIdStr=**&&template
 ```
 
 - - -
-#删除模板
+##删除模板
 返回是否提交成功的基本信息
     
 **URL**    
