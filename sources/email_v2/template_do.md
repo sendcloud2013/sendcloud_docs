@@ -166,7 +166,6 @@ post    get
 |text|string|否|text格式内容|
 |subject|string|是|模板标题|
 |templateType|int|是|邮件模板类型: 0(触发), 1(批量)|
-|isSubmitAudit|int|否|是否提交审核: 0(不提交审核), 1(提交审核). 默认为 1|
 
 提示: 
 
@@ -284,7 +283,6 @@ post    get
 |html|string|否|html格式内容|
 |subject|string|否|模板标题|
 |templateType|int|否|邮件模板类型: 0(触发), 1(批量)|
-|isSubmitAudit|int|否|是否提交审核: 0(不提交审核), 1(提交审核). 默认为 1|
 
 提示: 
 
@@ -315,59 +313,5 @@ curl -d 'apiUser=***&apiKey=***&invokeName=testtemplate&name=test&html=<p>update
 ```
 
     
-## 提交
-    
-用于对模板提交审核, 或是撤销审核
 
-**URL**    
-```
-http://api.sendcloud.net/apiv2/template/submit
-```
-    
-**HTTP请求方式**
-```bash
-post    get
-```
-
-|参数|类型|必须|说明|
-|:---|:---|:---|:---|
-|apiUser|string|是|API_USER|
-|apiKey|string|是|API_KEY|
-|invokeName|string|是|邮件模板调用名称|
-|cancel|string|否|是否撤销审核: 1(撤销审核), 0(提交审核). 默认为 0|
-
-**请求示例**
-```
-http://api.sendcloud.net/apiv2/template/submit?apiUser=***&apiKey=***&invokeName=testtemplate
-
-http://api.sendcloud.net/apiv2/template/submit?apiUser=***&apiKey=***&invokeName=testtemplate&cancel=1
-```
-    
-**返回值说明**
-    
-|参数|说明|
-|:---|:---|
-|count|成功修改的模板数|
-    
-**返回值示例**
-```
-{
-  "statusCode": 200,
-  "info": {
-    "count": 1
-  },
-  "message": "请求成功",
-  "result": true
-}
-
---------
-
-{
-  "statusCode": 40229,
-  "info": {},
-  "message": "模板还未提交审核, 无法撤销审核",
-  "result": false
-}
-
-```
 
