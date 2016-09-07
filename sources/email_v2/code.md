@@ -62,6 +62,8 @@ WEBAPI_4.4代码示例需要依赖如下jar包 httpclient4.4
 
 [SMTP_代码示例2](email_v2/downloads/java/SendCloudSmtp2.java)
 
+[邮件_短信SDK](email_v2/downloads/java/sendcloud-sdk.zip)
+
 
 ## PHP
 
