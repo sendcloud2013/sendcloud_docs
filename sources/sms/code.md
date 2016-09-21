@@ -503,12 +503,13 @@ namespace SendCloud
 var http = require("http")
 var crypto = require('crypto')
 
-function genMd5(str){
-    var md5 = crypto.createHash('md5'); 
-    md5.update(str);
-    var result = md5.digest('hex');
-    return result;
-}
+function md5(data) {
+    var Buffer = require("buffer").Buffer;
+    var buf = new Buffer(data);
+	var str = buf.toString("binary");
+	var crypto = require("crypto");
+	return crypto.createHash("md5").update(str).digest("hex");
+} 
 
 function sortDict(dict){
     var dict2={},
@@ -537,7 +538,7 @@ var param_str = "";
 for(var key in sorted_param)
     param_str += (key + '=' + sorted_param[key] + '&')
 var param_str = smsKey + '&' + param_str + smsKey;
-var sign = genMd5(param_str);
+var sign = md5(param_str);
 param['signature'] = sign.toUpperCase();
 
 
