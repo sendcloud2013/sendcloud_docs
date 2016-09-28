@@ -92,7 +92,7 @@ post    get
 |address|string|是|别称地址, 使用该别称地址进行调用, 格式为xxx@maillist.sendcloud.org|
 |name|string|是|列表名称|
 |desc|string|否|对列表的描述信息|
-|listType|int|否|列表的类型. 0: 普通地址列表, 1: 高级地址列表(需要开通权限才能使用). 默认为0|
+|listType|int|否|列表的类型. 0: 普通地址列表, 默认为0|
     
 **请求示例**    
 ```
