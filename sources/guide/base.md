@@ -33,7 +33,7 @@ SendCloud 为用户提供了 SMTP 和 WEBAPI 两种调用接口的方式, 用户
 
 WEBAPI 是使用 HTTP 接入 SendCloud 服务的一种方式. 用户可以利用 SendCloud 提供的 HTTP 接口, 调用 SendCloud 的服务. 
 
-目前 WEBAPI 提供了邮件发送 (触发/触发), 域名查询, 个人信息, 地址列表 (CRUD), 统计查询, 标签 (CRUD), 退信列表 (CRUD), 取消订阅列表 (CRUD) 等功能. 
+目前 WEBAPI 提供了邮件发送 , 域名查询, 个人信息, 地址列表 (CRUD), 统计查询, 标签 (CRUD), 退信列表 (CRUD), 取消订阅列表 (CRUD) 等功能. 
 
 用户只需要选择熟悉的开发语言, 实现客户程序, 就可以方便地和 SendCloud 进行通信.
 
