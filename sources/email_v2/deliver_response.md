@@ -34,6 +34,7 @@ post    get
 
 1. days、startDate、endDate三个参数不能同时为空，要么指定days参数，或者指定startDate、endDate两个参数 
 2. 每次查询默认只查询100条记录，如果用户查询满足条件的记录数超过100时候，需要人为指定start和limit参数
+3. 每次查询得到的对应的记录会根据用户所传参数缓存10分钟
 
 
 
