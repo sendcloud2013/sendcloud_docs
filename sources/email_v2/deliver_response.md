@@ -1,8 +1,9 @@
 
 ## 查询
 
-用户发送的邮件状态列表.
-你可以对此列表进行查询操作.
+用户发送的邮件状态列表
+
+你可以对此列表进行查询操作
 
 **URL**
 ```  
@@ -40,6 +41,47 @@ post    get
 请求示例:
 ```
 http://api.sendcloud.net/apiv2/data/emailStatus?apiUser=***&apiKey=***&days=2&emailIds=***;***
+
+```
+
+**返回值说明**
+|参数|说明|
+|:---|:---|
+|status|投递状态|
+|apiUser|apiUser名称|
+|recipients|收件人地址|
+|requestTime|请求时间|
+|modifiedTime|状态更新时间|
+|sendLog|发送日志|
+
+
+返回值示例:
+```
+{
+	"result" : true,
+	"statusCode" : 200,
+	"message" : "请求成功",
+	"info" : {
+		"total" : "2",
+		"voListSize" : 2,
+		"voList" : [{
+				"status" : "投递成功",
+				"apiUSer" : "***",
+				"recipients" : "###@qq.com",
+				"requestTime" : "2016-10-18 09:31:59",
+				"modifiedTime" : "2016-10-18 09:32:08",
+				"sendLog" : "successfully delivered"
+			}, {
+				"status" : "投递成功",
+				"apiUSer" : "***",
+				"recipients" : "###@qq.com",
+				"requestTime" : "2016-10-18 09:34:18",
+				"modifiedTime" : "2016-10-18 09:34:29",
+				"sendLog" : "successfully delivered"
+			}
+		]
+	}
+}
 
 ```
 
