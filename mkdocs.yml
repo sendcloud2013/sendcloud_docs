@@ -53,6 +53,7 @@ pages:
 - [email_v2/user_info.md, '邮件API v2', '用户信息']
 #- [email_v2/queuestatus_do.md, '邮件API v2', '队列状态']
 - [email_v2/stats_do.md, '邮件API v2', '数据统计']
+- [email_v2/deliver_response.md, '邮件API v2', '投递回应']
 - [email_v2/bounce_do.md, '邮件API v2', '退信列表管理']
 - [email_v2/unsubscribe_do.md, '邮件API v2', '取消订阅管理']
 - [email_v2/spamreported_do.md, '邮件API v2', '垃圾举报管理']
