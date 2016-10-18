@@ -45,6 +45,7 @@ http://api.sendcloud.net/apiv2/data/emailStatus?apiUser=***&apiKey=***&days=2&em
 ```
 
 **返回值说明**
+
 |参数|说明|
 |:---|:---|
 |status|投递状态|
@@ -53,6 +54,7 @@ http://api.sendcloud.net/apiv2/data/emailStatus?apiUser=***&apiKey=***&days=2&em
 |requestTime|请求时间|
 |modifiedTime|状态更新时间|
 |sendLog|发送日志|
+
 
 
 返回值示例:
