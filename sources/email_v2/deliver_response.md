@@ -68,14 +68,14 @@ http://api.sendcloud.net/apiv2/data/emailStatus?apiUser=***&apiKey=***&days=2&em
 		"voListSize" : 2,
 		"voList" : [{
 				"status" : "投递成功",
-				"apiUSer" : "***",
+				"apiUser" : "***",
 				"recipients" : "###@qq.com",
 				"requestTime" : "2016-10-18 09:31:59",
 				"modifiedTime" : "2016-10-18 09:32:08",
 				"sendLog" : "successfully delivered"
 			}, {
 				"status" : "投递成功",
-				"apiUSer" : "***",
+				"apiUser" : "***",
 				"recipients" : "###@qq.com",
 				"requestTime" : "2016-10-18 09:34:18",
 				"modifiedTime" : "2016-10-18 09:34:29",
