@@ -23,7 +23,7 @@ post    get
 |apiKey|string|是|密码|
 |email|string|否|收件人地址|  
 |emailIds|string|否|调用api发送邮件成功返回的emailId. 多个地址使用';'分隔,如:`emailIds=a;b;c`| 
-|lableId|string|否|用户创建的标签对应的标签ID|  
+|labelId|string|否|用户创建的标签对应的标签ID|  
 |days|string|*|过去 days 天内的投递数据，(days=1表示今天),时间不超过30天| 
 |startDate|string|*|开始日期, 格式为`yyyy-MM-dd`，和结束时间间隔不超过30天|
 |endDate|string|*|结束日期, 格式为`yyyy-MM-dd`，和起始时间间隔不超过30天|  
