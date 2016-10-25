@@ -17,8 +17,8 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|api_user|string|是|子账号|
-|api_key|string|是|密码|
+|api_user|string|是|API_USER|
+|api_key|string|是|API_KEY|
     
 **请求示例**
 ```
@@ -75,8 +75,8 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|api_user|string|是|子账号|
-|api_key|string|是|密码|
+|api_user|string|是|API_USER|
+|api_key|string|是|API_KEY|
 |api_user_type|int|否|API_USER的类型: 0(触发), 1(批量)|
     
 **请求示例**
@@ -118,8 +118,8 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|api_user|string|是|子账号|
-|api_key|string|是|密码|
+|api_user|string|是|API_USER|
+|api_key|string|是|API_KEY|
 |domain_type|int|否|域名类型: 0(测试域名), 1(正常域名)|
     
 **请求示例**

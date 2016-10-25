@@ -22,8 +22,8 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|api_user|string|是|子账号| 
-|api_key|string|是|密码| 
+|api_user|string|是|API_USER| 
+|api_key|string|是|API_KEY| 
 |days|int|*|过去 days 天内的统计数据 (`days=1`表示今天)| 
 |start_date|string|*|开始日期, 格式为`yyyy-MM-dd`|
 |end_date|string|*|结束日期, 格式为`yyyy-MM-dd`|
@@ -77,8 +77,8 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|api_user|string|是|子账号| 
-|api_key|string|是|密码| 
+|api_user|string|是|API_USER| 
+|api_key|string|是|API_KEY| 
 |start_date|string|*|开始日期, 格式为`yyyy-MM-dd`|
 |end_date|string|*|结束日期, 格式为`yyyy-MM-dd`|
 |email|string|否|要删除的地址|
@@ -124,8 +124,8 @@ post    get
     
 |参数|类型|必须|说明|    
 |:---|:---|:---|:---|
-|api_user|string|是|子账号|
-|api_key|string|是|密码|
+|api_user|string|是|API_USER|
+|api_key|string|是|API_KEY|
 |days|int|*|过去 days 天内的统计数据 (`days=1`表示今天)| 
 |start_date|string|*|开始日期, 格式为`yyyy-MM-dd`|
 |end_date|string|*|结束日期, 格式为`yyyy-MM-dd`|

@@ -6,7 +6,7 @@
 * 完善信息 ( 每日额度: +30 )
 * 创建[发信域名](../guide/base.md#_3) ( 每日额度: +60 )
 * 创建[API_USER](../guide/base.md#api_user) ( 每日额度: +40 ) 
-* 创建[样本](../guide/base.md#sample), 通过审核 ( 每日额度: +40 ) 
+* 创建[模板](../guide/base.md#template) ( 每日额度: +40 ) 
 
 ** 付费用户 ( 个人用户, 每日额度: 1000 )**
 
@@ -25,7 +25,7 @@
 * 信誉度在 90 分以上
 * 联系客服
     
-> SendCloud 为用户准备了测试的域名, API_USER, 样本, 你可以直接测试使用.
+> SendCloud 为用户准备了测试的域名, API_USER, 模板, 你可以直接测试使用.
 
 - - -    
 
@@ -200,7 +200,7 @@ SMTP 和普通发送API 不能也不应该调用模板来发送邮件, 对于这
 ```
 需要注意的点:
 
-1. 此 `Message-ID` 非 SendCloud 系统中的 [messageId](../faq/#11-sendcloud-message-id), 而是邮件头中的 `Message-ID`.
+1. 此 `Message-ID` 非 SendCloud 系统中的 [messageId](../guide/rule#messageid-emailid), 而是邮件头中的 `Message-ID`.
 2. 用户指定的 `Message-ID` 需要符合 RFC 规范. 否则, 一些 ESP 会对 `Message-ID` 做格式的检查. 
 3. 使用 `cc`, `bcc` , `xsmtpapi` 扩展字段时, 邮件会发送给多个人的, 如果用户定义了 `Message-ID`, 会导致这些邮件的 `Message-ID` 相同. 这种情况是不推荐的.
 

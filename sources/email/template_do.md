@@ -25,8 +25,8 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|api_user|string|是|子账号|
-|api_key|string|是|密码|
+|api_user|string|是|API_USER|
+|api_key|string|是|API_KEY|
 |invoke_name|string|否|邮件模板调用名称|
 |start|int|否|查询起始位置, 取值区间 [0-], 默认为 0|
 |limit|int|否|查询个数, 取值区间 [0-100], 默认为 100|
@@ -95,8 +95,8 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|api_user|string|是|子账号|
-|api_key|string|是|密码|
+|api_user|string|是|API_USER|
+|api_key|string|是|API_KEY|
 |invoke_name|string|是|邮件模板调用名称|
 |name|string|是|邮件模板名称|
 |html|string|是|html格式内容|
@@ -107,7 +107,7 @@ post    get
     
 提示: 
 
-1. html 内容中可以使用[变量](index.md#_1)
+1. html 内容中可以使用[变量](../guide/base.md#_4)
 2. html 内容过长或有特殊字符应使用 post 请求
 3. 模板个数最多为50个
     
@@ -149,8 +149,8 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|api_user|string|是|子账号|
-|api_key|string|是|密码|
+|api_user|string|是|API_USER|
+|api_key|string|是|API_KEY|
 |invoke_name|string|是|邮件模板调用名称|
     
 **请求示例**
@@ -192,8 +192,8 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|api_user|string|是|子账号|
-|api_key|string|是|密码|
+|api_user|string|是|API_USER|
+|api_key|string|是|API_KEY|
 |invoke_name|string|是|邮件模板调用名称|
 |name|string|否|需要修改的邮件模板名称|
 |html|string|否|需要修改的html格式内容|

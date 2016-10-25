@@ -19,8 +19,8 @@ post    get
 
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|apiUser|string|是|子账号|
-|apiKey|string|是|密码|
+|apiUser|string|是|API_USER|
+|apiKey|string|是|API_KEY|
 |email|string|否|收件人地址|  
 |emailIds|string|否|调用api发送邮件成功返回的emailId. 多个地址使用';'分隔,如:`emailIds=a;b;c`| 
 |lableId|string|否|用户创建的标签对应的标签ID|  

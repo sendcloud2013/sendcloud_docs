@@ -23,8 +23,8 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|  
-|apiUser|string|是|子账号|
-|apiKey|string|是|密码|
+|apiUser|string|是|API_USER|
+|apiKey|string|是|API_KEY|
 |days|int|*|过去 days 天内的统计数据 (`days=1`表示今天)| 
 |startDate|string|*|开始日期, 格式为`yyyy-MM-dd`|
 |endDate|string|*|结束日期, 格式为`yyyy-MM-dd`|
@@ -107,8 +107,8 @@ POST    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---| 
-|apiUser|string|是|子账号| 
-|apiKey|string|是|密码| 
+|apiUser|string|是|API_USER| 
+|apiKey|string|是|API_KEY| 
 |email|string|是|要添加的地址|
     
 请求示例:
@@ -119,12 +119,12 @@ http://api.sendcloud.net/apiv2/unsubscribe/add?apiUser=***&apiKey=***&email=abc@
     
 **返回值说明**      
     
-|参数|类型|必须|说明|  
-|:---|:---|:---|:---| 
+|参数|类型| 
+|:---|:---|
 |email|邮件地址|
 |domain|邮件地址对应的域名|
 |labelId|标签ID|
-|apiUser|子账号|
+|apiUser|API_USER|
 |unsubscribeTime|取消订阅发送的时间|
     
 返回值示例:
@@ -164,8 +164,8 @@ post    get
 
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|  
-|apiUser|string|是|子账号|
-|apiKey|string|是|密码|
+|apiUser|string|是|API_USER|
+|apiKey|string|是|API_KEY|
 |startDate|string|*|开始日期, 格式为`yyyy-MM-dd`|
 |endDate|string|*|结束日期, 格式为`yyyy-MM-dd`|
 |email|string|*|删除该地址|

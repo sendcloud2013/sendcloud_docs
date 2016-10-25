@@ -17,8 +17,8 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|apiUser|string|是|子账号|
-|apiKey|string|是|密码|
+|apiUser|string|是|API_USER|
+|apiKey|string|是|API_KEY|
 |days|int|*|过去 days 天内的统计数据 (`days=1`表示今天)| 
 |startDate|string|*|开始日期, 格式为`yyyy-MM-dd`|
 |endDate|string|*|结束日期, 格式为`yyyy-MM-dd`|
@@ -47,7 +47,7 @@ http://api.sendcloud.net/apiv2/statday/list?apiUser=***&apiKey=***&startDate=201
 |参数|说明|
 |:---|:---|
 |sendDate|发送日期|
-|apiUser|子账号|
+|apiUser|API_USER|
 |domain|收信域名|
 |labelId|标签ID|
 |labelName|标签名|
@@ -188,8 +188,8 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|apiUser|string|是|子账号|
-|apiKey|string|是|密码|
+|apiUser|string|是|API_USER|
+|apiKey|string|是|API_KEY|
 |days|int|*|过去 days 天内的统计数据 (`days=1`表示今天)| 
 |startDate|string|*|开始日期, 格式为`yyyy-MM-dd`|
 |endDate|string|*|结束日期, 格式为`yyyy-MM-dd`|
@@ -298,8 +298,8 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|apiUser|string|是|子账号|
-|apiKey|string|是|密码|
+|apiUser|string|是|API_USER|
+|apiKey|string|是|API_KEY|
 |days|int|*|过去 days 天内的统计数据 (`days=1`表示今天)| 
 |startDate|string|*|开始日期, 格式为`yyyy-MM-dd`|
 |endDate|string|*|结束日期, 格式为`yyyy-MM-dd`|
@@ -323,7 +323,7 @@ http://api.sendcloud.net/apiv2/invalidstat/list?apiUser=***&apiKey=***&startDate
 |参数|说明|
 |:---|:---|
 |sendDate|发送日期，格式为yyyy-MM-dd|
-|apiUser|子账号|
+|apiUser|API_USER|
 |labelId|标签ID|
 |labelName|标签名称|
 |domain|收信域名|

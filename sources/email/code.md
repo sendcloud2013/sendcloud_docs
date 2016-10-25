@@ -89,9 +89,9 @@ pear install Mail_Mime
 pear install Net_SMTP
 ```    
 
-[SMTP_代码示例1](email/downloads/php/php_smtp_1.php) (快速发送，不需要获取[messageId](../guide/rule/#messageid-emailid))
+[SMTP_代码示例1](email/downloads/php/php_smtp_1.php) (快速发送，不需要获取[messageId](../guide/rule.md#messageid-emailid))
 
-[SMTP_代码示例2](email/downloads/php/php_smtp_2.php) (需要获取[messageId](../guide/rule/#messageid-emailid))
+[SMTP_代码示例2](email/downloads/php/php_smtp_2.php) (需要获取[messageId](../guide/rule.md#messageid-emailid))
 
 ```
 1. php的lib库中, 找到Mail/smtp.php文件

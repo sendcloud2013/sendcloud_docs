@@ -19,8 +19,8 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|api_user|string|是|子账号|
-|api_key|string|是|密码|
+|api_user|string|是|API_USER|
+|api_key|string|是|API_KEY|
     
 **返回值说明**    
 

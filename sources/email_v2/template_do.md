@@ -169,7 +169,7 @@ post    get
 
 提示: 
 
-1. html 内容中可以使用[变量](index.md#_1)
+1. html 内容中可以使用[变量](../guide/base.md#_4)
 2. html 内容过长或有特殊字符应使用 post 请求
 3. 模板个数最多为 50 个
      

@@ -23,8 +23,8 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|api_user|string|是|子账号|
-|api_key|string|是|密码|
+|api_user|string|是|API_USER|
+|api_key|string|是|API_KEY|
 |address|string|否|列表别称地址|
 |start|int|否|查询起始位置, 取值区间 [0-], 默认为 0|
 |limit|int|否|查询个数, 取值区间 [0-100], 默认为 100|
@@ -87,8 +87,8 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|api_user|string|是|子账号|
-|api_key|string|是|密码|
+|api_user|string|是|API_USER|
+|api_key|string|是|API_KEY|
 |address|string|是|列表别称地址, 使用该别称地址进行调用, 格式为xxx@maillist.sendcloud.org|
 |name|string|是|列表名称|
 |description|string|否|对列表的描述信息|
@@ -140,8 +140,8 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|api_user|string|是|子账号|
-|api_key|string|是|密码|
+|api_user|string|是|API_USER|
+|api_key|string|是|API_KEY|
 |address|string|是|列表别称地址, 使用该别称地址进行调用, 格式为xxx@maillist.sendcloud.org|
 |toAddress|string|否|修改后的别称地址|
 |name|string|否|修改后的列表名称|
@@ -190,8 +190,8 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|api_user|string|是|子账号|
-|api_key|string|是|密码|
+|api_user|string|是|API_USER|
+|api_key|string|是|API_KEY|
 |address|string|是|列表别称地址, 使用该别称地址进行调用, 格式为xxx@maillist.sendcloud.org|
     
 **请求示例**    
@@ -231,8 +231,8 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|api_user|string|是|子账号|
-|api_key|string|是|密码|
+|api_user|string|是|API_USER|
+|api_key|string|是|API_KEY|
 |mail_list_addr|string|是|地址列表调用名称|
 |member_addr|string|否|需要查询信息的地址|
 |start|int|否|查询起始位置, 取值区间 [0-], 默认为 0|
@@ -286,8 +286,8 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|api_user|string|是|子账号|
-|api_key|string|是|密码|
+|api_user|string|是|API_USER|
+|api_key|string|是|API_KEY|
 |mail_list_addr|string|是|地址列表调用名称|
 |member_addr|string|是|需添加成员的地址, 多个地址使用分号;分开|
 |name|string|否|地址所属人名称, 与member_addr一一对应, 多个名称用;分隔|
@@ -334,8 +334,8 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|api_user|string|是|子账号|
-|api_key|string|是|密码|
+|api_user|string|是|API_USER|
+|api_key|string|是|API_KEY|
 |mail_list_addr|string|是|地址列表调用名称|
 |member_addr|string|是|需要更新的地址,多个地址使用分号;分开|
 |name|string|否|需要更新的地址对应的名称,多个名称用;分隔|
@@ -380,8 +380,8 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|api_user|string|是|子账号|
-|api_key|string|是|密码|
+|api_user|string|是|API_USER|
+|api_key|string|是|API_KEY|
 |mail_list_addr|string|是|地址列表别称|
 |member_addr|string|是|需删除的地址, 多个地址使用分号;分开|
     

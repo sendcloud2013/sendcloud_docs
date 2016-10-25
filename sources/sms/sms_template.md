@@ -17,7 +17,7 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|smsUser|string|是|子账号|
+|smsUser|string|是|smsUser|
 |templateIdStr|string|是|模板ID|
 |signature|string|是|签名, 合法性验证|
 
@@ -75,7 +75,7 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|smsUser|string|是|子账号|
+|smsUser|string|是|smsUser|
 |isVerifyStr|string|否|是否通过验证；"0"待审核 "1"审核通过"-1"审核不通过|
 |signature|string|是|签名, 合法性验证|
 
@@ -139,10 +139,10 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|smsUser|string|是|子账号|
+|smsUser|string|是|smsUser|
 |templateName|string|是|模板名称，不能重复|
 |templateText|string|是|模板内容|
-|signName|string|是|模板名称，不能重复|
+|signName|string|是|签名, 合法性验证|
 |signPositionStr|string|否|签名位置，"0"代表前置"1"代表后置，默认前置|
 |smsTypeStr|string|是|短信类型"0"触发"1"批量|
 |signature|string|是|签名, 合法性验证|
@@ -182,7 +182,7 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|smsUser|string|是|子账号|
+|smsUser|string|是|smsUser|
 |templateIdStr|string|是|模板ID|
 |signature|string|是|签名, 合法性验证|
 
@@ -220,13 +220,13 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|smsUser|string|是|子账号|
+|smsUser|string|是|smsUser|
 |templateIdStr|string|是|模板ID|
-|templateName|string|是|模板ID|
-|templateText|string|否|模板ID|
-|signName|string|是|模板ID|
-|signPositionStr|string|是|模板ID|
-|smsTypeStr|string|是|模板ID|
+|templateName|string|是|模板名称|
+|templateText|string|否|模板内容|
+|signName|string|是|签名|
+|signPositionStr|string|是|签名位置: "0"代表前置, "1"代表后置, 默认前置|
+|smsTypeStr|string|是|短信类型: "0"触发, "1"批量|
 |signature|string|是|签名, 合法性验证|
 
 
@@ -263,7 +263,7 @@ post    get
     
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
-|smsUser|string|是|子账号|
+|smsUser|string|是|smsUser|
 |templateIdStr|string|是|模板ID|
 |signature|string|是|签名, 合法性验证|
 
