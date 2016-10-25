@@ -25,7 +25,7 @@
     
 ** SMS_USER 与 SMS_KEY **
 
-用户可以通过`【短信页面】-【短信设置】-【发送授权】`来创建 SMS_USER, 同时 SendCloud 会自动生成对应的 SMS_KEY. 目前 SendCloud 只允许拥有一个 SMS_USER.
+用户可以通过`【短信页面】-【发送设置】-【发送授权】`来创建 SMS_USER, 同时 SendCloud 会自动生成对应的 SMS_KEY. 目前 SendCloud 只允许拥有一个 SMS_USER.
 
 **短信模板**
     
