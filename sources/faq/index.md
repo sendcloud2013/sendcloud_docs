@@ -200,7 +200,7 @@ SMTP 和普通发送API 不能也不应该调用模板来发送邮件用.
 ```
 需要注意的点:
 
-1. 此 `Message-ID` 非 SendCloud 系统中的 [messageId](/guide/rule#messageid-emailid), 而是邮件头中的 `Message-ID`.
+1. 此 `Message-ID` 非 SendCloud 系统中的 [messageId](guide/rule#messageid-emailid), 而是邮件头中的 `Message-ID`.
 2. 用户指定的 `Message-ID` 需要符合 RFC 规范. 否则, 一些 ESP 会对 `Message-ID` 做格式的检查. 
 3. 使用 `cc`, `bcc` , `xsmtpapi` 扩展字段时, 邮件会发送给多个人的, 如果用户定义了 `Message-ID`, 会导致这些邮件的 `Message-ID` 相同. 这种情况是不推荐的.
 
