@@ -1,4 +1,4 @@
-通过一下接口可以对短信模板进行查询, 添加, 删除, 修改和提交审核操作.
+通过以下接口可以对短信模板进行查询, 添加, 删除, 修改和提交审核操作.
 - - - 
 ##查询单个模板
 返回短信模板的基本信息
@@ -24,7 +24,7 @@ post    get
 
 **请求示例**
 ```
-http://www.sendcloud.net/smsapi/get?smsUser=**&&templateIdStr=**&&signature=**
+http://www.sendcloud.net/smsapi/get?smsUser=***&templateIdStr=***&signature=***
 ```
 
 **返回值说明**
@@ -82,7 +82,7 @@ post    get
 
 **请求示例**
 ```
-http://www.sendcloud.net/smsapi/list?smsUser=**&&isVerifyStr=**&&signature=**
+http://www.sendcloud.net/smsapi/list?smsUser=***&isVerifyStr=***&signature=***
 ```
 
 **返回值说明**
@@ -150,7 +150,7 @@ post    get
 
 **请求示例**
 ```
-http://www.sendcloud.net/smsapi/addsms?smsUser=**&&templateName=**&&templateText=**&&signName=**&&signPositionStr=**&&smsTypeStr=**&&signature=**
+http://www.sendcloud.net/smsapi/addsms?smsUser=***&templateName=***&templateText=***&signName=***&signPositionStr=**8&smsTypeStr=***&signature=***
 ```
     
 
@@ -189,7 +189,7 @@ post    get
 
 **请求示例**
 ```
-http://www.sendcloud.net/smsapi/submitsms?smsUser=**&&templateIdStr=**&&signature=**
+http://www.sendcloud.net/smsapi/submitsms?smsUser=***&templateIdStr=***&signature=***
 ```
 
 **返回值示例**
@@ -232,7 +232,7 @@ post    get
 
 **请求示例**
 ```
-http://www.sendcloud.net/smsapi/updatesms?smsUser=**&&templateIdStr=**&&templateName=**&&templateText=**&&signName=**&&signPositionStr=**&&smsTypeStr=**&&signature=**
+http://www.sendcloud.net/smsapi/updatesms?smsUser=***&templateIdStr=***&templateName=***&templateText=***&signName=***&signPositionStr=***&smsTypeStr=***&signature=***
 ```
 
 **返回值示例**
@@ -270,7 +270,7 @@ post    get
 
 **请求示例**
 ```
-http://www.sendcloud.net/smsapi/deletesms?smsUser=**&&templateIdStr=**&&signature=**
+http://www.sendcloud.net/smsapi/deletesms?smsUser=***&templateIdStr=***&signature=***
 ```
 
 **返回值示例**

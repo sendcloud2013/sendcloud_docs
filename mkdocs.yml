@@ -61,7 +61,7 @@ pages:
 - [email_v2/code.md, '邮件API v2', '代码示例']
 
 - [sms/index.md, '短信API', '规则']
-- [sms/api.md, '短信API', 'API']
+- [sms/api.md, '短信API', '发送相关']
 - [sms/code.md, '短信API', '短信代码示例']
 - [sms/code_voice.md, '短信API', '语音代码示例']
 - [sms/sms_template.md, '短信API', '短信模板']
