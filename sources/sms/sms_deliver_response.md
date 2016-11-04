@@ -1,7 +1,7 @@
 通过以下接口可以对短信的投递回应进行查询.
 - - - 
 ##处理失败数据
-返回根据TemplateId和msgType进行分组的处理失败数据
+返回根据TemplateId和msgType进行分组的处理失败数据或者聚合后的数据
     
 **URL**    
 ```
@@ -23,17 +23,19 @@ post    get
 |endDate|string|*|结束日期, 格式为`yyyy-MM-dd`|
 |msgTypeStr|string|否|短信类型，`0`表示国内短信，`1`表示彩信，`2`表示国际短信，`3`表示语音|
 |templateIdsStr|string|否|多个模板ID，用`;`分开, 如:`templateIdsStr=1;2;3`|
+|aggregate|string|否|是否聚合, `0`不聚合，`1`聚合，默认为`0`|
 |signature|string|是|签名, 合法性验证|
 
 提示:
 
 1. 获取统计数据时, 必须指定时间区间. 即 **startDate 与 endDate 的组合** 或者 **days 参数** 需二者取一
 2. 查询的天数不超过 100
-3. msgTypeStr不填的话默认为0
+3. 聚合表示将所有分组情况的总数求和
+
 
 **请求示例**
 ```
-http://www.sendcloud.net/smsapi/data/processFailed?smsUser=***&days=***&msgTypeStr=***&templateIdsStr=***&signature=***
+http://www.sendcloud.net/smsapi/data/processFailed?smsUser=***&days=***&msgTypeStr=***&templateIdsStr=***&aggregate=***&signature=***
 ```
 
 **返回值说明**
@@ -54,6 +56,8 @@ http://www.sendcloud.net/smsapi/data/processFailed?smsUser=***&days=***&msgTypeS
 
 
 **返回值示例**
+
+不聚合情况下
 ```
 {
 	"result" : true,
@@ -91,9 +95,33 @@ http://www.sendcloud.net/smsapi/data/processFailed?smsUser=***&days=***&msgTypeS
 }
 ```
 
+聚合情况下
+```
+{
+	"result" : true,
+	"statusCode" : 200,
+	"message" : "请求成功",
+	"info" : {
+		"total" : {
+			"encodingExceptionNum" : "0",
+			"errorVarsNum" : "0",
+			"globalBlackListNum" : "6",
+			"keyWordFilterNum" : "0",
+			"msgType" : "None",
+			"sendDate" : "2016-07-28到2016-11-04",
+			"sendTypeUnsupportedNum" : "0",
+			"templateId" : "None",
+			"unsubscribleNum" : "0",
+			"userBlackListNum" : "0",
+			"varsContentTooLongNum" : "0"
+		}
+	}
+}
+```
+
 - - -  
 ##发送失败数据
-返回根据TemplateId和msgType进行分组的发送失败数据
+返回根据TemplateId和msgType进行分组的发送失败数据或者聚合后的数据
     
 **URL**    
 ```
@@ -115,13 +143,15 @@ post    get
 |endDate|string|*|结束日期, 格式为`yyyy-MM-dd`|
 |msgTypeStr|string|否|短信类型，`0`表示国内短信，`1`表示彩信，`2`表示国际短信，`3`表示语音|
 |templateIdsStr|string|否|多个模板ID，用`;`分开, 如:`templateIdsStr=1;2;3`|
+|aggregate|string|否|是否聚合, `0`不聚合，`1`聚合，默认为`0`|
 |signature|string|是|签名, 合法性验证|
 
 提示:
 
 1. 获取统计数据时, 必须指定时间区间. 即 **startDate 与 endDate 的组合** 或者 **days 参数** 需二者取一
 2. 查询的天数不超过 100
-3. msgTypeStr不填的话默认为0
+3. 聚合表示将所有分组情况的总数求和 
+
 
 **请求示例**
 ```
@@ -147,6 +177,8 @@ http://www.sendcloud.net/smsapi/data/processFailed?smsUser=***&days=***&msgTypeS
 |othersNum|其他|   
 
 **返回值示例**
+
+不聚合情况下
 ```
 {
 	"result" : true,
@@ -184,6 +216,32 @@ http://www.sendcloud.net/smsapi/data/processFailed?smsUser=***&days=***&msgTypeS
 				"templateId" : "2"
 			}
 		]
+	}
+}
+```
+
+聚合情况下
+```
+{
+	"result" : true,
+	"statusCode" : 200,
+	"message" : "请求成功",
+	"info" : {
+		"total" : {
+			"breakDownNum" : "0",
+			"busyNum" : "0",
+			"complaintsNum" : "0",
+			"emptyPhoneNumberNum" : "5",
+			"interceptNum" : "3",
+			"msgType" : "None",
+			"noAnswerNum" : "2",
+			"notInServiceNum" : "0",
+			"othersNum" : "2",
+			"outOfServiceNum" : "0",
+			"sendDate" : "2016-08-07到2016-11-04",
+			"shutDownNum" : "0",
+			"templateId" : "None"
+		}
 	}
 }
 ```

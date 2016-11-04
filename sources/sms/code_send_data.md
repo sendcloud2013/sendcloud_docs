@@ -38,6 +38,7 @@ public class smsSendData_44_demo {
 		//String endDate="2016-11-01";
 		String templateIdsStr="001";
 		String msgTypeStr="0";
+		String aggregate="1"
 		
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("smsUser", smsUser);
@@ -46,6 +47,7 @@ public class smsSendData_44_demo {
 		//params.put("endDate", endDate);
 		params.put("templateIdsStr", templateIdsStr);
 		params.put("msgTypeStr", msgTypeStr);
+		params.put("aggregate", aggregate);
 		
 		
 		 // 对参数进行排序
