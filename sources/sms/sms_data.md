@@ -283,15 +283,15 @@ http://www.sendcloud.net/smsapi/data/processFailed?smsUser=***&days=***&msgTypeS
 |sendDate|发送日期|
 |templateId|短信模板ID|
 |msgType|短信类型|
-|emptyPhoneNumberNum|空号|
-|outOfServiceNum|停机|
-|complaintsNum|投诉|
-|busyNum|占线| 
-|noAnswerNum|无人接听|
-|interceptNum|拦截|
-|breakDownNum|手机故障|
-|notInServiceNum|不在服务区|
-|shutDownNum|关机|
+|emptyPhoneNumberNum|空号个数|
+|outOfServiceNum|停机个数|
+|complaintsNum|投诉个数|
+|busyNum|占线个数| 
+|noAnswerNum|无人接听个数|
+|interceptNum|拦截个数|
+|breakDownNum|手机故障个数|
+|notInServiceNum|不在服务区个数|
+|shutDownNum|关机个数|
 |othersNum|其他|   
 
 **返回值示例**
