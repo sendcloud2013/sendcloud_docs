@@ -69,7 +69,7 @@ pages:
 - [sms/sms_data.md, '短信API', '数据统计']
 - [sms/code_data.md, '短信API', '数据统计代码示例']
 
-- [sdk/java.md, 'SDK文档', 'Java']
+- [sdk/index.md, 'SDK文档', 'Java']
 
 #- [downloads/index.md, '代码示例', '代码示例']
 #- [downloads/code/curl.md, '代码示例','Curl']
