@@ -26,7 +26,7 @@ pages:
 # - ['guide/php_rest_guide.md', '开发指南', 'REST API 简易指南（PHP）']
 #
 - [index.md, '文档首页', '文档首页']
-- [guide/index.md, '开发者指南', '基本概念']
+- [guide/base.md, '开发者指南', '基本概念']
 - [guide/advance.md, '开发者指南', '高级功能']
 - [guide/rule.md, '开发者指南', '通用规则']
 
