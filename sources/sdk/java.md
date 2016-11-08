@@ -8,7 +8,7 @@
 
 ##资源
 
-见不同模块API的参数说明、返回码. 如[邮件API普通发送](../email_v2/send_mail.md#_1), [邮件API模板发送](../email_v2/send_mail.md#_2), [短信API send](../sms/api.md#send), [短信API返回码](../sms/api.md#_1)
+见不同模块API的参数说明、返回码. 如[邮件API普通发送](../email_v2/send_email.md#_1), [邮件API模板发送](../email_v2/send_email.md#_2), [短信API send](../sms/api.md#send), [短信API返回码](../sms/api.md#_1)
 
 
 ##使用指引

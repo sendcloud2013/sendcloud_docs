@@ -1,7 +1,7 @@
 
 ## SMTP 请求方式
 
-为开发者提供 SMTP 协议的投递方式, 以下是会话过程. 详细的代码示例, 请移步[这里](../email/code.md#python)
+为开发者提供 SMTP 协议的投递方式, 以下是会话过程. 详细的代码示例, 请移步[这里](../email_v2/code.md#python)
 
 ``` 
 S: 220 SendCloud Inbound Server ESMTP Haraka 2.2.4 ready
