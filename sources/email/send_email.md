@@ -17,7 +17,7 @@ post   get
 |:---|:---|:---|:---|  
 |api_user|string|是|API_USER|  
 |api_key|string|是|API_KEY|  
-|from|string|是|发件人地址. from 和[发信域名](../guide/base.md#_3), 会影响是否[显示代发](../faq/index.md#2)|  
+|from|string|是|发件人地址. from 和发信域名会影响是否显示代发|  
 |to|string|是|收件人地址. 多个地址使用';'分隔, 如 `ben@ifaxin.com;joe@ifaxin.com`|  
 |subject|string|是|标题. 不能为空|  
 |html|string|是|邮件的内容. 不能为空, 可以是文本格式或者 HTML 格式|  
@@ -28,8 +28,8 @@ post   get
 |label|int|否|本次发送所使用的标签ID. 此标签需要事先创建|  
 |headers|string|否|邮件头部信息. JSON 格式, 比如:`{"header1": "value1", "header2": "value2"}`|  
 |files|string|否|邮件附件. 发送附件时, 必须使用 multipart/form-data 进行 post 提交 (表单提交)|  
-|x_smtpapi|string|否|SMTP 扩展字段. 详见 [X-SMTPAPI](../guide/rule.md#x-smtpapi)|  
-|resp_email_id|string (true, false)|否|是否返回 [emailId](../guide/rule.md#messageid-emailid). 有多个收件人时, 会返回 emailId 的列表|  
+|x_smtpapi|string|否|SMTP 扩展字段. 详见开发者指南中X-SMTPAPI的解释|  
+|resp_email_id|string (true, false)|否|是否返回 emailId. 有多个收件人时, 会返回 emailId 的列表|  
 |use_maillist|string (true, false)|否|参数 to 是否`含有`地址列表. 比如: `to=ben@ifaxin.com;users@maillist.sendcloud.org`| 
 |gzip_compress|string (true, false)|否|邮件内容是否使用gzip压缩. 默认不使用 gzip 压缩正文|  
 
@@ -124,7 +124,7 @@ post
 |:---|:---|:---|:---|  
 |api_user|string|是|API_USER|  
 |api_key|string|是|API_KEY|  
-|from|string|是|发件人地址. from 和[发信域名](../guide/base.md#_3), 会影响是否[显示代发](../faq/index.md#2)|  
+|from|string|是|发件人地址. from 和发信域名会影响是否显示代发|  
 |substitution_vars|string|*|模板替换变量. 在 `use_maillist=false` 时使用, 如: `{"to": ["ben@ifaxin.com", "joe@ifaxin.com"],"sub":{"%name%": ["Ben", "Joe"],"%money%":[288, 497]}}` | 
 |to|string|*|收件人的地址列表. 在 `use_maillist=true` 时使用|
 |subject|string|`否`|邮件标题|  
@@ -134,7 +134,7 @@ post
 |label|int|否|本次发送所使用的标签ID. 此标签需要事先创建|  
 |headers|string|否|邮件头部信息. JSON 格式, 比如:`{"header1": "value1", "header2": "value2"}`|  
 |files|string|否|邮件附件. 发送附件时, 必须使用 multipart/form-data 进行 post 提交 (表单提交)|  
-|resp_email_id|string (true, false)|否|是否返回 [emailId](../guide/rule.md#messageid-emailid). 有多个收件人时, 会返回 emailId 的列表|  
+|resp_email_id|string (true, false)|否|是否返回. 有多个收件人时, 会返回 emailId 的列表|  
 |use_maillist|string (true, false)|否|参数 to 是否支持地址列表, 默认为 false. 比如: `to=users@maillist.sendcloud.org`| 
 |gzip_compress|string (true, false)|否|邮件内容是否使用gzip压缩. 默认不使用 gzip 压缩正文|  
 
