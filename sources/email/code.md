@@ -89,9 +89,9 @@ pear install Mail_Mime
 pear install Net_SMTP
 ```    
 
-[SMTP_代码示例1](email/downloads/php/php_smtp_1.php) (快速发送，不需要获取[messageId](../guide/rule.md#messageid-emailid))
+[SMTP_代码示例1](email/downloads/php/php_smtp_1.php) (快速发送，不需要获取messageId(详情请查看开发者指南))
 
-[SMTP_代码示例2](email/downloads/php/php_smtp_2.php) (需要获取[messageId](../guide/rule.md#messageid-emailid))
+[SMTP_代码示例2](email/downloads/php/php_smtp_2.php) (需要获取messageId(详情请查看开发者指南))
 
 ```
 1. php的lib库中, 找到Mail/smtp.php文件
@@ -118,9 +118,9 @@ gem install rest_client
 
 [模板发送&&地址列表](email/downloads/ruby/ruby_template_maillist.rb)
 
-[SMTP_代码示例1](email/downloads/ruby/ruby_smtp_1.rb) (快速发送，不需要获取[messageId](../guide/rule/#messageid-emailid))
+[SMTP_代码示例1](email/downloads/ruby/ruby_smtp_1.rb) (快速发送，不需要获取messageId(详情请查看开发者指南))
 
-[SMTP_代码示例2](email/downloads/ruby/ruby_smtp_2.rb) (需要获取[messageId](../guide/rule/#messageid-emailid))
+[SMTP_代码示例2](email/downloads/ruby/ruby_smtp_2.rb) (需要获取messageId(详情请查看开发者指南))
 
 ```
 SMTP发送依赖net/smtp.rb模块, 由于模块默认在发送成功时,不返回服务器的信息. 
