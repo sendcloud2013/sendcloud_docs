@@ -158,7 +158,7 @@ s.login(API_USER + '#' + label_id, API_KEY)
 
 ## 8. 如何在客户端上使用 SendCloud 发信?
 
-将发件服务器设置为 `smtpcloud.sohu.com`, 帐号和密码分别对应 SendCloud 的 API_USER 和 API_KEY. 下图以 Foxmail 客户端为例.
+将发件服务器设置为 `smtp.sendcloud.net`, 帐号和密码分别对应 SendCloud 的 API_USER 和 API_KEY. 下图以 Foxmail 客户端为例.
 
 ![pic](/resources/foxmail.jpg)
 
@@ -166,13 +166,13 @@ s.login(API_USER + '#' + label_id, API_KEY)
 
 ## 9. SendCloud 的 SMTP 服务只开放了 25 端口么?
 
-考虑到部分云服务商封禁了其内网对外 25 端口的访问, 所以 SendCloud 在 `220.181.69.174` 上开放了 2525 端口.
+考虑到部分云服务商封禁了其内网对外 25 端口的访问, 所以 SendCloud 在 `106.75.30.87` 上开放了 2525 端口.
 
 连接方法:
 
-* 绑定域名 smtpcloud.sohu.com 到 220.181.69.174 ( 我们只在这个 ip 上开放了 2525 端口 )
+* 绑定域名 ssmtp.sendcloud.net 到 106.75.30.87 ( 我们只在这个 ip 上开放了 2525 端口 )
 
-* 修改连接为 smtpcloud.sohu.com:2525
+* 修改连接为 smtp.sendcloud.net:2525
 
 - - -
 
