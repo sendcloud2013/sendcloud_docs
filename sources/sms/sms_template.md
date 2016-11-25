@@ -33,6 +33,9 @@ http://www.sendcloud.net/smsapi/get?smsUser=***&templateIdStr=***&signature=***
 |:---|:---|
 |templateId|短信模板ID|
 |templateName|短信模板名称|
+|msgType|业务类型|
+|smsType|内容类型|
+|isVerify|是否审核通过|
 |templateContent|短信模板内容|
 |templateCreateTime|短信模板创建时间|
 |templateUpdateTime|短信模板更新时间|
@@ -50,6 +53,9 @@ http://www.sendcloud.net/smsapi/get?smsUser=***&templateIdStr=***&signature=***
 				"templateCreateTime" : "2016-08-25",
 				"templateId" : 00,
 				"templateName" : "中秋快乐",
+				"msgType" : "国内短信",
+				"smsType" : "验证码",
+				"isVerify" : "审核通过",
 				"templateUpdateTime" : "2016-08-25"
 			}
 		]
@@ -91,6 +97,9 @@ http://www.sendcloud.net/smsapi/list?smsUser=***&isVerifyStr=***&signature=***
 |:---|:---|
 |templateId|短信模板ID|
 |templateName|短信模板名称|
+|msgType|业务类型|
+|smsType|内容类型|
+|isVerify|是否审核通过|
 |templateContent|短信模板内容|
 |templateCreateTime|短信模板创建时间|
 |templateUpdateTime|短信模板更新时间|     
@@ -108,12 +117,18 @@ http://www.sendcloud.net/smsapi/list?smsUser=***&isVerifyStr=***&signature=***
 				"templateCreateTime" : "2016-08-25",
 				"templateId" : 00,
 				"templateName" : "中秋快乐",
+				"msgType" : "国内短信",
+				"smsType" : "验证码",
+				"isVerify" : "审核通过",
 				"templateUpdateTime" : "2016-08-25"
 			}, {
 				"templateContent" : "【爱发信】闪达科技",
 				"templateCreateTime" : "2016-08-25",
 				"templateId" : 01,
 				"templateName" : "国庆快乐",
+				"msgType" : "国内短信",
+				"smsType" : "验证码",
+				"isVerify" : "审核通过",
 				"templateUpdateTime" : "2016-08-25"
 			}
 		]
@@ -152,15 +167,23 @@ post    get
 ```
 http://www.sendcloud.net/smsapi/addsms?smsUser=***&templateName=***&templateText=***&signName=***&signPositionStr=**8&smsTypeStr=***&signature=***
 ```
-    
 
+**返回值说明**
+
+|参数|说明|
+|:---|:---|
+|templateId|短信模板ID|
+
+    
 **返回值示例**
 ```
 {
-	"result" : true,
-	"statusCode" : 200,
+	"info" : {
+		"templateId" : 3381
+	},
 	"message" : "插入成功",
-	"info" : {}
+	"result" : true,
+	"statusCode" : 200
 }
 ```
 
