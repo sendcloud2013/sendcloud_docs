@@ -10,15 +10,22 @@ function send_mail() {
             'apiKey' => $API_KEY,
             'from' => 'sendcloud@sendcloud.org', # 发信人，用正确邮件地址替代
             'fromName' => 'SendCloud',
-            'to' => 'test1@ifaxin.com', # 收件人地址，用正确邮件地址替代，多个地址用';'分隔
+            'to' => 'test@ifaxin.com', # 收件人地址，用正确邮件地址替代，多个地址用';'分隔
             'subject' => 'Sendcloud php webapi with attachment example',
             'html' => '欢迎使用SendCloud',
             'respEmailId' => 'true'
         );
 
-        $file = "./test.txt"; #你的附件路径
-        $handle = fopen('./test.txt','rb');
+        $file = "./test.txt"; #你的附件路径1
+        $handle = fopen($file,'rb');
         $content = fread($handle,filesize($file));
+        
+        
+        $file2 = "./test2.txt"; #你的附件路径2
+        $handle2 = fopen($file2,'rb');
+        $content2 = fread($handle2,filesize($file2));
+        
+        
 
         $eol = "\r\n";
         $data = '';
@@ -39,6 +46,13 @@ function send_mail() {
         $data .= 'Content-Type: text/plain' . $eol;
         $data .= 'Content-Transfer-Encoding: binary' . $eol . $eol;
         $data .= $content . $eol;
+        
+        $data .= '--' . $mime_boundary . $eol;
+        $data .= 'Content-Disposition: form-data; name="attachments"; filename="filename2.txt"' . $eol;
+        $data .= 'Content-Type: text/plain' . $eol;
+        $data .= 'Content-Transfer-Encoding: binary' . $eol . $eol;
+        $data .= $content2 . $eol;
+        
         $data .= "--" . $mime_boundary . "--" . $eol . $eol; 
 
         $options = array(
@@ -52,6 +66,7 @@ function send_mail() {
 
         return $result;
         fclose($handle);
+        fclose($handle2);
 }
 
 echo send_mail();
