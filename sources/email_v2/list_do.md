@@ -446,7 +446,8 @@ post    get
 |apiUser|string|是|API_USER|
 |apiKey|string|是|API_KEY|
 |address|string|是|地址列表的别称地址|    
-|members|list|是|需要添加成员的地址, 多个地址用 `;` 分隔|
+|members|list|是|需要更新成员的旧地址, 多个地址用 `;` 分隔|
+|newMembers|list|是|需要更新成员的新地址, 多个地址用 `;` 分隔,并且必须和members中的成员一一对应|
 |names|list|否|地址成员姓名, 多个地址用 `;` 分隔|    
 |vars|list|否|替换变量, 与 members 一一对应, 变量格式为 {"money":"1000"} , 多个用 `;` 分隔|
 

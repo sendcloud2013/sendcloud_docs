@@ -57,6 +57,7 @@ pages:
 - [email_v2/bounce_do.md, '邮件API 2.0', '退信列表管理']
 - [email_v2/unsubscribe_do.md, '邮件API 2.0', '取消订阅管理']
 - [email_v2/spamreported_do.md, '邮件API 2.0', '垃圾举报管理']
+- [email_v2/open_or_clicl.md, '邮件API 2.0', '打开点击列表管理']
 ##- [email_v2/webhook.md, '邮件API 2.0', 'WebHook 详细']
 - [email_v2/code.md, '邮件API 2.0', '代码示例']
 
