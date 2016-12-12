@@ -60,11 +60,11 @@ WEBAPI 是使用 HTTP 接入 SendCloud 服务的一种方式. 用户可以利用
 
 **API_KEY** 是调用接口发信时的密码
  
-* 注册成功后, SendCloud 会生成 API_KEY, 并发送至你的注册邮箱
-
-* API_KEY 可以重置, 重置之后立即生效
-
-* 所有 API_USER 共用一个 API_KEY
+* 注册成功后,您需要登录账户手动生成一个API_KEY
+* 同一API_KEY在界面中显示一次后无法再次显示
+* 每个API_USER都有对应的API_KEY，可以相同也可以不同
+* 可单独或者批量重置，批量重置的API_USER共享同一个API_KEY
+* API_KEY 重置之后立即生效，15分钟以内新旧API_KEY均可使用
 
 ------
 
