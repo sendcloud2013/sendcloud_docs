@@ -52,34 +52,15 @@ pages:
 - [email_v2/apiuser_do.md, '邮件API 2.0', 'API_USER']
 - [email_v2/user_info.md, '邮件API 2.0', '用户信息']
 ##- [email_v2/queuestatus_do.md, '邮件API 2.0', '队列状态']
-<<<<<<< HEAD
 - [email_v2/stats_do.md, '邮件API 2.0', '数据统计']
 - [email_v2/deliver_response.md, '邮件API 2.0', '投递回应']
 - [email_v2/bounce_do.md, '邮件API 2.0', '退信列表管理']
 - [email_v2/unsubscribe_do.md, '邮件API 2.0', '取消订阅管理']
 - [email_v2/spamreported_do.md, '邮件API 2.0', '垃圾举报管理']
 - [email_v2/open_or_click.md, '邮件API 2.0', '打开点击列表管理']
-=======
-#- [email_v2/stats_do.md, '邮件API 2.0', '数据统计']
-#- [email_v2/deliver_response.md, '邮件API 2.0', '投递回应']
-#- [email_v2/bounce_do.md, '邮件API 2.0', '退信列表管理']
-#- [email_v2/unsubscribe_do.md, '邮件API 2.0', '取消订阅管理']
-#- [email_v2/spamreported_do.md, '邮件API 2.0', '垃圾举报管理']
-#- [email_v2/open_or_click.md, '邮件API 2.0', '打开点击列表管理']
->>>>>>> 4b4a8219634a431f340f9750d4c0655df8ec33e1
 ##- [email_v2/webhook.md, '邮件API 2.0', 'WebHook 详细']
 - [email_v2/code.md, '邮件API 2.0', '代码示例']
 
-<<<<<<< HEAD
-- [sms/index.md, '短信API', '规则']
-- [sms/api.md, '短信API', '发送相关']
-- [sms/code.md, '短信API', '短信代码示例']
-- [sms/code_voice.md, '短信API', '语音代码示例']
-- [sms/sms_template.md, '短信API', '短信模板']
-- [sms/code_sms_template.md, '短信API', '短信模板代码示例']
-- [sms/sms_data.md, '短信API', '数据统计']
-- [sms/code_data.md, '短信API', '数据统计代码示例']
-=======
 #- [sms/index.md, '短信API', '规则']
 #- [sms/api.md, '短信API', '发送相关']
 ##- [sms/code.md, '短信API', '短信代码示例']
@@ -89,7 +70,6 @@ pages:
 #- [sms/sms_data.md, '短信API', '数据统计']
 #- [sms/code_demo.md, '短信API', '代码示例']
 ##- [sms/code_data.md, '短信API', '数据统计代码示例']
->>>>>>> 4b4a8219634a431f340f9750d4c0655df8ec33e1
 
 - [sdk/index.md, 'SDK文档', 'Java文档']
 - [sdk/php.md, 'SDK文档', 'Php文档']
