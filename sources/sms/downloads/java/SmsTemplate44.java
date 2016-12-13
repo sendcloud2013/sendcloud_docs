@@ -22,9 +22,8 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
-public class smsApiTemplate_44_demo {
-	
-	
+public class SmsTemplate44 {
+
 	public static String smsUser="***";
 	public static String smsKey="***";
 	
@@ -390,13 +389,20 @@ public class smsApiTemplate_44_demo {
 		return null;
 	}
 	
-	
-	public static void main(String[] args) throws ClientProtocolException, IOException {
-		get();
-		list();
-		add();
-		submit();
-		update();
-		delete();
+	public static void main(String[] args) {
+		try {
+			get();
+			list();
+			add();
+			submit();
+			update();
+			delete();
+		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+		} catch (ParseException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
