@@ -69,14 +69,6 @@
                         "format": null,
                         "default": "你太棒了！你已成功的从SendCloud发送了一封测试邮件，接下来快登录前台去完善账户信息吧！\n"
                     },
-					{
-                        "name": "contentSummary",
-                        "in": "query",
-                        "description": "邮件摘要",
-                        "required": false,
-                        "type": "string",
-                        "format": null,
-                    },
                     {
                         "name": "fromName",
                         "in": "query",

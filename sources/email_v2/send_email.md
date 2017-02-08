@@ -20,7 +20,8 @@ post
 |from|string|是|发件人地址. 举例: `support@ifaxin.com`, `爱发信支持<support@ifaxin.com>`|  
 |to|string|*|收件人地址. 多个地址使用';'分隔, 如 `ben@ifaxin.com;joe@ifaxin.com`|  
 |subject|string|是|标题. 不能为空|  
-|html|string|*|邮件的内容. 邮件格式为 `text/html`|  
+|html|string|*|邮件的内容. 邮件格式为 `text/html`| 
+|contentSummary|string|*|邮件摘要. 该字段传入值后，若原邮件已有摘要，会覆盖原邮件的摘要；若原邮件中没有摘要将会插入摘要。了解邮件摘要的更多内容，请[点击这里](../faq/rule.md#x-smtpapi)|  
 |fromName|string|否|发件人名称. 显示如: `ifaxin客服支持<support@ifaxin.com>`|  
 |cc|string|否|抄送地址. 多个地址使用';'分隔|  
 |bcc|string|否|密送地址. 多个地址使用';'分隔|  
@@ -45,6 +46,7 @@ post
 7. subject, html, plain 中都可以使用[变量](../guide/base.md#_4). 由于变量的 '%' 为特殊字符, 做 HTTP 请求时请注意处理.
 8. 使用回执功能, 收件人在收到邮件之后, 可以选择是否发送阅读回执到 from 的邮箱地址.
 9. 如果参数 headers 中某个 Key 以 "SC-Custom-" 开头, 则这个 Key:Value 会通过 WebHook 返回给用户.
+10. contentSummary只能和html一起使用，如果不传html的值，contentSummary的值不会生效
 
 - - - 
 
@@ -71,6 +73,7 @@ post
 |xsmtpapi|string|*|SMTP 扩展字段. 详见 [X-SMTPAPI](../guide/rule.md#x-smtpapi)|  
 |subject|string|*|邮件标题|  
 |templateInvokeName|string|是|邮件模板调用名称| 
+|contentSummary|string|*|邮件摘要. 该字段传入值后，若原邮件已有摘要，会覆盖原邮件的摘要；若原邮件中没有摘要将会插入摘要。了解邮件摘要的更多内容，请[点击这里](../faq/rule.md#x-smtpapi)|
 |fromName|string|否|发件人名称. 显示如: `ifaxin客服支持<support@ifaxin.com>`|  
 |cc|||不支持|  
 |bcc|||不支持|  
