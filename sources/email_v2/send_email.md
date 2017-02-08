@@ -21,7 +21,7 @@ post
 |to|string|*|收件人地址. 多个地址使用';'分隔, 如 `ben@ifaxin.com;joe@ifaxin.com`|  
 |subject|string|是|标题. 不能为空|  
 |html|string|*|邮件的内容. 邮件格式为 `text/html`| 
-|contentSummary|string|*|邮件摘要. 该字段传入值后，若原邮件已有摘要，会覆盖原邮件的摘要；若原邮件中没有摘要将会插入摘要。了解邮件摘要的更多内容，请[点击这里](../faq/rule.md#x-smtpapi)|  
+|contentSummary|string|*|邮件摘要. 该字段传入值后，若原邮件已有摘要，会覆盖原邮件的摘要；若原邮件中没有摘要将会插入摘要。了解邮件摘要的更多内容，请[点击这里](../faq/index.md#15)|  
 |fromName|string|否|发件人名称. 显示如: `ifaxin客服支持<support@ifaxin.com>`|  
 |cc|string|否|抄送地址. 多个地址使用';'分隔|  
 |bcc|string|否|密送地址. 多个地址使用';'分隔|  
@@ -73,7 +73,7 @@ post
 |xsmtpapi|string|*|SMTP 扩展字段. 详见 [X-SMTPAPI](../guide/rule.md#x-smtpapi)|  
 |subject|string|*|邮件标题|  
 |templateInvokeName|string|是|邮件模板调用名称| 
-|contentSummary|string|*|邮件摘要. 该字段传入值后，若原邮件已有摘要，会覆盖原邮件的摘要；若原邮件中没有摘要将会插入摘要。了解邮件摘要的更多内容，请[点击这里](../faq/rule.md#x-smtpapi)|
+|contentSummary|string|*|邮件摘要. 该字段传入值后，若原邮件已有摘要，会覆盖原邮件的摘要；若原邮件中没有摘要将会插入摘要。了解邮件摘要的更多内容，请[点击这里](../faq/index.md#15)|
 |fromName|string|否|发件人名称. 显示如: `ifaxin客服支持<support@ifaxin.com>`|  
 |cc|||不支持|  
 |bcc|||不支持|  
