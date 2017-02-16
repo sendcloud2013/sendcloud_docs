@@ -25,7 +25,7 @@ post
 |fromName|string|否|发件人名称. 显示如: `ifaxin客服支持<support@ifaxin.com>`|  
 |cc|string|否|抄送地址. 多个地址使用';'分隔|  
 |bcc|string|否|密送地址. 多个地址使用';'分隔|  
-|replyTo|string|否|设置用户默认的回复邮件地址.  如果 replyTo 没有或者为空, 则默认的回复邮件地址为 from|  
+|replyTo|string|否|设置用户默认的回复邮件地址.多个地址使用';'分隔，地址个数不能超过3个.  如果 replyTo 没有或者为空, 则默认的回复邮件地址为 from|  
 |labelId|int|否|本次发送所使用的标签ID. 此标签需要事先创建|  
 |headers|string|否|邮件头部信息. JSON 格式, 比如:`{"header1": "value1", "header2": "value2"}`|  
 |attachments|file|否|邮件附件. 发送附件时, 必须使用 multipart/form-data 进行 post 提交 (表单提交)|  
@@ -77,7 +77,7 @@ post
 |fromName|string|否|发件人名称. 显示如: `ifaxin客服支持<support@ifaxin.com>`|  
 |cc|||不支持|  
 |bcc|||不支持|  
-|replyTo|string|否|设置用户默认的回复邮件地址.  如果 replyTo 没有或者为空, 则默认的回复邮件地址为 from|  
+|replyTo|string|否|设置用户默认的回复邮件地址.多个地址使用';'分隔，地址个数不能超过3个.  如果 replyTo 没有或者为空, 则默认的回复邮件地址为 from|  
 |labelId|int|否|本次发送所使用的标签ID. 此标签需要事先创建|  
 |headers|string|否|邮件头部信息. JSON 格式, 比如:`{"header1": "value1", "header2": "value2"}`|  
 |attachments|file|否|邮件附件. 发送附件时, 必须使用 multipart/form-data 进行 post 提交 (表单提交)|  
@@ -191,7 +191,7 @@ post
 |fromName|string|否|发件人名称. 显示如: `ifaxin客服支持<support@ifaxin.com>`|  
 |cc|string|否|抄送地址. 多个地址使用';'分隔|  
 |bcc|string|否|密送地址. 多个地址使用';'分隔|  
-|replyTo|string|否|设置用户默认的回复邮件地址.  如果 replyTo 没有或者为空, 则默认的回复邮件地址为 from|  
+|replyTo|string|否|设置用户默认的回复邮件地址.多个地址使用';'分隔，地址个数不能超过3个.  如果 replyTo 没有或者为空, 则默认的回复邮件地址为 from|  
 |dispositionNotificationTo|||不支持|  
 |labelId|int|否|本次发送所使用的标签ID. 此标签需要事先创建|  
 |headers|string|否|邮件头部信息. JSON 格式, 比如:`{"header1": "value1", "header2": "value2"}`|  
