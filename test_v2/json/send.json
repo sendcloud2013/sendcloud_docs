@@ -75,7 +75,7 @@
                         "description": "邮件摘要",
                         "required": false,
                         "type": "string",
-                        "format": null,
+                        "format": null
                     },
                     {
                         "name": "fromName",
@@ -248,6 +248,14 @@
                         "in": "query",
                         "description": "邮件模板调用名称",
                         "required": true,
+                        "type": "string",
+                        "format": null
+                    },
+					{
+                        "name": "contentSummary",
+                        "in": "query",
+                        "description": "邮件摘要",
+                        "required": false,
                         "type": "string",
                         "format": null
                     },
