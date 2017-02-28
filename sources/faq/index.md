@@ -260,6 +260,60 @@ r = requests.post(url, files=files, data=params)
 print r.text
 ```
 
+SMTP的代码示例如下:
+```         
+from email.mime.multipart import MIMEMultipart  
+from email.mime.text import MIMEText  
+from email.mime.image import MIMEImage  
+import smtplib  
+  
+class MyEmail:  
+    def __init__(self):  
+        self.smtp = smtplib.SMTP()  
+        self.login_username = 'postmaster@testdomain.sendcloud.org'
+        self.login_password = '*****'  
+        self.sender = 'postmaster@testdomain.sendcloud.org'    # same as login_username  
+        self.receiver = 'test123@qq.com'  
+        self.host = 'smtp.sencloud.net'  
+        self.port = 25
+  
+    def connect(self):  
+        self.smtp.connect(self.host)  
+  
+    def login(self):  
+        self.smtp.login(self.login_username, self.login_password)  
+  
+    def send(self):  
+        msg = MIMEMultipart('related')                 
+        msg['From'] = self.sender               
+        msg['To'] = self.receiver
+        email_tiltle = 'python test inline image'
+        msg['Subject'] = email_title           
+        content = MIMEText('test image content <img src="cid:image1" alt="xxxxx">', 'html', 'utf-8')
+        msg.attach(content) 
+
+        fp = open('./test.png','rb')
+        img = MIMEImage(fp.read())
+        img.add_header('Content-ID','image1') #the value of content-id is the cid in html
+        msg.attach(img)
+  
+        self.smtp.sendmail(self.sender, receiver, msg.as_string())   
+  
+    def quit(self):  
+        self.smtp.quit()  
+  
+def send():  
+    myemail = MyEmail()  
+    myemail.connect()  
+    myemail.login()  
+    myemail.send()  
+    myemail.quit()  
+  
+if __name__ == "__main__":  
+    send()
+```    
+
+
 - - -
 
 ## 14. 我想发送会议日历，SendCloud可以实现这个功能吗？
