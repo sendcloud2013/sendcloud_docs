@@ -114,10 +114,6 @@ WEBAPI 是使用 HTTP 接入 SendCloud 服务的一种方式. 用户可以利用
 
 创建发信域名之后, 需要完成必要的配置, 才能使用其进行发信. 这些配置项是保证域名能够优质出信的基础, 如果使用未配置的域名发信, 出信量和到达率都会很糟糕.
 
-* **VERIFY_KEY** ( 必配 )
-
-VERIFY_KEY 是 SendCloud 分配给每个账户的域名唯一标示, 防止域名被其他账户盗用.
-
 * **SPF** ( 必配 )  [wiki解释](http://zh.wikipedia.org/wiki/Sender_Policy_Framework)
 
 SPF 是为了防范垃圾邮件而提出来的一种 DNS 记录类型, 用于登记某个域名拥有的外发邮件的所有 IP 地址
@@ -134,13 +130,11 @@ CNAME 是链接跳转记录. SendCloud 需要此配置项来收集点击数据.
 
 * **DKIM**  [wiki解释](http://zh.wikipedia.org/wiki/DKIM)
 
+（必配）
+
 DKIM 是防止欺诈邮件的一个重要技术手段, 通常发送方会在电子邮件的标头插入 DKIM-Signature 及电子签名资讯, 而接收方则透过 DNS 查询得到公钥后进行验证. 建议配置, 特别是国外域比较多的用户.
 
 `注意: 正是因为发信域名如此的重要, 所以 SendCloud 要求用户必须创建自己的发信域名, 并且完成配置, 才能正式接入`
-
-我们在系统中给出了详细的配置引导, 用户需要按照配置引导的内容到自己的域名管理系统中去做配置. 以下举例说明:
-
-![pic](/resources/domain_config_example.png)
 
 1. 标注红星, 表示此项配置为必配项
 2. 状态: 是否配置正确, 并通过 SendCloud 验证.
