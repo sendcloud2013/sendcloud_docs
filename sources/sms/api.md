@@ -24,7 +24,7 @@ GET POST
 |smsUser        |string         |是         |smsUser|
 |templateId     |int            |是         |模板ID|
 |msgType        |int            |否         |0表示短信, 1表示彩信, 默认值为0|
-|phone          |string         |是         |收信人手机号,多个手机号用逗号,分隔, 号码最多不能超过100|
+|phone          |string         |是         |收信人手机号,多个手机号用逗号,分隔|
 |vars           |string         |否         |替换变量的json串|
 |signature      |string         |是         |签名, 合法性验证|
 |timestamp      |string         |否         |UNIX时间戳|
@@ -43,7 +43,7 @@ GET POST
 
 - - -
 
-## sendx (暂不开通)
+## sendx
 
 发送一个短信模板给多个用户, 每个用户对应一个替换变量.
     
@@ -69,7 +69,7 @@ GET POST
 |smsUser        |string         |是         |smsUser|
 |templateId     |int            |是         |模板ID|
 |msgType        |int            |否         |0表示短信, 1表示彩信, 默认值为0|
-|tos            |string         |是         |手机号和替换变量的对应的json串, 手机号最多不能超过200|
+|tos            |string         |是         |手机号和替换变量的对应的json串|
 |signature      |string         |是         |签名, 合法性验证|
 |timestamp      |string         |否         |UNIX时间戳|
 
