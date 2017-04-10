@@ -106,7 +106,7 @@ post    get
     
 **请求示例**
 ```
-http://api.sendcloud.net/apiv2/apiUser/add?apiUser=***&apiKey=***&name=liubida&emailType=1&domainName=mail.liubida.cn 
+http://api.sendcloud.net/apiv2/apiuser/add?apiUser=***&apiKey=***&name=liubida&emailType=1&domainName=mail.liubida.cn 
 ```
     
 **返回值说明**
@@ -114,6 +114,7 @@ http://api.sendcloud.net/apiv2/apiUser/add?apiUser=***&apiKey=***&name=liubida&e
 |参数|说明|
 |:---|:---|
 |name|API_USER 名称|
+|nameKey|API_KEY 名称|
 |cType|API_USER 类型|
 |emailType|API_USER 的邮件类型|
 |domain|API_USER 绑定的域名|
@@ -130,6 +131,7 @@ http://api.sendcloud.net/apiv2/apiUser/add?apiUser=***&apiKey=***&name=liubida&e
         total: 1,
         data: {
             name: "***",
+            "nameKey":"********",
             cType: "非测试",
             emailType: "触发",
             domain: "delong.com",
