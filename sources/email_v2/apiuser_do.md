@@ -131,7 +131,7 @@ http://api.sendcloud.net/apiv2/apiuser/add?apiUser=***&apiKey=***&name=liubida&e
         total: 1,
         data: {
             name: "***",
-            "nameKey":"********",
+            nameKey:"********",
             cType: "非测试",
             emailType: "触发",
             domain: "delong.com",
