@@ -126,6 +126,7 @@ SendCloud 和 ESP 都在推进建立用户和用户订阅关系, 也会大力支
 |无效邮件(invalid)    |邮件未发送成功   |
 |退信(bounce)         |接收方永久性拒收该邮件 |
 |软退信(soft_bounce)  |接收方临时性拒收该邮件 |
+|转信(route)  |转信/收信路由 |
 
 **使用方法:**
 
@@ -385,6 +386,28 @@ function verify($appkey,$token,$timestamp,$signature){
 |timestamp|long|时间戳|
 |token|string|随机产生的长度为50的字符串|
 |signature|string|签名字符串|
+|userHeaders|string|用户自定义, 并且以"SC-Custom-"开头的头部信息|
+
+##### 转信 ( route )
+
+**参数说明**
+
+|参数|类型|说明|
+|:---|:---|:---|
+|event|string|事件类型:"route"|
+|from|string|发件人地址|
+|fromname|string|发件人名称|
+|headers|string|邮件头部信息. JSON 格式|
+|html|string|转信邮件 html 格式的内容|
+|message|string|消息内容 "mx route"|
+|raw_message|string||
+|signature|string|签名字符串|
+|subject|string|标题|
+|text|string|转信邮件文本格式的内容|
+|timestamp|long|时间戳|
+|to|string|收件人地址|
+|token|string|随机产生的长度为50的字符串|
+|toname|string|收件人名称|
 |userHeaders|string|用户自定义, 并且以"SC-Custom-"开头的头部信息|
 
 
