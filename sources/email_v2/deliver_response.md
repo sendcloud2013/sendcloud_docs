@@ -48,6 +48,7 @@ http://api.sendcloud.net/apiv2/data/emailStatus?apiUser=***&apiKey=***&days=2&em
 
 |参数|说明|
 |:---|:---|
+|emailId|调用api发送邮件成功返回的emailId|
 |status|投递状态|
 |apiUser|apiUser名称|
 |recipients|收件人地址|
@@ -67,6 +68,7 @@ http://api.sendcloud.net/apiv2/data/emailStatus?apiUser=***&apiKey=***&days=2&em
 		"total" : "2",
 		"voListSize" : 2,
 		"voList" : [{
+				"emailId" : "**_**_**_**_**_**_**-**$***@sendcloud.im",
 				"status" : "投递成功",
 				"apiUser" : "***",
 				"recipients" : "###@qq.com",
@@ -74,6 +76,7 @@ http://api.sendcloud.net/apiv2/data/emailStatus?apiUser=***&apiKey=***&days=2&em
 				"modifiedTime" : "2016-10-18 09:32:08",
 				"sendLog" : "successfully delivered"
 			}, {
+				"emailId" : "**_**_**_**_**_**_**-**$***@sendcloud.im",
 				"status" : "投递成功",
 				"apiUser" : "***",
 				"recipients" : "###@qq.com",

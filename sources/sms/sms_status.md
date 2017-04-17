@@ -48,6 +48,8 @@ http://www.sendcloud.net/smsapi/status/query?smsUser=***&days=***&msgTypeStr=***
 |参数|说明|
 |:---|:---|
 |msgType|短信类型|
+|smsId|短信投递成功时候返回的smsId|
+|statusCode|短信投递回应的状态|
 |receiver|短信接收人|
 |requestTime|请求时间|
 |sendLog|发送日志|
@@ -56,36 +58,47 @@ http://www.sendcloud.net/smsapi/status/query?smsUser=***&days=***&msgTypeStr=***
 |templateName|模板名称|
 |updateTime|更新时间|
 
+说明:
+
+1. 返回的statusCode说明：400-499之间的为处理失败，500-499之间的为发送失败
+
+
 **返回值示例**
 
 ```
 {
 	"info": {
 		"voList": [{
+				"smsId":"***_**_**_**_**$**",
 				"msgType": "国内短信",
 				"receiver": "0000000000",
 				"requestTime": "2017-02-19 00:21:20",
 				"sendLog": "发送成功",
 				"smsUser": "*****",
 				"status": "送达",
+				"statusCode":200,
 				"templateId": "000",
 				"templateName": "SendCloud验证码",
 				"updateTime": "2017-02-19 00:21:21"
 			}, {
+				"smsId":"***_**_**_**_**$**",
 				"msgType": "国内短信",
 				"receiver": "0000000000",
 				"requestTime": "2017-02-19 00:00:04",
 				"sendLog": "smsworker:address in local bounce list",
 				"smsUser": "*****",
 				"status": "处理失败-局部拦截列表",
+				"statusCode":420,
 				"templateId": "000",
 				"templateName": "Ifaxin验证码",
 				"updateTime": "2017-02-19 00:00:05"
 			}, {
+				"smsId":"***_**_**_**_**$**",
 				"msgType": "国内短信",
 				"receiver": "0000000000",
 				"requestTime": "2017-02-19 00:00:01",
 				"sendLog": "发送成功",
+				"statusCode":200,
 				"smsUser": "*****",
 				"status": "送达",
 				"templateId": "000",
