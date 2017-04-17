@@ -19,7 +19,7 @@ post    get
 |:---|:---|:---|:---|
 |smsUser|string|是|smsUser|
 |phones|string|否|多个电话号码，用`;`分开| 
-|smsIds|短信投递成功时候返回的smsId,多个smsId用`;`分开|
+|smsIds|string|否|短信投递成功时候返回的smsId,多个smsId用`;`分开|
 |days|string|*|过去 days 天内的统计数据 (`days=1`表示今天)| 
 |startDate|string|*|开始日期, 格式为`yyyy-MM-dd`|
 |endDate|string|*|结束日期, 格式为`yyyy-MM-dd`|
