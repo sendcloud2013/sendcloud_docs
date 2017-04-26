@@ -61,7 +61,7 @@ http://www.sendcloud.net/smsapi/status/query?smsUser=***&days=***&msgTypeStr=***
 
 说明:
 
-1. 返回的statusCode说明：400-499之间的为处理失败，500-499之间的为发送失败
+1. 返回的statusCode说明：400-499之间的为处理失败，500-599之间的为发送失败
 
 
 **返回值示例**
