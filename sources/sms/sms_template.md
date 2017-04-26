@@ -159,7 +159,7 @@ post    get
 |templateText|string|是|模板内容|
 |signName|string|是|短信内容中的中括号里面的签名|
 |signPositionStr|string|否|签名位置，"0"代表前置"1"代表后置，默认前置|
-|smsTypeStr|string|是|短信类型"0"触发"1"批量|
+|smsTypeStr|string|是|短信内容类型，"0"表示验证码，"1"表示行业通知，"2"表示营销|
 |signature|string|是|签名, 合法性验证|
 
 
@@ -249,7 +249,7 @@ post    get
 |templateText|string|否|模板内容|
 |signName|string|是|签名|
 |signPositionStr|string|是|签名位置: "0"代表前置, "1"代表后置, 默认前置|
-|smsTypeStr|string|是|短信类型: "0"触发, "1"批量|
+|smsTypeStr|string|是|短信内容类型，"0"表示验证码，"1"表示行业通知，"2"表示营销|
 |signature|string|是|签名, 合法性验证|
 
 
