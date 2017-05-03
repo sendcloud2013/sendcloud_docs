@@ -31,7 +31,7 @@ post    get
     
 **请求示例**
 ```
-http://api.sendcloud.net/apiv2/apiUser/list?apiUser=***&apiKey=***&emailType=1&domainName=mail.liubida.cn 
+http://api.sendcloud.net/apiv2/apiuser/list?apiUser=***&apiKey=***&emailType=1&domainName=mail.liubida.cn 
 ```
     
 **返回值说明**

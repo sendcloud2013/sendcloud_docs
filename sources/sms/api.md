@@ -89,6 +89,8 @@ GET POST
 
 3. 生成签名时, 参数不要使用 `urlencode`. 在调用 api 时, 才需要对参数做 `urlencode`
 
+4. tos里面必须要有vars参数，可以是空，但是不能没有这个字段。
+
 - - -
 
 ## sendVoice
