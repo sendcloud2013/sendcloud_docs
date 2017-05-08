@@ -14,10 +14,10 @@ post
 **参数说明**    
 
 |参数|类型|必须|说明|
-|:---|:---|:---|:---|
-|apiUser|string|是|API_USER|
-|apiKey|string|是|API_KEY|
-|from|string|是|发件人地址. 举例: `support@ifaxin.com`, `爱发信支持<support@ifaxin.com>`|  
+|:---|:---|:---|:---|  
+|apiUser|string|是|API_USER|  
+|apiKey|string|是|API_KEY|  
+|from|string|是|发件人地址. 举例: `support@ifaxin.com`, 当配置通过DMARC后，平台将使用当前域名作为from的域名后缀。[DMARC是什么?](http://blog.sendcloud.net/2017/05/03/20170503/)|  
 |to|string|*|收件人地址. 多个地址使用';'分隔, 如 `ben@ifaxin.com;joe@ifaxin.com`|  
 |subject|string|是|标题. 不能为空|  
 |html|string|*|邮件的内容. 邮件格式为 `text/html`| 
@@ -68,7 +68,7 @@ post
 |:---|:---|:---|:---|  
 |apiUser|string|是|API_USER|
 |apiKey|string|是|API_KEY|
-|from|string|是|发件人地址. 举例: `support@ifaxin.com`, `爱发信支持<support@ifaxin.com>`|  
+|from|string|是|发件人地址. 举例: `support@ifaxin.com`,当配置通过DMARC后，平台将使用当前域名作为from的域名后缀。[DMARC是什么?](http://blog.sendcloud.net/2017/05/03/20170503/)|  
 |to|string|*|地址列表. 在 `useAddressList=true` 时使用|
 |xsmtpapi|string|*|SMTP 扩展字段. 详见 [X-SMTPAPI](../guide/rule.md#x-smtpapi)|  
 |subject|string|*|邮件标题|  
@@ -184,7 +184,7 @@ post
 |:---|:---|:---|:---|
 |apiUser|string|是|API_USER|
 |apiKey|string|是|API_KEY|
-|from|string|是|发件人地址. 举例: `support@ifaxin.com`, `爱发信支持<support@ifaxin.com>`|  
+|from|string|是|发件人地址. 举例: `support@ifaxin.com`,当配置通过DMARC后，平台将使用当前域名作为from的域名后缀。[DMARC是什么?](http://blog.sendcloud.net/2017/05/03/20170503/)|  
 |to|string|*|收件人地址. 多个地址使用';'分隔, 如 `ben@ifaxin.com;joe@ifaxin.com`|  
 |subject|string|是|标题. 不能为空|  
 |html|string|*|邮件的内容. 邮件格式为 `text/html`|  
