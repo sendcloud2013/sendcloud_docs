@@ -51,6 +51,18 @@
         </div>
         {% endblock %}
     </div>
+	
+	<script type="text/javascript">
+	 $('.ds-thread').attr('data-url', location.href).attr('data-thread-key', location.href)
+	</script>
+	<div id="SOHUCS" sid="{{ current_url }}"></div>
+	<script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+	<script type="text/javascript">
+	window.changyan.api.config({
+	appid: 'cyt0eROee',
+	conf: 'prod_60241505673df9fcb80d8960239843f8'
+	});
+	</script>
     <footer class="clearfix footer">
         <div class="container">
             <ul class="list-unstyled list-inline pull-left">
@@ -86,14 +98,7 @@
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
     })();
     </script>-->
-	<div id="SOHUCS" ></div>
-	<script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
-	<script type="text/javascript">
-	window.changyan.api.config({
-	appid: 'cyt0eROee',
-	conf: 'prod_60241505673df9fcb80d8960239843f8'
-	});
-	</script>
+	
     </body>
 
 </html>
