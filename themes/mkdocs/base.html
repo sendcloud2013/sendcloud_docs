@@ -48,6 +48,7 @@
         <div class="col-md-9 content-body" role="main">
             {% include "content.html" %}
             <div class="ds-thread" data-thread-key="{{ page_title }}" data-title="{{ page_title }}" data-url="{{ current_url }}"></div>
+			<div id="SOHUCS" sid="{{ current_url }}"></div>
         </div>
         {% endblock %}
     </div>
@@ -55,7 +56,7 @@
 	<script type="text/javascript">
 	 $('.ds-thread').attr('data-url', location.href).attr('data-thread-key', location.href)
 	</script>
-	<div id="SOHUCS" sid="{{ current_url }}"></div>
+	
 	<script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
 	<script type="text/javascript">
 	window.changyan.api.config({
