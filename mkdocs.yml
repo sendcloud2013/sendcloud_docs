@@ -75,7 +75,7 @@ pages:
 
 - [sdk/index.md, 'SDK文档', 'Java文档']
 - [sdk/php.md, 'SDK文档', 'Php文档']
-#- [sdk/android.md, 'SDK文档', 'Android文档']
+- [sdk/android.md, 'SDK文档', 'Android文档']
 
 ##- [downloads/index.md, '代码示例', '代码示例']
 ##- [downloads/code/curl.md, '代码示例','Curl']
