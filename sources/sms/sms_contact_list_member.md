@@ -5,7 +5,7 @@
     
 **URL**    
 ```
-http://www.sendcloud.net/smsContactListMember/list
+http://www.sendcloud.net/smsapi/smsContactListMember/list
 ```
     
 **HTTP请求方式**
@@ -28,7 +28,7 @@ post    get
 
 **请求示例**
 ```
-http://www.sendcloud.net/smsContactListMember/list?smsUser=***&contactName=***&phone=***&vars=***&signature=***
+http://www.sendcloud.net/smsapi/smsContactListMember/list?smsUser=***&contactName=***&phone=***&vars=***&signature=***
 ```
 
 **返回值说明**
@@ -78,7 +78,7 @@ http://www.sendcloud.net/smsContactListMember/list?smsUser=***&contactName=***&p
     
 **URL**    
 ```
-http://www.sendcloud.net/smsContactListMember/saveOrUpdate
+http://www.sendcloud.net/smsapi/smsContactListMember/saveOrUpdate
 ```
     
 **HTTP请求方式**
@@ -97,10 +97,15 @@ post    get
 |vars|string|是|变量|
 |signature|string|是|签名, 合法性验证|
 
+提示:
+
+1. 如果phone已经存在，则更新记录，否则插入记录
+
+
 
 **请求示例**
 ```
-http://www.sendcloud.net/smsContactListMember/saveOrUpdate?smsUser=***&contactName=***&phone=***&userName=***&vars=**&signature=***
+http://www.sendcloud.net/smsapi/smsContactListMember/saveOrUpdate?smsUser=***&contactName=***&phone=***&userName=***&vars=**&signature=***
 ```
 
 **返回值说明**
@@ -140,7 +145,7 @@ http://www.sendcloud.net/smsContactListMember/saveOrUpdate?smsUser=***&contactNa
     
 **URL**    
 ```
-http://www.sendcloud.net/smsContactListMember/delete
+http://www.sendcloud.net/smsapi/smsContactListMember/delete
 ```
     
 **HTTP请求方式**
@@ -160,7 +165,7 @@ post    get
 
 **请求示例**
 ```
-http://www.sendcloud.net/smsContactListMember/delete?smsUser=***&contactName=***&phone=***&signature=***
+http://www.sendcloud.net/smsapi/smsContactListMember/delete?smsUser=***&contactName=***&phone=***&signature=***
 ```
 
 **返回值示例**

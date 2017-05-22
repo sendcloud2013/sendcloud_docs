@@ -26,7 +26,7 @@ post    get
 |days|int|*|过去 days 天内的统计数据 (`days=1`表示今天)| 
 |startDate|string|*|开始日期, 格式为`yyyy-MM-dd`|
 |endDate|string|*|结束日期, 格式为`yyyy-MM-dd`|
-|email|string|*|查询该地址在取消订阅列表中的详情|
+|email|string|*|查询该地址在打开点击列表中的详情|
 |trackType|string|否|`1`表示打开，`2`表示点击，不传此参数查询打开和点击全部|
 |labelId|string|否|获取指定标签下的统计数据|
 |start|int|否|查询起始位置, 取值区间 [0-], 默认为 0|

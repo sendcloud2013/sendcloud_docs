@@ -5,7 +5,7 @@
     
 **URL**    
 ```
-http://www.sendcloud.net/smsContactList/list
+http://www.sendcloud.net/smsapi/smsContactList/list
 ```
     
 **HTTP请求方式**
@@ -26,7 +26,7 @@ post    get
 
 **请求示例**
 ```
-http://www.sendcloud.net/smsContactList/list?smsUser=***&contactName=***&signature=***
+http://www.sendcloud.net/smsapi/smsContactList/list?smsUser=***&contactName=***&signature=***
 ```
 
 **返回值说明**
@@ -75,7 +75,7 @@ http://www.sendcloud.net/smsContactList/list?smsUser=***&contactName=***&signatu
     
 **URL**    
 ```
-http://www.sendcloud.net/smsContactList/save
+http://www.sendcloud.net/smsapi/smsContactList/save
 ```
     
 **HTTP请求方式**
@@ -95,7 +95,7 @@ post    get
 
 **请求示例**
 ```
-http://www.sendcloud.net/smsContactList/save?smsUser=***&contactName=***&description=***&signature=***
+http://www.sendcloud.net/smsapi/smsContactList/save?smsUser=***&contactName=***&description=***&signature=***
 ```
 
 **返回值说明**
@@ -136,7 +136,7 @@ http://www.sendcloud.net/smsContactList/save?smsUser=***&contactName=***&descrip
     
 **URL**    
 ```
-http://www.sendcloud.net/smsContactList/update
+http://www.sendcloud.net/smsapi/smsContactList/update
 ```
     
 **HTTP请求方式**
@@ -157,7 +157,7 @@ post    get
 
 **请求示例**
 ```
-http://www.sendcloud.net/smsContactList/update?smsUser=***&contactName=***&newContactName=***&signature=***
+http://www.sendcloud.net/smsapi/smsContactList/update?smsUser=***&contactName=***&newContactName=***&signature=***
 ```
 
 **返回值说明**
@@ -197,7 +197,7 @@ http://www.sendcloud.net/smsContactList/update?smsUser=***&contactName=***&newCo
     
 **URL**    
 ```
-http://www.sendcloud.net/smsContactList/delete
+http://www.sendcloud.net/smsapi/smsContactList/delete
 ```
     
 **HTTP请求方式**
@@ -216,7 +216,7 @@ post    get
 
 **请求示例**
 ```
-http://www.sendcloud.net/smsContactList/delete?smsUser=***&contactName=***&signature=***
+http://www.sendcloud.net/smsapi/smsContactList/delete?smsUser=***&contactName=***&signature=***
 ```
 
 **返回值示例**
