@@ -119,6 +119,7 @@ http://api.sendcloud.net/apiv2/template/get?apiUser=***&apiKey=***&invokeName=te
 |gmtCreated|邮件模板创建时间|
 |gmtModified|邮件模板修改时间|
 |html|模板内容|
+|contentSummary|邮件摘要|
 |subject|模板标题|
 
 **返回值示例**
@@ -134,7 +135,8 @@ http://api.sendcloud.net/apiv2/template/get?apiUser=***&apiKey=***&invokeName=te
       "gmtCreated": "2015-02-02 17:01:43",
       "gmtUpdated": "2015-04-16 15:04:12",
       "html": "<p>你太棒了！你已成功的从SendCloud发送了一封测试邮件，接下来快登录前台去完善账户信息吧！12</p>\n",
-      "subject": "来自SendCloud的第一封邮件！"
+      "subject": "来自SendCloud的第一封邮件！",
+	  "contentSummary":"shesh"
     }
   },
   "message": "请求成功",
