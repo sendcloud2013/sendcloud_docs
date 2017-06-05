@@ -124,8 +124,7 @@ SendCloud 和 ESP 都在推进建立用户和用户订阅关系, 也会大力支
 |取消订阅(unsubscribe)|用户取消订阅邮件 |
 |举报(report_spam)    |用户举报邮件     |
 |无效邮件(invalid)    |邮件未发送成功   |
-|退信(bounce)         |接收方永久性拒收该邮件 |
-|软退信(soft_bounce)  |接收方临时性拒收该邮件 |
+|软退信(soft_bounce)  |接收方拒收该邮件 |
 |转信(route)  |转信/收信路由 |
 
 **使用方法:**
@@ -350,24 +349,6 @@ function verify($appkey,$token,$timestamp,$signature){
 |signature|string|签名字符串|
 |userHeaders|string|用户自定义, 并且以"SC-Custom-"开头的头部信息|
 
-##### 退信 ( bounce )
-
-**参数说明**
-
-|参数|类型|说明|
-|:---|:---|:---|
-|event|string|事件类型:"bounce"|
-|apiUser|string|API_USER|
-|category|string|同 apiUser|
-|labelId|int|自定义的标签ID|
-|maillistTaskId|long|如果使用地址列表发送，将产生任务id|
-|mail_list_task_id|long|同 maillistTaskId|
-|emailId|string|每封email的唯一ID|
-|recipient|string|收信人|
-|timestamp|long|时间戳|
-|token|string|随机产生的长度为50的字符串|
-|signature|string|签名字符串|
-|userHeaders|string|用户自定义, 并且以"SC-Custom-"开头的头部信息|
 
 ##### 软退信 ( soft_bounce )
 
