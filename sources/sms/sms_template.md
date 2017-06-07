@@ -37,29 +37,25 @@ http://www.sendcloud.net/smsapi/get?smsUser=***&templateIdStr=***&signature=***
 |smsType|内容类型|
 |isVerify|是否审核通过|
 |templateContent|短信模板内容|
-|templateCreateTime|短信模板创建时间|
-|templateUpdateTime|短信模板更新时间|
+|createTime|短信模板创建时间|
+|updateTime|短信模板更新时间|
 
 **返回值示例**
 ```
 {
-	"result" : true,
-	"statusCode" : 200,
-	"message" : "请求成功",
-	"info" : {
-		"total" : 1,
-		"list" : [{
-				"templateContent" : "【爱发信】短息api模板",
-				"templateCreateTime" : "2016-08-25",
-				"templateId" : 00,
-				"templateName" : "中秋快乐",
-				"msgType" : "国内短信",
-				"smsType" : "验证码",
-				"isVerify" : "审核通过",
-				"templateUpdateTime" : "2016-08-25"
-			}
-		]
-	}
+	"info": {
+		"templateId": 00,
+		"templateName": "验证码",
+		"msgType": "国内短信",
+		"smsType": "验证码",
+		"templateContent": "【爱发信】短息api模板",
+		"isVerify": "审核通过",
+		"createTime": "2015-03-23",
+		"updateTime": "2017-03-29"
+	},
+	"message": "请求成功",
+	"result": true,
+	"statusCode": 200
 }
 ```
 
