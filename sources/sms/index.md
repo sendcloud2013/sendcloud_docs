@@ -300,7 +300,7 @@ labelId: 0
 |eventType|int|事件类型代码:2|
 |message|string|消息内容|
 |smsUser|string|smsUser|
-|smsId|int|短信(或语音)ID|
+|smsId|string|短信(或语音)ID|
 |templateId|int|模板ID|
 |phone|string|手机号|
 |timestamp|long|时间戳|
@@ -338,7 +338,7 @@ labelId: 0
 |encodeMessage|string|base64编码的消息内容|
 |statusCode|int|错误码|
 |smsUser|string|smsUser|
-|smsId|int|短信(或语音)ID|
+|smsId|string|短信(或语音)ID|
 |templateId|int|模板ID|
 |phone|string|手机号|
 |timestamp|long|时间戳|
@@ -378,7 +378,7 @@ labelId: 0
 |encodeMessage|string|base64编码的消息内容|
 |statusCode|int|错误码|
 |smsUser|string|smsUser|
-|smsId|int|短信(或语音)ID|
+|smsId|string|短信(或语音)ID|
 |templateId|int|模板ID|
 |phone|string|手机号|
 |timestamp|long|时间戳|
