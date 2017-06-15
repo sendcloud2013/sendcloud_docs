@@ -95,7 +95,7 @@ post    get
 |days|int|*|过去 days 天内的统计数据 (days=1表示今天)|
 |startDate|string|*|开始日期, 格式为`yyyy-MM-dd`|
 |endDate|string|*|结束日期, 格式为`yyyy-MM-dd`|
-|email|string|否|要删除的地址|
+|email|string|*|要删除的地址|
     
 提示:
 
