@@ -22,8 +22,12 @@ post    get
 |taskName|string|是|任务名称|
 |senderName|string|是|发送人名称|
 |templateId|Integer|是|短信模板Id|
+|executeTime|String|否|短信任务执行时间，格式为`yyyy-MM-dd HH:mm:ss`|
 |signature|string|是|签名, 合法性验证|
 
+提示:
+
+1. 如果需要指定短信任务定时执行，需要传入executeTime，如果不传此参数默认为立即执行
 
 **请求示例**
 ```
