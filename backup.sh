@@ -10,5 +10,6 @@ cp -a test_v2 doc/test
 
 
 cp -a email_temp/*  doc/email/
+scp -r  doc/*   10.9.2.69:/opt/sendcloud/enabled/sc_docs/doc/
 #rm -rf email_temp/*
 
