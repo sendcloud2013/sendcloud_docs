@@ -131,7 +131,49 @@ GET POST
 1. 参数 code 格式为字符串,内容为4-6位长度的数字
 - - -
 
+## sendCode（不需要短信模板）
+
+发送短信验证码
+
+***URL***
+```
+http://www.sendcloud.net/smsapi/sendCode
+```
+
+**返回数据格式**
+```
+json
+```
+
+**HTTP请求方式**
+```bash
+GET POST
+```
+
+**参数说明**
+    
+|参数           |类型           |必选       |说明| 
+|:--------------|:--------------|:----------|:---|
+|smsUser        |string         |是         |smsUser| 
+|phone          |string         |是         |收信人手机号|
+|signId         |string         |*          |短信签名id|
+|signName       |string         |*          |短信签名名称|
+|code           |string         |是         |验证码|
+|signature      |string         |是         |签名, 合法性验证| 
+|timestamp      |string         |否         |UNIX时间戳|
+
+*code格式示例:*
+    
+    {"code": "123456"}
+
+`注意`:
+
+1. 参数 code 格式为字符串,内容为4-6位长度的数字
+2. signId为短信签名的id，signId和signName两个参数只需要传一个即可，如果signId不为空，signName自动忽略
 - - -
+
+
+
     
 ## timestamp
      

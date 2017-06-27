@@ -153,10 +153,15 @@ post    get
 |smsUser|string|是|smsUser|
 |templateName|string|是|模板名称，不能重复|
 |templateText|string|是|模板内容|
-|signName|string|是|短信内容中的中括号里面的签名|
+|signName|string|*|短信内容中的中括号里面的签名|
+|signId|Integer|*|短信签名的id|
 |signPositionStr|string|否|签名位置，"0"代表前置"1"代表后置，默认前置|
 |smsTypeStr|string|是|短信内容类型，"0"表示验证码，"1"表示行业通知，"2"表示营销|
 |signature|string|是|签名, 合法性验证|
+
+注意:
+
+1. signId为短信签名的id，signId和signName两个参数只需要传一个即可，如果signId不为空，signName自动忽略
 
 
 **请求示例**
@@ -243,10 +248,15 @@ post    get
 |templateIdStr|string|是|模板ID|
 |templateName|string|是|模板名称|
 |templateText|string|否|模板内容|
-|signName|string|是|签名|
+|signName|string|*|短信内容中的中括号里面的签名|
+|signId|Integer|*|短信签名的id|
 |signPositionStr|string|是|签名位置: "0"代表前置, "1"代表后置, 默认前置|
 |smsTypeStr|string|是|短信内容类型，"0"表示验证码，"1"表示行业通知，"2"表示营销|
 |signature|string|是|签名, 合法性验证|
+
+注意:
+
+1. signId为短信签名的id，signId和signName两个参数只需要传一个即可，如果signId不为空，signName自动忽略
 
 
 **请求示例**
