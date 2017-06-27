@@ -28,6 +28,7 @@ post    get
 |endDate|string|*|结束日期, 格式为`yyyy-MM-dd`|
 |email|string|*|查询该地址在打开点击列表中的详情|
 |trackType|string|否|`1`表示打开，`2`表示点击，不传此参数查询打开和点击全部|
+|apiUserList|string|否|获取指定API_USER的统计数据，多个API_USER用`；`分开，如:apiUserList=a;b;c|
 |labelId|string|否|获取指定标签下的统计数据|
 |start|int|否|查询起始位置, 取值区间 [0-], 默认为 0|
 |limit|int|否|查询个数, 取值区间 [0-100], 默认为 100|
@@ -37,6 +38,7 @@ post    get
 1. 如果指定时间区间, 则是查询此时间区间内的打开点击数据列表. 注意: **startDate 与 endDate 的组合** 或者 **days 参数**, 二者取一. 
 2. 查询的天数不超过三个月.
 3. 如果指定email, 则是查询此地址在打开点击数据列表中的详细信息. 注意: 此时, 时间区间参数失效.
+4. 如果不指定apiUserList，默认查询所有记录.
     
 请求示例:
 ```
