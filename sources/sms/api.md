@@ -156,7 +156,7 @@ GET POST
 |:--------------|:--------------|:----------|:---|
 |smsUser        |string         |是         |smsUser| 
 |phone          |string         |是         |收信人手机号|
-|signId         |string         |*          |短信签名id|
+|signId         |Integer         |*          |短信签名id|
 |signName       |string         |*          |短信签名名称|
 |code           |string         |是         |验证码|
 |signature      |string         |是         |签名, 合法性验证| 

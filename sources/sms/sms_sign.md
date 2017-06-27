@@ -18,13 +18,13 @@ post    get
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
 |smsUser|string|是|smsUser|
-|id|string|是|短信签名id|
+|id|Integer|是|短信签名id|
 |signature|string|是|签名, 合法性验证|
 
 
 **请求示例**
 ```
-http://www.sendcloud.net//smsapi/sign/get?smsUser=***&id=***&signature=***
+http://www.sendcloud.net/smsapi/sign/get?smsUser=***&id=***&signature=***
 ```
 
 **返回值说明**
