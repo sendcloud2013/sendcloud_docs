@@ -131,7 +131,7 @@ http://www.sendcloud.net/smsapi/sign/list?smsUser=***&signature=***
 
 - - -
 ##添加签名
-返回是否添加成功的信息
+返回添加成功后的短信签名基本信息
     
 **URL**    
 ```
@@ -193,7 +193,7 @@ http://www.sendcloud.net/smsapi/sign/save?smsUser=***&signName=***&signType=***&
 - - -
 
 ##更新签名
-返回是否提交成功的基本信息
+返回更新成功之后的短信签名的基本信息
     
 **URL**    
 ```
