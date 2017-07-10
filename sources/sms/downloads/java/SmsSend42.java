@@ -70,7 +70,7 @@ public class SmsSend42 {
             HttpResponse response = httpclient.execute(httpPost);
 
             HttpEntity entity = response.getEntity();
-            EntityUtils.consume(entity);
+
             System.out.println(EntityUtils.toString(response.getEntity()));
         } catch (Exception e) {
             System.out.println(e.toString());
@@ -127,7 +127,6 @@ public class SmsSend42 {
             HttpResponse response = httpclient.execute(httpPost);
 
             HttpEntity entity = response.getEntity();
-            EntityUtils.consume(entity);
             System.out.println(EntityUtils.toString(response.getEntity()));
         } catch (Exception e) {
             System.out.println(e.toString());

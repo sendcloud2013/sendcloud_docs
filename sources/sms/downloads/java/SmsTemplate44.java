@@ -73,7 +73,7 @@ public class SmsTemplate44 {
 
             HttpEntity entity = response.getEntity();
             System.out.println(EntityUtils.toString(entity));
-            EntityUtils.consume(entity);
+
         } catch (Exception e) {
             System.out.println(e.toString());
         } finally {
@@ -132,7 +132,7 @@ public class SmsTemplate44 {
 
             HttpEntity entity = response.getEntity();
             System.out.println(EntityUtils.toString(entity));
-            EntityUtils.consume(entity);
+
         } catch (Exception e) {
             System.out.println(e.toString());
         } finally {
@@ -198,7 +198,7 @@ public class SmsTemplate44 {
 
             HttpEntity entity = response.getEntity();
             System.out.println(EntityUtils.toString(entity));
-            EntityUtils.consume(entity);
+
         } catch (Exception e) {
             System.out.println(e.toString());
         } finally {
@@ -255,7 +255,7 @@ public class SmsTemplate44 {
 
             HttpEntity entity = response.getEntity();
             System.out.println(EntityUtils.toString(entity));
-            EntityUtils.consume(entity);
+
         } catch (Exception e) {
             System.out.println(e.toString());
         } finally {
@@ -322,7 +322,7 @@ public class SmsTemplate44 {
 
             HttpEntity entity = response.getEntity();
             System.out.println(EntityUtils.toString(entity));
-            EntityUtils.consume(entity);
+
         } catch (Exception e) {
             System.out.println(e.toString());
         } finally {
@@ -379,7 +379,7 @@ public class SmsTemplate44 {
 
             HttpEntity entity = response.getEntity();
             System.out.println(EntityUtils.toString(entity));
-            EntityUtils.consume(entity);
+
         } catch (Exception e) {
             System.out.println(e.toString());
         } finally {

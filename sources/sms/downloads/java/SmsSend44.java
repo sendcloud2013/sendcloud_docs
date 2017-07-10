@@ -69,7 +69,7 @@ public class SmsSend44 {
             HttpResponse response = httpClient.execute(httpPost);
             HttpEntity entity = response.getEntity();
             System.out.println(EntityUtils.toString(entity));
-            EntityUtils.consume(entity);
+
         } catch (Exception e) {
             System.out.println(e.toString());
         } finally {
