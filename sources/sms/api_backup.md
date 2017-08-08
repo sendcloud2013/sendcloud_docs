@@ -41,6 +41,55 @@ GET POST
 
 3. 生成签名时, 参数不要使用 `urlencode`. 在调用 api 时, 才需要对参数做 `urlencode`
 
+- - -
+
+## sendx
+
+发送一个短信模板给多个用户, 每个用户对应一个替换变量.
+    
+**URL**
+```
+http://www.sendcloud.net/smsapi/sendx
+```
+
+**返回数据格式**
+```
+json
+```
+
+**HTTP请求方式**    
+```bash
+GET POST    
+```
+    
+**参数说明**
+    
+|参数           |类型           |必选       |说明|
+|:--------------|:--------------|:----------|:---|
+|smsUser        |string         |是         |smsUser|
+|templateId     |int            |是         |模板ID|
+|msgType        |int            |否         |0表示短信, 1表示彩信, 默认值为0|
+|tos            |string         |是         |手机号和替换变量的对应的json串，每次调用最大支持200，更多地址建议使用联系人列表功能|
+|signature      |string         |是         |签名, 合法性验证|
+|timestamp      |string         |否         |UNIX时间戳|
+
+*vars格式示例:*
+
+    {"name": "lucy"} or {"%name%": "lucy"}
+
+*tos格式示例:*
+    
+    [{"phone": "13111111111", "vars": {"%name%": "name1"}}, {"phone": "13122222222", "vars": {"%name%": "name2"}}]
+
+`注意`: 
+
+1. 参数 vars 可能含有特殊字符, 记得 `urlencode`
+
+2. vars 所传递的变量的值, 长度不能超过 32 个字符, 格式为字符串, 变量中不能含有 HTTP 链接
+
+3. 生成签名时, 参数不要使用 `urlencode`. 在调用 api 时, 才需要对参数做 `urlencode`
+
+4. tos里面必须要有vars参数，可以是空，但是不能没有这个字段。
 
 - - -
 
