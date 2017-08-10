@@ -166,4 +166,13 @@ https://metacpan.org/pod/JSON
 
 [SMTP发送](email/downloads/csharp/csharp_smtp.cs)
 
+## Go
+
+[普通发送](email_v2/downloads/go/go_common.go) 
+
+[附件发送](email_v2/downloads/go/go_attachment.go) 
+
+[模板发送](email_v2/downloads/go/go_template.go) 
+
+
 
