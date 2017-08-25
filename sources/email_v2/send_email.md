@@ -17,7 +17,7 @@ post
 |:---|:---|:---|:---|  
 |apiUser|string|是|API_USER|  
 |apiKey|string|是|API_KEY|  
-|from|string|是|发件人地址. 举例: `support@ifaxin.com`, 为了更高的送达率，建议from域名后缀与发信域名一致。当配置通过DMARC后，自主填写的from的域名后缀将被替换为当前域名。[DMARC是什么?](http://blog.sendcloud.net/2017/05/03/20170503/)|  
+|from|string|是|发件人地址. 举例: `support@ifaxin.com`, 为了更高的送达率，建议from域名后缀与发信域名一致。|  
 |to|string|*|收件人地址. 多个地址使用';'分隔, 如 `ben@ifaxin.com;joe@ifaxin.com`|  
 |subject|string|是|标题. 不能为空|  
 |html|string|*|邮件的内容. 邮件格式为 `text/html`| 
@@ -68,7 +68,7 @@ post
 |:---|:---|:---|:---|  
 |apiUser|string|是|API_USER|
 |apiKey|string|是|API_KEY|
-|from|string|是|发件人地址. 举例: `support@ifaxin.com`,为了更高的送达率，建议from域名后缀与发信域名一致。当配置通过DMARC后，自主填写的from的域名后缀将被替换为当前域名。[DMARC是什么?](http://blog.sendcloud.net/2017/05/03/20170503/)|  
+|from|string|是|发件人地址. 举例: `support@ifaxin.com`,为了更高的送达率，建议from域名后缀与发信域名一致。|  
 |to|string|*|地址列表. 在 `useAddressList=true` 时使用|
 |xsmtpapi|string|*|SMTP 扩展字段. 详见 [X-SMTPAPI](../guide/rule.md#x-smtpapi)|  
 |subject|string|*|邮件标题|  
@@ -182,7 +182,7 @@ post
 |:---|:---|:---|:---|
 |apiUser|string|是|API_USER|
 |apiKey|string|是|API_KEY|
-|from|string|是|发件人地址. 举例: `support@ifaxin.com`,为了更高的送达率，建议from域名后缀与发信域名一致。当配置通过DMARC后，自主填写的from的域名后缀将被替换为当前域名。[DMARC是什么?](http://blog.sendcloud.net/2017/05/03/20170503/)|  
+|from|string|是|发件人地址. 举例: `support@ifaxin.com`,为了更高的送达率，建议from域名后缀与发信域名一致。|  
 |to|string|*|收件人地址. 多个地址使用';'分隔, 如 `ben@ifaxin.com;joe@ifaxin.com`|  
 |subject|string|是|标题. 不能为空|  
 |html|string|*|邮件的内容. 邮件格式为 `text/html`|  

@@ -23,7 +23,7 @@ GET POST
 |:--------------|:--------------|:----------|:---|
 |smsUser        |string         |是         |smsUser|
 |templateId     |int            |是         |模板ID|
-|msgType        |int            |否         |0表示短信, 1表示彩信, 默认值为0|
+|msgType        |int            |否         |0表示短信, 1表示彩信,2表示国际短信， 默认值为0|
 |phone          |string         |是         |收信人手机号,多个手机号用逗号,分隔，每次调用最大支持2000，更多地址建议使用联系人列表功能|
 |vars           |string         |否         |替换变量的json串|
 |signature      |string         |是         |签名, 合法性验证|
