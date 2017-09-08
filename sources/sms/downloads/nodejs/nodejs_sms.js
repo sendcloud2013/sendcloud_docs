@@ -2,9 +2,10 @@ var http = require("http")
 var crypto = require('crypto')
 
 function md5(data) {
-    var Buffer = require("buffer").Buffer;
-    var buf = new Buffer(data);
-    var str = buf.toString("binary");
+    //var Buffer = require("buffer").Buffer;
+    //var buf = new Buffer(data);
+    //var str = buf.toString("binary");
+	var str=data
     var crypto = require("crypto");
     return crypto.createHash("md5").update(str).digest("hex");
 } 

@@ -40,18 +40,16 @@ http://www.sendcloud.net/smsapi/label/get?smsUser=***&labelId=***&signature=***
 ```
 {
 	"info": {
-		"smsSignVo": {
-			"createTime": "2015-04-10 10:44:37",
-			"id": 0,
-			"signName": "闪闪",
-			"signTypeDesc": "国内短信",
-			"updateTime": "2016-06-14 19:20:35",
-			"verifyStatus": "审核通过"
+		"vo": {
+			"createTime": "2017-09-07 14:48:05",
+			"labelId": 10,
+			"labelName": "test",
+			"updateTime": "2017-09-07 14:48:05"
 		}
 	},
-	"statusCode": 200,
-	"message": "获取短信签名成功",
-	"result": true
+	"message": "查询成功",
+	"result": true,
+	"statusCode": 200
 }
 ```
 
@@ -75,8 +73,8 @@ post    get
 |:---|:---|:---|:---|
 |smsUser|string|是|smsUser|
 |labelName|string|否|标签名称|
-|start|Integer|否|分页查询起始字段|
-|limit|Integer|否|分页查询每页查询多少条内容，不超过100|
+|start|Integer|否|查询起始位置, 取值区间 [0-], 默认为 0|
+|limit|Integer|否|查询个数, 取值区间 [0-100], 默认为 100|
 |signature|string|是|签名, 合法性验证|
 
 
@@ -89,6 +87,8 @@ http://www.sendcloud.net/smsapi/label/list?smsUser=***&signature=***
 
 |参数|说明|
 |:---|:---|
+|total|用户所有短信标签的条数|
+|count|本次查询接口的条数|
 |labelId|短信标签id|
 |labelName|短信标签名称|
 |createTime|短信标签创建时间|
@@ -98,32 +98,18 @@ http://www.sendcloud.net/smsapi/label/list?smsUser=***&signature=***
 ```
 {
 	"info": {
+		"total": 1,
+		"count": 1,
 		"voList": [{
-				"createTime": "2015-04-10 10:44:37",
-				"id": 1427,
-				"signName": "闪达",
-				"signTypeDesc": "国内短信",
-				"updateTime": "2016-06-14 19:20:35",
-				"verifyStatus": "审核通过"
-			}, {
-				"createTime": "2017-06-27 14:24:31",
-				"id": 1429,
-				"signName": "闪达1",
-				"signTypeDesc": "国内短信",
-				"updateTime": "2017-06-27 14:24:31",
-				"verifyStatus": "待审核"
-			}, {
-				"createTime": "2017-06-27 14:24:45",
-				"id": 1430,
-				"signName": "闪达2",
-				"signTypeDesc": "国内短信",
-				"updateTime": "2017-06-27 14:24:45",
-				"verifyStatus": "待审核"
+				"createTime": "2017-09-07 14:48:05",
+				"labelId": 10,
+				"labelName": "test",
+				"updateTime": "2017-09-07 14:48:05"
 			}
 		]
 	},
 	"statusCode": 200,
-	"message": "获取短信签名成功",
+	"message": "查询成功",
 	"result": true
 }
 ```
@@ -147,14 +133,13 @@ post    get
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
 |smsUser|string|是|smsUser|
-|signType|Integer|是|签名类型，0表示国内短信，1表示国际短信|
-|signName|string|*|短信内容中的中括号里面的签名|
+|labelName|string|是|标签名称|
 |signature|string|是|签名, 合法性验证|
 
 
 **请求示例**
 ```
-http://www.sendcloud.net/smsapi/label/save?smsUser=***&signName=***&signType=***&signature=***
+http://www.sendcloud.net/smsapi/label/save?smsUser=***&labelName=***&signature=***
 ```
 
 **返回值说明**
@@ -171,19 +156,16 @@ http://www.sendcloud.net/smsapi/label/save?smsUser=***&signName=***&signType=***
 ```
 {
 	"info": {
-		"smsSignVo": {
-			"createTime": "2017-06-27 19:31:16",
-			"id": 1432,
-			"signName": "闪达5",
-			"signTypeDesc": "国际短信",
-			"updateTime": "2017-06-27 19:31:16",
-			"verifyStatus": "待审核"
+		"vo": {
+			"createTime": "2017-09-08 16:31:13",
+			"labelId": 11,
+			"labelName": "test2",
+			"updateTime": "2017-09-08 16:31:13"
 		}
 	},
 	"statusCode": 200,
-	"message": "短信签名保存成功",
+	"message": "保存成功",
 	"result": true
-}	"statusCode" : 200
 }
 ```
 
@@ -205,16 +187,15 @@ post    get
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
 |smsUser|string|是|smsUser|
-|id|Integer|是|签名id|
-|signType|Integer|是|签名类型，0表示国内短信，1表示国际短信|
-|signName|string|是|短信内容中的中括号里面的签名|
+|labelId|Integer|是|短信标签id|
+|labelName|string|是|标签名称|
 |signature|string|是|签名, 合法性验证|
 
 
 
 **请求示例**
 ```
-http://www.sendcloud.net/smsapi/label/update?smsUser=***&id=***&signName=***&signType=***&signature=***
+http://www.sendcloud.net/smsapi/label/update?smsUser=***&laelId=***&labelName=***&signature=***
 ```
 
 **返回值说明**
@@ -230,19 +211,16 @@ http://www.sendcloud.net/smsapi/label/update?smsUser=***&id=***&signName=***&sig
 ```
 {
 	"info": {
-		"smsSignVo": {
-			"createTime": "2017-06-27 19:31:16",
-			"id": 1432,
-			"signName": "闪达5",
-			"signTypeDesc": "国际短信",
-			"updateTime": "2017-06-27 19:31:16",
-			"verifyStatus": "待审核"
+		"vo": {
+			"createTime": "2017-09-08 16:31:13",
+			"labelId": 11,
+			"labelName": "test3",
+			"updateTime": "2017-09-08 16:32:36"
 		}
 	},
 	"statusCode": 200,
-	"message": "短信签名更新成功",
+	"message": "更新成功",
 	"result": true
-}	"statusCode" : 200
 }
 ```
 
@@ -265,9 +243,7 @@ post    get
 |参数|类型|必须|说明|
 |:---|:---|:---|:---|
 |smsUser|string|是|smsUser|
-|id|Integer|是|签名id|
-|signType|Integer|是|签名类型，0表示国内短信，1表示国际短信|
-|signName|string|是|短信内容中的中括号里面的签名|
+|labelId|Integer|是|短信标签id|
 |signature|string|是|签名, 合法性验证|
 
 
@@ -277,33 +253,12 @@ post    get
 http://www.sendcloud.net/smsapi/label/delete?smsUser=***&id=***&signName=***&signType=***&signature=***
 ```
 
-**返回值说明**
-
-|参数|说明|
-|:---|:---|
-|id|短信签名id|
-|signName|短信签名名称|
-|signTypeDesc|签名类型描述|
-|verifyStatus|审核状态|
-|createTime|短信签名创建时间|
-|updateTime|短信签名更新时间| 
-
 **返回值示例**
 ```
 {
-	"info": {
-		"smsSignVo": {
-			"createTime": "2017-06-27 19:31:16",
-			"id": 1432,
-			"signName": "闪达5",
-			"signTypeDesc": "国际短信",
-			"updateTime": "2017-06-27 19:31:16",
-			"verifyStatus": "待审核"
-		}
-	},
-	"statusCode": 200,
-	"message": "短信签名更新成功",
-	"result": true
-}	"statusCode" : 200
+	"info": {},
+	"message": "删除成功",
+	"result": true,
+	"statusCode": 200
 }
 ```

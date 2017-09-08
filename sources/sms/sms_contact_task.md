@@ -20,6 +20,7 @@ post    get
 |smsUser|string|是|smsUser|
 |contactListName|string|是|联系人列表名称|
 |taskName|string|是|任务名称|
+|labelId|Integer|否|短信标签|
 |senderName|string|是|发送人名称|
 |templateId|Integer|是|短信模板Id|
 |executeTime|String|否|短信任务执行时间，格式为`yyyy-MM-dd HH:mm:ss`|
@@ -105,6 +106,7 @@ http://www.sendcloud.net/smsapi/queryContactListTask?smsUser=***&taskId=***&sign
 |taskId|任务Id|
 |contactListName|联系人列表名称|
 |taskName|任务名称|
+|labelId|任务标签|
 |senderName|发送人名称|
 |templateId|短信模板Id|
 |memberCount|本次任务成员个数|
@@ -128,6 +130,7 @@ http://www.sendcloud.net/smsapi/queryContactListTask?smsUser=***&taskId=***&sign
 			"status": "等待执行",
 			"taskId": 472,
 			"taskName": "test",
+			"labelId": "11",
 			"templateId": 999
 		}
 	}
