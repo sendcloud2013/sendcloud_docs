@@ -23,6 +23,7 @@ GET POST
 |:--------------|:--------------|:----------|:---|
 |smsUser        |string         |是         |smsUser|
 |templateId     |int            |是         |模板ID|
+|labelId        |int            |否         |短信标签ID|
 |msgType        |int            |否         |0表示短信, 1表示彩信,2表示国际短信， 默认值为0|
 |phone          |string         |是         |收信人手机号,多个手机号用逗号,分隔，每次调用最大支持2000，更多地址建议使用联系人列表功能|
 |vars           |string         |否         |替换变量的json串|
@@ -70,6 +71,7 @@ GET POST
 |smsUser        |string         |是         |smsUser| 
 |phone          |string         |是         |收信人手机号|
 |code           |string         |是         |验证码|
+|labelId        |int            |否         |短信标签ID|
 |signature      |string         |是         |签名, 合法性验证| 
 |timestamp      |string         |否         |UNIX时间戳|
 
@@ -110,6 +112,7 @@ GET POST
 |signId         |Integer         |*          |短信签名id|
 |signName       |string         |*          |短信签名名称|
 |code           |string         |是         |验证码|
+|labelId        |int            |否         |短信标签ID|
 |signature      |string         |是         |签名, 合法性验证| 
 |timestamp      |string         |否         |UNIX时间戳|
 
