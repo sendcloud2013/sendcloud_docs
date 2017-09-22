@@ -64,6 +64,34 @@
 	conf: 'prod_60241505673df9fcb80d8960239843f8'
 	});
 	</script>
+	
+	<script>
+	document.write('<script src="\/\/assets-cdn.kf5.com\/supportbox\/main.js?' + (new Date).getDay() + '" id="kf5-provide-supportBox" kf5-domain="sendcloud.kf5.com" charset="utf-8"><\/script>');
+
+	window.KF5SupportBoxAPI.ready(function(){
+        // 传递用户信息给组件使用
+        window.KF5SupportBoxAPI.identify({
+          "name" : p.data.data.userName ,
+          "email" : p.data.data.email  ,
+          "phone" :p.data.data.phone  ,
+                //自定义用户信息
+                "metadata" : [
+                { name : '账户类型', value : p.data.data.accountTypeName } ,
+                { name : '信誉度', value : p.data.data.reputation } ,
+                { name : '账户余额', value : p.data.data.balance },
+                { name : '邮件额度', value : p.data.data.quota },
+                { name : '公司名称', value : p.data.data.company },
+                { name : '邮件计费方案', value : p.data.data.billingPlanName },
+                { name : '增值业务', value : p.data.data.s_WaarderingApplication },
+                ]
+              });
+           });
+          
+        })
+
+
+	</script>
+	
     <footer class="clearfix footer">
         <div class="container">
             <ul class="list-unstyled list-inline pull-left">
