@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 require 'rubygems'
-require 'rest_client'
+require 'rest-client'
 
 def send_mail
         response = RestClient.post "http://api.sendcloud.net/apiv2/mail/sendtemplate",

@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 require 'rubygems'
-require 'rest_client'
+require 'rest-client'
 require 'json'
 
 def send_mail

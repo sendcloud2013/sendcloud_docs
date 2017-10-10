@@ -23,8 +23,8 @@ filename2 = "2.txt"
 display_filename_2 = "bbb"
 
 files = [
-    ("attachments", (display_filename_1, open(filename1, 'rb'),'application/octet-stream')),
-    ("attachments", (display_filename_2, open(filename2, 'rb'),'application/octet-stream'))
+    ("attachments", (urllib.quote(display_filename_1), open(filename1, 'rb'),'application/octet-stream')),
+    ("attachments", (urllib.quote(display_filename_2), open(filename2, 'rb'),'application/octet-stream'))
 ]
 
 r = requests.post(url, files=files, data=params)
